@@ -22,13 +22,13 @@ export default function computer_literacy(){
             password: '',
         },
 
-        show_: false,
+        // show_: false,
         computers:[],
 
         init() {
             setInterval(() => {
                 this.message = '',
-                    this.error = ''
+                    this.error = '',
                 this.logIn_message = ''
             }, 4000);
         },
