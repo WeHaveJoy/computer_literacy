@@ -1,6 +1,13 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+import movies from "./app";
+import "./app"
+
+import Alpine from "alpinejs";
+import computer_literacy from './app';
+
+window.Alpine = Alpine;
+//  Alpine.plugin(persist);
+ Alpine.data('info', computer_literacy)
+
+Alpine.start();
