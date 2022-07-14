@@ -40,36 +40,35 @@ module.exports = (app, db) => {
         }
     });
 
-
     app.post("/api/logIn", async (req, res) => {
         try {
-          const { username, password} = req.body;
-    
-          const findUser = await db.oneOrNone(
-            `SELECT * FROM users WHERE username = $1`,
-            [username]
-          );
-    
-          if (!findUser) {
+            const { username, password } = req.body;
 
-            throw Error(`The user doesn't exist`);
-          }
-          const isValid = await bcrypt.compare(password, findUser.password);
-          if (!isValid) {
-            throw Error(`The user doesn't exist`);
-          }
-    
-          let token = jwt.sign(findUser, `secretKey`, { expiresIn: `24h` });
-    
-          res.status(200).json({
-            message: "You are loged in",
-            token,
-            user: findUser,
-          });
+            const findUser = await db.oneOrNone(
+                `SELECT * FROM users WHERE username = $1`,
+                [username]
+            );
+
+            if (!findUser) {
+
+                throw Error(`The user doesn't exist`);
+            }
+            const isValid = await bcrypt.compare(password, findUser.password);
+            if (!isValid) {
+                throw Error(`The user doesn't exist`);
+            }
+
+            let token = jwt.sign(findUser, `secretKey`, { expiresIn: `24h` });
+
+            res.status(200).json({
+                message: "You are loged in",
+                token,
+                user: findUser,
+            });
         } catch (error) {
-          res.status(500).json({
-            error: error.message,
-          });
+            res.status(500).json({
+                error: error.message,
+            });
         }
-      });
+    });
 }

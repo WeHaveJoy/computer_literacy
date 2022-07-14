@@ -9,21 +9,24 @@ create table users(
 
 create table courses_beginners(
     id serial not null primary key,
-    level int,
-    challenge_score int
-);
+    description text,
+    img text,
+    level int
+);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 create table courses_intermediate(
     id serial not null primary key,
-    level int,
-    challenge_score int
+    description text,
+    img text,
+    level int
 );
 
 
 create table courses_advanced(
     id serial not null primary key,
-     level int,
-    challenge_score int
+    description text,
+    img text,
+    level int
 );
 
 create table assessment(

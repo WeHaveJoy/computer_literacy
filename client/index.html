@@ -19,7 +19,7 @@
           <h2>Register here if you don't have an acount yet:</h2>
           <br>
           <div x-text="message"></div>
-          <div x-text="error"></div>
+          <!-- <div x-text="error"></div> -->
           <br>
           <label for="">Please enter your first name: </label>
           <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
@@ -64,7 +64,7 @@
       </div>
 
 
-      <div x-show="info.role === 'learner'" class="learner">
+      <div x-show="user.role === 'learner'" class="learner">
 
         <h2> search for anything that you would like to learn about computers:</h2>
         <input type="search" x-model="extra_mural">
@@ -80,7 +80,6 @@
           </div>
         </template>
       </div>
-
 
       <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
       <div x-show="signUp.role == parent" class="parent"></div> -->
