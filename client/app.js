@@ -17,6 +17,10 @@ export default function computer_literacy(){
             role: ''
         },
 
+        user: {
+            role: ''
+        },
+
         signIn: {
             username: '',
             password: '',
@@ -27,8 +31,8 @@ export default function computer_literacy(){
 
         init() {
             setInterval(() => {
-                this.message = '',
-                    this.error = '',
+                this.message = ''
+                    this.error = ''
                 this.logIn_message = ''
             }, 4000);
         },
@@ -72,10 +76,10 @@ export default function computer_literacy(){
                     return true;
                 })
                 .then(result => {
-                    this.first_name = '',
-                        this.last_name = '',
-                        this.username = '',
-                        this.password = '',
+                    this.first_name = ''
+                        this.last_name = ''
+                        this.username = ''
+                        this.password = ''
                         this.role = ''
                     if (!result) {
                         this.show_movies = false;
