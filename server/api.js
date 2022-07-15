@@ -71,4 +71,30 @@ module.exports = (app, db) => {
             });
         }
     });
+
+    app.get("/api/beginner_level1", async (req, res) => {
+
+        app.get("/test1", async (req, res) =>
+        res.json(await db.manyOrNone("SELECT * FROM courses_beginners"))
+    );
+
+        try {
+            // const { description, img, level } = req.res;
+
+            const display_course = await db.manyOrNone(`SELECT * FROM courses_beginners`);
+
+            res.status(200).json({
+                message: "Beginner course level 1!",
+                course: display_course
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message,
+            });
+        }
+
+    })
+
 }
