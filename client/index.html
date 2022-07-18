@@ -65,18 +65,19 @@
 
 
       <div x-show="user.role === 'learner'" class="learner">
-
-        <h2> search for anything that you would like to learn about computers:</h2>
-        <input type="search" x-model="extra_mural">
-        <button @click=""> Show video</button>
+        <!-- <h2> search for anything that you would like to learn about computers:</h2>
+        <input type="search" x-model="extra_mural"> -->
+        <h2>Beginner course level 1:</h2>
+        <div x-text="message"></div>
+        <button @click="beginner()"> Show course</button>
         <br>
         <template x-for=" computer in computers">
           <div>
-            <!-- <span x-text="computer.title"></span> -->
+            <span x-text="computer.description"></span>
             <br>
+            <img x-bind:src="`/Beginners/${computer.img}`">
             <br>
-            <!-- <img x-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"> -->
-            <button @click=" ">Add video</button>
+            <span x-text="computer.level"></span>
           </div>
         </template>
       </div>
