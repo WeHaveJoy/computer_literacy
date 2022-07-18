@@ -106,16 +106,17 @@ module.exports = (app, db) => {
         try {
             // const { assessment_id, id, course_id } = req.body;
 
-            const quest = await db.oneOrNone(`SELECT * FROM questions`);
+            const quest = await db.manyOrNone(`SELECT * FROM questions`);
 
             // const assess = await db.oneOrNone(`SELECT assessment_id FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
 
             // const quiz = await db.oneOrNone(`SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
 
-            const ans = await db.oneOrNone(`SELECT * FROM answers`);
+            const ans = await db.manyOrNone(`SELECT * FROM answers`);
 
             res.status(200).json({
-                question: quest, ans
+                question: quest,
+                answer:ans
             });
 
         } catch (error) {
