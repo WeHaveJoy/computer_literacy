@@ -80,6 +80,20 @@
             <span x-text="computer.level"></span>
           </div>
         </template>
+
+        <div class="assessment">
+          <h2>Please complete this assessment before requesting for the next course: </h2>
+          <button @click="assessment()"> Show quiz</button>
+          <!-- <div>
+            <template x-for="quiz in quizes">
+            <input type="radio" value="yes" x-model="quiz.question">
+            <input type="radio" value="no" x-model="answer"> -->
+
+
+            <!-- <span x-text="answer"></span> -->
+          <!-- </template>
+          </div> -->
+        </div>
       </div>
 
       <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
