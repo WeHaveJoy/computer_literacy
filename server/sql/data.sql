@@ -1,3 +1,5 @@
+-- #LEVEL1
+
 insert into courses_beginners(description, img, level) values ('A mouse is an input device that allows the user to move a pointer displayed on the monitor and experience a more intuitive interaction with computer systems.
 .These days mouse have more buttons than the common three.
 However, the three main buttons allow the user to select, grab, scroll and access extra menus and options.
@@ -35,3 +37,18 @@ Its function involves integrating all the physical components to communicate and
 insert into courses_beginners(description, img, level) values ('HDMI stands for “High Definition Media Interface“, and it is digital interface that is used to make connection with high and ultra definition devices such as monitor, gaming consol, HDTVs, ultra definition cameras, etc. it is capable to carry uncompressed video and uncompressed or compressed audio signals.', 'hdmi port.jpeg', '1');
 
 
+-- #LEVEL3
+
+insert into courses_beginners(description, img, level) values ('***SELECT AND HIGHLIGHT
+Click or tap once, and hold to start your selection. Then, drag your cursor or finger and notice how the characters on your screen are highlighted. Release when you are done selecting your text.', 'highlighting.png', '3');
+
+insert into courses_beginners(description, img, level) values ('**HOW TO CREATE FOLDER
+1. In the desktop, click or tap the File Explorer button on the taskbar.
+2.Open the drive or folder where you want to create a folder.
+3.Click or tap the New Folder button on the Home tab.
+4.Right-click or tap-hold a blank area of the window, point to New, and then click or tap New folder.
+5.With the New Folder name selected, type a new name.
+6. Press Enter or tap in a blank area.', 'folder.png', '3');
+
+
+insert into courses_beginners(description, img, level) values ();

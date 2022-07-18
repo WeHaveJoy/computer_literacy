@@ -65,7 +65,6 @@
 
 
       <div x-show="user.role === 'learner'" class="learner">
-
         <!-- <h2> search for anything that you would like to learn about computers:</h2>
         <input type="search" x-model="extra_mural"> -->
         <h2>Beginner course level 1:</h2>
@@ -76,7 +75,7 @@
           <div>
             <span x-text="computer.description"></span>
             <br>
-            <img x-bind:src="`computer.img`">
+            <img x-bind:src="`/Beginners/${computer.img}`">
             <br>
             <span x-text="computer.level"></span>
           </div>

@@ -25,9 +25,8 @@ export default function computer_literacy(){
             username: '',
             password: '',
         },
-
         
-        computers:[],
+        computers: [],
 
         init() {
             setInterval(() => {
@@ -94,7 +93,7 @@ export default function computer_literacy(){
             axios
             .get('http://localhost:4003/api/beginner_level1')
             .then(results => {
-                this.computers = results.data.results;
+                this.computers = results.data.course;
                 console.log(results.data);
                 setInterval(() => {
                 }, 4000);
