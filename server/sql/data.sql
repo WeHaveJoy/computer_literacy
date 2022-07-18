@@ -50,5 +50,66 @@ insert into courses_beginners(description, img, level) values ('**HOW TO CREATE 
 5.With the New Folder name selected, type a new name.
 6. Press Enter or tap in a blank area.', 'folder.png', '3');
 
+insert into courses_beginners(description, img, level) values ('A computer mouse is a handheld hardware input device that controls a cursor in a GUI (graphical user interface) for pointing, moving and selecting text, icons, files, and folders on your computer.', 'mouse_demo.png', '3');
 
-insert into courses_beginners(description, img, level) values ();
+insert into courses_beginners(description, img, level) values ('Put the mouse pointer over the file or folder.
+Press and hold mouse button 1.
+Drag the icon to where you want to drop it.
+Release the mouse button on the path you want to paste the item
+', 'drag&drop.png');
+
+insert into courses_beginners(description, img, level) values ('*****How to launch and run various applications
+Click a tile in the Start menu.
+Open the Start menu and click the All Apps button in the lower-left corner. This displays an alphabetical list of installed apps (as shown in the following figure). Click an app to open it.
+Double-click a program shortcut icon on the desktop (see the following figure).
+Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doesn't, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
+When the application opens, if it's a game, play it; if it's a spreadsheet, enter numbers into it; if it's your email program, start deleting junk mail . ', '', '3');
+
+
+-- #LEVEL2
+
+
+-- assessment
+
+insert into assessment(description) values('Mouse level1');
+insert into assessment(description) values('CPU level1');
+insert into assessment(description) values('Keyboard level1');
+insert into assessment(description) values('Motherboard level1');
+insert into assessment(description) values('RAM level1');
+-- insert into assessment(description) values(' level1');
+
+--questions
+
+insert into questions(question) values ('A mouse is a/an _____.');
+insert into questions(question) values ('CPU stands for?');
+insert into questions(question) values ('A keyboard has _____ keys.');
+insert into questions(question) values ('The chip/chips present on the motherboard is/are');
+insert into questions(question) values ('The computer is beeping constantly after you have booted it. What is the likely problem?');
+
+--answers
+
+insert into answers(answer, correct) values('Input device', 'True');
+insert into answers(answer, correct) values('Output device', 'False');
+insert into answers(answer, correct) values('Processing device', 'False');
+insert into answers(answer, correct) values( 'All of the above', 'False');
+
+insert into answers(answer, correct) values('Control Processing Unit', 'False');
+insert into answers(answer, correct) values('Central Programming Unit', 'False');
+insert into answers(answer, correct) values('Central Processing Unit', 'True');
+insert into answers(answer, correct) values('Control Programming Unit', 'False');
+
+insert into answers(answer, correct) values('Both', 'True');
+insert into answers(answer, correct) values('Number', 'False');
+insert into answers(answer, correct) values('Alphabets', 'False');
+
+insert into answers(answer, correct) values('RAM', 'False');
+insert into answers(answer, correct) values('ROM', 'False');
+insert into answers(answer, correct) values('MICR', 'False');
+insert into answers(answer, correct) values('Both (RAM & ROM)', 'True');
+
+insert into answers(answer, correct) values('CPU', 'False');
+insert into answers(answer, correct) values('Registry', 'False');
+insert into answers(answer, correct) values('RAM', 'True');
+insert into answers(answer, correct) values('Power supply', 'False');
+
+
