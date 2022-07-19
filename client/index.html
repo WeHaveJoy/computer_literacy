@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <title>Vite App</title>
 </head>
 
@@ -14,9 +15,9 @@
     <div class="container" x-data="info">
       <div id="app">
 
-        <div class="register">
 
-          <h2>Register here if you don't have an acount yet:</h2>
+        
+          <!-- <h2>Register here if you don't have an acount yet:</h2>
           <br>
           <div x-text="message"></div>
           <div x-text="error"></div>
@@ -41,9 +42,47 @@
           <br>
           <label>Please enter your role: </label>
           <input x-model="signUp.role" type="text" name="register_password" class="register">
-          <input type="button" @click="regUser()" name="action" value="Register" class="button">
+          <input type="button" @click="regUser()" name="action" value="Register" class="btn"> -->
 
-        </div>
+        <!-- </div>  -->
+
+        <!-- <div class=" row justify-content-center align-items-center">  -->
+          <h2>Register here if you don't have an acount yet:</h2>
+          <br>
+          <div x-text="message"></div>
+          <div x-text="error"></div>
+         
+            <label for="">Please enter your first name: </label>
+            <input x-model="signUp.first_name" type="text" class="form-control" id="validationCustom01" required>
+        
+          <br>
+          
+            
+              <label for="">Please enter your last name: </label>
+            <input x-model="signUp.last_name" type="text" class="form-control" id="validationCustom02" required>
+        
+          <br>
+          
+          
+            <label for="">Please enter your username: </label>
+             <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input x-model="signUp.username" type="text" class="form-control" id="validationCustomUsername"
+                aria-describedby="inputGroupPrepend" required>
+          
+          <br>
+          
+          
+            <label>Please enter your password: </label>
+            <input x-model="signUp.password" type="password" class="form-control" id="inputPassword">
+           
+             <br>
+             
+            
+              <label>Please enter your role: </label>
+              <input x-model="signUp.role" type="text" name="register_password" class="form-control">
+              <br>
+              <input type="button" @click="regUser()" name="action" value="Register" class="button">
+           
         <br>
         <br>
 
@@ -54,11 +93,12 @@
 
           <br>
           <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="login">
+          <input x-model="signIn.username" type="text" name="login_user" class="form-control" >
           <br>
-          <br>
+          
           <label>Please enter your password: </label>
-          <input x-model="signIn.password" type="password" name="login_password" class="login">
+          <input x-model="signIn.password" type="password" name="login_password" class="form-control">
+          <br>
           <input type="button" @click="logUser()" name="action" value="login" class="button">
         </div>
       </div>
@@ -67,16 +107,16 @@
       <div x-show="info.role === 'learner'" class="learner">
 
         <h2> search for anything that you would like to learn about computers:</h2>
-        <input type="search" x-model="extra_mural">
-        <button @click=""> Show video</button>
+        <input type="search" x-model="extra_mural" class="form-control">
+        <button @click="" class="button"> Show video</button>
         <br>
         <template x-for=" computer in computers">
           <div>
             <!-- <span x-text="computer.title"></span> -->
             <br>
-            <br>
+            
             <!-- <img x-bind:src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"> -->
-            <button @click=" ">Add video</button>
+            <button @click=" " class="button" >Add video</button>
           </div>
         </template>
       </div>
@@ -88,6 +128,9 @@
     </div>
   </div>
   <script type="module" src="/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
