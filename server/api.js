@@ -116,7 +116,7 @@ module.exports = (app, db) => {
 
             res.status(200).json({
                 question: quest,
-                answer:ans
+                // answer:ans
             });
 
         } catch (error) {
