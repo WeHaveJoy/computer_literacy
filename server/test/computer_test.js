@@ -5,14 +5,16 @@ const fs = require("fs");
 require('dotenv').config()
 var supertest = require("supertest")
 var koa = require('koa');
+
 var app = module.exports = new koa();
-var app = require('../api');
+module.exports = app;
+var API = require('../api');
 const pg = require("pg");
 const Pool = pg.Pool;
 
-// module.exports = (app, db) => {
 
-// import api from "./api"
+
+// module.exports = (app, db) => {
 // let app = express();
 // const app = express();
 
@@ -23,12 +25,13 @@ describe('As part of the computer literacy', () => {
     const pgp = PgPromise({});
     const db = pgp(DATABASE_URL);
 
+    API(app, db);
 
     before(async function () {
         this.timeout(5000);
         await db.none(`delete from users`);
         // const commandText = fs.readFileSync('./sql/data.sql', 'utf-8');
-        // await db.none(commandText)
+         await db.none(commandText)
     });
 
     it('should be able to signup a new user', async () => {
