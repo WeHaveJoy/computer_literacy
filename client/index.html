@@ -10,61 +10,70 @@
 
 <body>
   <div id="app">
-
     <div class="container" x-data="info">
       <div id="app">
 
         <div class="register">
+          <div class="" x-show="show">
+            <h2>Register here if you already have an account:</h2>
+            <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+            <div x-text="logIn_message"></div>
+            <!-- <h2>Register here if you don't have an acount yet:</h2> -->
+            <br>
+            <div x-text="message"></div>
+            <!-- <div x-text="error"></div> -->
+            <br>
+            <label for="">Please enter your first name: </label>
+            <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
+            <br>
+            <br>
 
-          <h2>Register here if you don't have an acount yet:</h2>
-          <br>
-          <div x-text="message"></div>
-          <!-- <div x-text="error"></div> -->
-          <br>
-          <label for="">Please enter your first name: </label>
-          <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
-          <br>
-          <br>
+            <label for="">Please enter your last name: </label>
+            <input x-model="signUp.last_name" type="text" name="lastname" class="lastname">
+            <br>
+            <br>
 
-          <label for="">Please enter your last name: </label>
-          <input x-model="signUp.last_name" type="text" name="lastname" class="lastname">
-          <br>
-          <br>
+            <label for="">Please enter your username: </label>
+            <input x-model="signUp.username" type="text" name="register_user" class="register">
+            <br>
+            <br>
+            <label>Please enter your password: </label>
+            <input x-model="signUp.password" type="password" name="register_password" class="register">
+            <br>
+            <br>
+            <label>Please enter your role: </label>
+            <input x-model="signUp.role" type="text" name="register_password" class="register">
+            <input type="button" @click="regUser()" name="action" value="Register" class="button">
 
-          <label for="">Please enter your username: </label>
-          <input x-model="signUp.username" type="text" name="register_user" class="register">
-          <br>
-          <br>
-          <label>Please enter your password: </label>
-          <input x-model="signUp.password" type="password" name="register_password" class="register">
-          <br>
-          <br>
-          <label>Please enter your role: </label>
-          <input x-model="signUp.role" type="text" name="register_password" class="register">
-          <input type="button" @click="regUser()" name="action" value="Register" class="button">
-
+          </div>
         </div>
         <br>
         <br>
 
-        <div class="login">
-          <h2>Login here if you already have an account:</h2>
-          <br>
-          <div x-text="logIn_message"></div>
 
-          <br>
-          <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="login">
-          <br>
-          <br>
-          <label>Please enter your password: </label>
-          <input x-model="signIn.password" type="password" name="login_password" class="login">
-          <input type="button" @click="logUser()" name="action" value="login" class="button">
+        <div class="login">
+          <!-- <div class="" > -->
+          <div class="" x-show="!show">
+            <h2>Login here if you already have an account:</h2>
+            <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
+            <div x-text="logIn_message"></div>
+
+            <br>
+            <label>Please enter your username: </label>
+            <input x-model="signIn.username" type="text" name="login_user" class="login">
+            <br>
+            <br>
+            <label>Please enter your password: </label>
+            <input x-model="signIn.password" type="password" name="login_password" class="login">
+            <input type="button" @click="logUser()" name="action" value="login" class="button">
+
+          </div>
+
         </div>
       </div>
 
-
       <div x-show="user.role === 'learner'" class="learner">
+
         <!-- <h2> search for anything that you would like to learn about computers:</h2>
         <input type="search" x-model="extra_mural"> -->
         <h2>Beginner course level 1:</h2>
@@ -97,11 +106,11 @@
           </template>
         </div>
       </div>
-
-      <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
+    </div>
+    <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
       <div x-show="signUp.role == parent" class="parent"></div> -->
 
-    </div>
+
   </div>
   <script type="module" src="/main.js"></script>
 </body>

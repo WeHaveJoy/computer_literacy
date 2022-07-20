@@ -74,6 +74,27 @@
   "integrity" "sha512-/TlVHhOaq7Yz8N1OJrjqM3Auzo5wjvHFLk+T8pIue+fhnhIMpfAzsG6PLVMbFveVxqD2WOp3QHei+52IMUNmCw=="
   "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.14.49.tgz"
   "version" "0.14.49"
+  dependencies:
+    "esbuild-android-64" "0.14.49"
+    "esbuild-android-arm64" "0.14.49"
+    "esbuild-darwin-64" "0.14.49"
+    "esbuild-darwin-arm64" "0.14.49"
+    "esbuild-freebsd-64" "0.14.49"
+    "esbuild-freebsd-arm64" "0.14.49"
+    "esbuild-linux-32" "0.14.49"
+    "esbuild-linux-64" "0.14.49"
+    "esbuild-linux-arm" "0.14.49"
+    "esbuild-linux-arm64" "0.14.49"
+    "esbuild-linux-mips64le" "0.14.49"
+    "esbuild-linux-ppc64le" "0.14.49"
+    "esbuild-linux-riscv64" "0.14.49"
+    "esbuild-linux-s390x" "0.14.49"
+    "esbuild-netbsd-64" "0.14.49"
+    "esbuild-openbsd-64" "0.14.49"
+    "esbuild-sunos-64" "0.14.49"
+    "esbuild-windows-32" "0.14.49"
+    "esbuild-windows-64" "0.14.49"
+    "esbuild-windows-arm64" "0.14.49"
   optionalDependencies:
     "esbuild-android-64" "0.14.49"
     "esbuild-android-arm64" "0.14.49"
@@ -203,6 +224,8 @@
   "integrity" "sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA=="
   "resolved" "https://registry.npmjs.org/rollup/-/rollup-2.76.0.tgz"
   "version" "2.76.0"
+  dependencies:
+    "fsevents" "~2.3.2"
   optionalDependencies:
     "fsevents" "~2.3.2"
 
@@ -240,6 +263,7 @@
   "version" "2.9.14"
   dependencies:
     "esbuild" "^0.14.27"
+    "fsevents" "~2.3.2"
     "postcss" "^8.4.13"
     "resolve" "^1.22.0"
     "rollup" "^2.59.0"
