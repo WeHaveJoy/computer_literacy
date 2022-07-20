@@ -49,7 +49,7 @@ export default function computer_literacy() {
                     this.message = "User created"
                     this.error = "User already exists"
                     setInterval(() => {
-                    }, 5000);
+                    }, 6000);
                     return true;
                     this.signUp = ''
                 }).catch(e => console.log(e))
@@ -82,7 +82,7 @@ export default function computer_literacy() {
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
                         this.token = ''
-                    }, 5000);
+                    }, 6000);
                     return true;
                 })
                 .then(result => {

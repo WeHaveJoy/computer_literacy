@@ -3,9 +3,9 @@ const bcrypt = require("bcrypt");
 
 module.exports = (app, db) => {
 
-    // app.get("/test", async (req, res) =>
-    //     res.json(await db.manyOrNone("select * from users"))
-    // );
+    app.get("/test", async (req, res) =>
+        res.json(await db.manyOrNone("select * from users"))
+    );
 
     app.post("/api/signUp", async (req, res) => {
         const { first_name, last_name, username, password, role } = req.body;
