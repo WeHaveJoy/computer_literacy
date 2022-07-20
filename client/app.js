@@ -114,15 +114,17 @@ export default function computer_literacy() {
 
         assessment() {
             axios
-                .get('http://localhost:4003/api/courses_beginner')
-                .then(results => {
-                    this.quizes = results.data.question;
-                    this.quizes = results.data.answer;
-                    console.log(this.quizes);
-                    setInterval(() => {
-                    }, 4000);
-                    return true;
-                }).catch(e => console.log(e))
+
+            .get('http://localhost:4003/api/courses_beginner')
+            .then(results => {
+                this.quizes = results.data.question;
+                // this.quizes= results.data.answer;
+                console.log(this.quizes);
+                setInterval(() => {
+                }, 4000);
+                return true;
+            }).catch(e => console.log(e))
+
 
         }
 
