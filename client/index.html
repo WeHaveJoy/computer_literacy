@@ -30,21 +30,21 @@
           <br>
 
           <label for="">Please enter your last name: </label>
-          <input x-model="signUp.last_name" type="text" name="lastname" class="lastname">
+          <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname" class="lastname">
           <br>
           <br>
 
           <label for="">Please enter your username: </label>
-          <input x-model="signUp.username" type="text" name="register_user" class="register">
+          <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user" class="register">
           <br>
           <br>
           <label>Please enter your password: </label>
-          <input x-model="signUp.password" type="password" name="register_password" class="register">
+          <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password" name="register_password" class="register">
           <br>
           <br>
           <label>Please enter your role: </label>
-          <input x-model="signUp.role" type="text" name="register_password" class="register">
-          <input type="button" @click="regUser()" name="action" value="Register" class="button">
+          <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password" class="register">
+          <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser()" name="action" value="Register" class="button">
         </div>
       </div>
 

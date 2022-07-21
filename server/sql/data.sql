@@ -176,3 +176,6 @@ insert into answers(answer, correct) values('A. Remove the slot cover from the b
 insert into answers(answer, correct) values('B. Keep the computer cover closed', 'True');
 insert into answers(answer, correct) values('C. Remove the CPU fan', 'False');
 insert into answers(answer, correct) values('D. All of the above', 'False');
+
+
+-- 
