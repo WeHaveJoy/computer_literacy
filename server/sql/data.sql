@@ -62,8 +62,8 @@ insert into courses_beginners(description, img, level) values ('*****How to laun
 Click a tile in the Start menu.
 Open the Start menu and click the All Apps button in the lower-left corner. This displays an alphabetical list of installed apps (as shown in the following figure). Click an app to open it.
 Double-click a program shortcut icon on the desktop (see the following figure).
-Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doesn't, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
-When the application opens, if it's a game, play it; if it's a spreadsheet, enter numbers into it; if it's your email program, start deleting junk mail . ', '', '3');
+Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doe not, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
+When the application opens, if it is a game, play it; if it is a spreadsheet, enter numbers into it; if it is your email program, start deleting junk mail . ', '', '3');
 
 
 -- #LEVEL2
@@ -71,12 +71,21 @@ When the application opens, if it's a game, play it; if it's a spreadsheet, ente
 
 -- assessment
 
-insert into assessment(description) values('Mouse level1');
-insert into assessment(description) values('CPU level1');
-insert into assessment(description) values('Keyboard level1');
-insert into assessment(description) values('Motherboard level1');
-insert into assessment(description) values('RAM level1');
--- insert into assessment(description) values(' level1');
+insert into assessment(description) values('Mouse');
+insert into assessment(description) values('CPU');
+insert into assessment(description) values('Keyboard');
+insert into assessment(description) values('Motherboard');
+insert into assessment(description) values('RAM');
+insert into assessment(description) values('Mouse connection');
+insert into assessment(description) values('Switch');
+insert into assessment(description) values('Mouse click');
+insert into assessment(description) values('Drag and drop');
+insert into assessment(description) values('Hardware');
+insert into assessment(description) values('Motherboard location');
+insert into assessment(description) values('HDMI');
+insert into assessment(description) values('USB cables');
+insert into assessment(description) values('AC cables');
+insert into assessment(description) values('Computer cover');
 
 --questions
 
@@ -85,6 +94,17 @@ insert into questions(question) values ('CPU stands for?');
 insert into questions(question) values ('A keyboard has _____ keys.');
 insert into questions(question) values ('The chip/chips present on the motherboard is/are');
 insert into questions(question) values ('The computer is beeping constantly after you have booted it. What is the likely problem?');
+insert into questions(question) values ('The long wire coming out of the mouse is to be connected with ________.');
+insert into questions(question) values ('The first step to start the computer is to switch ON the CPU.');
+insert into questions(question) values ('For opening the menu, you should press the________.');
+insert into questions(question) values ('You can move an icon with the help of _________of mouse.');
+insert into questions(question) values ('Hardware is the ____.');
+insert into questions(question) values ('Where is motherboard located in a computer?');
+insert into questions(question) values ('What device use HDMI?');
+insert into questions(question) values ('USB cables are used mostly to connect computers to peripheral devices such as cameras, camcorders, printers, scanners, and more.
+');
+insert into questions(question) values ('How can you totally protect a PC from damage during an electrical storm?');
+insert into questions(question) values ('To prevent the computer from overheating you should?');
 
 --answers
 
@@ -107,9 +127,52 @@ insert into answers(answer, correct) values('ROM', 'False');
 insert into answers(answer, correct) values('MICR', 'False');
 insert into answers(answer, correct) values('Both (RAM & ROM)', 'True');
 
-insert into answers(answer, correct) values('CPU', 'False');
-insert into answers(answer, correct) values('Registry', 'False');
-insert into answers(answer, correct) values('RAM', 'True');
-insert into answers(answer, correct) values('Power supply', 'False');
+insert into answers(answer, correct) values('A. CPU', 'False');
+insert into answers(answer, correct) values('B. Registry', 'False');
+insert into answers(answer, correct) values('C. RAM', 'True');
+insert into answers(answer, correct) values('D. Power supply', 'False');
 
+insert into answers(answer, correct) values('A. UPS', 'False');
+insert into answers(answer, correct) values('B. CPU', 'True');
+insert into answers(answer, correct) values('C. KEYBOARD', 'False');
+insert into answers(answer, correct) values('D. PRINTER', 'False');
 
+insert into answers(answer, correct) values('A. True', 'False');
+insert into answers(answer, correct) values('B. False', 'True');
+
+insert into answers(answer, correct) values('A. Left click', 'False');
+insert into answers(answer, correct) values('B. Right click', 'True');
+insert into answers(answer, correct) values('C. Double click', 'False');
+insert into answers(answer, correct) values('D. None of these', 'False');
+
+insert into answers(answer, correct) values('A. Left click', 'False');
+insert into answers(answer, correct) values('B. Right click', 'False');
+insert into answers(answer, correct) values('C. Double click', 'False');
+insert into answers(answer, correct) values('D. Drag and drop action', 'True');
+
+insert into answers(answer, correct) values('A. Parts of the computer that can’t be seen', 'False');
+insert into answers(answer, correct) values('B. Parts of the computer that can be seen', 'True');
+insert into answers(answer, correct) values('C. None of these', 'False');
+
+insert into answers(answer, correct) values('A. Inside the computer case', 'True');
+insert into answers(answer, correct) values('B. Inside the RAM', 'False');
+insert into answers(answer, correct) values('C. Inside the CPU', 'False');
+insert into answers(answer, correct) values('D. Inside the computer fan', 'False');
+
+insert into answers(answer, correct) values('A. Smart phone', 'False');
+insert into answers(answer, correct) values('B. Radio', 'False');
+insert into answers(answer, correct) values('C. Video projectors', 'True');
+insert into answers(answer, correct) values('D. Cameras', 'False');
+
+insert into answers(answer, correct) values('A. False', 'False');
+insert into answers(answer, correct) values('B. True', 'True');
+
+insert into answers(answer, correct) values('A. Disconnect the AC power cable', 'True');
+insert into answers(answer, correct) values('B. Disconnect all external cables and power cords', 'False');
+insert into answers(answer, correct) values('C. Use a surge protector', 'False');
+insert into answers(answer, correct) values('D. Turn off the AC power', 'False');
+
+insert into answers(answer, correct) values('A. Remove the slot cover from the back', 'False');
+insert into answers(answer, correct) values('B. Keep the computer cover closed', 'True');
+insert into answers(answer, correct) values('C. Remove the CPU fan', 'False');
+insert into answers(answer, correct) values('D. All of the above', 'False');

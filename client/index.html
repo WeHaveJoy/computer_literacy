@@ -13,6 +13,7 @@
   <div id="app">
     <div class="container" x-data="info">
 
+
       <div class="register">
         <div class="" x-show="show">
           <h2>Register here if you already have an account:</h2>
@@ -47,27 +48,11 @@
         </div>
       </div>
 
+
       <br>
       <br>
 
       <div class="login">
-
-        <div class="" x-show="!show">
-          <h2>Login here if you already have an account:</h2>
-          <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
-          <div x-text="logIn_message"></div>
-
-          <br>
-          <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="login">
-          <br>
-          <br>
-          <label>Please enter your password: </label>
-          <input x-model="signIn.password" type="password" name="login_password" class="login">
-          <input type="button" @click="logUser()" name="action" value="login" class="button">
-
-          <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
-      <div x-show="signUp.role == parent" class="parent"></div> -->
 
 
       <div x-show="user.role === 'learner'" class="learner">
