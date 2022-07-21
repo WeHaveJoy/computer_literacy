@@ -76,3 +76,34 @@ create table user_answers(
 
 --  SELECT user_id FROM user_playlist INNER JOIN user_info ON user_playlist.user_id = user_info.id;
 --  SELECT * FROM user_playlist INNER JOIN user_info ON user_playlist.user_id = user_info.id;  
+
+
+
+
+CREATE TABLE questions (
+    id int(10) auto_increment primary key,
+    question varchar(800) NOT NULL,
+    right_option int(10) NOT NULL references options(id)
+
+);
+
+CREATE TABLE options (
+    id int(10) auto_increment primary key,
+    question_id int(10) NOT NULL references questions(id),
+    assessment_id int NOT NULL references assessment(id),
+    `option` varchar(150) NOT NULL
+);
+
+CREATE TABLE exam_details (
+    id int(10) auto_increment primary key,
+    user_id int(10) NOT NULL references users(id),
+    assessment_id int NOT NULL references assessment(id),
+    date_of_exam date not null
+);     
+
+CREATE TABLE user_answers (
+    id int(10) auto_increment primary key,
+    user_id int(10) NOT NULL references users(id),
+    question_id int(10) NOT NULL references questions(id),
+    answer int(10) NOT NULL references options(id)
+);

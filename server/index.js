@@ -24,7 +24,7 @@ const pgp = PgPromise({});
 
 const config = {
     connectionString:
-        process.env.DATABASE_URL || "postgresql://bonny:pg123@localhost:5432/computer_literacy",
+        process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/computer_literacy",
 };
 
 if (process.env.NODE_ENV == 'PRODUCTION') {

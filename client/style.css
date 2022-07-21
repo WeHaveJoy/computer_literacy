@@ -6,3 +6,49 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+body{
+background-color:#b6b4b0;
+background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;   
+}
+
+.input {
+  width: 35%;
+}
+
+.register{
+  text-align: center;
+  margin-right: auto; 
+  margin-left: auto; 
+  display: block;
+}
+
+.container .row {
+  height: 100vh;
+  text-align: center;
+  margin-right: auto; 
+  margin-left: auto; 
+  display: block;
+}
+
+.form-control {
+  /* flex: 0 1 100px; */
+  width: 25%;
+  text-align: center;
+  display: block;
+  margin-left: 38%;
+}
+
+.button {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
