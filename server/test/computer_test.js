@@ -1,18 +1,42 @@
+// const PgPromise = require("pg-promise")
+// const express = require("express");
+// const assert = require("assert");
+// const fs = require("fs");
+// require('dotenv').config()
+// var supertest = require("supertest")
+// var koa = require('koa');
+
+// var app = module.exports = new koa();
+// module.exports = app;
+// var API = require('../api');
+
+// const pg = require("pg");
+// const Pool = pg.Pool;
+
+
+const supertest = require('supertest');
 const PgPromise = require("pg-promise")
-const express = require("express");
-const assert = require("assert");
-const fs = require("fs");
+const express = require('express');
+const assert = require('assert');
+const fs = require('fs');
 require('dotenv').config()
-var supertest = require("supertest")
-var koa = require('koa');
-var app = module.exports = new koa();
-var app = require('../api');
-const pg = require("pg");
-const Pool = pg.Pool;
+
+const API = require('../api');
+const { default: axios } = require('axios');
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+const DATABASE_URL = process.env.DATABASE_URL;
+const pgp = PgPromise({});
+const db = pgp(DATABASE_URL);
+
+API(app, db);
+
+
 
 // module.exports = (app, db) => {
-
-// import api from "./api"
 // let app = express();
 // const app = express();
 
@@ -20,15 +44,16 @@ describe('As part of the computer literacy', () => {
 
     const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/computer_literacy";
 
-    const pgp = PgPromise({});
-    const db = pgp(DATABASE_URL);
+    // const pgp = PgPromise({});
+    // const db = pgp(DATABASE_URL);
 
+    //  API(app, db);
 
     before(async function () {
         this.timeout(5000);
         await db.none(`delete from users`);
         // const commandText = fs.readFileSync('./sql/data.sql', 'utf-8');
-        // await db.none(commandText)
+        //  await db.none(commandText)
     });
 
     it('should be able to signup a new user', async () => {
@@ -43,7 +68,7 @@ describe('As part of the computer literacy', () => {
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/users')
+            .get('/api/signUp')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding the new user');
@@ -66,7 +91,7 @@ describe('As part of the computer literacy', () => {
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/users')
+            .get('/api/signUp')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding the new user');
@@ -87,7 +112,7 @@ describe('As part of the computer literacy', () => {
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/users')
+            .get('/api/logIn')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding an existing user');
@@ -107,7 +132,7 @@ describe('As part of the computer literacy', () => {
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/users')
+            .get('/api/logIn')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding an existing user');

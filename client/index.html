@@ -12,7 +12,9 @@
 <body>
   <div id="app">
 
+
     <div class="container" x-data="info">
+
       <div id="app">
         <h2>Register here if you don't have an acount yet:</h2>
         <br>
@@ -21,6 +23,7 @@
 
         <label for="">Please enter your first name: </label>
         <input x-model="signUp.first_name" type="text" class="form-control" id="validationCustom01" required>
+
 
         <br>
 
@@ -73,9 +76,8 @@
       </div>
 
 
+
       <div x-show="user.role === 'learner'" class="learner">
-        <!-- <h2> search for anything that you would like to learn about computers:</h2>
-        <input type="search" x-model="extra_mural"> -->
         <h2>Beginner course level 1:</h2>
         <div x-text="message"></div>
         <button @click="beginner()"> Show course</button>
@@ -90,25 +92,38 @@
           </div>
         </template>
 
-        <div class="assessment">
-          <h2>Please complete this assessment before requesting for the next course: </h2>
-          <button @click="assessment()"> Show quiz</button>
+
+          <div class="assessment">
+            <h2>Please complete this assessment before requesting for the next course: </h2>
+            <button @click="assessment()"> Show quiz</button>
 
           <template x-for="quiz in quizes">
-            <div>
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
-            <input type="radio" value="no" x-model="answer"> -->
-
-
+            <!-- <input type="radio" value="yes" x-model="quiz.question">
+        <input type="radio" value="no" x-model="answer"> -->
+            
+        <div>
               <span x-text="quiz.question"></span>
               <span x-text="quiz.answer"></span>
+              
             </div>
           </template>
+
+          <div class="assessment">
+            <h2>Please complete this assessment before requesting for the next course: </h2>
+            <button @click="assessment()"> Show quiz</button>
+
+            <template x-for="quiz in quizes">
+              <!-- <input type="radio" value="yes" x-model="quiz.question">
+        <input type="radio" value="no" x-model="answer"> -->
+
+              <div>
+                <span x-text="quiz.question"></span>
+                <span x-text="quiz.answer"></span>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
-
-      <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
-      <div x-show="signUp.role == parent" class="parent"></div> -->
 
     </div>
   </div>
