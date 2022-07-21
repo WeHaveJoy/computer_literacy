@@ -28,39 +28,59 @@ export default function computer_literacy() {
 
         computers: [],
         quizes: [],
-        all: '',
 
         init() {
             setInterval(() => {
                 this.message = ''
                 this.error = ''
                 this.logIn_message = ''
-            }, 5000);
+
+            }, 4000);
+        },
+        goToLogin() {
+
+            setInterval(() => {
+                this.showForm()
+
+
+            }, 3000);
         },
 
         regUser() {
+
+
+
+
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
-              
 
                 .then(results => {
                     console.log(results.data);
-
                     this.message = "User created"
-                    this.error = "User already exists"
+                    
+                       
+
+                  
+
                     setInterval(() => {
                     }, 5000);
                     return true;
                     this.signUp = ''
-                }).catch(e => console.log(e))
+
+
+
+                }).catch(e =>  this.error = "User already exists")
+
 
         },
         showContent() {
             this.show = !this.show
         },
-        hide() {
-            this.show = true
+        showForm() {
+            this.show = !true
         },
+       
+
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -72,13 +92,13 @@ export default function computer_literacy() {
                         return false
                     }
 
-                   
+                    this.user = user;
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
                     this.logIn_message = "You are logged in"
                     this.show_movies = true;
-                    this.show = false
+                    // this.show = false
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
                         this.token = ''
