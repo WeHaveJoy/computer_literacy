@@ -12,50 +12,42 @@
 <body>
   <div id="app">
 
-
     <div class="container" x-data="info">
 
+      <div class="register">
+        <div class="" x-show="show">
+          <h2>Register here if you already have an account:</h2>
+          <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+          <div x-text="logIn_message"></div>
+          <br>
 
-      <div id="app">
+          <div x-text="message"></div>
+          <div x-text="error"></div>
+          <br>
+          <label for="">Please enter your first name: </label>
+          <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
+          <br>
+          <br>
 
-        <div class="register">
-          <div class="" x-show="show">
-            <h2>Register here if you already have an account:</h2>
-            <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
-            <div x-text="logIn_message"></div>
-            <!-- <h2>Register here if you don't have an acount yet:</h2> -->
-            <br>
+          <label for="">Please enter your last name: </label>
+          <input x-model="signUp.last_name" type="text" name="lastname" class="lastname">
+          <br>
+          <br>
 
-            <!-- x-html="smallPizza <= 0 ? '0.00' : smallPizza.toFixed(2)">0.00</span></td> -->
-            <div x-text="message"></div>
-            <div x-text="error"></div>
-            <br>
-            <label for="">Please enter your first name: </label>
-            <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
-            <br>
-            <br>
-
-            <label for="">Please enter your last name: </label>
-            <input x-model="signUp.last_name" type="text" name="lastname" class="lastname">
-            <br>
-            <br>
-
-            <label for="">Please enter your username: </label>
-            <input x-model="signUp.username" type="text" name="register_user" class="register">
-            <br>
-            <br>
-            <label>Please enter your password: </label>
-            <input x-model="signUp.password" type="password" name="register_password" class="register">
-            <br>
-            <br>
-            <label>Please enter your role: </label>
-            <input x-model="signUp.role" type="text" name="register_password" class="register">
-            <input type="button" @click="regUser(), goToLogin()" name="action" value="Register" class="button">
-          </div>
-
+          <label for="">Please enter your username: </label>
+          <input x-model="signUp.username" type="text" name="register_user" class="register">
+          <br>
+          <br>
+          <label>Please enter your password: </label>
+          <input x-model="signUp.password" type="password" name="register_password" class="register">
+          <br>
+          <br>
+          <label>Please enter your role: </label>
+          <input x-model="signUp.role" type="text" name="register_password" class="register">
+          <input type="button" @click="regUser(), goToLogin()" name="action" value="Register" class="button">
         </div>
-      </div>
 
+      </div>
 
       <br>
       <br>
@@ -74,11 +66,9 @@
         </div>
       </div>
       <div class="" x-show="!show">
-      
+
         <div x-show="user.role === 'learner'" class="learner">
-        
-          <!-- <h2> search for anything that you would like to learn about computers:</h2>
-        <input type="search" x-model="extra_mural"> -->
+
           <h2>Beginner course level 1:</h2>
           <div x-text="message"></div>
           <button @click="beginner()"> Show course</button>
@@ -99,54 +89,42 @@
       <div x-show="signUp.role == parent" class="parent"></div> -->
 
 
-      <div x-show="user.role === 'learner'" class="learner">
-        <h2>Beginner course level 1:</h2>
-        <div x-text="message"></div>
-        <button @click="beginner()"> Show course</button>
-        <br>
-        <template x-for=" computer in computers">
-          <div>
-            <span x-text="computer.description"></span>
+          <div x-show="user.role === 'learner'" class="learner">
+            <h2>Beginner course level 1:</h2>
+            <div x-text="message"></div>
+            <button @click="beginner()"> Show course</button>
             <br>
-            <img x-bind:src="`/Beginners/${computer.img}`">
-            <br>
-            <span x-text="computer.level"></span>
-          </div>
-        </template>
-
-
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-
-          <template x-for="quiz in quizes">
-            <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
-            
-        <div>
-              <span x-text="quiz.question"></span>
-              <span x-text="quiz.answer"></span>
-              
-            </div>
-          </template>
-
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-
-            <template x-for="quiz in quizes">
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
-
+            <template x-for=" computer in computers">
               <div>
-                <span x-text="quiz.question"></span>
-                <span x-text="quiz.answer"></span>
+                <span x-text="computer.description"></span>
+                <br>
+                <img x-bind:src="`/Beginners/${computer.img}`">
+                <br>
+                <span x-text="computer.level"></span>
               </div>
             </template>
+
+
+            <div class="assessment">
+              <h2>Please complete this assessment before requesting for the next course: </h2>
+              <button @click="assessment()"> Show quiz</button>
+
+              <template x-for="quiz in quizes">
+                <!-- <input type="radio" value="yes" x-model="quiz.question">
+        <input type="radio" value="no" x-model="answer"> -->
+
+                <div>
+                  <span x-text="quiz.question"></span>
+                  <span x-text="quiz.answer"></span>
+
+                </div>
+              </template>
+
+            </div>
           </div>
+
         </div>
       </div>
-
     </div>
   </div>
   <script type="module" src="/main.js"></script>
