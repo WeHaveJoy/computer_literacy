@@ -53,50 +53,43 @@
       <br>
 
       <div class="login">
-
-
-      <div x-show="user.role === 'learner'" class="learner">
-        <h2>Beginner course level 1:</h2>
-        <div x-text="message"></div>
-        <button @click="beginner()"> Show course</button>
-        <br>
-        <template x-for=" computer in computers">
-          <div>
-            <span x-text="computer.description"></span>
-            <br>
-            <img x-bind:src="`/Beginners/${computer.img}`">
-            <br>
-            <span x-text="computer.level"></span>
-          </div>
-        </template>
-
-        <div class="assessment">
-          <h2>Please complete this assessment before requesting for the next course: </h2>
-          <button @click="assessment()"> Show quiz</button>
-
-          <template x-for="quiz in quizes">
-            <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
-            
-        <div>
-              <span x-text="quiz.question"></span>
-              <span x-text="quiz.answer"></span>
+        <div x-show="user.role === 'learner'" class="learner">
+          <h2>Beginner course level 1:</h2>
+          <div x-text="message"></div>
+          <button @click="beginner()"> Show course</button>
+          <br>
+          <template x-for=" computer in computers">
+            <div>
+              <span x-text="computer.description"></span>
+              <br>
+              <img x-bind:src="`/Beginners/${computer.img}`">
+              <br>
+              <span x-text="computer.level"></span>
             </div>
           </template>
+
+          <div class="assessment">
+            <h2>Please complete this assessment before requesting for the next course: </h2>
+            <button @click="assessment()"> Show quiz</button>
+
+            <template x-for="quiz in quizes">
+              <!-- <input type="radio" value="yes" x-model="quiz.question">
+        <input type="radio" value="no" x-model="answer"> -->
+
+              <div>
+                <span x-text="quiz.question"></span>
+                <span x-text="quiz.answer"></span>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
-
-
-        </div>
-
-       
-        </div>
 
     </div>
-      </div>
-      <script type="module" src="/main.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </div>
+  <script type="module" src="/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </body>
 
