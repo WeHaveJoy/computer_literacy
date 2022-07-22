@@ -24,7 +24,7 @@ const pgp = PgPromise({});
 
 const config = {
     connectionString:
-        process.env.DATABASE_URL || "postgresql://coder:coder123@localhost:5432/computer_literacy",
+        process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/postgres",
 };
 
 if (process.env.NODE_ENV == 'PRODUCTION') {
@@ -36,7 +36,7 @@ const db = pgp(config);
 API(app, db);
 
 const PORT = process.env.PORT || 4003;
-console.log({ DATABASE_URL, db });
+// console.log({ DATABASE_URL, db });
 app.listen(PORT, function () {
     console.log(`App started on port http://localhost:${PORT}`);
 });

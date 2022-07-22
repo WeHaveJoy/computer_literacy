@@ -20,13 +20,16 @@ export default function computer_literacy() {
         user: {
             role: ''
         },
+        
         show: false,
+        showHome: false,
         signIn: {
             username: '',
             password: '',
         },
 
         computers: [],
+        computers3: [],
         quizes: [],
         all: '',
 
@@ -47,7 +50,6 @@ export default function computer_literacy() {
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
-              
 
                 .then(results => {
                     console.log(results.data);
@@ -57,7 +59,7 @@ export default function computer_literacy() {
                     }, 6000);
                     return true;
                     this.signUp = ''
-                }).catch(e => this.error = 'user already exists')
+                }).catch(e => console.log('User doesnt exists'))
 
         },
         showContent() {
@@ -66,6 +68,8 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
+
+
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -77,10 +81,11 @@ export default function computer_literacy() {
                         return false
                     }
 
-                   
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
+                    this.user = user
+                    this.showHome = true;
                     this.logIn_message = "You are logged in"
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
@@ -115,19 +120,28 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        assessment() {
+        beginner3(){
             axios
-
-            .get('http://localhost:4003/api/courses_beginner')
+            .get('http://localhost:4003/api/beginner_level3')
             .then(results => {
-                this.quizes = results.data.question;
-                console.log(this.quizes);
+                this.computers3 = results.data.course3;
+                console.log(results.data);
                 setInterval(() => {
                 }, 4000);
                 return true;
             }).catch(e => console.log(e))
+        },
 
-
+        assessment() {
+            axios
+                .get('http://localhost:4003/api/courses_beginner')
+                .then(results => {
+                    this.quizes = results.data.question;
+                    console.log(this.quizes);
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
         }
 
     }

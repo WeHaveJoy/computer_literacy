@@ -43,6 +43,7 @@ module.exports = (app, db) => {
     app.post("/api/logIn", async (req, res) => {
         try {
             const { username, password } = req.body;
+            console.log('logIn .....', req.body);
 
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username = $1`,
@@ -55,17 +56,18 @@ module.exports = (app, db) => {
             }
             const isValid = await bcrypt.compare(password, findUser.password);
             if (!isValid) {
-                throw Error(`The user doesn't exist`);
+            
+                throw Error(`Please enter the correct password`);
             }
 
             let token = jwt.sign(findUser, `secretKey`, { expiresIn: `24h` });
 
-            res.status(200).json({u
+            res.status(200).json({
                 message: "You are loged in",
                 token,
                 user: findUser,
             });
-        } catch (error) {
+        }catch (error) {
             res.status(500).json({
                 error: error.message,
             });
@@ -97,6 +99,32 @@ module.exports = (app, db) => {
 
     })
 
+    app.get("/api/beginner_level3", async (req, res) => {
+
+        app.get("/test1", async (req, res) =>
+            res.json(await db.manyOrNone("SELECT * FROM courses_beginners"))
+        );
+
+        try {
+            const { level } = req.res;
+
+            const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=3`, [level]);
+
+            res.status(200).json({
+                message: "Beginner course level 3!",
+                course3: display_course
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message,
+            });
+        }
+
+    })
+
+
     app.get("/api/courses_beginner",  async (req, res) => {
 
         app.get("/test", async (req, res) =>
@@ -104,7 +132,7 @@ module.exports = (app, db) => {
     );
 
         try {
-            const { assessment_id, id, course_id } = req.body;
+            const { assessment_id, id, course_id, question_id } = req.body;
 
             const quest = await db.manyOrNone(`SELECT * FROM questions`);
 
@@ -112,17 +140,19 @@ module.exports = (app, db) => {
 
             const quiz = await db.oneOrNone(`SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
 
-            const ans = await db.manyOrNone(`SELECT * FROM answers`);
+            const ans = await db.oneOrNone(`SELECT question_id FROM answers INNER JOIN questions ON answers.question_id = questions.id;`, [question_id, id]);
+
+            const quiz_ans = await db.manyOrNone(`SELECT * FROM answers`);
 
             res.status(200).json({
-                question: quest,ans,assess,quiz
+                question: quest,ans,assess,quiz, quiz_ans
                 // answer:ans
             });
 
         } catch (error) {
             console.log(error.message);
             res.status(500).json({
-                error: error.message,
+                error: error.message
             });
         }
     })
