@@ -28,47 +28,36 @@ export default function computer_literacy() {
 
         computers: [],
         quizes: [],
+        all: '',
 
         init() {
             setInterval(() => {
                 this.message = ''
                 this.error = ''
                 this.logIn_message = ''
-
-            }, 4000);
+            }, 5000);
         },
-        goToLogin() {
 
+        goToLogin() {
             setInterval(() => {
                 this.showForm()
-
-
             }, 3000);
         },
 
         regUser() {
-
-
-
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
+              
 
                 .then(results => {
                     console.log(results.data);
+
                     this.message = "User created"
-
-
-
-
-
-                   
+                    setInterval(() => {
+                    }, 6000);
                     return true;
                     this.signUp = ''
-
-
-
-                }).catch(e => this.error = "User already exists")
-
+                }).catch(e => this.error = 'user already exists')
 
         },
         showContent() {
@@ -77,8 +66,6 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
-
-
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -90,13 +77,11 @@ export default function computer_literacy() {
                         return false
                     }
 
-                    this.user = user;
+                   
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
                     this.logIn_message = "You are logged in"
-                    this.show_movies = true;
-                    // this.show = false
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
                         this.token = ''
@@ -133,15 +118,14 @@ export default function computer_literacy() {
         assessment() {
             axios
 
-                .get('http://localhost:4003/api/courses_beginner')
-                .then(results => {
-                    this.quizes = results.data.question;
-                    // this.quizes= results.data.answer;
-                    console.log(this.quizes);
-                    setInterval(() => {
-                    }, 4000);
-                    return true;
-                }).catch(e => console.log(e))
+            .get('http://localhost:4003/api/courses_beginner')
+            .then(results => {
+                this.quizes = results.data.question;
+                console.log(this.quizes);
+                setInterval(() => {
+                }, 4000);
+                return true;
+            }).catch(e => console.log(e))
 
 
         }

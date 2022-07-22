@@ -97,25 +97,25 @@ module.exports = (app, db) => {
 
     })
 
-    app.get("/api/courses_beginner", async (req, res) => {
+    app.get("/api/courses_beginner",  async (req, res) => {
 
         app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from questions"))
     );
 
         try {
-            // const { assessment_id, id, course_id } = req.body;
+            const { assessment_id, id, course_id } = req.body;
 
             const quest = await db.manyOrNone(`SELECT * FROM questions`);
 
-            // const assess = await db.oneOrNone(`SELECT assessment_id FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
+            const assess = await db.oneOrNone(`SELECT assessment_id FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
 
-            // const quiz = await db.oneOrNone(`SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
+            const quiz = await db.oneOrNone(`SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
 
             const ans = await db.manyOrNone(`SELECT * FROM answers`);
 
             res.status(200).json({
-                question: quest,
+                question: quest,ans,assess,quiz
                 // answer:ans
             });
 
