@@ -22,6 +22,7 @@ export default function computer_literacy() {
         },
         
         show: false,
+        showHome: false,
         signIn: {
             username: '',
             password: '',
@@ -49,6 +50,7 @@ export default function computer_literacy() {
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
+
                 .then(results => {
                     console.log(results.data);
 
@@ -57,7 +59,7 @@ export default function computer_literacy() {
                     }, 6000);
                     return true;
                     this.signUp = ''
-                }).catch(e => this.error = 'user already exists')
+                }).catch(e => console.log('User doesnt exists'))
 
         },
         showContent() {
@@ -78,9 +80,12 @@ export default function computer_literacy() {
                     if (!token) {
                         return false
                     }
+
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
+                    this.user = user
+                    this.showHome = true;
                     this.logIn_message = "You are logged in"
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
@@ -117,6 +122,7 @@ export default function computer_literacy() {
 
         beginner3(){
             axios
+
             .get('http://localhost:4003/api/beginner_level3')
             .then(results => {
                 this.computers2 = results.data.course3;
@@ -129,6 +135,7 @@ export default function computer_literacy() {
 
         assessment() {
             axios
+
 
                 .get('http://localhost:4003/api/courses_beginner')
                 .then(results => {

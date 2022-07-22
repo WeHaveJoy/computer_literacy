@@ -12,67 +12,67 @@
 <body>
   <div id="app">
     <div class="container" x-data="info">
+  <div x-show="!showHome">
+    <div class="" x-show="show">
+      <h2>Register here if you already have an account:</h2>
+      <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+      <div x-text="logIn_message"></div>
 
-      <div id="app">
-      <div class="" x-show="show">
-        <h2>Register here if you already have an account:</h2>
-        <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+      <br>
+
+      <div x-text="message"></div>
+      <div x-text="error"></div>
+      <br>
+      <label for="">Please enter your first name: </label>
+      <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
+      <br>
+      <br>
+
+      <label for="">Please enter your last name: </label>
+      <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
+        class="lastname">
+      <br>
+      <br>
+
+      <label for="">Please enter your username: </label>
+      <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
+        class="register">
+      <br>
+      <br>
+      <label>Please enter your password: </label>
+      <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password"
+        name="register_password" class="register">
+      <br>
+      <br>
+      <label>Please enter your role: </label>
+      <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
+        class="register">
+      <br>
+      <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
+        value="Register" class="button">
+    </div>
+
+    <br>
+    <br>
+
+    <div class="login">
+      <div class="" x-show="!show">
+        <h2>Login here if you already have an account:</h2>
+        <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
         <div x-text="logIn_message"></div>
-
         <br>
-
-        <div x-text="message"></div>
-        <div x-text="error"></div>
-        <br>
-        <label for="">Please enter your first name: </label>
-        <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
-        <br>
-        <br>
-
-        <label for="">Please enter your last name: </label>
-        <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
-          class="lastname">
-        <br>
-        <br>
-
-        <label for="">Please enter your username: </label>
-        <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
-          class="register">
+        <label>Please enter your username: </label>
+        <input x-model="signIn.username" type="text" name="login_user" class="login">
         <br>
         <br>
         <label>Please enter your password: </label>
-        <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password"
-          name="register_password" class="register">
-        <br>
-        <br>
-        <label>Please enter your role: </label>
-        <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
-          class="register">
-          <br>
-        <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
-          value="Register" class="button">
+        <input x-model="signIn.password" type="password" name="login_password" class="login">
+        <input type="button" @click="logUser()" name="action" value="login" class="button">
       </div>
     </div>
-      <br>
-      <br>
+  </div>
 
-      <div class="login">
-        <div class="" x-show="!show">
-          <h2>Login here if you already have an account:</h2>
-          <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
-          <div x-text="logIn_message"></div>
-          <br>
-          <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="login">
-          <br>
-          <br>
-          <label>Please enter your password: </label>
-          <input x-model="signIn.password" type="password" name="login_password" class="login">
-          <input type="button" @click="logUser()" name="action" value="login" class="button">
-        </div>
-      </div>
-
-      <div class="" x-show="!show">
+      <div class="">
         <div x-show="user.role === 'learner'" class="learner">
           <h2>Beginner course level 1:</h2>
           <div x-text="message"></div>
@@ -109,21 +109,27 @@
           <div class="assessment">
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
-            <template x-for="quiz in quizes">
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
+
+            <div class="assessment">
+              <h2>Please complete this assessment before requesting for the next course: </h2>
+              <button @click="assessment()"> Show quiz</button>
+              <template x-for="quiz in quizes">
+                <!-- <input type="radio" value="yes" x-model="quiz.question">
         <input type="radio" value="no" x-model="answer"> -->
-              <div>
-                <span x-text="quiz.question"></span>
-                <span x-text="quiz.answer"></span>
-              </div>
-            </template>
+                <div>
+                  <span x-text="quiz.question"></span>
+                  <span x-text="quiz.answer"></span>
+                </div>
+              </template>
+            </div>
           </div>
         </div>
+
       </div>
-
-
     </div>
+
   </div>
+
   <script type="module" src="/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
