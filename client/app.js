@@ -29,7 +29,7 @@ export default function computer_literacy() {
         },
 
         computers: [],
-        computers2: [],
+        computers3: [],
         quizes: [],
         all: '',
 
@@ -122,11 +122,10 @@ export default function computer_literacy() {
 
         beginner3(){
             axios
-
             .get('http://localhost:4003/api/beginner_level3')
             .then(results => {
-                this.computers2 = results.data.course3;
-                console.log(this.computers2);
+                this.computers3 = results.data.course3;
+                console.log(results.data);
                 setInterval(() => {
                 }, 4000);
                 return true;
@@ -135,8 +134,6 @@ export default function computer_literacy() {
 
         assessment() {
             axios
-
-
                 .get('http://localhost:4003/api/courses_beginner')
                 .then(results => {
                     this.quizes = results.data.question;
@@ -145,8 +142,6 @@ export default function computer_literacy() {
                     }, 4000);
                     return true;
                 }).catch(e => console.log(e))
-
-
         }
 
     }
