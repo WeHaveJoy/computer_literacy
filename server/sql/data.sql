@@ -63,7 +63,7 @@ Click a tile in the Start menu.
 Open the Start menu and click the All Apps button in the lower-left corner. This displays an alphabetical list of installed apps (as shown in the following figure). Click an app to open it.
 Double-click a program shortcut icon on the desktop (see the following figure).
 Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doe not, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
-When the application opens, if it is a game, play it; if it is a spreadsheet, enter numbers into it; if it is your email program, start deleting junk mail . ', '', '3');
+When the application opens, if it is a game, play it; if it is a spreadsheet, enter numbers into it; if it is your email program, start deleting junk mail .', '', '3');
 
 
 -- #LEVEL2
