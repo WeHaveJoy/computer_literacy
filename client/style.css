@@ -3,8 +3,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: black;
   margin-top: 60px;
+  /* background-image: url("Computer.jpg"); */
 }
 
 body{
@@ -13,7 +14,8 @@ background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;   
-    color: white;
+    color: black;
+    /* background-image: url("Computer.jpg"); */
 }
 
 
@@ -35,7 +37,7 @@ background-position: center center;
 .btn {
   background-color: #78b87a; 
   border: none;
-  color: white;
+  color: black;
   padding: 10px 8px;
   text-align: center;
   text-decoration: none;

@@ -60,7 +60,7 @@ module.exports = (app, db) => {
 
             let token = jwt.sign(findUser, `secretKey`, { expiresIn: `24h` });
 
-            res.status(200).json({
+            res.status(200).json({u
                 message: "You are loged in",
                 token,
                 user: findUser,
