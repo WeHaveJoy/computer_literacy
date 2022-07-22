@@ -11,115 +11,92 @@
 
 <body>
   <div id="app">
-
-
     <div class="container" x-data="info">
 
       <div id="app">
-        <h2>Register here if you don't have an acount yet:</h2>
+      <div class="" x-show="show">
+        <h2>Register here if you already have an account:</h2>
+        <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+        <div x-text="logIn_message"></div>
+
         <br>
+
         <div x-text="message"></div>
-        <!-- <div x-text="error"></div> -->
-
-        <label for="">Please enter your first name: </label>
-        <input x-model="signUp.first_name" type="text" class="form-control" id="validationCustom01" required>
-
-
-
+        <div x-text="error"></div>
         <br>
-
+        <label for="">Please enter your first name: </label>
+        <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
+        <br>
+        <br>
 
         <label for="">Please enter your last name: </label>
-        <input x-model="signUp.last_name" type="text" class="form-control" id="validationCustom02" required>
-
+        <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
+          class="lastname">
         <br>
-
+        <br>
 
         <label for="">Please enter your username: </label>
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input x-model="signUp.username" type="text" class="form-control" id="validationCustomUsername"
-          aria-describedby="inputGroupPrepend" required>
-
+        <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
+          class="register">
         <br>
-
-
+        <br>
         <label>Please enter your password: </label>
-        <input x-model="signUp.password" type="password" class="form-control" id="inputPassword">
-
+        <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password"
+          name="register_password" class="register">
         <br>
-
-
+        <br>
         <label>Please enter your role: </label>
-        <input x-model="signUp.role" type="text" name="register_password" class="form-control">
-        <br>
-        <input type="button" @click="regUser()" name="action" value="Register" class="btn">
+        <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
+          class="register">
+          <br>
+        <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
+          value="Register" class="button">
+      </div>
+    </div>
+      <br>
+      <br>
 
-        <br>
-        <br>
-        <h2>Login here if you already have an account:</h2>
-        <br>
-        <div x-text="logIn_message"></div>
-        <div class="login">
-
+      <div class="login">
+        <div class="" x-show="!show">
+          <h2>Login here if you already have an account:</h2>
+          <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
+          <div x-text="logIn_message"></div>
           <br>
           <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="form-control">
+          <input x-model="signIn.username" type="text" name="login_user" class="login">
           <br>
-
+          <br>
           <label>Please enter your password: </label>
-
-          <input x-model="signIn.password" type="password" name="login_password" class="form-control">
-          <br>
-          <input type="button" @click="logUser()" name="action" value="login" class="btn">
-        
-        <div class="form-footer">
-          <p> Don't have an account? <a href="#">Sign Up</a></p>
-
+          <input x-model="signIn.password" type="password" name="login_password" class="login">
+          <input type="button" @click="logUser()" name="action" value="login" class="button">
         </div>
       </div>
-      </div>
 
-
-
-      <div x-show="user.role === 'learner'" class="learner">
-        <h2>Beginner course level 1:</h2>
-        <div x-text="message"></div>
-        <button @click="beginner()"> Show course</button>
-        <br>
-        <template x-for=" computer in computers">
-          <div>
-            <span x-text="computer.description"></span>
-            <br>
-            <img x-bind:src="`/Beginners/${computer.img}`">
-            <br>
-            <span x-text="computer.level"></span>
-          </div>
-        </template>
-
-
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-
-          <template x-for="quiz in quizes">
-            <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
-            
-        <div>
-              <span x-text="quiz.question"></span>
-              <span x-text="quiz.answer"></span>
-              
+      <div class="" x-show="!show">
+        <div x-show="user.role === 'learner'" class="learner">
+          <h2>Beginner course level 1:</h2>
+          <div x-text="message"></div>
+          <button @click="beginner()"> Show course</button>
+          <br>
+          <template x-for=" computer in computers">
+            <div>
+              <span x-text="computer.description"></span>
+              <br>
+              <img x-bind:src="`/Beginners/${computer.img}`">
+              <br>
+              <span x-text="computer.level"></span>
             </div>
           </template>
 
+          <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
+      <div x-show="signUp.role == parent" class="parent"></div> -->
+
           <div class="assessment">
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
-
             <template x-for="quiz in quizes">
               <!-- <input type="radio" value="yes" x-model="quiz.question">
         <input type="radio" value="no" x-model="answer"> -->
-
               <div>
                 <span x-text="quiz.question"></span>
                 <span x-text="quiz.answer"></span>
@@ -129,12 +106,12 @@
         </div>
       </div>
 
+
     </div>
   </div>
   <script type="module" src="/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
