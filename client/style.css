@@ -9,13 +9,15 @@
 }
 
 body{
-background-color: #416165;
-background-position: center center;
+    
+    /* background-color: #416165; */
+    background-image: url("");
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;   
     color: black;
-    /* background-image: url("Computer.jpg"); */
+    
 }
 
 
@@ -28,13 +30,13 @@ background-position: center center;
   /* border-radius: 10px;
 	padding: 30px; */
 }
-.login{
+.loginForm{
   border-radius: 10px;
-	padding: 20px;
+	padding: 10px;
   border: solid;
 }
 
-.btn {
+.button {
   background-color: #78b87a; 
   border: none;
   color: black;

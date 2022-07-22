@@ -16,7 +16,7 @@
       <div id="app">
       <div class="" x-show="show">
         <h2>Register here if you already have an account:</h2>
-        <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+        <p>Already have an account? <a href="#" , @click="showContent()">Login</a> <br> </p>
         <div x-text="logIn_message"></div>
 
         <br>
@@ -63,11 +63,11 @@
           <div x-text="logIn_message"></div>
           <br>
           <label>Please enter your username: </label>
-          <input x-model="signIn.username" type="text" name="login_user" class="login">
+          <input x-model="signIn.username" type="text" name="login_user" class="loginForm">
           <br>
           <br>
           <label>Please enter your password: </label>
-          <input x-model="signIn.password" type="password" name="login_password" class="login">
+          <input x-model="signIn.password" type="password" name="login_password" class="loginForm">
           <input type="button" @click="logUser()" name="action" value="login" class="button">
         </div>
       </div>
