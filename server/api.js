@@ -97,7 +97,7 @@ module.exports = (app, db) => {
 
     })
 
-    app.get("/api/courses_beginner", async (req, res) => {
+    app.get("/api/courses_beginner",  async (req, res) => {
 
         app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from questions"))
