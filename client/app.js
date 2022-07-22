@@ -20,6 +20,7 @@ export default function computer_literacy() {
         user: {
             role: ''
         },
+        
         show: false,
         signIn: {
             username: '',
@@ -27,6 +28,7 @@ export default function computer_literacy() {
         },
 
         computers: [],
+        computers2: [],
         quizes: [],
         all: '',
 
@@ -47,8 +49,6 @@ export default function computer_literacy() {
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
-              
-
                 .then(results => {
                     console.log(results.data);
 
@@ -66,6 +66,8 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
+
+
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -76,8 +78,6 @@ export default function computer_literacy() {
                     if (!token) {
                         return false
                     }
-
-                   
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
@@ -115,17 +115,29 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        assessment() {
+        beginner3(){
             axios
-
-            .get('http://localhost:4003/api/courses_beginner')
+            .get('http://localhost:4003/api/beginner_level3')
             .then(results => {
-                this.quizes = results.data.question;
-                console.log(this.quizes);
+                this.computers2 = results.data.course3;
+                console.log(this.computers2);
                 setInterval(() => {
                 }, 4000);
                 return true;
             }).catch(e => console.log(e))
+        },
+
+        assessment() {
+            axios
+
+                .get('http://localhost:4003/api/courses_beginner')
+                .then(results => {
+                    this.quizes = results.data.question;
+                    console.log(this.quizes);
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
 
 
         }
