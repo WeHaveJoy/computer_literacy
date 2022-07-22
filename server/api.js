@@ -43,6 +43,7 @@ module.exports = (app, db) => {
     app.post("/api/logIn", async (req, res) => {
         try {
             const { username, password } = req.body;
+            console.log('logIn .....', req.body);
 
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username = $1`,
@@ -55,12 +56,12 @@ module.exports = (app, db) => {
             }
             const isValid = await bcrypt.compare(password, findUser.password);
             if (!isValid) {
-                throw Error(`The user doesn't exist`);
+                throw Error(`Incorrect Password or Username`);
             }
 
             let token = jwt.sign(findUser, `secretKey`, { expiresIn: `24h` });
 
-            res.status(200).json({u
+            res.status(200).json({
                 message: "You are loged in",
                 token,
                 user: findUser,

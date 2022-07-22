@@ -21,6 +21,7 @@ export default function computer_literacy() {
             role: ''
         },
         show: false,
+        showHome: false,
         signIn: {
             username: '',
             password: '',
@@ -47,7 +48,7 @@ export default function computer_literacy() {
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
-              
+
 
                 .then(results => {
                     console.log(results.data);
@@ -57,7 +58,7 @@ export default function computer_literacy() {
                     }, 6000);
                     return true;
                     this.signUp = ''
-                }).catch(e => this.error = 'user already exists')
+                }).catch(e => console.log('User doesnt exists'))
 
         },
         showContent() {
@@ -77,10 +78,12 @@ export default function computer_literacy() {
                         return false
                     }
 
-                   
+
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
+                    this.user = user
+                    this.showHome = true;
                     this.logIn_message = "You are logged in"
                     this.error = "The user doesn't exist"
                     setTimeout(() => {
@@ -118,14 +121,14 @@ export default function computer_literacy() {
         assessment() {
             axios
 
-            .get('http://localhost:4003/api/courses_beginner')
-            .then(results => {
-                this.quizes = results.data.question;
-                console.log(this.quizes);
-                setInterval(() => {
-                }, 4000);
-                return true;
-            }).catch(e => console.log(e))
+                .get('http://localhost:4003/api/courses_beginner')
+                .then(results => {
+                    this.quizes = results.data.question;
+                    console.log(this.quizes);
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
 
 
         }
