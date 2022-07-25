@@ -134,9 +134,9 @@ export default function computer_literacy() {
 
         assessment() {
             axios
-                .get('http://localhost:4003/api/courses_beginner')
+                .get('http://localhost:4003/api/courses_beginner/1')
                 .then(results => {
-                    this.quizes = results.data.question;
+                    this.quizes = results.data.questions;
                     console.log(this.quizes);
                     setInterval(() => {
                     }, 4000);

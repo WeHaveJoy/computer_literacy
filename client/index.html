@@ -14,6 +14,7 @@
     <div class="container" x-data="info">
       <div x-show="!showHome">
         <div class="" x-show="show">
+
           <h2 style="color:yellow ;">Register here if you already have an account:</h2>
           <p style="color:yellow ;">Already have an account yet? <a href="#" , @click="showContent()">Login</a></p>
           <div x-text="logIn_message"></div>
@@ -24,27 +25,35 @@
           <div class="error" x-text="error"></div>
           <br>
           <label style="color:yellow ;">Please enter your first name: </label>
+
           <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
           <br>
           <br>
 
+
           <label style="color:yellow ;">Please enter your last name: </label>
+
           <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
             class="lastname">
           <br>
           <br>
 
+
           <label style="color:yellow ;">Please enter your username: </label>
+
           <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
             class="register">
           <br>
           <br>
           <label style="color:yellow ;">Please enter your password: </label>
+
           <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password"
             name="register_password" class="register">
           <br>
           <br>
+
           <label style="color:yellow ;">Please enter your role: </label>
+          
           <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
             class="register">
           <br>
@@ -57,6 +66,7 @@
 
         <div class="login">
           <div class="" x-show="!show">
+
             <h2 style="color:yellow ;">Login here if you already have an account:</h2>
             <p style="color:yellow ;">Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
             <div class="success" x-text="logIn_message"></div>
@@ -69,6 +79,7 @@
             <input x-model="signIn.password" type="password" name="login_password" class="login">
             <br>
             <br>
+
             <input type="button" @click="logUser()" name="action" value="login" class="button">
           </div>
         </div>
@@ -76,6 +87,11 @@
 
       <div class="">
         <div x-show="user.role === 'learner'" class="learner">
+
+          <div>
+            <h1>Welcome <span x-text="user.first_name"></span></h1>
+          </div>
+
           <h2>Beginner course level 1:</h2>
           <div x-text="message"></div>
           <button @click="beginner()"> Show course</button>
@@ -106,11 +122,13 @@
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
             <template x-for="quiz in quizes">
+
               <!-- <input type="radio" value="yes" x-model="quiz.question">
         <input type="radio" value="no" x-model="answer"> -->
               <div>
                 <span x-text="quiz.question"></span>
                 <span x-text="quiz.answer"></span>
+
               </div>
             </template>
           </div>

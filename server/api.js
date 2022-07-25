@@ -3,6 +3,20 @@ const bcrypt = require("bcrypt");
 
 module.exports = (app, db) => {
 
+    // addAnswersToQuestion(questionId, answerId) 
+
+    const getQuestionsById = async (id) => {
+
+        const quest = await db.oneOrNone(`select * from questions where id= $1`, [id]);
+        return quest;
+    }
+
+    const getQuestionAnswersById = async (questionId) => {
+
+        const ans = await db.manyOrNone(`select * from answers where question_id = $1;`, [questionId])
+        return ans;
+    }
+
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
     );
@@ -56,7 +70,7 @@ module.exports = (app, db) => {
             }
             const isValid = await bcrypt.compare(password, findUser.password);
             if (!isValid) {
-            
+
                 throw Error(`Please enter the correct password`);
             }
 
@@ -67,7 +81,7 @@ module.exports = (app, db) => {
                 token,
                 user: findUser,
             });
-        }catch (error) {
+        } catch (error) {
             res.status(500).json({
                 error: error.message,
             });
@@ -125,28 +139,53 @@ module.exports = (app, db) => {
     })
 
 
-    app.get("/api/courses_beginner",  async (req, res) => {
-
-        app.get("/test", async (req, res) =>
-        res.json(await db.manyOrNone("select * from questions"))
-    );
+    app.get("/api/addAnswersToQuestionBeginner", async (req, res) => {
 
         try {
-            const { assessment_id, id, course_id, question_id } = req.body;
 
-            const quest = await db.manyOrNone(`SELECT * FROM questions`);
-
-            const assess = await db.oneOrNone(`SELECT assessment_id FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
-
-            const quiz = await db.oneOrNone(`SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
-
-            const ans = await db.oneOrNone(`SELECT question_id FROM answers INNER JOIN questions ON answers.question_id = questions.id;`, [question_id, id]);
-
-            const quiz_ans = await db.manyOrNone(`SELECT * FROM answers`);
+            const questAns = await db.oneOrNone(`select * from answers`);
 
             res.status(200).json({
-                question: quest,ans,assess,quiz, quiz_ans
-                // answer:ans
+                qna: questAns
+            });
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    })
+
+    app.get("/api/courses_beginner/:question_id", async (req, res) => {
+
+        try {
+             const {question_id } = req.params;
+
+            const dbQuestions = await getQuestionsById(question_id)
+            const answers = await getQuestionAnswersById(question_id);
+            console.log(question_id);
+            const questions =  {
+                    ...dbQuestions,
+                    answers
+                }
+            // {
+            //     id: 1,
+            //     question: 'one plus one',
+            //     answers: []
+            // }
+
+            // const quest = await db.manyOrNone(`SELECT * FROM questions where question = $1`, [question]);
+            // const test = await db.manyOrNone(`select answer, question from answers join questions on question_id = answers.question_id where question_id  =1;`)
+            // const assess = await db.manyOrNone(`SELECT question FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
+
+            // const quiz = await db.manyOrNone(`SELECT * FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
+
+            // const ans = await db.manyOrNone(`SELECT answer FROM answers INNER JOIN questions ON answers.question_id = questions.id;`, [question_id, id]);
+
+            //  const quiz_ans = await db.manyOrNone(`SELECT * FROM answers where question_id = $1`, [question_id]);
+
+            res.status(200).json({
+               questions
             });
 
         } catch (error) {
