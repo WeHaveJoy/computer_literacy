@@ -2,6 +2,19 @@ const jwt = require(`jsonwebtoken`);
 const bcrypt = require("bcrypt");
 
 module.exports = (app, db) => {
+    const verifyToken = (req, res, next) => {
+        const bearerHeader = req.headers['authorization']
+        const token = bearerHeader && bearerHeader.split(' ')[1]
+        console.log(token + "76767676");
+        console.log(bearerHeader + "000000000");
+
+        if (token == null) return res.sendStatus(401)
+        jwt.verify(token, `${process.env.ACCESS_TOKEN_SECRET}`, (err, user) => {
+            if (err) return res.sendStatus(403)
+            req.user = user
+            next()
+        })
+    }
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -40,7 +53,7 @@ module.exports = (app, db) => {
         }
     });
 
-    app.post("/api/logIn", async (req, res) => {
+    app.post("/api/logIn",  async (req, res) => {
         try {
             const { username, password } = req.body;
             console.log('logIn .....', req.body);
@@ -73,7 +86,7 @@ module.exports = (app, db) => {
         }
     });
 
-    app.get("/api/beginner_level1", async (req, res) => {
+    app.get("/api/beginner_level1", verifyToken, async (req, res) => {
 
         app.get("/test1", async (req, res) =>
             res.json(await db.manyOrNone("SELECT * FROM courses_beginners"))
@@ -98,11 +111,11 @@ module.exports = (app, db) => {
 
     })
 
-    app.get("/api/courses_beginner",  async (req, res) => {
+    app.get("/api/courses_beginner", async (req, res) => {
 
         app.get("/test", async (req, res) =>
-        res.json(await db.manyOrNone("select * from questions"))
-    );
+            res.json(await db.manyOrNone("select * from questions"))
+        );
 
         try {
             const { assessment_id, id, course_id } = req.body;
@@ -116,7 +129,7 @@ module.exports = (app, db) => {
             const ans = await db.manyOrNone(`SELECT * FROM answers`);
 
             res.status(200).json({
-                question: quest,ans,assess,quiz
+                question: quest, ans, assess, quiz
                 // answer:ans
             });
 
