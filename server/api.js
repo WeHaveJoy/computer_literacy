@@ -152,9 +152,6 @@ module.exports = (app, db) => {
     })
 
 
-
-    app.get("/api/courses_beginner", async (req, res) => {
-
        
     app.get("/api/addAnswersToQuestionBeginner", async (req, res) => {
 
@@ -216,4 +213,4 @@ module.exports = (app, db) => {
         }
     })
 
-}
+    }
