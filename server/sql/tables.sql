@@ -63,8 +63,6 @@
 
 --Inner join
 
-
-
 SELECT course_id FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id;
 SELECT course_id FROM assessment INNER JOIN courses_intermediate ON assessment.course_id = courses_intermediate.id;
 SELECT course_id FROM assessment INNER JOIN courses_advanced ON assessment.course_id = courses_advanced.id;
@@ -78,30 +76,18 @@ SELECT learner_id FROM user_answers INNER JOIN users ON user_answers.learner_id 
 
 
 
-CREATE TABLE questions (
-    id int(10) auto_increment primary key,
-    question varchar(800) NOT NULL,
-    right_option int(10) NOT NULL references options(id)
-
-);
-
-CREATE TABLE options (
-    id int(10) auto_increment primary key,
-    question_id int(10) NOT NULL references questions(id),
-    assessment_id int NOT NULL references assessment(id),
-    `option` varchar(150) NOT NULL
-);
-
-CREATE TABLE exam_details (
-    id int(10) auto_increment primary key,
-    user_id int(10) NOT NULL references users(id),
-    assessment_id int NOT NULL references assessment(id),
-    date_of_exam date not null
-);     
-
-CREATE TABLE user_answers (
-    id int(10) auto_increment primary key,
-    user_id int(10) NOT NULL references users(id),
-    question_id int(10) NOT NULL references questions(id),
-    answer int(10) NOT NULL references options(id)
-);
+update answers set question_id = 1 where id <220;
+update answers set question_id = 2 where id > 219 AND id < 224;
+update answers set question_id = 3 where id > 223 AND id < 227;
+update answers set question_id = 4 where id > 226 AND id < 230;
+update answers set question_id = 5 where id > 229 AND id < 235;
+update answers set question_id = 6 where id > 234 AND id < 239;
+update answers set question_id = 7 where id > 238 AND id < 241;
+update answers set question_id = 8 where id > 240 AND id < 245;
+update answers set question_id = 9 where id > 244 AND id < 249;
+update answers set question_id = 10 where id > 248 AND id < 252;
+update answers set question_id = 11 where id > 251 AND id < 2256;
+update answers set question_id = 12 where id > 255 AND id < 260;
+update answers set question_id = 13 where id > 259AND id < 262;
+update answers set question_id = 14 where id > 261 AND id < 266;
+update answers set question_id = 15 where id > 265;
