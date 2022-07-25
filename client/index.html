@@ -83,18 +83,23 @@
               <span x-text="computer.description"></span>
               <br>
               <img x-bind:src="`/Beginners/${computer.img}`">
-              <br>
-              <span x-text="computer.level"></span>
             </div>
           </template>
 
-          <!-- <div x-show="signUp.role == teacher" class="teacher"></div>
-      <div x-show="signUp.role == parent" class="parent"></div> -->
-
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-
+          <div class="level3">
+            <h2>Beginner course level 3:</h2>
+            <div x-text="message"></div>
+            <button @click="beginner3()"> Show course</button>
+            <br>
+            <template x-for="computer3 in computers3">
+              <div>
+                <span x-text="computer3.description"></span>
+                <br>
+                <img x-bind:src="`/Beginners/${computer3.img}`">
+              </div>
+            </template>
+          </div>
+          
             <div class="assessment">
               <h2>Please complete this assessment before requesting for the next course: </h2>
               <button @click="assessment()"> Show quiz</button>
@@ -107,7 +112,7 @@
                 </div>
               </template>
             </div>
-          </div>
+        
         </div>
 
       </div>

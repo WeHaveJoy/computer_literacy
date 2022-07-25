@@ -20,6 +20,7 @@ export default function computer_literacy() {
         user: {
             role: ''
         },
+        
         show: false,
         showHome: false,
         signIn: {
@@ -28,6 +29,7 @@ export default function computer_literacy() {
         },
 
         computers: [],
+        computers3: [],
         quizes: [],
         all: '',
 
@@ -49,7 +51,6 @@ export default function computer_literacy() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
 
-
                 .then(results => {
                     console.log(results.data);
 
@@ -67,6 +68,8 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
+
+
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -77,7 +80,6 @@ export default function computer_literacy() {
                     if (!token) {
                         return false
                     }
-
 
                     localStorage.setItem('user', JSON.stringify(user));
                     this.token = JSON.stringify(token)
@@ -118,9 +120,20 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
+        beginner3(){
+            axios
+            .get('http://localhost:4003/api/beginner_level3')
+            .then(results => {
+                this.computers3 = results.data.course3;
+                console.log(results.data);
+                setInterval(() => {
+                }, 4000);
+                return true;
+            }).catch(e => console.log(e))
+        },
+
         assessment() {
             axios
-
                 .get('http://localhost:4003/api/courses_beginner')
                 .then(results => {
                     this.quizes = results.data.question;
@@ -129,8 +142,6 @@ export default function computer_literacy() {
                     }, 4000);
                     return true;
                 }).catch(e => console.log(e))
-
-
         }
 
     }
