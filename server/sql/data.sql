@@ -108,24 +108,24 @@ insert into questions(question) values ('To prevent the computer from overheatin
 
 --answers
 
-insert into answers(answer, correct) values('Input device', 'True');
-insert into answers(answer, correct) values('Output device', 'False');
-insert into answers(answer, correct) values('Processing device', 'False');
-insert into answers(answer, correct) values( 'All of the above', 'False');
+insert into answers(answer, correct) values('A. Input device', 'True');
+insert into answers(answer, correct) values('B. Output device', 'False');
+insert into answers(answer, correct) values('C. Processing device', 'False');
+insert into answers(answer, correct) values('D. All of the above', 'False');
 
-insert into answers(answer, correct) values('Control Processing Unit', 'False');
-insert into answers(answer, correct) values('Central Programming Unit', 'False');
-insert into answers(answer, correct) values('Central Processing Unit', 'True');
-insert into answers(answer, correct) values('Control Programming Unit', 'False');
+insert into answers(answer, correct) values('A. Control Processing Unit', 'False');
+insert into answers(answer, correct) values('B. Central Programming Unit', 'False');
+insert into answers(answer, correct) values('C. Central Processing Unit', 'True');
+insert into answers(answer, correct) values('D. Control Programming Unit', 'False');
 
-insert into answers(answer, correct) values('Both', 'True');
-insert into answers(answer, correct) values('Number', 'False');
-insert into answers(answer, correct) values('Alphabets', 'False');
+insert into answers(answer, correct) values('A. Both', 'True');
+insert into answers(answer, correct) values('B. Number', 'False');
+insert into answers(answer, correct) values('C. Alphabets', 'False');
 
-insert into answers(answer, correct) values('RAM', 'False');
-insert into answers(answer, correct) values('ROM', 'False');
-insert into answers(answer, correct) values('MICR', 'False');
-insert into answers(answer, correct) values('Both (RAM & ROM)', 'True');
+insert into answers(answer, correct) values('A. RAM', 'False');
+insert into answers(answer, correct) values('B. ROM', 'False');
+insert into answers(answer, correct) values('C. MICR', 'False');
+insert into answers(answer, correct) values('D. Both (RAM & ROM)', 'True');
 
 insert into answers(answer, correct) values('A. CPU', 'False');
 insert into answers(answer, correct) values('B. Registry', 'False');
