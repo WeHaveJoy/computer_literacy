@@ -15,8 +15,8 @@ body{
 
 .container{
     
-       /* background-color: #416165; */
-       background-image: url(/lab.jpeg);
+       background-color: #416165;
+       /* background-image: url(/lab.jpeg); */
        background-position: center center;
        background-repeat: no-repeat;
        background-size: cover;
