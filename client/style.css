@@ -5,30 +5,56 @@
   text-align: center;
   color: black;
   margin-top: 60px;
-  /* background-image: url("Computer.jpg"); */
+  
 }
-
 body{
-    
-    /* background-color: #416165; */
-    background-image: url("");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;   
-    color: black;
-    
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
+.container{
+    
+       /* background-color: #416165; */
+       background-image: url(/lab.jpeg);
+       background-position: center center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       color: black;
+       width: 970px;
+       margin-top: 65px;
+       height: 80vh;
+
+   
+}
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  width: 970px;
+  margin: 0 auto;
+  background-color: rgb(122, 108, 108);
+  color: white;
+  text-align: center;
+  
+}
+
+.footer div{
+ display: inline-block;
+   margin:0 5px;
+ justify-content: space-inbetween;
+ padding-left: 25em ;
+ padding-right: 25em;
+ margin:1em
+}
 
 .form-control {
 
   width: 25%;
   text-align: center;
-  
   margin-left: 38%;
-  /* border-radius: 10px;
-	padding: 30px; */
+  
 }
 .loginForm{
   border-radius: 10px;
@@ -37,14 +63,23 @@ body{
 }
 
 .button {
-  background-color: #78b87a; 
+  background-color: #78b87a;
   border: none;
   color: black;
-  padding: 10px 8px;
+  padding: 7px 17px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   border-radius: 10px;
+  margin-left: 22%;
 
+}
+
+.success{
+  color: green;
+}
+
+.error{
+  color: red;
 }
