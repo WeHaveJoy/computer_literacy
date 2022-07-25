@@ -53,7 +53,7 @@ module.exports = (app, db) => {
         }
     });
 
-    app.post("/api/logIn",  async (req, res) => {
+    app.post("/api/logIn", async (req, res) => {
         try {
             const { username, password } = req.body;
             console.log('logIn .....', req.body);
@@ -69,7 +69,7 @@ module.exports = (app, db) => {
             }
             const isValid = await bcrypt.compare(password, findUser.password);
             if (!isValid) {
-            
+
                 throw Error(`Please enter the correct password`);
             }
 
@@ -80,7 +80,7 @@ module.exports = (app, db) => {
                 token,
                 user: findUser,
             });
-        }catch (error) {
+        } catch (error) {
             res.status(500).json({
                 error: error.message,
             });
@@ -138,7 +138,7 @@ module.exports = (app, db) => {
     })
 
 
-    app.get("/api/courses_beginner",  async (req, res) => {
+    app.get("/api/courses_beginner", async (req, res) => {
 
         app.get("/test", async (req, res) =>
             res.json(await db.manyOrNone("select * from questions"))
@@ -158,7 +158,7 @@ module.exports = (app, db) => {
             const quiz_ans = await db.manyOrNone(`SELECT * FROM answers`);
 
             res.status(200).json({
-                question: quest,ans,assess,quiz, quiz_ans
+                question: quest, ans, assess, quiz, quiz_ans
                 // answer:ans
             });
 
