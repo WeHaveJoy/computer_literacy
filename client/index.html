@@ -15,8 +15,10 @@
     @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Acme&family=Dancing+Script:wght@700&family=Lobster&display=swap');
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <title>Computer Literacy</title>
+  <title>Vite App</title>
 </head>
+
+
 
 <body>
   <div id="app">
@@ -53,68 +55,111 @@
             name="register_password" class="register">
           <br>
           <br>
-
-
-          <label style="color:yellow ;">Please select your role: </label>
+          <label>Please enter your role: </label>
+          <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
+            class="register">
           <br>
-
-          <div class="dropDown">
-            <select name="" x-bind:disabled="signUp.password === ''" x-model=" signUp.role" class="role">
-              <option class="role" value="" required>Role</option>
-              <option class="role" value="learner">Learner</option>
-              <option class="role" value="parent">Parent</option>
-              <option class="role" value="teacher">Teacher</option>
-            </select>
-          </div>
-
+          <label>Please enter your school: </label>
+          <input x-model="signUp.school" x-bind:disabled="signUp.role === ''" type="text" name="register_school"
+            class="register">
           <br>
-          <label style="color:yellow ;">Please enter your school: </label>
-
-
-          <div class="dropDown">
-            <select name="" x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class="school">
-              <option class="role" value="" required>School</option>
-              <option class="role" value="Langa High School">Langa High School</option>
-              <option class="role" value="Isilimela Comprehensive High School">Isilimela Comprehensive High School
-              </option>
-              <option class="role" value="Khulani High School">Khulani High School</option>
-              <option class="role" value="Masiyile High School">Masiyile High School</option>
-              <option class="role" value="Joe Slovo High School">Joe Slovo High School</option>
-              <option class="role" value="Manyano High School">Manyano High School</option>
-            </select>
-          </div>
-          <br>
-          <input type="button" x-bind:disabled="signUp.school === ''" @click="regUser(), goToLogin()" name="action"
+          <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
             value="Register" class="button">
         </div>
 
         <br>
         <br>
+        <div class="nav">
+          <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#signup/login">signup/login</a></li>
+            <li><a href="#contact">Contact</a></li>
 
-        <div class="login">
-          <div class="" x-show="!show">
-            <h2>Login here if you already have an account:</h2>
-            <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
-            <div x-text="logIn_message"></div>
-            <br>
-            <label>Please enter your username: </label>
-            <input x-model="signIn.username" type="text" name="login_user" class="login">
-            <br>
-            <br>
-            <label>Please enter your password: </label>
-            <input x-model="signIn.password" type="password" name="login_password" class="login">
-            <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
-          </div>
+
+          </ul>
         </div>
+        <br>
+        <section class="longDiv">
+          <div class="card" id="home" style="width: 68rem;">
+            <div class="rounded-pill ora">
+              <h3 class="">Computer Literacy</h3>
+              <p class="">
+              <h5 class="funky">Literacy is not a luxury, it is a right and a responsibility.</h5>
+              <p> This Computer literacy app is designed for the interest of learners(or anyone who might be
+                interested)
+                who wants to learn computer literature at the palm of their hands.It is a simple to use app with quite
+                friendly user interface.
+
+              <p>This app will bridge the gap between the educator and the learner,as it is designed in accordance
+                with the
+                curriculumn.</p>
+              <p>The app entails great learning levels which are grouped into courses and at the very end of each
+                course
+                there is an assessment for the learner.The assessments are in Multiple choice form with mind
+                stretching
+                answers.</p>
+              </p>
+              </p>
+            </div>
+
+          </div>
+        </section>
+        <section class="longDiv">
+          <div class="" id="signup/login">
+            <div class="login" x-show="!show">
+              <h2>Login here if you already have an account:</h2>
+              <p>Don't have an account yet? <a @click="showContent()">sign Up</a> <br> </p>
+              <div x-text="logIn_message"></div>
+              <br>
+              <label>Please enter your username: </label>
+              <input x-model="signIn.username" type="text" name="login_user" class="login">
+              <br>
+              <br>
+              <label>Please enter your password: </label>
+              <input x-model="signIn.password" type="password" name="login_password" class="login">
+              <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
+
+            </div>
+          </div>
+        </section>
       </div>
+      <section class="longDiv">
+        <div class="co" id="contact">
+          <h2>Contact Us</h2>
+          <div class="contactUs">
 
 
+            <div>
+              <div class="add"> <i class="fa fa-address-book"></i>Address</div>
+              <P>40 Harrington Str<br>
+                Cape Town 7780
+              </P>
+            </div>
+
+            <div>
+              <div class="add"> <i class="fa fa-phone"></i>Phone</div>
+              <p>021 123 9876</p>
+            </div>
+            <div>
+              <div class="add"> <i class="fa fa-envelope">email</i></div>
+              <p>404found@gmail.com</p>
+            </div>
+
+
+          </div>
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Facebook
+          </a>
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Twitter
+          </a>
+          <a href="#" class="google btn">
+            <i class="fa fa-instagram fa-fw"></i> Instagram
+          </a>
+        </div>
+      </section>
       <div x-show="user.role === 'learner'" class="learner">
-        <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
-        </div> -->
+
 
         <div class="funky">
           <h1>Welcome <span x-text="user.first_name"></span></h1>
@@ -158,6 +203,7 @@
           </div>
         </div>
 
+
         <div x-show="currentLevel == 'TWO'" class="level2">
           <div class="">
             <div class="card" style="width: 78rem; height: 25rem;">
@@ -171,12 +217,13 @@
                 how to set them up,below is a youTube video that has <strong>step by step</strong>
                 instructions <strong> on how
                   to setup computer(Deskptop) hardware.</strong>
-                These instructions are very simple to follow as a beginner,meaning that,<strong> there is no special
-                  expertise needed.</strong>
-                Watch it carefully and if you can,ask your teacher for a <strong>practical computer assembly
-                  workshop.</strong>
-                Its easy,enjoy!.Click on this <a href="https://www.youtube.com/watch?v=RnM3u99xIf4&t=85s"
-                  target="_blank">link</a> (the link will open a new tab)to watch.
+              <p></p>
+              These instructions are very simple to follow as a beginner,meaning that,<strong> there is no special
+                expertise needed.</strong>
+              Watch it carefully and if you can,ask your teacher for a <strong>practical computer assembly
+                workshop.</strong>
+              Its easy,enjoy!.Click on this <a href="https://www.youtube.com/watch?v=RnM3u99xIf4&t=85s"
+                target="_blank">link</a> (the link will open a new tab)to watch.
               </p>
             </div>
             <div class="d-grid gap-5">
@@ -229,8 +276,7 @@
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
             <template x-for="quiz in quizes">
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
+
               <div>
                 <span x-text="quiz.question"></span>
                 <span x-text="quiz.answer"></span>
@@ -239,115 +285,78 @@
           </div>
         </div>
 
+        <!-- intermidiate level  -->
+        <div>
+
+        </div>
+        <div>
+          <h2 class="levelsText">Intermidiate course level 1:<strong>The "How To..."</strong></h2>
+          <div x-text="message"></div>
+          <div class="card" style="width: 78rem; height: 25rem;">
+            <p>
+              Now that you know the computer hardware,lets get to use the computer system.
+            </p>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div>
+            <table class="table table-success table-striped">
+              <tr>
+                <th>IMAGE</th>
+                <th>How To</th>
+              </tr>
+              <template x-for="computerInt in computersIntermidiate">
+                <tr>
+                  <td>
+                    <img x-bind:src="`/Intermediate/${computerInt.img}`" width="150" />
+                  </td>
+                  <td><span x-text="computerInt.description"></span></td>
+                </tr>
+              </template>
+            </table>
+            <!-- <div class="d-grid gap-5">
+              <button class="btn btn-primary" type="button">Next Level>>></button>
+            </div> -->
+          </div>
+        </div>
+
+
 
       </div>
 
-      <!-- <div class=""> -->
-
+      <div class="">
 
 
         <div x-show="user.role === 'teacher'" class="teacher">
+
+
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
+
           <br>
 
-
-          <h2> Search for the learner:</h2>
-          <input type="search">
-          <button @click="user.username"> Show learner</button>
           <div>
+            <label>Please enter your school: </label>
+            <input x-model="schoolName" type="text" name="register_school" class="register">
             <br>
-            <br>
+            <button @click="getAllLearnersByClass()"> Show learners</button>
+            <div>
+              <template x-for="learner in classLearners">
+
+                <div>
+                  <span x-text="learner"></span>
+
+                </div>
+              </template>
+
+            </div>
+          </div>
+          <div>
             <h4>You are on the Teacher Screen</h4>
           </div>
         </div>
-
-        <div x-show="user.role === 'parent'" class="parent">
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-          <br>
-
-
-        </div>
-
-        <div class="">
-
-
-          <div x-show="user.role === 'teacher'" class="teacher">
-
-
-            <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
-            </div>
-
-            <br>
-
-            <div>
-              <label>Please enter your school: </label>
-              <input x-model="schoolName" type="text" name="register_school" class="register">
-              <br>
-              <button @click="classLearner()"> Show learners</button>
-              <div>
-                <template x-for="learner in classLearners">
-
-                  <div>
-                    <span x-text="learner"></span>
-
-                  </div>
-                </template>
-
-              </div>
-            </div>
-            <div>
-              <h4>You are on the Teacher Screen</h4>
-
-              <h2> Search for your child:</h2>
-              <input type="search">
-              <button @click="user.username"> Show learner</button>
-
-              <br>
-              <br>
-              <div>
-                <h4>You are on the parent screen</h4>
-
-              </div>
-
-
-
-              <!-- <div class="footer">
-
-      <footer>
-        <div class="row">
-          <div class="contact">
-            <strong>Contact us at:</strong>
-              (021)-541-1000
-             <br>
-            <strong>twitter /fb /insta </strong>
-             @computer_literacy
-
-          </div>
-        </div>
-
-    </footer>
-  </div> -->
-
-      <!-- <div class="footer">
-
-        <div class="contact">
-          <strong>Contact us at:</strong>
-            (021)-541-1000
-           <br>
-          <strong>twitter /fb /insta </strong>
-           @computer_literacy
-        </div>
-        <div class="address">
-          <strong>Find us:</strong>
-          CodeX
-          <br>
-          Cape Town
-
 
       </div>
 
@@ -360,7 +369,6 @@
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
-
           <br>
           <div>
             <h4>You are on the parent screen</h4>
@@ -368,14 +376,8 @@
 
         </div>
 
-
       </div>
 
-      </div> -->
-      <!-- </div> -->
-
-
-      <!-- </div> -->
 
     </div>
   </div>
