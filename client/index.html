@@ -14,46 +14,37 @@
     <div class="container" x-data="info">
       <div x-show="!showHome">
         <div class="" x-show="show">
-
-          <h2 style="color:yellow ;">Register here if you already have an account:</h2>
-          <p style="color:yellow ;">Already have an account yet? <a href="#" , @click="showContent()">Login</a></p>
+          <h2>Register here if you already have an account:</h2>
+          <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
           <div x-text="logIn_message"></div>
 
-
-
-          <div class="success" x-text="message"></div>
-          <div class="error" x-text="error"></div>
           <br>
-          <label style="color:yellow ;">Please enter your first name: </label>
 
+          <div x-text="message"></div>
+          <div x-text="error"></div>
+          <br>
+          <label for="">Please enter your first name: </label>
           <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
           <br>
           <br>
 
-
-          <label style="color:yellow ;">Please enter your last name: </label>
-
+          <label for="">Please enter your last name: </label>
           <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
             class="lastname">
           <br>
           <br>
 
-
-          <label style="color:yellow ;">Please enter your username: </label>
-
+          <label for="">Please enter your username: </label>
           <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
             class="register">
           <br>
           <br>
-          <label style="color:yellow ;">Please enter your password: </label>
-
+          <label>Please enter your password: </label>
           <input x-model="signUp.password" x-bind:disabled="signUp.username === ''" type="password"
             name="register_password" class="register">
           <br>
           <br>
-
-          <label style="color:yellow ;">Please enter your role: </label>
-
+          <label>Please enter your role: </label>
           <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
             class="register">
           <br>
@@ -66,33 +57,28 @@
 
         <div class="login">
           <div class="" x-show="!show">
-
-            <h2 style="color:yellow ;">Login here if you already have an account:</h2>
-            <p style="color:yellow ;">Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br>
-            </p>
-            <div class="success" x-text="logIn_message"></div>
+            <h2>Login here if you already have an account:</h2>
+            <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
+            <div x-text="logIn_message"></div>
             <br>
-            <label style="color:yellow ;">Please enter your username: </label>
+            <label>Please enter your username: </label>
             <input x-model="signIn.username" type="text" name="login_user" class="login">
             <br>
             <br>
-            <label style="color:yellow ;">Please enter your password: </label>
+            <label>Please enter your password: </label>
             <input x-model="signIn.password" type="password" name="login_password" class="login">
-            <br>
-            <br>
-
             <input type="button" @click="logUser()" name="action" value="login" class="button">
           </div>
         </div>
       </div>
 
-      
-        <div x-show="user.role === 'learner'" class="learner">
-          <div>
-            <h1>Welcome <span x-text="user.first_name"></span></h1>
-          </div>
 
-          <div class="level1">
+      <div x-show="user.role === 'learner'" class="learner">
+        <div>
+          <h1>Welcome <span x-text="user.first_name"></span></h1>
+        </div>
+
+        <div class="level1">
           <h2>Beginner course level 1:</h2>
           <div x-text="message"></div>
           <button @click="beginner()"> Show course</button>
@@ -108,111 +94,92 @@
         </div>
 
 
-          <div class="level3" >
-            <h2>Beginner course level 3:</h2>
-            <div x-text="message"></div>
-            <button @click="beginner3()"> Show course</button>
-            <br>
-            <template x-for="computer3 in computers3">
-              <div>
-                <span x-text="computer3.description"></span>
-                <br>
-                <img x-bind:src="`/Beginners/${computer3.img}`">
-              </div>
-            </template>
-            <button>Go to assessment</button>
-          </div>
+        <div class="level3">
+          <h2>Beginner course level 3:</h2>
+          <div x-text="message"></div>
+          <button @click="beginner3()"> Show course</button>
+          <br>
+          <template x-for="computer3 in computers3">
+            <div>
+              <span x-text="computer3.description"></span>
+              <br>
+              <img x-bind:src="`/Beginners/${computer3.img}`">
+            </div>
+          </template>
+          <button>Go to assessment</button>
+        </div>
 
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-            <template x-for="quiz in quizes">
+        <div class="assessment">
+          <h2>Please complete this assessment before requesting for the next course: </h2>
+          <button @click="assessment()"> Show quiz</button>
+          <template x-for="quiz in quizes">
 
-             
-        <!-- <input type="radio" value="no" x-model="answer.answer"> -->
-              <div>
-                <input type="radio" value="yes" x-model="quiz.answer">
-                <!-- <span x-text="quiz.question_id"></span>
+
+            <!-- <input type="radio" value="no" x-model="answer.answer"> -->
+            <div>
+              <input type="radio" value="yes" x-model="quiz.answer">
+              <!-- <span x-text="quiz.question_id"></span>
                 <span x-text="quiz.answer_id"></span> -->
 
-              </div>
-            </template>
-          </div>
-
+            </div>
+          </template>
         </div>
 
-        
-          <div x-show="user.role === 'teacher'" class="teacher">
+        <div class="assessment">
+          <h2>Please complete this assessment before requesting for the next course: </h2>
+          <button @click="assessment()"> Show quiz</button>
+          <template x-for="quiz in quizes">
+            <!-- <input type="radio" value="yes" x-model="quiz.question">
+        <input type="radio" value="no" x-model="answer"> -->
             <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
+              <span x-text="quiz.question"></span>
+              <span x-text="quiz.answer"></span>
             </div>
-            <br>
-            <div>
-              <h4>You are on the Teacher Screen</h4>
-            </div>
-          </div>
-       
-
-
-        
-          <div x-show="user.role === 'parent'" class="parent">
-            <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
-            </div>
-            <br>
-            <div>
-              <h4>You are on the parent screen</h4>
-            </div>
-          </div>
-      
-
-
-      <!-- <div class="footer">
-      <footer>
-        <div class="row">
-          <div class="contact">
-            <strong>Contact us at:</strong>
-              (021)-541-1000
-             <br>
-            <strong>twitter /fb /insta </strong>
-             @computer_literacy
-          </div>
-
-          <div class="address">
-            <strong>Find us:</strong>
-            CodeX
-            <br>
-            Cape Town
-            <br>
-            8000
-          </div>
-
-            <p>
-                Copyright &copy; 2020 by 404-Found. All rights reserved.
-            </p>
+          </template>
         </div>
-    </footer>
-  </div> -->
-      <!-- <div class="footer">
-        <div class="contact">
-          <strong>Contact us at:</strong>
-            (021)-541-1000
-           <br>
-          <strong>twitter /fb /insta </strong>
-           @computer_literacy
-        </div>
-        <div class="address">
-          <strong>Find us:</strong>
-          CodeX
+
+
+      </div>
+
+
+      <!-- teacher screen -->
+
+      <div class="">
+
+
+        <div x-show="user.role === 'teacher'" class="teacher">
+
+
+          <div>
+            <h2>Welcome <span x-text="user.first_name"> </span></h2>
+          </div>
           <br>
-          Cape Town
-          <br>
-          8000
+          <div>
+            <h4>You are on the Teacher Screen</h4>
+          </div>
         </div>
-      </div> -->
+
+      </div>
+
+      <div class="">
+
+
+        <div x-show="user.role === 'parent'" class="parent">
+
+
+          <div>
+            <h2>Welcome <span x-text="user.first_name"> </span></h2>
+          </div>
+          <br>
+          <div>
+            <h4>You are on the parent screen</h4>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-
-
   </div>
 
   <script type="module" src="/main.js"></script>

@@ -87,19 +87,6 @@ body{
   display: inline-block;
   font-size: 12px;
   border-radius: 10px;
-  margin-left: 22%;
-
+justify-content: space-inbetween
 }
 
-/* footer{
-  background-color: darkslategray;
-  padding: 10px;
- } */
-
-.success{
-  color: green;
-}
-
-.error{
-  color: red;
-}
