@@ -30,6 +30,10 @@ module.exports = (app, db) => {
         return ans;
     }
 
+    const getCourseById = async (course_id) =>{
+        const course = await db.manyOrNone(`select * from courses_beginners`)
+    }
+
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
     );
@@ -101,7 +105,7 @@ module.exports = (app, db) => {
         }
     });
 
-    app.get("/api/beginner_level1", verifyToken, async (req, res) => {
+    app.get("/api/beginner_level1", async (req, res) => {
 
         app.get("/test1", async (req, res) =>
             res.json(await db.manyOrNone("SELECT * FROM courses_beginners"))
@@ -152,7 +156,6 @@ module.exports = (app, db) => {
     })
 
 
-       
     app.get("/api/addAnswersToQuestionBeginner", async (req, res) => {
 
         try {

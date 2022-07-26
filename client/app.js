@@ -17,6 +17,12 @@ export default function computer_literacy() {
             role: ''
         },
 
+        level:{
+            level1: '',
+            level2: '',
+            level3: ''
+        },
+
         user: {
             role: ''
         },
@@ -47,6 +53,12 @@ export default function computer_literacy() {
             }, 3000);
         },
 
+        // goTolevel3() {
+        //     setInterval(() => {
+        //         this.showL3()
+        //     }, 3000);
+        // },
+
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
@@ -68,6 +80,10 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
+
+        // showL3(){
+        //     this.show = !true
+        // },
 
 
         logUser() {
@@ -134,7 +150,7 @@ export default function computer_literacy() {
 
         assessment() {
             axios
-                .get('http://localhost:4003/api/courses_beginner/1')
+                .get(`http://localhost:4003/api/courses_beginner/1`)
                 .then(results => {
                     this.quizes = results.data.questions;
                     console.log(this.quizes);

@@ -19,7 +19,7 @@
           <p style="color:yellow ;">Already have an account yet? <a href="#" , @click="showContent()">Login</a></p>
           <div x-text="logIn_message"></div>
 
-        
+
 
           <div class="success" x-text="message"></div>
           <div class="error" x-text="error"></div>
@@ -53,7 +53,7 @@
           <br>
 
           <label style="color:yellow ;">Please enter your role: </label>
-          
+
           <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
             class="register">
           <br>
@@ -68,7 +68,8 @@
           <div class="" x-show="!show">
 
             <h2 style="color:yellow ;">Login here if you already have an account:</h2>
-            <p style="color:yellow ;">Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
+            <p style="color:yellow ;">Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br>
+            </p>
             <div class="success" x-text="logIn_message"></div>
             <br>
             <label style="color:yellow ;">Please enter your username: </label>
@@ -85,13 +86,13 @@
         </div>
       </div>
 
-      <div class="">
+      
         <div x-show="user.role === 'learner'" class="learner">
-
           <div>
             <h1>Welcome <span x-text="user.first_name"></span></h1>
           </div>
 
+          <div class="level1">
           <h2>Beginner course level 1:</h2>
           <div x-text="message"></div>
           <button @click="beginner()"> Show course</button>
@@ -103,8 +104,11 @@
               <img x-bind:src="`/Beginners/${computer.img}`">
             </div>
           </template>
+          <!-- <button @click="showL3()">Next level</button> -->
+        </div>
 
-          <div class="level3">
+
+          <div class="level3" >
             <h2>Beginner course level 3:</h2>
             <div x-text="message"></div>
             <button @click="beginner3()"> Show course</button>
@@ -116,6 +120,7 @@
                 <img x-bind:src="`/Beginners/${computer3.img}`">
               </div>
             </template>
+            <button>Go to assessment</button>
           </div>
 
           <div class="assessment">
@@ -123,11 +128,12 @@
             <button @click="assessment()"> Show quiz</button>
             <template x-for="quiz in quizes">
 
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
+             
+        <!-- <input type="radio" value="no" x-model="answer.answer"> -->
               <div>
-                <span x-text="quiz.question"></span>
-                <span x-text="quiz.answer"></span>
+                <input type="radio" value="yes" x-model="quiz.answer">
+                <!-- <span x-text="quiz.question_id"></span>
+                <span x-text="quiz.answer_id"></span> -->
 
               </div>
             </template>
@@ -135,8 +141,59 @@
 
         </div>
 
-      </div>
-      <div class="footer">
+        
+          <div x-show="user.role === 'teacher'" class="teacher">
+            <div>
+              <h2>Welcome <span x-text="user.first_name"> </span></h2>
+            </div>
+            <br>
+            <div>
+              <h4>You are on the Teacher Screen</h4>
+            </div>
+          </div>
+       
+
+
+        
+          <div x-show="user.role === 'parent'" class="parent">
+            <div>
+              <h2>Welcome <span x-text="user.first_name"> </span></h2>
+            </div>
+            <br>
+            <div>
+              <h4>You are on the parent screen</h4>
+            </div>
+          </div>
+      
+
+
+      <!-- <div class="footer">
+      <footer>
+        <div class="row">
+          <div class="contact">
+            <strong>Contact us at:</strong>
+              (021)-541-1000
+             <br>
+            <strong>twitter /fb /insta </strong>
+             @computer_literacy
+          </div>
+
+          <div class="address">
+            <strong>Find us:</strong>
+            CodeX
+            <br>
+            Cape Town
+            <br>
+            8000
+          </div>
+
+            <p>
+                Copyright &copy; 2020 by 404-Found. All rights reserved.
+            </p>
+        </div>
+    </footer>
+  </div> -->
+      <!-- <div class="footer">
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -152,9 +209,9 @@
           <br>
           8000
         </div>
-      </div>
+      </div> -->
     </div>
-    
+
 
   </div>
 
