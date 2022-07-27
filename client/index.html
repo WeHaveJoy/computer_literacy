@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <title>Vite App</title>
+  <title>Computer Literacy</title>
 </head>
 
 <body>
@@ -71,6 +71,7 @@
             <p style="color:yellow ;">Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br>
             </p>
             <div class="success" x-text="logIn_message"></div>
+            <div class="error" x-text="error"></div>
             <br>
             <label style="color:yellow ;">Please enter your username: </label>
             <input x-model="signIn.username" type="text" name="login_user" class="login">
@@ -86,14 +87,18 @@
         </div>
       </div>
 
-      
-        <div x-show="user.role === 'learner'" class="learner">
-          <div>
-            <h1>Welcome <span x-text="user.first_name"></span></h1>
-          </div>
 
-          <div class="level1">
+      <div x-show="user.role === 'learner'" class="learner">
+        <div>
+          <h1>Welcome <span x-text="user.first_name"></span></h1>
+        </div>
+
+        <div class="level1">
           <h2>Beginner course level 1:</h2>
+          <br>
+          <h4>About: Computer components</h4>
+          <br>
+          <br>
           <div x-text="message"></div>
           <button @click="beginner()"> Show course</button>
           <br>
@@ -108,63 +113,80 @@
         </div>
 
 
-          <div class="level3" >
-            <h2>Beginner course level 3:</h2>
-            <div x-text="message"></div>
-            <button @click="beginner3()"> Show course</button>
-            <br>
-            <template x-for="computer3 in computers3">
-              <div>
-                <span x-text="computer3.description"></span>
-                <br>
-                <img x-bind:src="`/Beginners/${computer3.img}`">
-              </div>
-            </template>
-            <button>Go to assessment</button>
-          </div>
-
-          <div class="assessment">
-            <h2>Please complete this assessment before requesting for the next course: </h2>
-            <button @click="assessment()"> Show quiz</button>
-            <template x-for="quiz in quizes">
-
-             
-        <!-- <input type="radio" value="no" x-model="answer.answer"> -->
-              <div>
-                <input type="radio" value="yes" x-model="quiz.answer">
-                <!-- <span x-text="quiz.question_id"></span>
-                <span x-text="quiz.answer_id"></span> -->
-
-              </div>
-            </template>
-          </div>
-
+        <div class="level3">
+          <h2>Beginner course level 3:</h2>
+          <br>
+          <h4>About: Creating the files and folders, highliting, drag and drop and mouse clicks</h4>
+          <br>
+          <br>
+          <div x-text="message"></div>
+          <button @click="beginner3()"> Show course</button>
+          <br>
+          <template x-for="computer3 in computers3">
+            <div>
+              <span x-text="computer3.description"></span>
+              <br>
+              <img x-bind:src="`/Beginners/${computer3.img}`">
+            </div>
+          </template>
+          <!-- <button>Go to assessment</button> -->
         </div>
 
+        <div class="assessment">
+          <h2>Please complete this assessment before requesting for the next course: </h2>
+          <button @click="assessment()"> Show quiz</button>
+          <template x-for="quiz in quizes">
+
+
+            <!-- <input type="radio" value="no" x-model="answer.answer"> -->
+            <div>
+              <input type="radio" value="yes" x-model="quiz.answer">
+              <!-- <span x-text="quiz.question_id"></span>
+                <span x-text="quiz.answer_id"></span> -->
+
+            </div>
+          </template>
+        </div>
+
+      </div>
+
+
+      <div x-show="user.role === 'teacher'" class="teacher">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
+        </div>
+        <br>
+
+        <h2> Search for the learner:</h2>
+        <input type="search" >
+        <button @click="user.username"> Show learner</button>
+        <div>
+          <br>
+          <br>
+          <h4>You are on the Teacher Screen</h4>
+        </div>
+      </div>
+
+
+
+
+      <div x-show="user.role === 'parent'" class="parent">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
+        </div>
+        <br>
+
+        <h2> Search for your child:</h2>
+        <input type="search" >
+        <button @click="user.username"> Show learner</button>
         
-          <div x-show="user.role === 'teacher'" class="teacher">
-            <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
-            </div>
-            <br>
-            <div>
-              <h4>You are on the Teacher Screen</h4>
-            </div>
-          </div>
+          <br>
+          <br>
+        <div>
+          <h4>You are on the parent screen</h4>
        
+      </div>
 
-
-        
-          <div x-show="user.role === 'parent'" class="parent">
-            <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
-            </div>
-            <br>
-            <div>
-              <h4>You are on the parent screen</h4>
-            </div>
-          </div>
-      
 
 
       <!-- <div class="footer">
@@ -211,7 +233,7 @@
         </div>
       </div> -->
     </div>
-
+    </div>
 
   </div>
 

@@ -60,15 +60,15 @@ describe('As part of the computer literacy', () => {
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
-                name: 'Zandile',
-                surname: 'Bakaqana',
-                username: 'zan13',
+                first_name: 'Sinovuyo',
+                last_name: 'Dyantyi',
+                username: 'sino10',
                 password: 'password',
                 role: 'learner'
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/signUp')
+            .get('/api/users')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding the new user');
@@ -83,9 +83,9 @@ describe('As part of the computer literacy', () => {
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
-                name: 'Zandile',
-                surname: 'Bakaqana',
-                username: 'zan13',
+                first_name: 'Sinovuyo',
+                last_name: 'Dyantyi',
+                username: 'sino10',
                 password: 'password',
                 role: 'learner'
             });
@@ -107,12 +107,12 @@ describe('As part of the computer literacy', () => {
         const response = await supertest(app)
             .post('/api/logIn')
             .send({
-                username: 'zan13',
+                username: 'sino10',
                 password: 'password'
             });
 
         const responseUsers = await supertest(app)
-            .get('/api/logIn')
+            .get('/api/users')
             .expect(200);
 
         console.log(responseUsers.body.data, 'after adding an existing user');
