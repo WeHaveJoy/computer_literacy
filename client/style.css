@@ -5,39 +5,40 @@
   text-align: center;
   color: black;
   margin-top: 60px;
-  
+
 }
-body{
+
+body {
   margin: 0;
   padding: 0;
   /* background-color: #416165; */
   /* overflow: hidden; */
 }
 
-.container{
-    
-       background-color: #416165;
-       /* background-image: url(/lab.jpeg); */
-       background-position: center center;
-       background-repeat: no-repeat;
-       background-size: cover;
-       color: black;
-       width: 970px;
-       margin-top: 65px;
-       height: 80vh;
+.container {
 
-   
+  background-color: #416165;
+  /* background-image: url(/lab.jpeg); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+  width: 970px;
+  margin-top: 65px;
+  height: 80vh;
+
+
 }
 
-.parent{
+.parent {
   background-color: #78b87a;
 }
 
-.learner{
+.learner {
   background-color: #78b87a;
 }
 
-.teacher{
+.teacher {
   background-color: #78b87a;
 }
 
@@ -52,16 +53,16 @@ body{
   background-color: rgb(122, 108, 108);
   color: white;
   text-align: center;
-  
+
 }
 
-.footer div{
- display: inline-block;
-   margin:0 5px;
- justify-content: space-inbetween;
- padding-left: 25em ;
- padding-right: 25em;
- margin:1em
+.footer div {
+  display: inline-block;
+  margin: 0 5px;
+  justify-content: space-inbetween;
+  padding-left: 25em;
+  padding-right: 25em;
+  margin: 1em
 }
 
 .form-control {
@@ -69,11 +70,12 @@ body{
   width: 25%;
   text-align: center;
   margin-left: 38%;
-  
+
 }
-.loginForm{
+
+.loginForm {
   border-radius: 10px;
-	padding: 10px;
+  padding: 10px;
   border: solid;
 }
 
@@ -87,6 +89,32 @@ body{
   display: inline-block;
   font-size: 12px;
   border-radius: 10px;
-justify-content: space-inbetween
+  justify-content: space-inbetween
 }
 
+.funky {
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Lobster', cursive;
+
+}
+
+.levelsText {
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Acme', sans-serif;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Lobster', cursive;
+}
+
+.someText {
+  width: 60em;
+  height: 20em;
+}
+
+.card {
+  /* padding-left: 18rem; */
+  margin-left: 7rem;
+  font-size: medium;
+  background-color: whitesmoke;
+  justify-content: first baseline;
+  margin:auto
+}

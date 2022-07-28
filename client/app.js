@@ -1,4 +1,10 @@
 import axios from 'axios'
+const Levels = {
+    One: 'ONE',
+    Two: 'TWO',
+    Three: 'THREE'
+}
+
 export default function computer_literacy() {
 
     return {
@@ -17,11 +23,8 @@ export default function computer_literacy() {
             role: ''
         },
 
-        level:{
-            level1: '',
-            level2: '',
-            level3: ''
-        },
+
+        currentLevel: '',
 
         user: {
             role: ''
@@ -41,6 +44,9 @@ export default function computer_literacy() {
         all: '',
 
         init() {
+            this.currentLevel = Levels.One
+
+
             setInterval(() => {
                 this.message = ''
                 this.error = ''
@@ -143,6 +149,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computers3 = results.data.course3;
                     console.log(results.data);
+                    this.showHome = true;
                     setInterval(() => {
                     }, 4000);
                     return true;
