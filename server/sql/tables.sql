@@ -4,7 +4,16 @@
         last_name text NOT NULL,
         username text NOT NULL,
         password varchar NOT NULL,
-        role text NOT NULL
+        role text NOT NULL,
+        school text NOT NULL
+    );
+
+
+    create table school(
+        id serial not null primary key,
+        school_name text not null,
+        role_id int,
+        FOREIGN KEY (role_id) REFERENCES users (id)
     );
 
     create table courses_beginners(

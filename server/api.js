@@ -20,19 +20,56 @@ module.exports = (app, db) => {
 
     const getQuestionsById = async (id) => {
 
-        const quest = await db.oneOrNone(`select * from questions where id= $1`, [id]);
+        const quest = await db.oneOrNone(`select * from questions where id= $1 order by id ASC`, [id]);
         return quest;
     }
 
     const getQuestionAnswersById = async (questionId) => {
 
-        const ans = await db.manyOrNone(`select * from answers where question_id = $1;`, [questionId])
+        const ans = await db.manyOrNone(`select * from answers where question_id = $1 order by id ASC;`, [questionId])
         return ans;
     }
 
-    const getCourseById = async (course_id) =>{
+    const getCourseById = async (course_id) => {
         const course = await db.manyOrNone(`select * from courses_beginners`)
     }
+
+    app.get('/api/courses', async (req, res) => {
+
+        const courses = await db.manyOrNone(`select * from courses_beginners`);
+
+        const assessments = courses.map(async (course) => {
+
+            const getAssessmentsByCourseId = await db.manyOrNone(`select * from assessment where course_id = 1;`)
+
+            const assessments = await getAssessmentsByCourseId(course.id)
+
+
+            const questions = assessments.map(async (assessment) => {
+
+                const { assessment_id } = req.body;
+
+                const getQuestionsByAssessmentId = await db.manyOrNone(`select * from questions where assessment_id = $1`, [assessment_id])
+
+                const assessmentQuestions = await getQuestionsByAssessmentId(assessment.id)
+
+
+                return {
+                    assessmentQuestions,
+                    ...assessment
+                }
+
+            })
+
+
+            return {
+                ...course,
+                assessments,
+                questions
+            }
+        })
+
+    })
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -155,7 +192,6 @@ module.exports = (app, db) => {
 
     })
 
-
     app.get("/api/addAnswersToQuestionBeginner", async (req, res) => {
 
         try {
@@ -177,15 +213,15 @@ module.exports = (app, db) => {
 
 
         try {
-             const {question_id } = req.params;
+            const { question_id } = req.params;
 
             const dbQuestions = await getQuestionsById(question_id)
             const answers = await getQuestionAnswersById(question_id);
             console.log(question_id);
-            const questions =  {
-                    ...dbQuestions,
-                    answers
-                }
+            const questions = {
+                ...dbQuestions,
+                answers
+            }
             // {
             //     id: 1,
             //     question: 'one plus one',
@@ -204,8 +240,8 @@ module.exports = (app, db) => {
 
             res.status(200).json({
 
-               questions
-               
+                questions
+
             });
 
         } catch (error) {
@@ -216,4 +252,4 @@ module.exports = (app, db) => {
         }
     })
 
-    }
+}
