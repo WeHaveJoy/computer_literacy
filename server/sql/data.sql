@@ -179,3 +179,20 @@ insert into answers(answer, correct) values('D. All of the above', 'False');
 
 
 -- 
+
+
+update assessment set course_id=1 where id= 1;
+update assessment set course_id=1 where id= 2;
+update assessment set course_id=1 where id= 3;
+update assessment set course_id=1 where id= 4;
+update assessment set course_id=1 where id= 5;
+update assessment set course_id=1 where id= 6;
+update assessment set course_id=1 where id= 7;
+update assessment set course_id=1 where id= 8;
+update assessment set course_id=1 where id= 9;
+update assessment set course_id=1 where id= 10;
+update assessment set course_id=1 where id= 11;
+update assessment set course_id=1 where id= 12;
+update assessment set course_id=1 where id= 13;
+update assessment set course_id=1 where id= 14;
+update assessment set course_id=1 where id= 15;
