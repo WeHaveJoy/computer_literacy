@@ -1,4 +1,18 @@
 import axios from 'axios'
+const Levels = {
+    One: 'ONE',
+    Two: 'TWO',
+    Three: 'THREE',
+    beginnerAssessment: 'beginnerAss'
+}
+
+const Assessments = {
+
+    intermidiateAssessment: 'intermidiateAss',
+    advancedAssessment: 'advancedAss'
+
+}
+
 export default function computer_literacy() {
 
     return {
@@ -18,11 +32,16 @@ export default function computer_literacy() {
             school: ''
         },
 
+
+        currentLevel: '',
+        currentAssement: '',
+
         level: {
             level1: '',
             level2: '',
             level3: ''
         },
+
 
         user: {
             role: ''
@@ -39,9 +58,12 @@ export default function computer_literacy() {
         computers: [],
         computers3: [],
         quizes: [],
+        availableUsers: [],
         all: '',
 
         init() {
+            this.currentLevel = Levels.One
+            // this.currentAssement = Assessments.beginnerAssessment
             setInterval(() => {
                 this.message = ''
                 this.error = ''
@@ -54,7 +76,6 @@ export default function computer_literacy() {
                 this.showForm()
             }, 3000);
         },
-
 
         regUser() {
             axios
@@ -129,6 +150,21 @@ export default function computer_literacy() {
         },
 
         beginner3() {
+
+            axios
+                .get('http://localhost:4003/api/beginner_level3')
+                .then(results => {
+                    this.computers3 = results.data.course3;
+                    console.log(results.data);
+                    // this.showHome = true;
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+        assessment() {
+
             axios
                 .get('http://localhost:4003/api/beginner_level3')
                 .then(results => {
