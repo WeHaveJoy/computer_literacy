@@ -2,7 +2,15 @@ import axios from 'axios'
 const Levels = {
     One: 'ONE',
     Two: 'TWO',
-    Three: 'THREE'
+    Three: 'THREE',
+    beginnerAssessment: 'beginnerAss'
+}
+
+const Assessments = {
+
+    intermidiateAssessment: 'intermidiateAss',
+    advancedAssessment: 'advancedAss'
+
 }
 
 export default function computer_literacy() {
@@ -25,6 +33,7 @@ export default function computer_literacy() {
 
 
         currentLevel: '',
+        currentAssement: '',
 
         user: {
             role: ''
@@ -45,8 +54,7 @@ export default function computer_literacy() {
 
         init() {
             this.currentLevel = Levels.One
-
-
+            // this.currentAssement = Assessments.beginnerAssessment
             setInterval(() => {
                 this.message = ''
                 this.error = ''
@@ -59,13 +67,6 @@ export default function computer_literacy() {
                 this.showForm()
             }, 3000);
         },
-
-        // goTolevel3() {
-        //     setInterval(() => {
-        //         this.showL3()
-        //     }, 3000);
-        // },
-
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
@@ -149,7 +150,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computers3 = results.data.course3;
                     console.log(results.data);
-                    this.showHome = true;
+                    // this.showHome = true;
                     setInterval(() => {
                     }, 4000);
                     return true;
@@ -167,6 +168,6 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         }
-        
+
     }
 }
