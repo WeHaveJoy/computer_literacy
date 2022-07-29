@@ -28,7 +28,8 @@ export default function computer_literacy() {
             last_name: '',
             username: '',
             password: '',
-            role: ''
+            role: '',
+            school: ''
         },
 
 

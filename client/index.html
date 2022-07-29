@@ -50,12 +50,28 @@
             name="register_password" class="register">
           <br>
           <br>
-          <label>Please enter your role: </label>
-          <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
+
+
+          <label style="color:yellow ;">Please select your role: </label>
+          <br>
+
+          <div class="dropDown">
+            <select name="" x-bind:disabled="signUp.password === ''"  x-model=" signUp.role" class="role">
+              <option class="role" value="" required>Role</option>
+              <option class="role" value="learner">Learner</option>
+              <option class="role" value="parent">Parent</option>
+              <option class="role" value="teacher">Teacher</option>
+            </select>
+          </div>
+
+          <br>
+          <label style="color:yellow ;">Please enter your school: </label>
+
+          <input x-model="signUp.school" x-bind:disabled="signUp.role === ''" type="text" name="register_school"
+
             class="register">
           <br>
-          <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
-            value="Register" class="button">
+          <input type="button" @click="regUser(), goToLogin()" name="action" value="Register" class="button">
         </div>
 
         <br>
@@ -251,7 +267,7 @@
             <div>
               <input type="radio" value="yes" x-model="quiz.answer">
               <span x-text="this.quiz"></span>
-                <!-- <span x-text="quiz.answer_id"></span> -->
+              <!-- <span x-text="quiz.answer_id"></span> -->
 
             </div>
           </template>
@@ -268,7 +284,7 @@
 
 
         <h2> Search for the learner:</h2>
-        <input type="search" >
+        <input type="search">
         <button @click="user.username"> Show learner</button>
         <div>
           <br>
@@ -300,19 +316,19 @@
             <h4>You are on the Teacher Screen</h4>
 
         <h2> Search for your child:</h2>
-        <input type="search" >
+        <input type="search">
         <button @click="user.username"> Show learner</button>
-        
-          <br>
-          <br>
+
+        <br>
+        <br>
         <div>
           <h4>You are on the parent screen</h4>
-       
-      </div>
+
+        </div>
 
 
 
-      <!-- <div class="footer">
+        <!-- <div class="footer">
       <footer>
         <div class="row">
           <div class="contact">
@@ -325,6 +341,23 @@
           </div>
         </div>
 
+    </footer>
+  </div> -->
+        <!-- <div class="footer">
+        <div class="contact">
+          <strong>Contact us at:</strong>
+            (021)-541-1000
+           <br>
+          <strong>twitter /fb /insta </strong>
+           @computer_literacy
+        </div>
+        <div class="address">
+          <strong>Find us:</strong>
+          CodeX
+          <br>
+          Cape Town
+
+
       </div>
 
       <div class="">
@@ -336,6 +369,7 @@
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
+
           <br>
           <div>
             <h4>You are on the parent screen</h4>
@@ -347,7 +381,7 @@
       </div>
 
       </div> -->
-    </div>
+      </div>
     </div>
 
 
