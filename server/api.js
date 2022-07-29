@@ -36,38 +36,37 @@ module.exports = (app, db) => {
 
     app.get('/api/courses', async (req, res) => {
 
-        const courses = await db.manyOrNone(`select * from courses_beginners`);
+        const results = await db.manyOrNone(`select * from courses_beginners`);
 
-        const assessments = courses.map(async (course) => {
+        const courseResults = results.map(async (course) => {
 
-            const getAssessmentsByCourseId = await db.manyOrNone(`select * from assessment where course_id = 1;`)
-
-            const assessments = await getAssessmentsByCourseId(course.id)
+            const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
 
-            const questions = assessments.map(async (assessment) => {
 
-                const { assessment_id } = req.body;
+            //     const questions = assessments.map(async (assessment) => {
 
-                const getQuestionsByAssessmentId = await db.manyOrNone(`select * from questions where assessment_id = $1`, [assessment_id])
+            //         const { assessment_id } = req.body;
 
-                const assessmentQuestions = await getQuestionsByAssessmentId(assessment.id)
+            //         const getQuestionsByAssessmentId = await db.manyOrNone(`select * from questions where assessment_id = $1`, [assessment_id])
 
-
-                return {
-                    assessmentQuestions,
-                    ...assessment
-                }
-
-            })
-
+            //         const assessmentQuestions = await getQuestionsByAssessmentId(assessment.id)
 
             return {
                 ...course,
-                assessments,
-                questions
+                assessments
             }
+
         })
+
+        const courses = await Promise.all(courseResults)
+
+        res.send({
+            courses,
+
+            // questions
+        })
+        // })
 
     })
 

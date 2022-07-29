@@ -196,3 +196,6 @@ update assessment set course_id=1 where id= 12;
 update assessment set course_id=1 where id= 13;
 update assessment set course_id=1 where id= 14;
 update assessment set course_id=1 where id= 15;
+
+
+
