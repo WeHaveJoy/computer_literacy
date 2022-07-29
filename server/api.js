@@ -75,7 +75,7 @@ module.exports = (app, db) => {
     );
 
     app.post("/api/signUp", async (req, res) => {
-        const { first_name, last_name, username, password, role } = req.body;
+        const { first_name, last_name, username, password, role, school } = req.body;
 
         try {
             console.log(req.body);
@@ -91,8 +91,8 @@ module.exports = (app, db) => {
             const pass = await bcrypt.hash(password, 10);
 
             await db.none(
-                `INSERT INTO users (first_name, last_name, username, password, role) VALUES ($1,$2,$3,$4,$5)`,
-                [first_name, last_name, username, pass, role]
+                `INSERT INTO users (first_name, last_name, username, password, role, school) VALUES ($1,$2,$3,$4,$5,$6)`,
+                [first_name, last_name, username, pass, role, school]
             );
 
             res.status(200).json({
@@ -101,7 +101,7 @@ module.exports = (app, db) => {
 
         } catch (error) {
             console.log(error.message);
-            res.status(500).json({
+            res.status(500).json({  
                 error: error.message,
             });
         }
