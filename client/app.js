@@ -40,8 +40,6 @@ export default function computer_literacy() {
         quizes: [],
         all: '',
 
-
-
         init() {
             setInterval(() => {
                 this.message = ''
@@ -56,11 +54,6 @@ export default function computer_literacy() {
             }, 3000);
         },
 
-        // goTolevel3() {
-        //     setInterval(() => {
-        //         this.showL3()
-        //     }, 3000);
-        // },
 
         regUser() {
             axios
@@ -83,9 +76,6 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
-
-
-
 
         logUser() {
             axios
