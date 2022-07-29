@@ -4,7 +4,7 @@
 # About the App
  -This *Computer literacy app* is designed for the interest of learners(or anyone who might be    interested) 
   who wants to learn computer literature at the palm of their hands.It is a simple to use app with quite  friendly user interface.
-
+    
  -This app will bridge the gap between the educator and the learner,as it is designed in accordance with the curriculumn.
  -The app entails great *learning levels* which are grouped into *courses* and at the very end of each course there is an *assessment for the learner*.The assessments are in Multiple choice form with mind stretching answers.
 
