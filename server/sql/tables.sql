@@ -18,6 +18,7 @@
 
     create table courses_beginners(
         id serial not null primary key,
+        name text,
         description text NOT NULL,
         img text NOT NULL,
         level int NOT NULL
@@ -25,6 +26,7 @@
 
     create table courses_intermediate(
         id serial not null primary key,
+        name text,
         description text NOT NULL,
         img text NOT NULL,
         level int NOT NULL
@@ -33,6 +35,7 @@
 
     create table courses_advanced(
         id serial not null primary key,
+        name text,
         description text NOT NULL,
         img text NOT NULL,
         level int NOT NULL
@@ -41,10 +44,10 @@
     create table assessment(
         id serial not null primary key,
         description text NOT NULL,
-        course_id int ,
-        FOREIGN KEY (course_id) REFERENCES courses_beginners(id),
-        FOREIGN KEY (course_id) REFERENCES courses_intermediate(id),
-        FOREIGN KEY (course_id) REFERENCES courses_advanced(id)
+        course_name text ,
+        FOREIGN KEY (course_name) REFERENCES courses_beginners(name),
+        FOREIGN KEY (course_name) REFERENCES courses_intermediate(name),
+        FOREIGN KEY (course_name) REFERENCES courses_advanced(name)
     );
 
     create table questions(

@@ -42,8 +42,7 @@ module.exports = (app, db) => {
 
             const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
-
-
+            
             //     const questions = assessments.map(async (assessment) => {
 
             //         const { assessment_id } = req.body;
@@ -250,5 +249,25 @@ module.exports = (app, db) => {
             });
         }
     })
+
+
+app.get("/api/getLearners", async (req, res) => {
+
+    const results = await db.manyOrNone(`select * from school`);
+
+    const schoolResults = results.map(async (learner) => {
+
+        const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
+
+        
+
+        return{
+            ...learner,
+            schools
+        }
+
+    })
+
+})
 
 }
