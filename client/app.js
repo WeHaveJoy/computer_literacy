@@ -177,6 +177,8 @@ export default function computer_literacy() {
         },
 
 
+        
+
         questionId(){
            let quest_id;
             courses = axios.get(`http://localhost:4003/api/courses_beginner/1`)

@@ -1,19 +1,3 @@
-// const PgPromise = require("pg-promise")
-// const express = require("express");
-// const assert = require("assert");
-// const fs = require("fs");
-// require('dotenv').config()
-// var supertest = require("supertest")
-// var koa = require('koa');
-
-// var app = module.exports = new koa();
-// module.exports = app;
-// var API = require('../api');
-
-// const pg = require("pg");
-// const Pool = pg.Pool;
-
-
 const supertest = require('supertest');
 const PgPromise = require("pg-promise")
 const express = require('express');
@@ -35,19 +19,10 @@ const db = pgp(DATABASE_URL);
 API(app, db);
 
 
-
-// module.exports = (app, db) => {
-// let app = express();
-// const app = express();
-
 describe('As part of the computer literacy', () => {
 
     const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/computer_literacy";
 
-    // const pgp = PgPromise({});
-    // const db = pgp(DATABASE_URL);
-
-    //  API(app, db);
 
     before(async function () {
         this.timeout(5000);
@@ -64,7 +39,8 @@ describe('As part of the computer literacy', () => {
                 last_name: 'Dyantyi',
                 username: 'sino10',
                 password: 'password',
-                role: 'learner'
+                role: 'learner',
+                school: 'Langa High School'
             });
 
         const responseUsers = await supertest(app)
@@ -87,7 +63,8 @@ describe('As part of the computer literacy', () => {
                 last_name: 'Dyantyi',
                 username: 'sino10',
                 password: 'password',
-                role: 'learner'
+                role: 'learner',
+                school: 'Langa High School'
             });
 
         const responseUsers = await supertest(app)
@@ -149,4 +126,3 @@ describe('As part of the computer literacy', () => {
 
 
 }).timeout(5000);
-// };

@@ -177,9 +177,7 @@ insert into answers(answer, correct) values('B. Keep the computer cover closed',
 insert into answers(answer, correct) values('C. Remove the CPU fan', 'False');
 insert into answers(answer, correct) values('D. All of the above', 'False');
 
-
 -- 
-
 
 update assessment set course_id=1 where id= 1;
 update assessment set course_id=1 where id= 2;
@@ -196,6 +194,3 @@ update assessment set course_id=1 where id= 12;
 update assessment set course_id=1 where id= 13;
 update assessment set course_id=1 where id= 14;
 update assessment set course_id=1 where id= 15;
-
-
-
