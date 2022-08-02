@@ -64,6 +64,7 @@ module.exports = (app, db) => {
             }
 
         })
+    
 
         const courses = await Promise.all(courseResults)
 
@@ -171,7 +172,6 @@ module.exports = (app, db) => {
                 error: error.message,
             });
         }
-
     })
 
     app.get("/api/beginner_level3", async (req, res) => {
@@ -299,8 +299,13 @@ module.exports = (app, db) => {
 
         const schoolResults = results.map(async (learner) => {
 
+ 
             const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
 
+            const learner_school = schools.map(async (school) =>{
+
+
+            })
 
 
             return {
@@ -309,7 +314,6 @@ module.exports = (app, db) => {
             }
 
         })
-
     })
 
 }

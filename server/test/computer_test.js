@@ -1,29 +1,36 @@
+// const PgPromise = require("pg-promise")
+// const express = require("express");
+// const assert = require("assert");
+// const fs = require("fs");
+// require('dotenv').config()
+// var supertest = require("supertest")
+// var koa = require('koa');
+// var app = module.exports = new koa();
+// module.exports = app;
+// var API = require('../api');
+// const pg = require("pg");
+// const Pool = pg.Pool;
 const supertest = require('supertest');
 const PgPromise = require("pg-promise")
 const express = require('express');
 const assert = require('assert');
 const fs = require('fs');
 require('dotenv').config()
-
 const API = require('../api');
 const { default: axios } = require('axios');
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 const DATABASE_URL = process.env.DATABASE_URL;
 const pgp = PgPromise({});
 const db = pgp(DATABASE_URL);
-
 API(app, db);
 
 
 
 
+
 describe('As part of the computer literacy', () => {
-
-
 
     before(async function () {
         this.timeout(5000);
@@ -32,6 +39,7 @@ describe('As part of the computer literacy', () => {
         //  await db.none(commandText)
     });
     it('should have a test method', async () => {
+
 
         const response = await supertest(app)
             .get('/api/test')
@@ -42,6 +50,7 @@ describe('As part of the computer literacy', () => {
     });
 
     it('should be able to signup a new user', async () => {
+
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
@@ -52,6 +61,7 @@ describe('As part of the computer literacy', () => {
                 role: 'learner',
                 school: 'camps bay'
             })
+
             .expect(200);
         const users = response.body.data;
         const signup = response.body.message;
@@ -83,8 +93,10 @@ describe('As part of the computer literacy', () => {
             .post('/api/logIn')
             .send({
 
+
                 username: 'zizobeda',
                 password: 'password',
+
 
 
             })
@@ -92,6 +104,7 @@ describe('As part of the computer literacy', () => {
         const users = response.body.data;
         const login = response.body.message;
         assert.deepStrictEqual('You are loged in', login);
+
 
     });
 
@@ -135,22 +148,22 @@ describe('As part of the computer literacy', () => {
             const numCourses = courses.length
     
             assert.equal(24,numCourses);
+
     });
     it('should be able to get all the answers', async () => {
         const response = await supertest(app)
             .get('/api/addAnswersToQuestionBeginner')
             .expect(200);
 
+
             const courses = response.body.message;
             const numCourses = courses.length
     
             assert.equal(33,numCourses);
 
-    });
 
+    });
     after(async () => {
         db.$pool.end();
     });
-
-
 }).timeout(5000);

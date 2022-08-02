@@ -57,6 +57,8 @@ export default function computer_literacy() {
         init() {
             // this.classLearner()
             this.currentLevel = Levels.One
+
+
             setInterval(() => {
                 this.message = ''
                 this.error = ''

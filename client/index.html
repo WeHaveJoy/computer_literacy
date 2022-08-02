@@ -84,7 +84,8 @@
             </select>
           </div>
           <br>
-          <input type="button" @click="regUser(), goToLogin()" name="action" value="Register" class="button">
+          <input type="button" x-bind:disabled="signUp.school === ''" @click="regUser(), goToLogin()" name="action"
+            value="Register" class="button">
         </div>
 
         <br>
@@ -156,6 +157,7 @@
             </div>
           </div>
         </div>
+
         <div x-show="currentLevel == 'TWO'" class="level2">
           <div class="">
             <div class="card" style="width: 78rem; height: 25rem;">
@@ -238,10 +240,9 @@
         </div>
 
 
-
       </div>
 
-      <div class="">
+      <!-- <div class=""> -->
 
 
 
@@ -316,6 +317,7 @@
 
 
               <!-- <div class="footer">
+
       <footer>
         <div class="row">
           <div class="contact">
@@ -330,8 +332,9 @@
 
     </footer>
   </div> -->
-            </div>
-            <!-- <div class="footer">
+
+      <!-- <div class="footer">
+
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -369,11 +372,10 @@
       </div>
 
       </div> -->
-          </div>
-        </div>
+      <!-- </div> -->
 
 
-      </div>
+      <!-- </div> -->
 
     </div>
   </div>
