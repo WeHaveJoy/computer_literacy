@@ -42,7 +42,7 @@ module.exports = (app, db) => {
 
             const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
-            
+
             //     const questions = assessments.map(async (assessment) => {
 
             //         const { assessment_id } = req.body;
@@ -57,6 +57,7 @@ module.exports = (app, db) => {
             }
 
         })
+    
 
         const courses = await Promise.all(courseResults)
 
@@ -100,7 +101,7 @@ module.exports = (app, db) => {
 
         } catch (error) {
             console.log(error.message);
-            res.status(500).json({  
+            res.status(500).json({
                 error: error.message,
             });
         }
@@ -162,7 +163,6 @@ module.exports = (app, db) => {
                 error: error.message,
             });
         }
-
     })
 
     app.get("/api/beginner_level3", async (req, res) => {
@@ -251,23 +251,23 @@ module.exports = (app, db) => {
     })
 
 
-app.get("/api/getLearners", async (req, res) => {
+    app.get("/api/getLearners", async (req, res) => {
 
-    const results = await db.manyOrNone(`select * from school`);
+        const results = await db.manyOrNone(`select * from school`);
 
-    const schoolResults = results.map(async (learner) => {
+        const schoolResults = results.map(async (learner) => {
+ 
+            const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
 
-        const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
+            const learner_school = schools.map(async (school) =>{
 
-        
 
-        return{
-            ...learner,
-            schools
-        }
+            })
 
+            return {
+                ...learner,
+                schools
+            }
+        })
     })
-
-})
-
 }

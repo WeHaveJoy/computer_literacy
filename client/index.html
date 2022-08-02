@@ -162,7 +162,9 @@
               </div>
             </div>
           </div>
-          <div x-show="currentLevel == 'TWO'" class="level2">
+        </div>
+
+          <!-- <div x-show="this.currentLevel == 'TWO'" class="level2"> -->
             <div class="">
               <div class="card" style="width: 78rem; height: 25rem;">
                 <h2 class="levelsText">Beginner course level 2:<strong>Assemblying Computer
@@ -184,16 +186,13 @@
                 </p>
               </div>
               <div class="d-grid gap-5">
-                <button @click="currentLevel = 'THREE',beginner3(),showContent()" class="btn btn-primary"
+                <button @click="this.currentLevel = 'THREE',beginner3(),showContent()" class="btn btn-primary"
                   type="button">Next Level>>></button>
               </div>
             </div>
+          <!-- </div> -->
 
-
-
-          </div>
-
-          <div x-show="currentLevel == 'THREE'" class="level3">
+          <!-- <div x-show="currentLevel == 'THREE'" class="level3"> -->
             <h2 class="levelsText">Beginner course level 3:<strong>How to...</strong></h2>
             <div x-text="message"></div>
             <div class="card" style="width: 78rem; height: 25rem;">
@@ -228,8 +227,10 @@
               <button class="btn btn-primary" @click="currentLevel = 'beginnerAss'" type="button">Go to
                 Assessment>>></button>
             </div>
-          </div>
-          <div x-show="currentLevel == 'beginnerAss'" class="beginner">
+          <!-- </div> -->
+
+
+          <!-- <div x-show="currentLevel == 'beginnerAss'" class="beginner"> -->
             <div>
               <h2>Please complete this assessment before requesting for the next course: </h2>
               <button @click="assessment()"> Show quiz</button>
@@ -242,10 +243,10 @@
                 </div>
               </template>
             </div>
-          </div>
+          <!-- </div> -->
 
 
-          <div class="level3">
+          <!-- <div class="level3">
             <h2>Beginner course level 3:</h2>
             <br>
             <h4>About: Creating the files and folders, highliting, drag and drop and mouse clicks</h4>
@@ -260,28 +261,29 @@
                 <br>
                 <img x-bind:src="`/Beginners/${computer3.img}`">
               </div>
-            </template>
-            <!-- <button>Go to assessment</button> -->
-          </div>
+            </template> -->
+          <!-- <button>Go to assessment</button> -->
+          <!-- </div> -->
 
-          <div class="assessment">
+          <!-- <div class="assessment">
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
-            <template x-for="quiz in quizes">
+            <template x-for="quiz in quizes"> -->
 
 
-              <!-- <input type="radio" value="no" x-model="answer.answer"> -->
-              <div>
+          <!-- <input type="radio" value="no" x-model="answer.answer"> -->
+          <!-- <div>
                 <input type="radio" value="yes" x-model="quiz.answer">
-                <span x-text="this.quiz"></span>
-                <!-- <span x-text="quiz.answer_id"></span> -->
+                <span x-text="this.quiz"></span> -->
+          <!-- <span x-text="quiz.answer_id"></span> -->
 
-              </div>
+          <!-- </div>
             </template>
-          </div>
+          </div> -->
 
         </div>
-      </div>
+      <!-- </div> -->
+      
 
       <div x-show="user.role === 'teacher'" class="teacher">
         <div>
@@ -309,33 +311,13 @@
 
       </div>
 
-      <div class="">
+      <!-- <div class=""> -->
 
 
-        <div x-show="user.role === 'teacher'" class="teacher">
+        <!-- <div x-show="user.role === 'teacher'" class="teacher"> -->
 
 
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-          <br>
-          <div>
-            <h4>You are on the Teacher Screen</h4>
-
-            <h2> Search for your child:</h2>
-            <input type="search">
-            <button @click="user.username"> Show learner</button>
-
-            <br>
-            <br>
-            <div>
-              <h4>You are on the parent screen</h4>
-
-            </div>
-
-
-
-            <!-- <div class="footer">
+          <!-- <div class="footer">
       <footer>
         <div class="row">
           <div class="contact">
@@ -350,7 +332,7 @@
 
     </footer>
   </div> -->
-            <!-- <div class="footer">
+          <!-- <div class="footer">
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -388,11 +370,10 @@
       </div>
 
       </div> -->
-          </div>
-        </div>
+        <!-- </div> -->
 
 
-      </div>
+      <!-- </div> -->
 
     </div>
   </div>

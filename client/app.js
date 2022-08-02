@@ -63,6 +63,7 @@ export default function computer_literacy() {
 
         init() {
             this.currentLevel = Levels.One
+            
             // this.currentAssement = Assessments.beginnerAssessment
             setInterval(() => {
                 this.message = ''
