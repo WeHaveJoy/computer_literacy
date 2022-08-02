@@ -4,7 +4,8 @@
         last_name text NOT NULL,
         username text NOT NULL,
         password varchar NOT NULL,
-        role text NOT NULL
+        role text NOT NULL,
+        school text 
     );
 
     create table courses_beginners(
@@ -28,6 +29,18 @@
         img text NOT NULL,
         level int NOT NULL
     );
+    
+
+
+    create table courses_advanced(
+        id serial not null primary key,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );
+    
+
+
 
     create table assessment(
         id serial not null primary key,

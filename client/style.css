@@ -14,10 +14,12 @@ body {
   /* background-color: #416165; */
   /* overflow: hidden; */
 }
-
+.learner{
+  background-color: #416165;
+}
 .container {
 
-  background-color: #416165;
+
   /* background-image: url(/lab.jpeg); */
   background-position: center center;
   background-repeat: no-repeat;
@@ -110,7 +112,7 @@ body {
   height: 20em;
 }
 
-.card {
+.card  {
   /* padding-left: 18rem; */
   margin-left: 7rem;
   font-size: medium;

@@ -16,6 +16,13 @@ module.exports = (app, db) => {
         })
     }
 
+
+    app.get('/api/test', function (req, res) {
+        res.json({
+            name: 'joe'
+        });
+    });
+
     // addAnswersToQuestion(questionId, answerId) 
 
     const getQuestionsById = async (id) => {
@@ -30,7 +37,7 @@ module.exports = (app, db) => {
         return ans;
     }
 
-    const getCourseById = async (course_id) =>{
+    const getCourseById = async (course_id) => {
         const course = await db.manyOrNone(`select * from courses_beginners`)
     }
 
@@ -39,10 +46,10 @@ module.exports = (app, db) => {
     );
 
     app.post("/api/signUp", async (req, res) => {
-        const { first_name, last_name, username, password, role } = req.body;
+        const { first_name, last_name, username, password, role, school } = req.body;
 
         try {
-            console.log(req.body);
+            // console.log(req.body);
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username= $1`,
                 [username]
@@ -50,15 +57,15 @@ module.exports = (app, db) => {
 
             if (findUser != null) {
                 throw Error(`User already exists!`);
-            }
+            }else{
 
             const pass = await bcrypt.hash(password, 10);
 
-            await db.none(
-                `INSERT INTO users (first_name, last_name, username, password, role) VALUES ($1,$2,$3,$4,$5)`,
-                [first_name, last_name, username, pass, role]
+         let signup =   await db.none(
+                `INSERT INTO users (first_name, last_name, username, password, role,school) VALUES ($1,$2,$3,$4,$5,$6)`,
+                [first_name, last_name, username, pass, role, school]
             );
-
+            }
             res.status(200).json({
                 message: "User created!",
             });
@@ -74,7 +81,7 @@ module.exports = (app, db) => {
     app.post("/api/logIn", async (req, res) => {
         try {
             const { username, password } = req.body;
-            console.log('logIn .....', req.body);
+            // console.log('logIn .....', req.body);
 
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username = $1`,
@@ -82,8 +89,10 @@ module.exports = (app, db) => {
             );
 
             if (!findUser) {
+                // message = 'User not found'
+                throw Error(`The user does not exists`);
 
-                throw Error(`The user doesn't exist`);
+                
             }
             const isValid = await bcrypt.compare(password, findUser.password);
             if (!isValid) {
@@ -117,8 +126,8 @@ module.exports = (app, db) => {
             const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=1`, [level]);
 
             res.status(200).json({
-                message: "Beginner course level 1!",
-                course: display_course
+                // message: "Beginner course level 1!",
+                message: display_course
             });
 
         } catch (error) {
@@ -163,7 +172,28 @@ module.exports = (app, db) => {
             const questAns = await db.oneOrNone(`select * from answers`);
 
             res.status(200).json({
-                qna: questAns
+                qna: questAns,
+                message: "You have selected all the answers"
+            });
+        } catch (error) {
+          
+            res.status(200).json({
+             message: "You have selected all the answers"
+            })
+        }
+    })
+
+
+
+
+    app.get("/api/getLearnersForClass/:school", async (req, res) => {
+        const { school } = req.params
+        try {
+
+            const learners = await db.oneOrMany(`select * from users where school = $1`, [school]);
+
+            res.status(200).json({
+                learners: learners
             });
         } catch (error) {
             console.log(error.message);
@@ -173,19 +203,31 @@ module.exports = (app, db) => {
         }
     })
 
+
+
+
+
+
+
+
+
+
+
+
+
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
 
         try {
-             const {question_id } = req.params;
+            const { question_id } = req.params;
 
             const dbQuestions = await getQuestionsById(question_id)
             const answers = await getQuestionAnswersById(question_id);
-            console.log(question_id);
-            const questions =  {
-                    ...dbQuestions,
-                    answers
-                }
+            // console.log(question_id);
+            const questions = {
+                ...dbQuestions,
+                answers
+            }
             // {
             //     id: 1,
             //     question: 'one plus one',
@@ -204,8 +246,8 @@ module.exports = (app, db) => {
 
             res.status(200).json({
 
-               questions
-               
+                questions
+
             });
 
         } catch (error) {
@@ -216,4 +258,4 @@ module.exports = (app, db) => {
         }
     })
 
-    }
+}

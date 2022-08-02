@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&display=swap');
   </style>
@@ -54,6 +57,10 @@
           <input x-model="signUp.role" x-bind:disabled="signUp.password === ''" type="text" name="register_password"
             class="register">
           <br>
+          <label>Please enter your school: </label>
+          <input x-model="signUp.school" x-bind:disabled="signUp.role === ''" type="text" name="register_school"
+            class="register">
+          <br>
           <input type="button" x-bind:disabled="signUp.role === ''" @click="regUser(), goToLogin()" name="action"
             value="Register" class="button">
         </div>
@@ -80,6 +87,15 @@
 
 
       <div x-show="user.role === 'learner'" class="learner">
+        <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
+          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+
+          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+
+          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
+
+        </div> -->
+
         <div class="funky">
           <h1>Welcome <span x-text="user.first_name"></span></h1>
         </div>
@@ -215,7 +231,25 @@
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
+
           <br>
+
+          <div>
+            <label>Please enter your school: </label>
+            <input x-model="schoolName" type="text" name="register_school" class="register">
+            <br>
+            <button @click="classLearner()"> Show learners</button>
+            <div>
+              <template x-for="learner in classLearners">
+
+                <div>
+                  <span x-text="learner"></span>
+
+                </div>
+              </template>
+
+            </div>
+          </div>
           <div>
             <h4>You are on the Teacher Screen</h4>
           </div>

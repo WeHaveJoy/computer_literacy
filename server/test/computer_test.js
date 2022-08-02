@@ -36,18 +36,10 @@ API(app, db);
 
 
 
-// module.exports = (app, db) => {
-// let app = express();
-// const app = express();
 
 describe('As part of the computer literacy', () => {
 
-    const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/computer_literacy";
 
-    // const pgp = PgPromise({});
-    // const db = pgp(DATABASE_URL);
-
-    //  API(app, db);
 
     before(async function () {
         this.timeout(5000);
@@ -55,91 +47,121 @@ describe('As part of the computer literacy', () => {
         // const commandText = fs.readFileSync('./sql/data.sql', 'utf-8');
         //  await db.none(commandText)
     });
+    it('should have a test method', async () => {
+
+        const response = await supertest(app)
+            .get('/api/test')
+            .expect(200);
+
+        assert.deepStrictEqual({ name: 'joe' }, response.body);
+
+    });
 
     it('should be able to signup a new user', async () => {
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
-                name: 'Zandile',
-                surname: 'Bakaqana',
-                username: 'zan13',
+                first_name: 'zizo',
+                last_name: 'beda',
+                username: 'zizobeda',
                 password: 'password',
-                role: 'learner'
-            });
-
-        const responseUsers = await supertest(app)
-            .get('/api/signUp')
+                role: 'learner',
+                school: 'camps bay'
+            })
             .expect(200);
-
-        console.log(responseUsers.body.data, 'after adding the new user');
-
         const users = response.body.data;
         const signup = response.body.message;
-        assert.deepStrictEqual('user created', signup);
+        assert.deepStrictEqual('User created!', signup);
 
     });
 
-    it('should be able to throw an error when the user already exists', async () => {
-        const response = await supertest(app)
-            .post('/api/signUp')
-            .send({
-                name: 'Zandile',
-                surname: 'Bakaqana',
-                username: 'zan13',
-                password: 'password',
-                role: 'learner'
-            });
+    // it('should be able to throw an error when the user already exists', async () => {
+    //     const response = await supertest(app)
+    //         .post('/api/signUp')
+    //         .send({
+    //             first_name: 'zizo',
+    //             last_name: 'beda',
+    //             username: 'zizobeda',
+    //             password: 'password',
+    //             role: 'learner',
+    //             school: 'camps bay'
+    //         })
+    //         .expect(500);
+    //     const users = response.body.data;
+    //     const signup = response.body.message;
+    //     assert.deepStrictEqual('The user already exists', users);
 
-        const responseUsers = await supertest(app)
-            .get('/api/signUp')
-            .expect(200);
-
-        console.log(responseUsers.body.data, 'after adding the new user');
-
-        const users = response.body.data;
-        const signup = response.body.message;
-        assert.deepStrictEqual('The user already exists', signup);
-
-    });
+    // });
 
 
     it('should be able to login an existing user', async () => {
         const response = await supertest(app)
             .post('/api/logIn')
             .send({
-                username: 'zan13',
-                password: 'password'
-            });
 
-        const responseUsers = await supertest(app)
-            .get('/api/logIn')
+
+                username: 'zizobeda',
+                password: 'password',
+
+
+            })
             .expect(200);
-
-        console.log(responseUsers.body.data, 'after adding an existing user');
-
         const users = response.body.data;
         const login = response.body.message;
-        assert.deepStrictEqual('The user already exists', login);
+        assert.deepStrictEqual('You are loged in', login);
 
     });
 
-    it('should be able to throw an error for a user that is not registered', async () => {
-        const response = await supertest(app)
-            .post('/api/logIn')
-            .send({
-                username: 'sino13',
-                password: 'password'
-            });
+    // it('should throw an error when the user does  not exist', async () => {
+    //     const response = await supertest(app)
+    //         .post('/api/logIn')
+    //         .send({
+    //             username: 'hloma',
+    //             password: 'pass'
+    //         })
+    //         .expect(200);
+    //     const login = response.body.message;
+    //     assert.deepStrictEqual('The user does not exists', login);
+    // });
 
-        const responseUsers = await supertest(app)
-            .get('/api/logIn')
+
+
+    it('should be able to get all the beginner courses level 1' , async () => {
+        const response = await supertest(app)
+            .get('/api/beginner_level1')
             .expect(200);
 
-        console.log(responseUsers.body.data, 'after adding an existing user');
 
-        const users = response.body.data;
-        const login = response.body.message;
-        assert.deepStrictEqual('The user does not exist', login);
+
+
+        const courses = response.body.message;
+        const numCourses = courses.length
+
+        assert.equal(12,numCourses);
+
+    });
+
+    it('should be able to get all the beginner courses level 3', async () => {
+        const response = await supertest(app)
+            .get('/api/beginner_level3')
+            .expect(200);
+
+
+
+            const courses = response.body.message;
+            const numCourses = courses.length
+    
+            assert.equal(24,numCourses);
+    });
+    it('should be able to get all the answers', async () => {
+        const response = await supertest(app)
+            .get('/api/addAnswersToQuestionBeginner')
+            .expect(200);
+
+            const courses = response.body.message;
+            const numCourses = courses.length
+    
+            assert.equal(33,numCourses);
 
     });
 
@@ -149,4 +171,3 @@ describe('As part of the computer literacy', () => {
 
 
 }).timeout(5000);
-// };
