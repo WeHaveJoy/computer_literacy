@@ -23,6 +23,7 @@ module.exports = (app, db) => {
         });
     });
 
+
     // addAnswersToQuestion(questionId, answerId) 
 
     const getQuestionsById = async (id) => {
@@ -50,7 +51,7 @@ module.exports = (app, db) => {
             const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
 
-            //     const questions = assessments.map(async (assessment) => {
+            //      const questions = assessments.map(async (assessment) => {
 
             //         const { assessment_id } = req.body;
 
@@ -62,9 +63,7 @@ module.exports = (app, db) => {
                 ...course,
                 assessments
             }
-
         })
-    
 
         const courses = await Promise.all(courseResults)
 
@@ -76,6 +75,7 @@ module.exports = (app, db) => {
         // })
 
     })
+    
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -162,8 +162,8 @@ module.exports = (app, db) => {
             const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=1`, [level]);
 
             res.status(200).json({
-                // message: "Beginner course level 1!",
-                message: display_course
+                message: "Beginner course level 1!",
+                course: display_course
             });
 
         } catch (error) {
@@ -247,6 +247,7 @@ module.exports = (app, db) => {
                 ...dbQuestions,
                 answers
             }
+
             // {
             //     id: 1,
             //     question: 'one plus one',
@@ -269,6 +270,7 @@ module.exports = (app, db) => {
 
             });
 
+
         } catch (error) {
             console.log(error.message);
             res.status(500).json({
@@ -283,10 +285,10 @@ module.exports = (app, db) => {
 
         const schoolResults = results.map(async (learner) => {
 
- 
+
             const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
 
-            const learner_school = schools.map(async (school) =>{
+            const learner_school = schools.map(async (school) => {
 
 
             })

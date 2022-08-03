@@ -70,7 +70,6 @@
           <br>
           <label style="color:yellow ;">Please enter your school: </label>
 
-
           <div class="dropDown">
             <select name="" x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class="school">
               <option class="role" value="" required>School</option>
@@ -108,7 +107,6 @@
         </div>
       </div>
 
-
       <div x-show="user.role === 'learner'" class="learner">
         <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
           <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
@@ -117,7 +115,7 @@
         </div> -->
 
         <div class="funky">
-          <h1>Welcome <span x-text="user.first_name"></span></h1>
+          <h1>Welcome to computer Literacy<span x-text="user.first_name"></span></h1>
         </div>
 
         <div x-show="currentLevel == 'ONE'" class="level1">
@@ -245,37 +243,36 @@
       <!-- <div class=""> -->
 
 
-
-        <div x-show="user.role === 'teacher'" class="teacher">
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-          <br>
-
-
-          <h2> Search for the learner:</h2>
-          <input type="search">
-          <button @click="user.username"> Show learner</button>
-          <div>
-            <br>
-            <br>
-            <h4>You are on the Teacher dashboard</h4>
-          </div>
+      <div x-show="user.role === 'teacher'" class="teacher">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
         </div>
+        <br>
 
-        <div x-show="user.role === 'parent'" class="parent">
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
+
+        <h2> Search for the learner:</h2>
+        <input type="search">
+        <button @click="user.username"> Show learner</button>
+        <div>
           <br>
-
-
+          <br>
+          <h4>You are on the Teacher dashboard</h4>
         </div>
+      </div>
 
-        <!-- <div class=""> -->
+      <div x-show="user.role === 'parent'" class="parent">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
+        </div>
+        <br>
 
 
-          <!-- <div x-show="user.role === 'teacher'" class="teacher">
+      </div>
+
+      <!-- <div class=""> -->
+
+
+      <!-- <div x-show="user.role === 'teacher'" class="teacher">
 
 
             <div>
@@ -316,7 +313,7 @@
 
 
 
-              <!-- <div class="footer">
+      <!-- <div class="footer">
 
       <footer>
         <div class="row">
