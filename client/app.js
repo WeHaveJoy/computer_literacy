@@ -33,14 +33,12 @@ export default function computer_literacy() {
             school: ''
         },
 
-
         currentLevel: '',
         currentAssement: '',
 
         user: {
             role: ''
         },
-
 
         show: false,
         showHome: false,
@@ -49,7 +47,6 @@ export default function computer_literacy() {
             password: '',
         },
 
-
         classLearners: [],
         schoolName: '',
         computers: [],
@@ -57,11 +54,11 @@ export default function computer_literacy() {
         quizes: [],
         availableUsers: [],
         all: '',
+        schoolLearners: [],
 
         init() {
             // this.classLearner()
             this.currentLevel = Levels.One
-
 
             setInterval(() => {
                 this.message = ''
@@ -70,13 +67,11 @@ export default function computer_literacy() {
             }, 5000);
         },
 
-
         goToLogin() {
             setInterval(() => {
                 this.showForm()
             }, 3000);
         },
-
 
         regUser() {
             axios
@@ -92,16 +87,13 @@ export default function computer_literacy() {
 
         },
 
-
         showContent() {
             this.show = !this.show
         },
 
-
         showForm() {
             this.show = !true
         },
-
 
         logUser() {
             axios
@@ -142,7 +134,6 @@ export default function computer_literacy() {
                 })
         },
 
-
         beginner() {
             axios
                 .get('http://localhost:4003/api/beginner_level1')
@@ -155,17 +146,15 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
+        // classLearner() {
+        //     axios
+        //         .get('http://localhost:4003/api/getLearnersForClass', this.schoolName)
+        //         .then(results => {
+        //             this.classLearners = results.data.learners;
+        //             console.log(results.data.learners);
+        //         }).catch(e => console.log(e));
+        // },
 
-        classLearner() {
-            axios
-                .get('http://localhost:4003/api/getLearnersForClass', this.schoolName)
-                .then(results => {
-                    this.classLearners = results.data.learners;
-                    console.log(results.data.learners);
-                }).catch(e => console.log(e));
-        },
-
-        
         beginner3() {
             axios
                 .get('http://localhost:4003/api/beginner_level3')
@@ -177,7 +166,6 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         },
-
 
         questionId() {
             let quest_id;
@@ -193,7 +181,6 @@ export default function computer_literacy() {
             return quest_id;
         },
 
-
         assessment() {
             for (let index = 1; index <= questionId(); index++) {
                 axios
@@ -205,8 +192,20 @@ export default function computer_literacy() {
                         }, 4000);
                         return true;
                     }).catch(e => console.log(e))
-
             }
+        },
+
+        getLearners(userSchoolName) {
+
+            axios
+                .get(`http://localhost:4003/api/getLearnersBySchoolName/${userSchoolName}`)
+                .then(results => {
+                    this.schoolLearners = results.data.learners;
+                    console.log(results.data);
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
         }
 
     }
