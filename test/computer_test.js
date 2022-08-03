@@ -21,23 +21,22 @@ API(app, db);
 
 describe('As part of the computer literacy', () => {
 
-    const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:sino123@localhost:5432/computer_literacy";
-
+    const DATABASE_URL = process.env.DATABASE_URL || "postgresql://coder:coder123@localhost:5432/postgres";
 
     before(async function () {
         this.timeout(5000);
         await db.none(`delete from users`);
         // const commandText = fs.readFileSync('./sql/data.sql', 'utf-8');
-        //  await db.none(commandText)
+        // await db.none(commandText)
     });
 
     it('should be able to signup a new user', async () => {
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
-                first_name: 'Sinovuyo',
-                last_name: 'Dyantyi',
-                username: 'sino10',
+                first_name: 'Mila',
+                last_name: 'Makhaphela',
+                username: 'mila10',
                 password: 'password',
                 role: 'learner',
                 school: 'Langa High School'
@@ -47,7 +46,7 @@ describe('As part of the computer literacy', () => {
             .get('/api/users')
             .expect(200);
 
-        console.log(responseUsers.body.data, 'after adding the new user');
+        //console.log(responseUsers.body.data, 'after adding the new user');
 
         const users = response.body.data;
         const signup = response.body.message;
@@ -59,9 +58,9 @@ describe('As part of the computer literacy', () => {
         const response = await supertest(app)
             .post('/api/signUp')
             .send({
-                first_name: 'Sinovuyo',
-                last_name: 'Dyantyi',
-                username: 'sino10',
+                first_name: 'Mila',
+                last_name: 'Makhaphela',
+                username: 'mila10',
                 password: 'password',
                 role: 'learner',
                 school: 'Langa High School'
@@ -84,7 +83,7 @@ describe('As part of the computer literacy', () => {
         const response = await supertest(app)
             .post('/api/logIn')
             .send({
-                username: 'sino10',
+                username: 'mila10',
                 password: 'password'
             });
 
