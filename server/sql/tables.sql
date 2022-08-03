@@ -13,7 +13,8 @@
         id serial not null primary key,
         school_name text not null,
         role_id int,
-        FOREIGN KEY (role_id) REFERENCES users (id)
+        FOREIGN KEY (role_id) REFERENCES users(id),
+        school text 
     );
 
     create table courses_beginners(
@@ -40,6 +41,18 @@
         img text NOT NULL,
         level int NOT NULL
     );
+    
+
+
+    create table courses_advanced(
+        id serial not null primary key,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );
+    
+
+
 
     create table assessment(
         id serial not null primary key,
