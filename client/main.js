@@ -7,6 +7,7 @@ import Alpine from "alpinejs";
 
 window.Alpine = Alpine;
 //  Alpine.plugin(persist);
+
  Alpine.data('info', computer_literacy)
 
 Alpine.start();

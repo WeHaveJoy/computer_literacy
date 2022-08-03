@@ -237,11 +237,9 @@
           </div>
         </div>
 
-
       </div>
 
       <!-- <div class=""> -->
-
 
       <div x-show="user.role === 'teacher'" class="teacher">
         <div>
@@ -249,13 +247,24 @@
         </div>
         <br>
 
-
-        <h2> Search for the learner:</h2>
-        <input type="search">
-        <button @click="user.username"> Show learner</button>
+        <!-- <h2> Search for the learner:</h2>
+        <input type="search"> -->
+        <button @click="getLearners(user.school)"> Show my class list</button>
         <div>
           <br>
           <br>
+          <template x-for="learn in schoolLearners">
+            <div>
+              <ul>
+                <li>
+                  <span x-text="learn.first_name"></span>
+                  <span x-text="learn.last_name"></span>
+                </li>
+              </ul>
+            </div>
+          </template>
+
+
           <h4>You are on the Teacher dashboard</h4>
         </div>
       </div>

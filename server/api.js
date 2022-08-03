@@ -75,7 +75,7 @@ module.exports = (app, db) => {
         // })
 
     })
-    
+
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -217,22 +217,22 @@ module.exports = (app, db) => {
         }
     })
 
-    app.get("/api/getLearnersForClass/:school", async (req, res) => {
-        const { school } = req.params
-        try {
+    // app.get("/api/getLearnersForClass/:school", async (req, res) => {
+    //     const { school } = req.params
+    //     try {
 
-            const learners = await db.oneOrMany(`select * from users where school = $1`, [school]);
+    //         const learners = await db.oneOrMany(`select * from users where school = $1`, [school]);
 
-            res.status(200).json({
-                learners: learners
-            });
-        } catch (error) {
-            console.log(error.message);
-            res.status(500).json({
-                error: error.message
-            })
-        }
-    })
+    //         res.status(200).json({
+    //             learners: learners
+    //         });
+    //     } catch (error) {
+    //         console.log(error.message);
+    //         res.status(500).json({
+    //             error: error.message
+    //         })
+    //     }
+    // })
 
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
@@ -279,27 +279,25 @@ module.exports = (app, db) => {
         }
     })
 
-    app.get("/api/getLearners", async (req, res) => {
+    app.get("/api/getLearnersBySchoolName/:school", async (req, res) => {
 
-        const results = await db.manyOrNone(`select * from school`);
+        try {
 
-        const schoolResults = results.map(async (learner) => {
+            const { school } = req.params;
 
-
-            const schools = await db.manyOrNone(`select * from school where learner_id = $1;`, [learner.id])
-
-            const learner_school = schools.map(async (school) => {
+            const learners = await db.manyOrNone(`select first_name, last_name  from users where school = $1 and role = 'learner'`, [school]);
 
 
+            res.status(200).json({
+                learners: learners
+            });
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
             })
+        }
 
-
-            return {
-                ...learner,
-                schools
-            }
-
-        })
     })
 
 }
