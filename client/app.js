@@ -23,6 +23,7 @@ export default function computer_literacy() {
         error: '',
         extra_mural: '',
 
+
         signUp: {
             first_name: '',
             last_name: '',
@@ -40,12 +41,15 @@ export default function computer_literacy() {
             role: ''
         },
 
+
         show: false,
         showHome: false,
         signIn: {
             username: '',
             password: '',
         },
+
+
         classLearners: [],
         schoolName: '',
         computers: [],
@@ -66,11 +70,14 @@ export default function computer_literacy() {
             }, 5000);
         },
 
+
         goToLogin() {
             setInterval(() => {
                 this.showForm()
             }, 3000);
         },
+
+
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
@@ -84,12 +91,18 @@ export default function computer_literacy() {
                 }).catch(e => console.log('User doesnt exists'))
 
         },
+
+
         showContent() {
             this.show = !this.show
         },
+
+
         showForm() {
             this.show = !true
         },
+
+
         logUser() {
             axios
                 .post('http://localhost:4003/api/logIn', this.signIn)
@@ -129,6 +142,7 @@ export default function computer_literacy() {
                 })
         },
 
+
         beginner() {
             axios
                 .get('http://localhost:4003/api/beginner_level1')
@@ -141,6 +155,7 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
+
         classLearner() {
             axios
                 .get('http://localhost:4003/api/getLearnersForClass', this.schoolName)
@@ -149,6 +164,8 @@ export default function computer_literacy() {
                     console.log(results.data.learners);
                 }).catch(e => console.log(e));
         },
+
+        
         beginner3() {
             axios
                 .get('http://localhost:4003/api/beginner_level3')
@@ -160,19 +177,37 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         },
+
+
+        questionId() {
+            let quest_id;
+            let courses = axios.get(`http://localhost:4003/api/courses_beginner/1`)
+
+            while (courses != null) {
+                quest_id = 1;
+                courses = axios.get(`http://localhost:4003/api/courses_beginner/${quest_id}`)
+                if (courses != null) {
+                    quest_id++;
+                }
+            }
+            return quest_id;
+        },
+
+
         assessment() {
-            axios
-                .get(`http://localhost:4003/api/courses_beginner/1`)
-                .then(results => {
-                    this.quizes = results.data.questions;
-                    console.log(this.quizes);
-                    setInterval(() => {
-                    }, 4000);
-                    return true;
-                }).catch(e => console.log(e))
+            for (let index = 1; index <= questionId(); index++) {
+                axios
+                    .get(`http://localhost:4003/api/courses_beginner/${index}`)
+                    .then(results => {
+                        this.quizes = results.data.questions;
+                        console.log(results.data);
+                        setInterval(() => {
+                        }, 4000);
+                        return true;
+                    }).catch(e => console.log(e))
+
+            }
         }
 
     }
-
-
 }

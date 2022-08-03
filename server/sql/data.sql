@@ -69,7 +69,7 @@ When the application opens, if it is a game, play it; if it is a spreadsheet, en
 -- #LEVEL2
 
 
--- assessment
+-- assessment beginner course
 
 insert into assessment(description) values('Mouse');
 insert into assessment(description) values('CPU');
@@ -87,7 +87,7 @@ insert into assessment(description) values('USB cables');
 insert into assessment(description) values('AC cables');
 insert into assessment(description) values('Computer cover');
 
---questions
+--questions beginner course
 
 insert into questions(question) values ('A mouse is a/an _____.');
 insert into questions(question) values ('CPU stands for?');
@@ -106,7 +106,7 @@ insert into questions(question) values ('USB cables are used mostly to connect c
 insert into questions(question) values ('How can you totally protect a PC from damage during an electrical storm?');
 insert into questions(question) values ('To prevent the computer from overheating you should?');
 
---answers
+--answers beginner course
 
 insert into answers(answer, correct) values('A. Input device', 'True');
 insert into answers(answer, correct) values('B. Output device', 'False');
@@ -194,3 +194,9 @@ update assessment set course_id=1 where id= 12;
 update assessment set course_id=1 where id= 13;
 update assessment set course_id=1 where id= 14;
 update assessment set course_id=1 where id= 15;
+
+
+
+
+
+
