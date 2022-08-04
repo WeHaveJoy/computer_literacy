@@ -91,6 +91,19 @@ body {
   justify-content: space-inbetween
 }
 
+.learner_dettails{
+  background-color: rgb(0, 238, 255);
+  border: none;
+  color: black;
+  padding: 7px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 10px;
+  justify-content: space-inbetween
+}
+
 .funky {
   font-family: 'Dancing Script', cursive;
   font-family: 'Lobster', cursive;

@@ -226,14 +226,24 @@
           <div>
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
-            <template x-for="quiz in quizes">
-              <!-- <input type="radio" value="yes" x-model="quiz.question">
-        <input type="radio" value="no" x-model="answer"> -->
-              <div>
-                <span x-text="quiz.question"></span>
-                <span x-text="quiz.answer"></span>
-              </div>
-            </template>
+            <br>
+            <br>
+            <!-- <template x-for="quiz in quizzes"> -->
+
+            <!-- <input type="radio" value="no" x-model="answer">  -->
+            <div>
+              <span x-text="quizzes.question"></span>
+
+
+              <template x-for="answer in quizzes.answers">
+                <div>
+                  <input @click="alert(answer.id)" type="radio" name="answer"  >
+                  <span x-text="answer.answer"></span>
+                </div>
+              </template>   
+            </div>
+
+
           </div>
         </div>
 
@@ -259,11 +269,11 @@
                 <li>
                   <span x-text="learn.first_name"></span>
                   <span x-text="learn.last_name"></span>
+                  <button class="learner_dettails">View details</button>
                 </li>
               </ul>
             </div>
           </template>
-
 
           <h4>You are on the Teacher dashboard</h4>
         </div>
@@ -275,52 +285,9 @@
         </div>
         <br>
 
-
       </div>
 
       <!-- <div class=""> -->
-
-
-      <!-- <div x-show="user.role === 'teacher'" class="teacher">
-
-
-            <div>
-              <h2>Welcome <span x-text="user.first_name"> </span></h2>
-            </div>
-
-            <br>
-
-            <div>
-              <label>Please enter your school: </label>
-              <input x-model="schoolName" type="text" name="register_school" class="register">
-              <br>
-              <button @click="classLearner()"> Show learners</button>
-              <div>
-                <template x-for="learner in classLearners">
-
-                  <div>
-                    <span x-text="learner"></span>
-
-                  </div>
-                </template>
-
-              </div>
-            </div>
-            <div>
-              <h4>You are on the Teacher Screen</h4>
-
-              <h2> Search for your child:</h2>
-              <input type="search">
-              <button @click="user.username"> Show learner</button>
-
-              <br>
-              <br>
-              <div>
-                <h4>You are on the parent screen</h4>
-
-              </div> -->
-
-
 
       <!-- <div class="footer">
 
