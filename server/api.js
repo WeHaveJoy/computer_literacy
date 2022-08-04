@@ -217,25 +217,8 @@ module.exports = (app, db) => {
         }
     })
 
-    // app.get("/api/getLearnersForClass/:school", async (req, res) => {
-    //     const { school } = req.params
-    //     try {
-
-    //         const learners = await db.oneOrMany(`select * from users where school = $1`, [school]);
-
-    //         res.status(200).json({
-    //             learners: learners
-    //         });
-    //     } catch (error) {
-    //         console.log(error.message);
-    //         res.status(500).json({
-    //             error: error.message
-    //         })
-    //     }
-    // })
 
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
-
 
         try {
             const { question_id } = req.params;
@@ -248,28 +231,11 @@ module.exports = (app, db) => {
                 answers
             }
 
-            // {
-            //     id: 1,
-            //     question: 'one plus one',
-            //     answers: []
-            // }
-
-            // const quest = await db.manyOrNone(`SELECT * FROM questions where question = $1`, [question]);
-            // const test = await db.manyOrNone(`select answer, question from answers join questions on question_id = answers.question_id where question_id  =1;`)
-            // const assess = await db.manyOrNone(`SELECT question FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
-
-            // const quiz = await db.manyOrNone(`SELECT * FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
-
-            // const ans = await db.manyOrNone(`SELECT answer FROM answers INNER JOIN questions ON answers.question_id = questions.id;`, [question_id, id]);
-
-            //  const quiz_ans = await db.manyOrNone(`SELECT * FROM answers where question_id = $1`, [question_id]);
-
             res.status(200).json({
 
                 questions
 
             });
-
 
         } catch (error) {
             console.log(error.message);
@@ -287,7 +253,6 @@ module.exports = (app, db) => {
 
             const learners = await db.manyOrNone(`select first_name, last_name  from users where school = $1 and role = 'learner'`, [school]);
 
-
             res.status(200).json({
                 learners: learners
             });
@@ -299,5 +264,21 @@ module.exports = (app, db) => {
         }
 
     })
+
+
+    // app.post("/api/getUserAnswers/:answer", async (req, res) => {
+
+    //     try {
+            
+    //         const{}
+
+    //     } catch (error) {
+    //         console.log(error.message);
+    //         res.status(500).json({
+    //             error: error.message
+    //         })
+    //     }
+
+    // })
 
 }

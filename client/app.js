@@ -40,6 +40,8 @@ export default function computer_literacy() {
             role: ''
         },
 
+        quest_id: '',
+
         show: false,
         showHome: false,
         signIn: {
@@ -51,7 +53,7 @@ export default function computer_literacy() {
         schoolName: '',
         computers: [],
         computers3: [],
-        quizes: [],
+        quizzes: [],
         availableUsers: [],
         all: '',
         schoolLearners: [],
@@ -146,15 +148,6 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        // classLearner() {
-        //     axios
-        //         .get('http://localhost:4003/api/getLearnersForClass', this.schoolName)
-        //         .then(results => {
-        //             this.classLearners = results.data.learners;
-        //             console.log(results.data.learners);
-        //         }).catch(e => console.log(e));
-        // },
-
         beginner3() {
             axios
                 .get('http://localhost:4003/api/beginner_level3')
@@ -167,32 +160,29 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        questionId() {
-            let quest_id;
-            let courses = axios.get(`http://localhost:4003/api/courses_beginner/1`)
-
-            while (courses != null) {
-                quest_id = 1;
-                courses = axios.get(`http://localhost:4003/api/courses_beginner/${quest_id}`)
-                if (courses != null) {
-                    quest_id++;
-                }
-            }
-            return quest_id;
-        },
-
         assessment() {
-            for (let index = 1; index <= questionId(); index++) {
-                axios
-                    .get(`http://localhost:4003/api/courses_beginner/${index}`)
-                    .then(results => {
-                        this.quizes = results.data.questions;
-                        console.log(results.data);
-                        setInterval(() => {
-                        }, 4000);
-                        return true;
-                    }).catch(e => console.log(e))
+            const self = this;
+            console.log(this.quest_id);
+            this.quizzes = []
+            // for (let index = 1; index <= 15; index++) {
+            if (this.quest_id != null) {
+                this.quest_id++;
             }
+            else {
+                this.error = 'End of questionaire'
+            }
+            axios
+                .get(`http://localhost:4003/api/courses_beginner/${this.quest_id}`)
+                .then(results => {
+                    self.quizzes = results.data.questions;
+                    console.log(self.quizzes);
+
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+            // }
+
         },
 
         getLearners(userSchoolName) {
