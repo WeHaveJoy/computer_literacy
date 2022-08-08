@@ -306,4 +306,23 @@ module.exports = (app, db) => {
         }
     })
 
+    app.get("/api/getCorrectAnswers", async (req, res) => {
+
+        try {
+
+            const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
+
+            res.status(200).json({
+                getCorrectA:getCorrectA,
+                message: "Your results",
+            });
+            
+        }  catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    })
+
 }

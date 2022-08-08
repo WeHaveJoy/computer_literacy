@@ -23,7 +23,7 @@ export default function computer_literacy() {
         error: '',
         extra_mural: '',
 
-        aswers:{
+        aswers: {
             answers_id: '',
             learner_id: ''
         },
@@ -62,7 +62,8 @@ export default function computer_literacy() {
         all: '',
         schoolLearners: [],
 
-        getAnswer:[],
+        getAnswer: [],
+        correct: [],
 
         init() {
             // this.classLearner()
@@ -204,29 +205,38 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        addAnswers(answer_id){
-
+        addAnswers(answer_id) {
 
             axios
-            .post(`http://localhost:4003/api/addUserAnswers/`, {learner_id: this.user.id, answer_id})
-            .then(results => {
-                this.message= 'Answer selected';
-                return true;
-            }).catch(e => console.log(e))
+                .post(`http://localhost:4003/api/addUserAnswers/`, { learner_id: this.user.id, answer_id })
+                .then(results => {
+                    this.message = 'Answer selected';
+                    return true;
+                }).catch(e => console.log(e))
 
         },
 
-        getAnswers(){
+        getAnswers() {
 
             axios
-            .get(`http://localhost:4003/api/getAnswers/`)
-            .then(results => {
-                this.getAnswer = results.data.theAnswers;
-                console.log(results.data);
-                setInterval(() => {
-                }, 4000);
-                return true;
-            }).catch(e => console.log(e))
+                .get(`http://localhost:4003/api/getAnswers/`)
+                .then(results => {
+                    this.getAnswer = results.data.theAnswers;
+                    console.log(results.data);
+                    setInterval(() => {
+                    }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+        getCorrectAns() {
+
+            axios
+                .get(`http://localhost:4003/api/getCorrectAnswers/`)
+                .then(results => {
+                    this.correct = results.data.getCorrectA;
+                    console.log(this.correct);
+                }).catch(e => console.log(e))
         }
 
     }
