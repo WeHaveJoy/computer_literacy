@@ -54,7 +54,6 @@
           <br>
           <br>
 
-
           <label style="color:yellow ;">Please select your role: </label>
           <br>
 
@@ -182,8 +181,6 @@
                 type="button">Next Level>>></button>
             </div>
           </div>
-
-
         </div>
 
         <div x-show="currentLevel == 'THREE'" class="level3">
@@ -222,34 +219,28 @@
               Assessment>>></button>
           </div>
         </div>
+
         <div x-show="currentLevel == 'beginnerAss'" class="beginner">
           <div>
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
             <br>
             <br>
-            <!-- <template x-for="quiz in quizzes"> -->
 
-            <!-- <input type="radio" value="no" x-model="answer">  -->
             <div>
               <span x-text="quizzes.question"></span>
 
-
               <template x-for="answer in quizzes.answers">
                 <div>
-                  <input @click="alert(answer.id)" type="radio" name="answer"  >
+                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
                   <span x-text="answer.answer"></span>
                 </div>
-              </template>   
+              </template>
             </div>
-
-
           </div>
         </div>
 
       </div>
-
-      <!-- <div class=""> -->
 
       <div x-show="user.role === 'teacher'" class="teacher">
         <div>
