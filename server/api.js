@@ -265,20 +265,45 @@ module.exports = (app, db) => {
 
     })
 
+    app.post("/api/addUserAnswers/", async (req, res) => {
 
-    // app.post("/api/getUserAnswers/:answer", async (req, res) => {
+        try {
 
-    //     try {
-            
-    //         const{}
+            const { role, answer_id, learner_id } = req.body;
+            console.log(req.body);
 
-    //     } catch (error) {
-    //         console.log(error.message);
-    //         res.status(500).json({
-    //             error: error.message
-    //         })
-    //     }
+            await db.none(`insert into user_answers (answer_id, learner_id) values ($1, $2)`, [answer_id, learner_id]);
 
-    // })
+            res.status(200).json({
+                message: "Answer selected",
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+
+    })
+
+    app.get("/api/getAnswers/", async (req, res) => {
+
+        try {
+
+            const theAnswers = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id;`);
+
+            res.status(200).json({
+                theAnswers: theAnswers,
+                message: "The results",
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    })
 
 }

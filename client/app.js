@@ -23,6 +23,10 @@ export default function computer_literacy() {
         error: '',
         extra_mural: '',
 
+        aswers:{
+            answers_id: '',
+            learner_id: ''
+        },
 
         signUp: {
             first_name: '',
@@ -57,6 +61,8 @@ export default function computer_literacy() {
         availableUsers: [],
         all: '',
         schoolLearners: [],
+
+        getAnswer:[],
 
         init() {
             // this.classLearner()
@@ -196,6 +202,31 @@ export default function computer_literacy() {
                     }, 4000);
                     return true;
                 }).catch(e => console.log(e))
+        },
+
+        addAnswers(answer_id){
+
+
+            axios
+            .post(`http://localhost:4003/api/addUserAnswers/`, {learner_id: this.user.id, answer_id})
+            .then(results => {
+                this.message= 'Answer selected';
+                return true;
+            }).catch(e => console.log(e))
+
+        },
+
+        getAnswers(){
+
+            axios
+            .get(`http://localhost:4003/api/getAnswers/`)
+            .then(results => {
+                this.getAnswer = results.data.theAnswers;
+                console.log(results.data);
+                setInterval(() => {
+                }, 4000);
+                return true;
+            }).catch(e => console.log(e))
         }
 
     }
