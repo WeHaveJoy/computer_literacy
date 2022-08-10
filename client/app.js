@@ -41,6 +41,9 @@ export default function computer_literacy() {
             school: ''
         },
 
+        schoolName: '',
+        learnersForClass: '',
+
         currentLevel: '',
         currentAssement: '',
 
@@ -57,6 +60,8 @@ export default function computer_literacy() {
             password: '',
         },
 
+        computersIntermidiate: [],
+
         classLearners: [],
         schoolName: '',
         computers: [],
@@ -65,6 +70,9 @@ export default function computer_literacy() {
         availableUsers: [],
         all: '',
         schoolLearners: [],
+        init() {
+            // this.classLearner()
+            this.intermidiate()
 
         getAnswer: [],
         correct: [],
@@ -91,6 +99,7 @@ export default function computer_literacy() {
             //     this.registration = false
             //     this.showHome = false;
             // }
+
             this.currentLevel = Levels.One
             setInterval(() => {
                 this.message = ''
@@ -128,6 +137,7 @@ export default function computer_literacy() {
 
         showContent() {
             this.show = !this.show
+            alert(this.show)
         },
 
         showForm() {
@@ -183,11 +193,33 @@ export default function computer_literacy() {
                 .get('http://localhost:4003/api/beginner_level1')
                 .then(results => {
                     this.computers = results.data.course;
-                    // console.log(results.data);
-                    setInterval(() => {}, 4000);
+
+                    // console.log(results.data.course);
+                    setInterval(() => {
+                    }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
+        intermidiate() {
+            axios
+                .get('http://localhost:4003/api/intermidiate_level1')
+                .then(results => {
+                    this.computersIntermidiate = results.data.interOne;
+                    console.log(results.data);
+
+            return true;
+        }).catch(e => console.log(e))
+    },
+    intermidiateTwo() {
+        axios
+            .get('http://localhost:4003/api/intermidiate_level2')
+            .then(results => {
+                this.computersIntermidiate = results.data.interTwo;
+                
+
+        return true;
+    }).catch(e => console.log(e))
+},
 
         beginner3() {
             axios
@@ -221,6 +253,7 @@ export default function computer_literacy() {
             // }
 
         },
+
 
         getLearners(userSchoolName) {
 
