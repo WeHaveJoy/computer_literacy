@@ -1,4 +1,6 @@
 import axios from 'axios'
+
+
 const Levels = {
     One: 'ONE',
     Two: 'TWO',
@@ -12,7 +14,6 @@ const Assessments = {
     advancedAssessment: 'advancedAss'
 
 }
-
 export default function computer_literacy() {
 
     return {
@@ -28,6 +29,9 @@ export default function computer_literacy() {
             learner_id: ''
         },
 
+        loggeIn: true,
+        registration: false,
+
         signUp: {
             first_name: '',
             last_name: '',
@@ -36,6 +40,9 @@ export default function computer_literacy() {
             role: '',
             school: ''
         },
+
+        schoolName: '',
+        learnersForClass: '',
 
         currentLevel: '',
         currentAssement: '',
@@ -53,6 +60,8 @@ export default function computer_literacy() {
             password: '',
         },
 
+        computersIntermidiate: [],
+
         classLearners: [],
         schoolName: '',
         computers: [],
@@ -61,6 +70,9 @@ export default function computer_literacy() {
         availableUsers: [],
         all: '',
         schoolLearners: [],
+        init() {
+            // this.classLearner()
+            this.intermidiate()
 
         getAnswer: [],
         correct: [],
@@ -68,9 +80,29 @@ export default function computer_literacy() {
         theeScore: [],
 
         init() {
-            // this.classLearner()
-            this.currentLevel = Levels.One
 
+            // if (localStorage !== undefined) {
+            //     this.user.role = "teacher"
+            //     this.loggeIn = false
+            //     this.registration = false
+            //     this.showHome = true;
+            // }
+            // else
+            //     if(localStorage !== undefined) {
+            //     this.user.role = "parent"
+            //     this.loggeIn = false
+            //     this.registration = false
+            //     this.showHome = false;
+            // }
+            // else
+            // //    (localStorage !== undefined) 
+            //   { this.user.role = "learner"
+            //     this.loggeIn = false
+            //     this.registration = false
+            //     this.showHome = false;
+            // }
+
+            this.currentLevel = Levels.One
             setInterval(() => {
                 this.message = ''
                 this.error = ''
@@ -84,14 +116,21 @@ export default function computer_literacy() {
             }, 3000);
         },
 
+        logoutFunc() {
+            localStorage.clear()
+            this.loggeIn = true
+            this.registration = false
+            this.showHome = false;
+            this.user.role = false
+        },
+
         regUser() {
             axios
                 .post('http://localhost:4003/api/signUp', this.signUp)
                 .then(results => {
                     // console.log(results.data);
                     this.message = "User created"
-                    setInterval(() => {
-                    }, 6000);
+                    setInterval(() => {}, 6000);
                     return true;
                     this.signUp = ''
                 }).catch(e => console.log('User doesnt exists'))
@@ -100,6 +139,7 @@ export default function computer_literacy() {
 
         showContent() {
             this.show = !this.show
+            alert(this.show)
         },
 
         showForm() {
@@ -111,8 +151,11 @@ export default function computer_literacy() {
                 .post('http://localhost:4003/api/logIn', this.signIn)
 
                 .then((qApp) => {
-                    var { token, user } = qApp.data;
-                    // console.log(qApp.data);
+                    var {
+                        token,
+                        user
+                    } = qApp.data;
+
                     if (!token) {
                         return false
                     }
@@ -121,6 +164,8 @@ export default function computer_literacy() {
                     this.token = JSON.stringify(token)
                     localStorage.setItem('token', this.token);
                     this.user = user
+                    this.loggeIn = false
+                    this.registration = false
                     this.showHome = true;
                     this.logIn_message = "You are logged in"
                     this.error = "The user doesn't exist"
@@ -150,12 +195,33 @@ export default function computer_literacy() {
                 .get('http://localhost:4003/api/beginner_level1')
                 .then(results => {
                     this.computers = results.data.course;
-                    // console.log(results.data);
+
+                    // console.log(results.data.course);
                     setInterval(() => {
                     }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
+        intermidiate() {
+            axios
+                .get('http://localhost:4003/api/intermidiate_level1')
+                .then(results => {
+                    this.computersIntermidiate = results.data.interOne;
+                    console.log(results.data);
+
+            return true;
+        }).catch(e => console.log(e))
+    },
+    intermidiateTwo() {
+        axios
+            .get('http://localhost:4003/api/intermidiate_level2')
+            .then(results => {
+                this.computersIntermidiate = results.data.interTwo;
+                
+
+        return true;
+    }).catch(e => console.log(e))
+},
 
         beginner3() {
             axios
@@ -163,8 +229,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computers3 = results.data.course3;
                     // console.log(results.data);
-                    setInterval(() => {
-                    }, 4000);
+                    setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -176,23 +241,21 @@ export default function computer_literacy() {
             // for (let index = 1; index <= 15; index++) {
             if (this.quest_id != null) {
                 this.quest_id++;
-            }
-            else {
+            } else {
                 this.error = 'End of questionaire'
             }
             axios
                 .get(`http://localhost:4003/api/courses_beginner/${this.quest_id}`)
                 .then(results => {
-                    self.quizzes = results.data.questions;
-                    console.log(self.quizzes);
-
-                    setInterval(() => {
-                    }, 4000);
+                    this.quizes = results.data.questions;
+                    console.log(this.quizes);
+                    setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
             // }
 
         },
+
 
         getLearners(userSchoolName) {
 
@@ -201,8 +264,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.schoolLearners = results.data.learners;
                     console.log(results.data);
-                    setInterval(() => {
-                    }, 4000);
+                    setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -210,7 +272,10 @@ export default function computer_literacy() {
         addAnswers(answer_id) {
 
             axios
-                .post(`http://localhost:4003/api/addUserAnswers/`, { learner_id: this.user.id, answer_id })
+                .post(`http://localhost:4003/api/addUserAnswers/`, {
+                    learner_id: this.user.id,
+                    answer_id
+                })
                 .then(results => {
                     this.message = 'Answer selected';
                     return true;
@@ -225,8 +290,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.getAnswer = results.data.theAnswers;
                     console.log(results.data);
-                    setInterval(() => {
-                    }, 4000);
+                    setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },

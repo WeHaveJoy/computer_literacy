@@ -18,6 +18,7 @@
  - Authorization - each persona sees only what is relevant to them
  - Learners can take their lessons
  - Learners can also take a quiz after they are done with all their lessons
+ - Learners can click a link that contains videos for clarity on what they learnt.
 
 
 

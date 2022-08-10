@@ -11,8 +11,7 @@
 body {
   margin: 0;
   padding: 0;
-  /* background-color: #416165; */
-  /* overflow: hidden; */
+  
 }
 
 .container {
@@ -20,12 +19,13 @@ body {
   background-color: #416165;
   /* background-image: url(/lab.jpeg); */
   background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
   color: black;
   width: 970px;
   margin-top: 65px;
-  height: 80vh;
+
+  /* height: 80vh; */
+
 
 
 }
@@ -42,6 +42,18 @@ body {
   background-color: #78b87a;
 }
 
+.longBtn {
+
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #04AA6D;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+
+}
 
 .footer {
   position: fixed;
@@ -123,11 +135,102 @@ body {
   height: 20em;
 }
 
-.card  {
-  /* padding-left: 18rem; */
+.card {
+  /* background-image: url(./wallpaper.png); */
+  /* position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 4; */
+  
   margin-left: 7rem;
   font-size: medium;
-  background-color: whitesmoke;
+  padding-top: 5em;
   justify-content: first baseline;
-  margin:auto
+
+
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #416165;
+}
+
+li {
+  float: right;
+}
+
+/* .longDiv {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 1em;
+
+} */
+
+.login {
+  /* height: 100vh; */
+  /* display: flex; */
+  align-items: center;
+  margin-top: 6em;
+  margin-left: 10em;
+  /* padding-top: 1em; */
+  
+}
+
+.contactUs {
+  display: flex;
+  gap: 5em;
+  gap: 5em 10em;
+  row-gap: 5em;
+  column-gap: 10em;
+  margin: 2em;
+  margin-left: 15em;
+  margin-top: 6em;
+}
+
+/* .ora {
+
+  background-color: #04AA6D;
+  border: #04AA6D;
+  border-radius: 3em;
+
+
+} */
+
+li a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #416165;
+}
+
+ul.nav {
+
+  position: fixed;
+  top: 0;
+  width: 68em;
+  height: 3em;
+  padding-bottom: 3em;
+}
+
+.nav {
+
+  /* position: fixed; */
+  top: 0;
+  width: 68em;
+  /* height: 98em; */
+  padding-bottom: 23em;
+}
+
+  margin:auto
+  }
+
