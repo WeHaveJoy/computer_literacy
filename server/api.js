@@ -50,7 +50,7 @@ module.exports = (app, db) => {
             const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
 
-            //     const questions = assessments.map(async (assessment) => {
+            //      const questions = assessments.map(async (assessment) => {
 
             //         const { assessment_id } = req.body;
 
@@ -62,9 +62,7 @@ module.exports = (app, db) => {
                 ...course,
                 assessments
             }
-
         })
-
 
         const courses = await Promise.all(courseResults)
 
@@ -76,6 +74,7 @@ module.exports = (app, db) => {
 
 
     })
+
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -166,7 +165,7 @@ module.exports = (app, db) => {
             const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=1`, [level]);
 
             res.status(200).json({
-                // message: "Beginner course level 1!",
+
                 course: display_course
             });
 
@@ -224,6 +223,7 @@ module.exports = (app, db) => {
             });
         }
 
+
     })
     app.get("/api/intermidiate_level2", async (req, res) => {
 
@@ -236,52 +236,80 @@ module.exports = (app, db) => {
             res.status(200).json({
                 interTwo: interTwo
 
+    })
+
+    app.get("/api/courses_beginner/:question_id", async (req, res) => {
+
+        try {
+            const { question_id } = req.params;
+
+            const dbQuestions = await getQuestionsById(question_id)
+            const answers = await getQuestionAnswersById(question_id);
+            // console.log(question_id);
+            const questions = {
+                ...dbQuestions,
+                answers
+            }
+
+            res.status(200).json({
+
+                questions
+
+
             });
 
         } catch (error) {
             console.log(error.message);
             res.status(500).json({
-                error: error.message,
+
+                error: error.message
+
             });
         }
 
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    app.get("/api/addAnswersToQuestionBeginner", async (req, res) => {
+    app.get("/api/getLearnersBySchoolName/:school", async (req, res) => {
 
         try {
 
-            const questAns = await db.oneOrNone(`select * from answers`);
+            const { school } = req.params;
+
+            const learners = await db.manyOrNone(`select first_name, last_name  from users where school = $1 and role = 'learner'`, [school]);
 
             res.status(200).json({
-                qna: questAns,
-                message: "You have selected all the answers"
+                learners: learners
             });
         } catch (error) {
-
-            res.status(200).json({
-                message: "You have selected all the answers"
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
             })
         }
+
     })
+
+    app.post("/api/addUserAnswers/", async (req, res) => {
+
+        try {
+
+            const { role, answer_id, learner_id } = req.body;
+            console.log(req.body);
+
+            await db.none(`insert into user_answers (answer_id, learner_id) values ($1, $2)`, [answer_id, learner_id]);
+
+            res.status(200).json({
+                message: "Answer selected",
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+
+
 
 
 
@@ -320,46 +348,28 @@ module.exports = (app, db) => {
     })
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
+    })
+
+    app.get("/api/getAnswers/", async (req, res) => {
 
         try {
-            const { question_id } = req.params;
 
-            const dbQuestions = await getQuestionsById(question_id)
-            const answers = await getQuestionAnswersById(question_id);
-            // console.log(question_id);
-            const questions = {
-                ...dbQuestions,
-                answers
-            }
-            // {
-            //     id: 1,
-            //     question: 'one plus one',
-            //     answers: []
-            // }
-
-            // const quest = await db.manyOrNone(`SELECT * FROM questions where question = $1`, [question]);
-            // const test = await db.manyOrNone(`select answer, question from answers join questions on question_id = answers.question_id where question_id  =1;`)
-            // const assess = await db.manyOrNone(`SELECT question FROM questions INNER JOIN assessment ON questions.assessment_id = assessment.id`, [assessment_id, id]);
-
-            // const quiz = await db.manyOrNone(`SELECT * FROM assessment INNER JOIN courses_beginners ON assessment.course_id = courses_beginners.id`, [course_id, id]);
-
-            // const ans = await db.manyOrNone(`SELECT answer FROM answers INNER JOIN questions ON answers.question_id = questions.id;`, [question_id, id]);
-
-            //  const quiz_ans = await db.manyOrNone(`SELECT * FROM answers where question_id = $1`, [question_id]);
+            const theAnswers = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id;`);
 
             res.status(200).json({
-
-                questions
-
+                theAnswers: theAnswers,
+                message: "The results",
             });
 
         } catch (error) {
             console.log(error.message);
             res.status(500).json({
                 error: error.message
-            });
+            })
         }
     })
+
+    app.get("/api/getCorrectAnswers", async (req, res) => {
 
 
     app.get("/api/getLearners", async (req, res) => {
@@ -373,16 +383,22 @@ module.exports = (app, db) => {
 
             const learner_school = schools.map(async (school) => {
 
+        try {
 
+
+            const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
+
+            res.status(200).json({
+                getCorrectA:getCorrectA,
+                message: "Your results",
+            });
+            
+        }  catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
             })
-
-
-            return {
-                ...learner,
-                schools
-            }
-
-        })
+        }
     })
 
 }

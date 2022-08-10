@@ -4,7 +4,9 @@ const PgPromise = require("pg-promise");
 const express = require("express");
 const fs = require("fs");
 require("dotenv").config();
-const { default: axios } = require("axios");
+const {
+    default: axios
+} = require("axios");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -18,7 +20,9 @@ const API = require("./api");
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+    extended: false
+}));
 app.use(express.static("public"));
 app.use(cors());
 
@@ -27,14 +31,14 @@ const pgp = PgPromise({});
 
 const config = {
     connectionString:
-       
 
-        process.env.DATABASE_URL || "postgresql://bonny:pg123@localhost:5432/postgres",
-
+        process.env.DATABASE_URL || "coder:coder123@localhost:5432/postgres",
 };
 
 if (process.env.NODE_ENV == 'PRODUCTION') {
-    config.ssl = { rejectUnauthorized: false }
+    config.ssl = {
+        rejectUnauthorized: false
+    }
 }
 
 const db = pgp(config);
@@ -46,4 +50,3 @@ const PORT = process.env.PORT || 4003;
 app.listen(PORT, function () {
     console.log(`App started on port http://localhost:${PORT}`);
 });
-

@@ -1,88 +1,86 @@
-create table users(
-    id serial not null primary key,
-    first_name text NOT NULL,
-    last_name text NOT NULL,
-    username text NOT NULL,
-    password varchar NOT NULL,
-    role text NOT NULL,
-    school text NOT NULL
-);
 
-create table school(
-    id serial not null primary key,
-    school_name text not null,
-    role_id int,
-    FOREIGN KEY (role_id) REFERENCES users(id),
-    school text
-);
+    create table users(
+        id serial not null primary key,
+        first_name text NOT NULL,
+        last_name text NOT NULL,
+        username text NOT NULL,
+        password varchar NOT NULL,
+        role text NOT NULL,
+        school text NOT NULL
+    );
 
-create table courses_beginners(
-    id serial not null primary key,
-    name text,
-    description text NOT NULL,
-    img text NOT NULL,
-    level int NOT NULL
-);
+    create table school(
+        id serial not null primary key,
+        school_name text not null,
+        role_id int,
+        FOREIGN KEY (role_id) REFERENCES users(id)
+    );
 
-create table courses_intermediate(
-    id serial not null primary key,
-    name text,
-    description text NOT NULL,
-    img text NOT NULL,
-    level int NOT NULL
-);
+    create table courses_beginners(
+        id serial not null primary key,
+        name text,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
-create table courses_advanced(
-    id serial not null primary key,
-    name text,
-    description text NOT NULL,
-    img text NOT NULL,
-    level int NOT NULL
-);
+    create table courses_intermediate(
+        id serial not null primary key,
+        name text,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );
 
-create table feedback(
-    id serial not null primary key,
-    comment text NOT NULL
-);
+    create table courses_advanced(
+        id serial not null primary key,
+        name text,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );
+    
 
-create table courses_advanced(
-    id serial not null primary key,
-    description text NOT NULL,
-    img text NOT NULL,
-    level int NOT NULL
-);
 
-create table assessment(
-    id serial not null primary key,
-    description text NOT NULL,
-    course_name text,
-    FOREIGN KEY (course_name) REFERENCES courses_beginners(name),
-    FOREIGN KEY (course_name) REFERENCES courses_intermediate(name),
-    FOREIGN KEY (course_name) REFERENCES courses_advanced(name)
-);
+    create table courses_advanced(
+        id serial not null primary key,
+        description text NOT NULL,
+        img text NOT NULL,
+        level int NOT NULL
+    );
 
-create table questions(
-    id serial not null primary key,
-    question text NOT NULL,
-    assessment_id int,
-    FOREIGN KEY (assessment_id) REFERENCES assessment(id)
-);
+    create table assessment(
+        id serial not null primary key,
+        description text NOT NULL,
+        course_name text ,
+        FOREIGN KEY (course_name) REFERENCES courses_beginners(name),
+        FOREIGN KEY (course_name) REFERENCES courses_intermediate(name),
+        FOREIGN KEY (course_name) REFERENCES courses_advanced(name)
+    );
 
-create table answers(
-    id serial not null primary key,
-    answer text NOT NULL,
-    correct boolean NOT NULL,
-    question_id int,
-    FOREIGN KEY (question_id) REFERENCES questions(id)
-);
+    create table questions(
+        id serial not null primary key,
+        question text NOT NULL,
+        assessment_id int ,
+        FOREIGN KEY (assessment_id) REFERENCES assessment(id)
+    );
 
-create table user_answers(
-    id serial not null primary key,
-    answer_id int,
-    FOREIGN KEY (answer_id) REFERENCES answers(id),
-    learner_id int,
-    FOREIGN KEY (learner_id) REFERENCES users(id)
-);
+    create table answers(
+        id serial not null primary key,
+        answer text NOT NULL,
+        correct boolean NOT NULL,
+        question_id int,
+        FOREIGN KEY (question_id) REFERENCES questions(id)
+    );
+
+    create table user_answers(
+        id serial not null primary key,
+        answer_id int,
+        FOREIGN KEY (answer_id) REFERENCES answers(id),
+        learner_id int,
+        FOREIGN KEY (learner_id) REFERENCES users(id)
+    );
+
 
 --Inner join
 SELECT
