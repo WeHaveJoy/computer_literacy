@@ -311,16 +311,42 @@ module.exports = (app, db) => {
             const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
 
             res.status(200).json({
-                getCorrectA:getCorrectA,
+                getCorrectA: getCorrectA,
                 message: "Your results",
             });
-            
-        }  catch (error) {
+
+        } catch (error) {
             console.log(error.message);
             res.status(500).json({
                 error: error.message
             })
         }
+    })
+
+    app.get("/api/countScore", async (req, res) => {
+
+        try {
+
+            const { question_id } = req.body;
+
+            const scoresById = await db.manyOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1;`, [question_id]);
+
+            
+            const scoresByCorrect = await db.manyOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1 and  correct = 'true';`, [question_id]);
+
+            res.status(200).json({
+                scoresById: scoresById,
+                scoresByCorrect: scoresByCorrect,
+                message: "Here is your score",
+            });
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+
     })
 
 }
