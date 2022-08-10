@@ -127,7 +127,7 @@ module.exports = (app, db) => {
                 `SELECT * FROM users WHERE username = $1`,
                 [username]
             );
-
+            console.log(findUser + "this is a logged user")
             if (!findUser) {
                 // message = 'User not found'
                 throw Error(`The user does not exists`);

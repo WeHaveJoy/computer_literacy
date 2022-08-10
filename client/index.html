@@ -123,7 +123,7 @@
           </div>
         </section>
       </div>
-      <section class="longDiv">
+      <!-- <section class="longDiv">
         <div class="co" id="contact">
           <h2>Contact Us</h2>
           <div class="contactUs">
@@ -157,10 +157,8 @@
             <i class="fa fa-instagram fa-fw"></i> Instagram
           </a>
         </div>
-      </section>
+      </section> -->
       <div x-show="user.role === 'learner'" class="learner">
-
-
         <div class="funky">
           <h1>Welcome <span x-text="user.first_name"></span></h1>
         </div>
@@ -284,46 +282,44 @@
             </template>
           </div>
         </div>
-
-        <!-- intermidiate level  -->
-        <div>
-
-        </div>
-        <div>
-          <h2 class="levelsText">Intermidiate course level 1:<strong>The "How To..."</strong></h2>
-          <div x-text="message"></div>
-          <div class="card" style="width: 78rem; height: 25rem;">
-            <p>
-              Now that you know the computer hardware,lets get to use the computer system.
-            </p>
-          </div>
-          <br>
-          <br>
-          <br>
-          <div>
-            <table class="table table-success table-striped">
-              <tr>
-                <th>IMAGE</th>
-                <th>How To</th>
-              </tr>
-              <template x-for="computerInt in computersIntermidiate">
-                <tr>
-                  <td>
-                    <img x-bind:src="`/Intermediate/${computerInt.img}`" width="150" />
-                  </td>
-                  <td><span x-text="computerInt.description"></span></td>
-                </tr>
-              </template>
-            </table>
-            <!-- <div class="d-grid gap-5">
-              <button class="btn btn-primary" type="button">Next Level>>></button>
-            </div> -->
-          </div>
-        </div>
-
-
-
       </div>
+      <!-- intermidiate level  -->
+      <!-- <div>
+
+
+          <div>
+            <h2 class="levelsText">Intermidiate course level 1:<strong>The "How To..."</strong></h2>
+            <div x-text="message"></div>
+            <div class="card" style="width: 78rem; height: 25rem;">
+              <p>
+                Now that you know the computer hardware,lets get to use the computer system.
+              </p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+              <table class="table table-success table-striped">
+                <tr>
+                  <th>IMAGE</th>
+                  <th>How To</th>
+                </tr>
+                <template x-for="computerInt in computersIntermidiate">
+                  <tr>
+                    <td>
+                      <img x-bind:src="`/Intermediate/${computerInt.img}`" width="150" />
+                    </td>
+                    <td><span x-text="computerInt.description"></span></td>
+                  </tr>
+                </template>
+              </table>
+           
+            </div>
+          </div>
+
+
+        </div> -->
+
 
       <div class="">
 

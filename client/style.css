@@ -147,13 +147,13 @@ li {
   float: right;
 }
 
-.longDiv {
+/* .longDiv {
   height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 1em;
 
-}
+} */
 
 .login {
   /* height: 100vh; */
