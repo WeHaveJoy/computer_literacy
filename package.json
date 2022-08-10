@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@alpinejs/persist": "^3.10.3",
     "mocha": "^10.0.0"
   }
 }

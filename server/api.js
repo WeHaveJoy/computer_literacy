@@ -161,7 +161,7 @@ module.exports = (app, db) => {
             const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=1`, [level]);
 
             res.status(200).json({
-                message: "Beginner course level 1!",
+                
                 course: display_course
             });
 

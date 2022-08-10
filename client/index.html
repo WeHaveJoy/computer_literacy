@@ -107,11 +107,6 @@
       </div>
 
       <div x-show="user.role === 'learner'" class="learner">
-        <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
-        </div> -->
 
         <div class="funky">
           <h1>Welcome to computer Literacy<span x-text="user.first_name"></span></h1>
@@ -150,7 +145,7 @@
               </template>
             </table>
             <div class="d-grid gap-5">
-              <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
+              <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level</button>
             </div>
           </div>
         </div>
@@ -178,7 +173,7 @@
             </div>
             <div class="d-grid gap-5">
               <button @click="currentLevel = 'THREE',beginner3(),showContent()" class="btn btn-primary"
-                type="button">Next Level>>></button>
+                type="button">Next Level</button>
             </div>
           </div>
         </div>
@@ -202,7 +197,7 @@
             <table class="table table-success table-striped">
               <tr>
                 <th>IMAGE</th>
-                <th>INSTRUCTIONS ON HOW TO...</th>
+                <th>INSTRUCTIONS ON HOW TO</th>
               </tr>
               <template x-for="computer3 in computers3">
                 <tr>
@@ -216,7 +211,7 @@
           </div>
           <div class="d-grid gap-5">
             <button class="btn btn-primary" @click="currentLevel = 'beginnerAss'" type="button">Go to
-              Assessment>>></button>
+              Assessment</button>
           </div>
         </div>
 
@@ -224,24 +219,19 @@
           <div>
             <h2>Please complete this assessment before requesting for the next course: </h2>
             <button @click="assessment()"> Show quiz</button>
-            <br>
-            <br>
-
-            <div>
-              <span x-text="quizzes.question"></span>
-
-              <template x-for="answer in quizzes.answers">
-                <div>
-                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
-                  <span x-text="answer.answer"></span>
-                </div>
-              </template>
-              <button @click="getCorrectAns()">Complete Assessment</button>
-            </div>
+            <template x-for="quiz in quizes">
+              <div>
+                <span x-text="quiz.question"></span>
+                <span x-text="quiz.answer"></span>
+              </div>
+            </template>
           </div>
         </div>
-
+        <div>
+          <button @click="logoutFunc()">logout</button>
+        </div>
       </div>
+         <!-- this is the learner screen -->
 
       <div x-show="user.role === 'teacher'" class="teacher">
         <div>
@@ -249,8 +239,6 @@
         </div>
         <br>
 
-        <!-- <h2> Search for the learner:</h2>
-        <input type="search"> -->
         <button @click="getLearners(user.school)"> Show my class list</button>
         <div>
           <br>
@@ -266,21 +254,27 @@
               </ul>
             </div>
           </template>
-
+          <div>
+            <button @click="logoutFunc()">logout</button>
+          </div>
           <h4>You are on the Teacher dashboard</h4>
         </div>
       </div>
+
+       <!-- this is the parent screen -->
 
       <div x-show="user.role === 'parent'" class="parent">
         <div>
           <h2>Welcome <span x-text="user.first_name"> </span></h2>
         </div>
         <br>
-
+        <div>
+          <h4>You are on the parent screen</h4>
+        </div>
+        <div>
+          <button @click="logoutFunc()">logout</button>
+        </div>
       </div>
-
-      <!-- <div class=""> -->
-
       <!-- <div class="footer">
 
       <footer>
@@ -312,38 +306,16 @@
           CodeX
           <br>
           Cape Town
+       </div>
 
-
-      </div>
-
-      <div class="">
-
-
-        <div x-show="user.role === 'parent'" class="parent">
-
-
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-
-          <br>
-          <div>
-            <h4>You are on the parent screen</h4>
-          </div>
-
-        </div>
-
-
-      </div>
+      
+     </div>
 
       </div> -->
-      <!-- </div> -->
-
-
-      <!-- </div> -->
 
     </div>
   </div>
+
   <script type="module" src="/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
