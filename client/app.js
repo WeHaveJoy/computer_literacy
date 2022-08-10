@@ -76,6 +76,8 @@ export default function computer_literacy() {
 
         getAnswer: [],
         correct: [],
+        theScore: [],
+        theeScore: [],
 
         init() {
 
@@ -299,8 +301,46 @@ export default function computer_literacy() {
                 .get(`http://localhost:4003/api/getCorrectAnswers/`)
                 .then(results => {
                     this.correct = results.data.getCorrectA;
-                    console.log(this.correct);
+                    console.log(this.correct)
                 }).catch(e => console.log(e))
+        },
+
+
+        caltulateScore() {
+
+            axios
+                .get(`http://localhost:4003/api/countScore/`)
+                .then(results => {
+                    this.theeScore = results.data.scoresById;
+                    this.theScore = results.data.scoresByCorrect;
+                    console.log(this.theeScore);
+                    console.log(this.theScore);
+                    const totalScore = 0;
+
+
+                    const learnerScore = parseInt(this.theScore/this.theeScore)*100;
+                    console.log(learnerScore);
+
+                    if (this.theScore >= 10.5) {
+                        totalScore = 'Here is your  score' + (15 / 100) * 75 + '%' + ' ' +'and you passed';
+                        console.log(totalScore);
+                        return totalScore;
+                    }
+                    else if (this.theScore < 10.5) {
+
+                        totalScore = 'Here is your score' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
+                        console.log2(totalScore);
+                        return totalScore;
+                    }
+
+                    console.log(totalScore);
+
+                    return learnerScore;
+
+                }
+
+                )
+
         }
 
     }
