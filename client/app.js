@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+const remote_url=import.meta.env.VITE_SERVER_URL
 
 const Levels = {
     One: 'ONE',
@@ -14,6 +15,7 @@ const Assessments = {
     advancedAssessment: 'advancedAss'
 
 }
+
 export default function computer_literacy() {
 
     return {
@@ -73,7 +75,7 @@ export default function computer_literacy() {
         init() {
             // this.classLearner()
             this.intermidiate()
-
+        },
         getAnswer: [],
         correct: [],
         theScore: [],
@@ -126,7 +128,7 @@ export default function computer_literacy() {
 
         regUser() {
             axios
-                .post('http://localhost:4003/api/signUp', this.signUp)
+                .post(`${remote_url}/api/signUp`, this.signUp)
                 .then(results => {
                     // console.log(results.data);
                     this.message = "User created"
@@ -139,7 +141,7 @@ export default function computer_literacy() {
 
         showContent() {
             this.show = !this.show
-            alert(this.show)
+            // alert(this.show)
         },
 
         showForm() {
@@ -148,7 +150,7 @@ export default function computer_literacy() {
 
         logUser() {
             axios
-                .post('http://localhost:4003/api/logIn', this.signIn)
+                .post(`${remote_url}/api/logIn`, this.signIn)
 
                 .then((qApp) => {
                     var {
@@ -192,7 +194,7 @@ export default function computer_literacy() {
 
         beginner() {
             axios
-                .get('http://localhost:4003/api/beginner_level1')
+                .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {
                     this.computers = results.data.course;
 
@@ -204,7 +206,7 @@ export default function computer_literacy() {
         },
         intermidiate() {
             axios
-                .get('http://localhost:4003/api/intermidiate_level1')
+                .get(`${remote_url}/api/intermidiate_level1`)
                 .then(results => {
                     this.computersIntermidiate = results.data.interOne;
                     console.log(results.data);
@@ -214,7 +216,7 @@ export default function computer_literacy() {
     },
     intermidiateTwo() {
         axios
-            .get('http://localhost:4003/api/intermidiate_level2')
+            .get(`${remote_url}/api/intermidiate_level2`)
             .then(results => {
                 this.computersIntermidiate = results.data.interTwo;
                 
@@ -225,7 +227,7 @@ export default function computer_literacy() {
 
         beginner3() {
             axios
-                .get('http://localhost:4003/api/beginner_level3')
+                .get(`${remote_url}/api/beginner_level3`)
                 .then(results => {
                     this.computers3 = results.data.course3;
                     // console.log(results.data);
@@ -245,10 +247,10 @@ export default function computer_literacy() {
                 this.error = 'End of questionaire'
             }
             axios
-                .get(`http://localhost:4003/api/courses_beginner/${this.quest_id}`)
+                .get(`${remote_url}/api/courses_beginner/${this.quest_id}`)
                 .then(results => {
-                    this.quizes = results.data.questions;
-                    console.log(this.quizes);
+                    this.quizzes = results.data.questions;
+                    console.log(this.quizzes);
                     setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
@@ -260,7 +262,7 @@ export default function computer_literacy() {
         getLearners(userSchoolName) {
 
             axios
-                .get(`http://localhost:4003/api/getLearnersBySchoolName/${userSchoolName}`)
+                .get(`${remote_url}/api/getLearnersBySchoolName/${userSchoolName}`)
                 .then(results => {
                     this.schoolLearners = results.data.learners;
                     console.log(results.data);
@@ -272,7 +274,7 @@ export default function computer_literacy() {
         addAnswers(answer_id) {
 
             axios
-                .post(`http://localhost:4003/api/addUserAnswers/`, {
+                .post(`${remote_url}/api/addUserAnswers/`, {
                     learner_id: this.user.id,
                     answer_id
                 })
@@ -286,7 +288,7 @@ export default function computer_literacy() {
         getAnswers() {
 
             axios
-                .get(`http://localhost:4003/api/getAnswers/`)
+                .get(`${remote_url}/api/getAnswers/`)
                 .then(results => {
                     this.getAnswer = results.data.theAnswers;
                     console.log(results.data);
@@ -298,7 +300,7 @@ export default function computer_literacy() {
         getCorrectAns() {
 
             axios
-                .get(`http://localhost:4003/api/getCorrectAnswers/`)
+                .get(`${remote_url}/api/getCorrectAnswers/`)
                 .then(results => {
                     this.correct = results.data.getCorrectA;
                     console.log(this.correct)
@@ -309,13 +311,13 @@ export default function computer_literacy() {
         caltulateScore() {
 
             axios
-                .get(`http://localhost:4003/api/countScore/`)
+                .get(`${remote_url}/api/countScore/`)
                 .then(results => {
                     this.theeScore = results.data.scoresById;
                     this.theScore = results.data.scoresByCorrect;
                     console.log(this.theeScore);
                     console.log(this.theScore);
-                    const totalScore = 0;
+                    let totalScore = 0;
 
 
                     const learnerScore = parseInt(this.theScore/this.theeScore)*100;
@@ -341,6 +343,14 @@ export default function computer_literacy() {
 
                 )
 
+        },
+
+        logoutFunc() {
+            localStorage.clear()
+            this.loggeIn = true
+            this.registration = false
+            this.showHome = false;
+            this.user.role = false
         }
 
     }
