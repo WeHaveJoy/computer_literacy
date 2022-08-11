@@ -223,8 +223,9 @@ module.exports = (app, db) => {
             });
         }
 
-
     })
+
+
     app.get("/api/intermidiate_level2", async (req, res) => {
 
 
@@ -237,6 +238,19 @@ module.exports = (app, db) => {
                 interTwo: interTwo
 
     })
+
+} catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+
+        error: error.message
+
+    });
+}
+
+})
+
+
 
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
@@ -309,8 +323,7 @@ module.exports = (app, db) => {
             })
         }
 
-
-
+    })
 
 
     app.post("/api/comment", async (req, res) => {
@@ -372,7 +385,7 @@ module.exports = (app, db) => {
     app.get("/api/getCorrectAnswers", async (req, res) => {
 
 
-    app.get("/api/getLearners", async (req, res) => {
+    // app.get("/api/getLearners", async (req, res) => {
 
         const results = await db.manyOrNone(`select * from school`);
 
@@ -400,6 +413,9 @@ module.exports = (app, db) => {
             })
         }
     })
+})
+
+})
 
     app.get("/api/countScore", async (req, res) => {
 
