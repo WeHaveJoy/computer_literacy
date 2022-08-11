@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 
-- 18
+- 18.2.0
 
 env: 
   - DATABASE_URL=postgresql://sino123@localhost:5432/postgres
