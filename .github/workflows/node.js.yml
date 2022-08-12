@@ -37,7 +37,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install dependencies
-      run: npm install
+      env:
+        PGPASSWORD: postgres
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm install -g npm
+    - run: npm install
     - name: create postgresql tables
       run: |
         PGPASSWORD=coder123 psql -h localhost -U coder -d postgres -a -f ./server/sql/tables.sql
