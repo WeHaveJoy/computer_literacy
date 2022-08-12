@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const remote_url=import.meta.env.VITE_SERVER_URL
+const remote_url = import.meta.env.VITE_SERVER_URL
 
 const Levels = {
     One: 'ONE',
@@ -132,7 +132,7 @@ export default function computer_literacy() {
                 .then(results => {
                     // console.log(results.data);
                     this.message = "User created"
-                    setInterval(() => {}, 6000);
+                    setInterval(() => { }, 6000);
                     return true;
                     this.signUp = ''
                 }).catch(e => console.log('User doesnt exists'))
@@ -204,6 +204,7 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         },
+
         intermidiate() {
             axios
                 .get(`${remote_url}/api/intermidiate_level1`)
@@ -211,19 +212,20 @@ export default function computer_literacy() {
                     this.computersIntermidiate = results.data.interOne;
                     console.log(results.data);
 
-            return true;
-        }).catch(e => console.log(e))
-    },
-    intermidiateTwo() {
-        axios
-            .get(`${remote_url}/api/intermidiate_level2`)
-            .then(results => {
-                this.computersIntermidiate = results.data.interTwo;
-                
+                    return true;
+                }).catch(e => console.log(e))
+        },
 
-        return true;
-    }).catch(e => console.log(e))
-},
+        intermidiateTwo() {
+            axios
+                .get(`${remote_url}/api/intermidiate_level2`)
+                .then(results => {
+                    this.computersIntermidiate = results.data.interTwo;
+
+
+                    return true;
+                }).catch(e => console.log(e))
+        },
 
         beginner3() {
             axios
@@ -231,7 +233,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computers3 = results.data.course3;
                     // console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -251,13 +253,12 @@ export default function computer_literacy() {
                 .then(results => {
                     this.quizzes = results.data.questions;
                     console.log(this.quizzes);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
             // }
 
         },
-
 
         getLearners(userSchoolName) {
 
@@ -266,7 +267,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.schoolLearners = results.data.learners;
                     console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -292,7 +293,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.getAnswer = results.data.theAnswers;
                     console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -307,7 +308,6 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-
         caltulateScore() {
 
             axios
@@ -318,18 +318,17 @@ export default function computer_literacy() {
                     console.log(this.theeScore);
                     console.log(this.theScore);
                     let totalScore = 0;
+                    let learnerScore = 0;
 
-
-                    const learnerScore = parseInt(this.theScore/this.theeScore)*100;
+                    learnerScore = parseInt(this.theScore / this.theeScore) * 100;
                     console.log(learnerScore);
 
                     if (this.theScore >= 10.5) {
-                        totalScore = 'Here is your  score' + (15 / 100) * 75 + '%' + ' ' +'and you passed';
+                        totalScore = 'Here is your  score' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
                         console.log(totalScore);
                         return totalScore;
                     }
                     else if (this.theScore < 10.5) {
-
                         totalScore = 'Here is your score' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
                         console.log2(totalScore);
                         return totalScore;
@@ -342,7 +341,6 @@ export default function computer_literacy() {
                 }
 
                 )
-
         },
 
         logoutFunc() {
