@@ -25,6 +25,7 @@ jobs:
           POSTGRES_USER: coder
           POSTGRES_PASSWORD: coder123
           POSTGRES_DB: postgres
+          POSTGRES_PORT: 5432
         ports:
         - 5432:5432
         # Set health checks to wait until postgres has started
