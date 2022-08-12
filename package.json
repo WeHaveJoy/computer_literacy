@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --timeout 10000"
+    "test": "mocha"
   },
   "dependencies": {
     "axios": "^0.26.1",
