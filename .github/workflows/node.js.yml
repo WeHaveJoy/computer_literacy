@@ -49,8 +49,7 @@ jobs:
       run: |
         PGPASSWORD=coder123 psql -h localhost -U coder -d postgres -a -f ./server/sql/tables.sql
         PGPASSWORD=coder123 psql -h localhost -U coder -d postgres -a -f ./server/sql/data.sql
-    - name: run tests with postgresql
-      run:
-        npm test
+    - run: npm run build --if-present
+    - run: npm test
       env:
         DATABASE_URL: postgres://coder:coder123@localhost:5432/postgres
