@@ -9,7 +9,6 @@
  -The app entails great *learning levels* which are grouped into *courses* and at the very end of each course there is an *assessment for the learner*.The assessments are in Multiple choice form with mind stretching answers.
 
 
-
 # what can we do?
 
  - New users can sign up on our app

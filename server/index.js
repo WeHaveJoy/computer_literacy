@@ -13,9 +13,6 @@ const saltRounds = 10;
 const myPlaintextPassword = "s0//P4$$w0rD";
 const someOtherPlaintextPassword = "not_bacon";
 
-
-
-
 const API = require("./api");
 const app = express();
 
@@ -25,6 +22,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.static("public"));
 // app.use(cors());
+
 
 // THE CORES ARE ADDED FOR HEROKU AND THEY ARE USED ON ALL MY ROUTES
 const cors = require('cors');
@@ -36,6 +34,7 @@ app.use((req, res, next) => {
 	);
 	next();
   });
+
 app.use(cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));

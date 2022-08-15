@@ -308,19 +308,19 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        caltulateScore() {
+        caltulateScore(quesion_id) {
 
             axios
-                .get(`${remote_url}/api/countScore/`)
+                .post(`${remote_url}/api/countScore/${quesion_id}`)
                 .then(results => {
-                    this.theeScore = results.data.scoresById;
-                    this.theScore = results.data.scoresByCorrect;
+                    this.theeScore = results.data.scoresById.count;
+                    this.theScore = results.data.scoresByCorrect.count;
                     console.log(this.theeScore);
                     console.log(this.theScore);
                     let totalScore = 0;
                     let learnerScore = 0;
 
-                    learnerScore = parseInt(this.theScore / this.theeScore) * 100;
+                    learnerScore = Number(this.theScore) / Number(this.theeScore) * 100;
                     console.log(learnerScore);
 
                     if (this.theScore >= 10.5) {
@@ -330,7 +330,7 @@ export default function computer_literacy() {
                     }
                     else if (this.theScore < 10.5) {
                         totalScore = 'Here is your score' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
-                        console.log2(totalScore);
+                        console.log(totalScore);
                         return totalScore;
                     }
 
@@ -352,4 +352,5 @@ export default function computer_literacy() {
         }
 
     }
+
 }
