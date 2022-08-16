@@ -14,8 +14,6 @@ const myPlaintextPassword = "s0//P4$$w0rD";
 const someOtherPlaintextPassword = "not_bacon";
 
 
-
-
 const API = require("./api");
 const app = express();
 
@@ -29,7 +27,7 @@ app.use(express.static("public"));
 // THE CORES ARE ADDED FOR HEROKU AND THEY ARE USED ON ALL MY ROUTES
 const cors = require('cors');
 app.use((req, res, next) => {
-	res.setHeader("Access-Control-Allow-Origin", "https://wehavejoy.github.io/computer_literecy/");
+	res.setHeader("Access-Control-Allow-Origin", "https://wehavejoy.github.io/computer_literacy/");
 	res.header(
 	  "Access-Control-Allow-Headers",
 	  "Origin, X-Requested-With, Content-Type, Accept"
@@ -46,7 +44,7 @@ const pgp = PgPromise({});
 const config = {
     connectionString:
 
-        process.env.DATABASE_URL || "postgres:sino123@localhost:5432/postgres",
+        process.env.DATABASE_URL || "coder:coder123@localhost:5432/postgres",
 };
 
 if (process.env.NODE_ENV == 'PRODUCTION') {
