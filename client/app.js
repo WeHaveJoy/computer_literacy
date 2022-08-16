@@ -322,7 +322,6 @@ export default function computer_literacy() {
                     console.log(this.theeScore);
                     console.log(this.theScore);
                   
-
                     this.learnerScore = 'You got: ' + Number(this.theScore) / Number(this.theeScore) * 100 + '%';
                     console.log(this.learnerScore);
 
@@ -339,12 +338,9 @@ export default function computer_literacy() {
                     }
 
                     console.log(this.totalScore);
-
                     return this.learnerScore.toFixed(2);
 
-                }
-
-                )
+                })
         },
 
         logoutFunc() {
@@ -353,7 +349,18 @@ export default function computer_literacy() {
             this.registration = false
             this.showHome = false;
             this.user.role = false
-        }
+        },
+
+        // learnerDetails (){
+
+        //     axios
+        //     .post(`${remote_url}/api/countScore/${quesion_id}`)
+        //     .then(results => {
+        //         this.theeScore = results.data.scoresById.count;
+        //         this.theScore = results.data.scoresByCorrect.count;
+        //     })
+
+        // }
 
     }
 

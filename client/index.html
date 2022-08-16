@@ -235,8 +235,8 @@
                   <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
                   <span x-text="answer.answer"></span>
                 </div>
-
               </template>
+
               <div>
                 <span x-text="this.totalScore"></span>
               </div>
@@ -244,7 +244,6 @@
               <div>
                 <span x-text="this.learnerScore"></span>
               </div>
-
               <br>
               <br>
               <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
@@ -267,7 +266,7 @@
 
         <!-- <h2> Search for the learner:</h2>
         <input type="search"> -->
-        <button @click="getLearners(user.school)"> Show my class list</button>
+        <button @click="getLearners(user.school)"> Show my school list</button>
         <div>
           <br>
           <br>
@@ -277,7 +276,7 @@
                 <li>
                   <span x-text="learn.first_name"></span>
                   <span x-text="learn.last_name"></span>
-                  <button class="learner_dettails">View details</button>
+                  <button class="learner_dettails" @click="caltulateScore(quizzes.id)" >View details</button>
                 </li>
               </ul>
             </div>
