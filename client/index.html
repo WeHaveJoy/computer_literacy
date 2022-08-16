@@ -235,12 +235,24 @@
                   <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
                   <span x-text="answer.answer"></span>
                 </div>
+
               </template>
+              <div>
+                <span x-text="this.totalScore"></span>
+              </div>
+
+              <div>
+                <span x-text="this.learnerScore"></span>
+              </div>
+
+              <br>
+              <br>
               <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
             </div>
           </div>
         </div>
-
+        <br>
+        <br>
         <div>
           <button @click="logoutFunc()">logout</button>
         </div>

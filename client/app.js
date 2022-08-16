@@ -80,6 +80,10 @@ export default function computer_literacy() {
         correct: [],
         theScore: [],
         theeScore: [],
+        scoreMessage: '',
+
+        totalScore : 0,
+        learnerScore : 0,
 
         init() {
 
@@ -317,26 +321,26 @@ export default function computer_literacy() {
                     this.theScore = results.data.scoresByCorrect.count;
                     console.log(this.theeScore);
                     console.log(this.theScore);
-                    let totalScore = 0;
-                    let learnerScore = 0;
+                  
 
-                    learnerScore = Number(this.theScore) / Number(this.theeScore) * 100;
-                    console.log(learnerScore);
+                    this.learnerScore = 'You got: ' + Number(this.theScore) / Number(this.theeScore) * 100 + '%';
+                    console.log(this.learnerScore);
 
                     if (this.theScore >= 10.5) {
-                        totalScore = 'Here is your  score' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
-                        console.log(totalScore);
-                        return totalScore;
+                        this.totalScore = 'Here is your  score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
+                        console.log(this.totalScore);
+
+                        return this.totalScore.toFixed(2);
                     }
                     else if (this.theScore < 10.5) {
-                        totalScore = 'Here is your score' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
-                        console.log(totalScore);
-                        return totalScore;
+                        this.totalScore = 'Here is your score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
+                        console.log(this.totalScore);
+                        return this.totalScore;
                     }
 
-                    console.log(totalScore);
+                    console.log(this.totalScore);
 
-                    return learnerScore;
+                    return this.learnerScore.toFixed(2);
 
                 }
 
