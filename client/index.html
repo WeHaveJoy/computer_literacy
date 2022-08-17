@@ -362,15 +362,15 @@
                 </div>
               </template>
 
-              <template >
+              <!-- <template > -->
                 <div>
-                  <span x-text="this.totalScore.toFixed(2)"></span>
+                  <span x-text="this.totalScore"></span>
                 </div>
 
                 <div>
-                  <span x-text="this.learnerScore.toFixed(2)"></span>
+                  <span x-text="this.learnerScore"></span>
                 </div>
-              </template>
+              <!-- </template> -->
                 <br>
                 <br>
                 <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
@@ -379,7 +379,6 @@
         </div>
         <br>
         <br>
-          
 
           <div>
           <button @click="logoutFunc()">logout</button>
