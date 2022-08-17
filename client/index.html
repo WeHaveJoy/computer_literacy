@@ -237,22 +237,26 @@
                 </div>
               </template>
 
-              <div>
-                <span x-text="this.totalScore"></span>
-              </div>
+              <template >
+                <div>
+                  <span x-text="this.totalScore.toFixed(2)"></span>
+                </div>
 
-              <div>
-                <span x-text="this.learnerScore"></span>
-              </div>
-              <br>
-              <br>
-              <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+                <div>
+                  <span x-text="this.learnerScore.toFixed(2)"></span>
+                </div>
+              </template>
+                <br>
+                <br>
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
             </div>
           </div>
         </div>
         <br>
         <br>
-        <div>
+          
+
+          <div>
           <button @click="logoutFunc()">logout</button>
         </div>
 
@@ -276,7 +280,7 @@
                 <li>
                   <span x-text="learn.first_name"></span>
                   <span x-text="learn.last_name"></span>
-                  <button class="learner_dettails" @click="caltulateScore(quizzes.id)" >View details</button>
+                  <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
                 </li>
               </ul>
             </div>
@@ -367,7 +371,7 @@
 
     </div>
   </div>
-  <script type="module" src="./main.js"></script>
+  <script type="module" src="/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
