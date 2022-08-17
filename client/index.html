@@ -331,6 +331,7 @@
           <div>
             <br>
             <br>
+
             <template x-for="learn in schoolLearners">
               <div>
                 <ul>
@@ -350,13 +351,76 @@
             <button @click="logoutFunc()">logout</button>
           </div>
 
+
+            <div>
+              <span x-text="quizzes.question"></span>
+
+              <template x-for="answer in quizzes.answers">
+                <div>
+                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
+                  <span x-text="answer.answer"></span>
+                </div>
+              </template>
+
+              <template >
+                <div>
+                  <span x-text="this.totalScore.toFixed(2)"></span>
+                </div>
+
+                <div>
+                  <span x-text="this.learnerScore.toFixed(2)"></span>
+                </div>
+              </template>
+                <br>
+                <br>
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+            </div>
+          </div>
         </div>
+        <br>
+        <br>
+          
+
+          <div>
+          <button @click="logoutFunc()">logout</button>
+        </div>
+
+      </div>
+
+        </div>
+
 
         <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
           <br>
+
+        <!-- <h2> Search for the learner:</h2>
+        <input type="search"> -->
+        <button @click="getLearners(user.school)"> Show my school list</button>
+        <div>
+          <br>
+          <br>
+          <template x-for="learn in schoolLearners">
+            <div>
+              <ul>
+                <li>
+                  <span x-text="learn.first_name"></span>
+                  <span x-text="learn.last_name"></span>
+                  <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
+                </li>
+              </ul>
+            </div>
+          </template>
+
+          <h4>You are on the Teacher dashboard</h4>
+        </div>
+
+        <div>
+          <button @click="logoutFunc()">logout</button>
+        </div>
+
 
         </div>
 
@@ -425,7 +489,7 @@
       </div>
     </div>
   </div>
-  <script type="module" src="./main.js"></script>
+  <script type="module" src="/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

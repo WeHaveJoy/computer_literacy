@@ -81,6 +81,10 @@ export default function computer_literacy() {
         correct: [],
         theScore: [],
         theeScore: [],
+        scoreMessage: '',
+
+        totalScore : 0,
+        learnerScore : 0,
 
         init() {
 
@@ -221,7 +225,6 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computersIntermidiate = results.data.interTwo;
 
-
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -309,39 +312,37 @@ export default function computer_literacy() {
         },
 
 
-        caltulateScore() {
+        caltulateScore(quesion_id) {
+
 
             axios
-                .get(`${remote_url}/api/countScore/`)
+                .post(`${remote_url}/api/countScore/${quesion_id}`)
                 .then(results => {
-                        this.theeScore = results.data.scoresById;
-                        this.theScore = results.data.scoresByCorrect;
-                        console.log(this.theeScore);
-                        console.log(this.theScore);
-                        let totalScore = 0;
 
+                    this.theeScore = results.data.scoresById.count;
+                    this.theScore = results.data.scoresByCorrect.count;
+                    console.log(this.theeScore);
+                    console.log(this.theScore);
+                  
+                    this.learnerScore = 'You got: ' + Number(this.theScore) / Number(this.theeScore) * 100 + '%';
+                    console.log(this.learnerScore);
 
-                        const learnerScore = parseInt(this.theScore / this.theeScore) * 100;
-                        console.log(learnerScore);
+                    if (this.theScore >= 10.5) {
+                        this.totalScore = 'Here is your  score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
+                        console.log(this.totalScore);
 
-                        if (this.theScore >= 10.5) {
-                            totalScore = 'Here is your  score' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
-                            console.log(totalScore);
-                            return totalScore;
-                        } else if (this.theScore < 10.5) {
-
-                            totalScore = 'Here is your score' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
-                            console.log2(totalScore);
-                            return totalScore;
-                        }
-
-                        console.log(totalScore);
-
-                        return learnerScore;
-
+                        return this.totalScore.toFixed(2);
+                    }
+                    else if (this.theScore < 10.5) {
+                        this.totalScore = 'Here is your score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
+                        console.log(this.totalScore);
+                        return this.totalScore;
                     }
 
-                )
+                    console.log(this.totalScore);
+                    return this.learnerScore.toFixed(2);
+
+                })
 
         },
 
@@ -351,7 +352,18 @@ export default function computer_literacy() {
             this.registration = false
             this.showHome = false;
             this.user.role = false
-        }
+        },
+
+        // learnerDetails (){
+
+        //     axios
+        //     .post(`${remote_url}/api/countScore/${quesion_id}`)
+        //     .then(results => {
+        //         this.theeScore = results.data.scoresById.count;
+        //         this.theScore = results.data.scoresByCorrect.count;
+        //     })
+        // }
 
     }
+
 }
