@@ -54,16 +54,16 @@ export default function computer_literacy() {
         },
 
         quest_id: '',
-
+        hideContent: false,
         show: false,
-        showHome: false,
+        showHome: true,
         signIn: {
             username: '',
             password: '',
         },
 
         computersIntermidiate: [],
-
+        showLand: false,
         classLearners: [],
         schoolName: '',
         computers: [],
@@ -72,6 +72,7 @@ export default function computer_literacy() {
         availableUsers: [],
         all: '',
         schoolLearners: [],
+        showLoginForm: false,
         init() {
             // this.classLearner()
             this.intermidiate()
@@ -95,7 +96,7 @@ export default function computer_literacy() {
                 this.showHome = false;
             }
 
-            this.currentLevel = Levels.One
+            //this.currentLevel = Levels.One
             setInterval(() => {
                 this.message = ''
                 this.error = ''
@@ -131,8 +132,18 @@ export default function computer_literacy() {
         },
 
         showContent() {
-            this.show = !this.show
+            this.show = false
+            this.showLoginForm = true
             // alert(this.show)
+        },
+        showNav() {
+            this.showLand = !this.showLand
+
+        },
+        showHomeFunc() {
+           this.showLoginForm = !true
+            this.showHome = !this.showHome
+
         },
 
         showForm() {
