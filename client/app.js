@@ -214,7 +214,6 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computersIntermidiate = results.data.interTwo;
 
-
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -352,7 +351,6 @@ export default function computer_literacy() {
         //         this.theeScore = results.data.scoresById.count;
         //         this.theScore = results.data.scoresByCorrect.count;
         //     })
-
         // }
 
     }

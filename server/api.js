@@ -354,9 +354,10 @@ module.exports = (app, db) => {
             })
         }
     })
-    app.get("/api/courses_beginner/:question_id", async (req, res) => {
+    
+    // app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
-    })
+    // })
 
     app.get("/api/getAnswers/", async (req, res) => {
 
