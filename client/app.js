@@ -316,7 +316,6 @@ export default function computer_literacy() {
 
         caltulateScore(quesion_id) {
 
-
             axios
                 .post(`${remote_url}/api/countScore/${quesion_id}`)
                 .then(results => {
@@ -339,23 +338,23 @@ export default function computer_literacy() {
                     console.log(this.theeScore);
                     console.log(this.theScore);
                   
-                    this.learnerScore = 'You got: ' + Number(this.theScore) / Number(this.theeScore) * 100 + '%';
+                    this.learnerScore =  Number(this.theScore) / Number(this.theeScore) * 100;
                     console.log(this.learnerScore);
 
-                    if (this.theScore >= 10.5) {
-                        this.totalScore = 'Here is your  score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
+                    if (this.learnerScore >= 50) {
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and you passed';
                         console.log(this.totalScore);
 
-                        return this.totalScore.toFixed(2);
+                        return this.totalScore;
                     }
-                    else if (this.theScore < 10.5) {
-                        this.totalScore = 'Here is your score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
+                    else if (this.learnerScore < 50) {
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and you failed';
                         console.log(this.totalScore);
                         return this.totalScore;
                     }
 
                     console.log(this.totalScore);
-                    return this.learnerScore.toFixed(2);
+                    return this.learnerScore;
 
                 })
 
