@@ -141,7 +141,7 @@ export default function computer_literacy() {
         showContent() {
             this.show = false
             this.showLoginForm = true
-            // alert(this.show)
+           
         },
         showNav() {
             this.showLand = !this.showLand
@@ -205,7 +205,7 @@ export default function computer_literacy() {
         },
 
         beginner() {
-            alert('beginner')
+            // alert('beginner')
             axios
                 .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {
