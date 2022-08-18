@@ -308,14 +308,19 @@
                     <span x-text="answer.answer"></span>
                   </div>
                 </template>
-                <button @click="caltulateScore()">Complete Assessment</button>
+
+                <div x-data="{ this.totalScore: '' }">
+                  <p x-text="this.totalScore"></p>
+                </div>
+
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
 
-          <div>
+          <!-- <div>
             <button @click="logoutFunc()">logout</button>
-          </div>
+          </div> -->
 
         </div>
 
@@ -347,9 +352,9 @@
             <h4>You are on the Teacher dashboard</h4>
           </div>
 
-          <div>
+          <!-- <div>
             <button @click="logoutFunc()">logout</button>
-          </div>
+          </div> -->
 
 
             <div>
@@ -380,13 +385,13 @@
         <br>
         <br>
 
-          <div>
+          <!-- <div>
           <button @click="logoutFunc()">logout</button>
-        </div>
+        </div> -->
 
-      </div>
+      <!-- </div> -->
 
-        </div>
+       
 
 
         <div x-show="user.role === 'parent'" class="parent">
@@ -416,9 +421,9 @@
           <h4>You are on the Teacher dashboard</h4>
         </div>
 
-        <div>
+        <!-- <div>
           <button @click="logoutFunc()">logout</button>
-        </div>
+        </div> -->
 
 
         </div>
@@ -484,8 +489,8 @@
         <!-- </div> -->
 
 
-        <!-- </div> -->
-      </div>
+        <!-- </div>
+      </div> -->
     </div>
   </div>
   <script type="module" src="/main.js"></script>
