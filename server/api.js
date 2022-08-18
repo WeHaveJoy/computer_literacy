@@ -2,6 +2,7 @@ const jwt = require(`jsonwebtoken`);
 const bcrypt = require("bcrypt");
 
 module.exports = (app, db) => {
+
     const verifyToken = (req, res, next) => {
         const bearerHeader = req.headers['authorization']
         const token = bearerHeader && bearerHeader.split(' ')[1]
@@ -15,7 +16,6 @@ module.exports = (app, db) => {
             next()
         })
     }
-
 
     app.get('/api/test', function (req, res) {
         res.json({
@@ -74,7 +74,6 @@ module.exports = (app, db) => {
 
 
     })
-
 
     app.get("/test", async (req, res) =>
         res.json(await db.manyOrNone("select * from users"))
@@ -202,7 +201,6 @@ module.exports = (app, db) => {
 
     })
 
-
     app.get("/api/intermidiate_level1", async (req, res) => {
 
 
@@ -225,7 +223,6 @@ module.exports = (app, db) => {
 
     })
 
-
     app.get("/api/intermidiate_level2", async (req, res) => {
 
 
@@ -237,20 +234,18 @@ module.exports = (app, db) => {
             res.status(200).json({
                 interTwo: interTwo
 
+            })
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({
+
+                error: error.message
+
+            });
+        }
+
     })
-
-} catch (error) {
-    console.log(error.message);
-    res.status(500).json({
-
-        error: error.message
-
-    });
-}
-
-})
-
-
 
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
@@ -325,7 +320,6 @@ module.exports = (app, db) => {
 
     })
 
-
     app.post("/api/comment", async (req, res) => {
         const { comment, username } = req.body
 
@@ -343,6 +337,7 @@ module.exports = (app, db) => {
             })
         }
     })
+
     app.get('/api/comments/:username', async (req, res) => {
         const { username } = req.params
         try {
@@ -359,9 +354,10 @@ module.exports = (app, db) => {
             })
         }
     })
-    app.get("/api/courses_beginner/:question_id", async (req, res) => {
+    
+    // app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
-    })
+    // })
 
     app.get("/api/getAnswers/", async (req, res) => {
 
@@ -385,7 +381,7 @@ module.exports = (app, db) => {
     app.get("/api/getCorrectAnswers", async (req, res) => {
 
 
-    // app.get("/api/getLearners", async (req, res) => {
+        // app.get("/api/getLearners", async (req, res) => {
 
         const results = await db.manyOrNone(`select * from school`);
 
@@ -396,37 +392,37 @@ module.exports = (app, db) => {
 
             const learner_school = schools.map(async (school) => {
 
-        try {
+                try {
 
 
-            const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
+                    const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
 
-            res.status(200).json({
-                getCorrectA: getCorrectA,
-                message: "Your results",
-            });
+                    res.status(200).json({
+                        getCorrectA: getCorrectA,
+                        message: "Your results",
+                    });
 
-        } catch (error) {
-            console.log(error.message);
-            res.status(500).json({
-                error: error.message
+                } catch (error) {
+                    console.log(error.message);
+                    res.status(500).json({
+                        error: error.message
+                    })
+                }
             })
-        }
+        })
+
     })
-})
 
-})
-
-    app.get("/api/countScore", async (req, res) => {
+    app.post("/api/countScore/:question_id", async (req, res) => {
 
         try {
 
-            const { question_id } = req.body;
+            const { question_id } = req.params;
 
-            const scoresById = await db.manyOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1;`, [question_id]);
+            const scoresById = await db.oneOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1;`, [question_id]);
 
-            
-            const scoresByCorrect = await db.manyOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1 and  correct = 'true';`, [question_id]);
+
+            const scoresByCorrect = await db.oneOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1 and  correct = 'true';`, [question_id]);
 
             res.status(200).json({
                 scoresById: scoresById,
