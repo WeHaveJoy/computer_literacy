@@ -345,7 +345,7 @@ export default function computer_literacy() {
                     console.log(this.theeScore);
                     console.log(this.theScore);
                   
-                    this.learnerScore =  Number(this.theScore) / Number(this.theeScore) * 100;
+                    this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
                     console.log(this.learnerScore);
 
                     if (this.learnerScore >= 50) {
@@ -355,7 +355,7 @@ export default function computer_literacy() {
                         return this.totalScore;
                     }
                     else if (this.learnerScore < 50) {
-                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and you failed';
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and please try again';
                         console.log(this.totalScore);
                         return this.totalScore;
                     }

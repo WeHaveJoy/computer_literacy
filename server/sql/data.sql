@@ -136,12 +136,12 @@ insert into
     courses_beginners(description, img, title, level)
 values
     (
-        'A mouse is an input device that allows the user to move a pointer displayed on the monitor and experience a more intuitive interaction with computer systems.
-.These days mouse have more buttons than the common three.
-However, the three main buttons allow the user to select, grab, scroll and access extra menus and options.
-A computer mouse is a handy pointing device can be wired or wireless. The latter obviously requires batteries.',
-        'mouse.jpeg',
-        'Computer Mouse',
+
+        'SELECT AND HIGHLIGHT
+Click or tap once, and hold to start your selection. Then, drag your cursor or finger and notice how the characters on your screen are highlighted. Release when you are done selecting your text.',
+        'highlighting.png',
+        'Highlighting',
+
         '3'
     );
 
@@ -149,23 +149,30 @@ insert into
     courses_beginners(description, img, title, level)
 values
     (
-        'This is the part that holds all of the parts of a computer to make up the computer system.
-It is usually designed in such a manner to make fitting a motherboard, wiring, and drives as easy as possible. Some are designed so well that it is easy to make everything look tidy and presentable too.
-Cases come in all different sizes and shapes to accommodate various types of computer components and satisfy the consumer’s needs.',
-        'computer box.jpeg',
-        'Computer Box',
-        '1'
+
+        'HOW TO CREATE FOLDER
+1. In the desktop, click or tap the File Explorer button on the taskbar.
+2.Open the drive or folder where you want to create a folder.
+3.Click or tap the New Folder button on the Home tab.
+4.Right-click or tap-hold a blank area of the window, point to New, and then click or tap New folder.
+5.With the New Folder name selected, type a new name.
+6. Press Enter or tap in a blank area.',
+        'folder.png',
+        'Folder',
+        '3'
+
     );
 
 insert into
     courses_beginners(description, img, title, level)
 values
     (
-        'A monitor is an output device used to visualize the graphics data sent from the computer’s GPU.
-There are various types of monitors on the market. A LED (Light Emitting Diode) backlit LCD (Liquid Crystal Display) monitor is the most commonly used with modern computers.',
-        'monitor.jpeg',
-        'Monitor',
-        '1'
+
+        'A computer mouse is a handheld hardware input device that controls a cursor in a GUI (graphical user interface) for pointing, moving and selecting text, icons, files, and folders on your computer.',
+        'mouse_demo.png',
+        'Mouse Demo',
+        '3'
+
     );
 
 insert into
@@ -176,15 +183,28 @@ values
 It plugs directly into a long slot that has contacts on either side of the slot.
 It, too, has a clock speed, just like a processor. So, it can also be overclocked to deliver increased performance beyond the intended specification.
 ',
-        'RAM.jpeg',
-        'RAM- Random Access Memory',
-        '1'
+
+        'drag&drop.png',
+        'Drag and drop'
+        '3'
+
     );
 
 insert into
     courses_beginners(description, img, title, level)
 values
     (
+
+        '*****How to launch and run various applications
+Click a tile in the Start menu.
+Open the Start menu and click the All Apps button in the lower-left corner. This displays an alphabetical list of installed apps (as shown in the following figure). Click an app to open it.
+Double-click a program shortcut icon on the desktop (see the following figure).
+Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doe not, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
+When the application opens, if it is a game, play it; if it is a spreadsheet, enter numbers into it; if it is your email program, start deleting junk mail .',
+        '',
+        'Launching and running various applications',
+        '3'
+
         'USB stands for “Universal Serial Bus“, and it is very versatile in use. USB ports are used for many objectives like as to exchange data, connect peripheral devices (printers, keyboards, external hard drives, mice, scanners), as well as interface for charging devices like as smart phones, digital cameras, etc.',
         'USB port.jpeg',
         'USB Port',
@@ -252,6 +272,7 @@ Its function involves integrating all the physical components to communicate and
         'computer-motherboard.jpeg',
         'Motherboard',
         '1'
+
     );
 
 insert into
@@ -1102,17 +1123,28 @@ where
 
 -- intermidiate level 1
 insert into
+
     courses_intermediate(description, img, level, title,)
+
 values
     (
         ' WWW- The World Wide Web, commonly known as the Web, is an information system enabling documents and other web resources to be accessed over the Internet.',
         'www.jpeg',
+
+        'WWW',
+        2
+    );
+
+insert into
+    courses_intermediate(description, img, title, level)
+
         2,
         'WWW'
     );
 
 insert into
     courses_intermediate(description, img, level, title)
+
 values
     (
         'A web page is a hypertext document on the World Wide Web. Web pages are delivered by a web server to the user and displayed in a web browser.The name "web page" is a metaphor of paper pages bound together into a book.',
@@ -1122,7 +1154,9 @@ values
     );
 
 insert into
+
     courses_intermediate(description, img, level, title)
+
 values
     (
         'A home page is the main web page of a website. The term may also refer to the start page shown in a web browser when the application first opens.',
@@ -1132,7 +1166,9 @@ values
     );
 
 insert into
+
     courses_intermediate(description, img, level, title)
+
 values
     (
         ' Refers to the address of a web page.',
@@ -1142,7 +1178,9 @@ values
     );
 
 insert into
+
     courses_intermediate(description, img, level, title)
+
 values
     (
         'A bookmark is a saved link to a Web page that has been added to a list of saved links. When you are looking at a particular Web site or home page and want to be able to quickly get back to it later, you can create a bookmark for it.',

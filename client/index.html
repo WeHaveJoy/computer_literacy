@@ -143,10 +143,11 @@
             <input type="button" x-bind:disabled="signUp.school === ''" @click="regUser(), goToLogin()" name="action"
               value="Register" class="button">
           </div>
+
           <br>
           <br>
           <div class="login">
-            <div class="" x-show="!showLoginForm">
+            <div x-show="!showLoginForm">
               <h2>Login here if you already have an account:</h2>
               <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
               <div x-text="logIn_message"></div>
@@ -161,6 +162,8 @@
             </div>
           </div>
         </div>
+
+
         <div x-show="user.role === 'learner'" class="learner">
 
           <div class="funky">
@@ -206,6 +209,20 @@
           </div>
 
 
+          <!-- <table class="table table-success table-striped">
+                <tr>
+                  <th>IMAGE</th>
+                  <th>Description</th>
+                </tr>
+                <template x-for="computer in computers">
+                  <tr>
+                    <td>
+                      <img x-bind:src="`/Beginners/${computer.img}`" width="150" />
+                    </td>
+                    <td><span x-text="computer.description"></span></td>
+                  </tr>
+                </template>
+              </table> -->
 
           <div class="d-grid gap-5">
             <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
@@ -292,14 +309,17 @@
                   </div>
                 </template>
 
-                <div x-data="{ this.totalScore: '' }">
-                  <p x-text="this.totalScore"></p>
+                <div x-model="totalScore">
+                  <span x-text="totalScore"></span>
                 </div>
+                <br>
+                <br>
 
-                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+                <button  @click="caltulateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
+
 
           <!-- allow a learner to go through intermediate once they have completed beginner assessment -->
           <div>
@@ -378,7 +398,6 @@
 
 
 
-
         </div>
 
         <div x-show="user.role === 'teacher'" class="teacher">
@@ -415,9 +434,9 @@
           </div> -->
 
 
-          <div>
-            <span x-text="quizzes.question"></span>
 
+          <!-- <div>
+            <span x-text="quizzes.question"></span>
 
             <template x-for="answer in quizzes.answers">
               <div>
@@ -425,7 +444,8 @@
                 <span x-text="answer.answer"></span>
               </div>
             </template>
-            
+
+          
             <div>
               <span x-text="this.totalScore"></span>
             </div>
@@ -434,21 +454,24 @@
               <span x-text="this.learnerScore"></span>
             </div>
 
+        
             <br>
             <br>
             <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
-          </div>
+          </div> -->
 
         </div>
       </div>
       <br>
       <br>
 
+
       <!-- <div>
           <button @click="logoutFunc()">logout</button>
         </div> -->
 
       <!-- </div> -->
+
 
       <div x-show="user.role === 'parent'" class="parent">
         <div>
@@ -458,14 +481,11 @@
 
       </div>
 
-      <!-- <div>
-          <button @click="logoutFunc()">logout</button>
-        </div> -->
     </div>
 
 
-    <!-- <div class="">
-         <div class="footer">
+    <!-- <div class=""> -->
+    <!-- <div class="footer">
 
       <footer>
         <div class="row">
@@ -479,9 +499,11 @@
         </div>
     </footer>
 
-  </div>
-        <div class="footer">
+  </div> -->
+    <!-- <div class="footer">
 
+
+ 
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -507,7 +529,13 @@
           <div>
             <h4>You are on the parent screen</h4>
           </div>
-        </div> -->
+
+        </div>
+      </div>
+      </div> -->
+    <!-- </div> -->
+
+
   </div>
 
   <script type="module" src="./main.js"></script>
