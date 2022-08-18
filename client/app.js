@@ -375,15 +375,15 @@ export default function computer_literacy() {
             this.user.role = false
         },
 
-        // learnerDetails (){
+        learnerDetails (){
 
-        //     axios
-        //     .post(`${remote_url}/api/countScore/${quesion_id}`)
-        //     .then(results => {
-        //         this.theeScore = results.data.scoresById.count;
-        //         this.theScore = results.data.scoresByCorrect.count;
-        //     })
-        // }
+            axios
+            .post(`${remote_url}/api/countScore/${quesion_id}`)
+            .then(results => {
+                this.theeScore = results.data.scoresById.count;
+                this.theScore = results.data.scoresByCorrect.count;
+            })
+        }
 
     }
 

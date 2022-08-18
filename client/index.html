@@ -33,7 +33,8 @@
                 <li><a href="#level1" , @click="currentLevel = 'ONE' , beginner()">level 1</a></li>
                 <li><a href="#level2" , @click="currentLevel = 'TWO'">level 2</a></li>
                 <li><a href="#level3" , @click="currentLevel = 'THREE' , beginner3()">level 3</a></li>
-                <li><a href="#beginnerAssessment" , @click="currentLevel = 'beginnerAssessment' , assessment()">Go To Assessment</a></li>
+                <li><a href="#beginnerAssessment" , @click="currentLevel = 'beginnerAssessment' , assessment()">Go To
+                    Assessment</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">intermediate course<span
@@ -56,12 +57,12 @@
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
-             class="glyphicon glyphicon-user"></span> Login</a></li>
-             
+                  class="glyphicon glyphicon-user"></span> Login</a></li>
+
             <li><a href="#" , @click="show=true , showHomeFunc()"><span class="glyphicon glyphicon-log-in"></span>
                 Signup</a></li>
-                <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
-                  Logout</a></li>
+            <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
+                Logout</a></li>
           </ul>
         </div>
       </nav>
@@ -89,7 +90,9 @@
       <div>
         <div x-show="!showHome">
           <div class="" x-show="show">
-            <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong>
+            <strong>
+              <h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3>
+            </strong>
             <!-- <p>Already have an account? <a href="#" , @click="showContent()">Login</a> <br> </p> -->
             <div x-text="logIn_message"></div>
             <br>
@@ -315,7 +318,7 @@
                 <br>
                 <br>
 
-                <button  @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
@@ -391,12 +394,7 @@
               </div>
             </div>
 
-
-
           </div>
-
-
-
 
         </div>
 
@@ -416,7 +414,11 @@
                   <li>
                     <span x-text="learn.first_name"></span>
                     <span x-text="learn.last_name"></span>
-                    <button class="learner_dettails">View details</button>
+                    <br>
+                    <div x-model="totalScore">
+                      <span x-text="totalScore"></span>
+                    </div>
+                    <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
                   </li>
                 </ul>
               </div>
@@ -429,13 +431,13 @@
             <span x-text="quizzes.question"></span>
 
 
-          <!-- <div>
+            <!-- <div>
             <button @click="logoutFunc()">logout</button>
           </div> -->
 
 
 
-          <!-- <div>
+            <!-- <div>
             <span x-text="quizzes.question"></span>
 
             <template x-for="answer in quizzes.answers">
@@ -460,32 +462,25 @@
             <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
           </div> -->
 
-        </div>
-      </div>
-      <br>
-      <br>
-
-
-      <!-- <div>
-          <button @click="logoutFunc()">logout</button>
-        </div> -->
-
-      <!-- </div> -->
-
-
-      <div x-show="user.role === 'parent'" class="parent">
-        <div>
-          <h2>Welcome <span x-text="user.first_name"> </span></h2>
+          </div>
         </div>
         <br>
+        <br>
+
+
+        <div x-show="user.role === 'parent'" class="parent">
+          <div>
+            <h2>Welcome <span x-text="user.first_name"> </span></h2>
+          </div>
+          <br>
+
+        </div>
 
       </div>
 
-    </div>
 
-
-    <!-- <div class=""> -->
-    <!-- <div class="footer">
+      <!-- <div class=""> -->
+      <!-- <div class="footer">
 
       <footer>
         <div class="row">
@@ -500,10 +495,9 @@
     </footer>
 
   </div> -->
-    <!-- <div class="footer">
+      <!-- <div class="footer">
 
 
- 
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -521,7 +515,7 @@
         </div>
       </div> -->
 
-    <!-- <div x-show="user.role === 'parent'" class="parent">
+      <!-- <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
@@ -533,7 +527,7 @@
         </div>
       </div>
       </div> -->
-    <!-- </div> -->
+    </div>
 
 
   </div>
