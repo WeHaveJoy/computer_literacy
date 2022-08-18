@@ -7,7 +7,9 @@ const Levels = {
     One: 'ONE',
     Two: 'TWO',
     Three: 'THREE',
-    beginnerAssessment: 'beginnerAss'
+    OneIntermidiate: 'ONEintermidiate',
+    TwoIntermidiate: 'TWOintermidiate',
+    Assessment: beginnerAssessment
 }
 
 const Assessments = {
@@ -48,7 +50,7 @@ export default function computer_literacy() {
         learnersForClass: '',
 
         currentLevel: '',
-        currentAssement: '',
+        currentAssessment: '',
 
         user: {
             role: ''
@@ -88,7 +90,7 @@ export default function computer_literacy() {
         learnerScore : 0,
 
         init() {
-
+            
             if (localStorage['user'] !== undefined) {
                 this.loggeIn = false
                 this.registration = false

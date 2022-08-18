@@ -176,7 +176,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=3`, [level]);
+            const display_course = await db.manyOrNone(`SELECT description, img, title FROM courses_beginners where level=3`, [level]);
 
             res.status(200).json({
                 course3: display_course
@@ -198,7 +198,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const interOne = await db.manyOrNone(`SELECT description, img FROM courses_intermediate where level=1`, [level]);
+            const interOne = await db.manyOrNone(`SELECT description, img, title FROM courses_intermediate where level=1`, [level]);
 
             res.status(200).json({
                 interOne: interOne
@@ -220,7 +220,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const interTwo = await db.manyOrNone(`SELECT description, img FROM courses_intermediate where level=2`, [level]);
+            const interTwo = await db.manyOrNone(`SELECT description, img ,title FROM courses_intermediate where level=2`, [level]);
 
             res.status(200).json({
                 interTwo: interTwo

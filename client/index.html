@@ -20,7 +20,7 @@
 <body>
   <div id="app">
     <div class="container" x-data="info">
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar navbar-inverse navBackground">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">e-Learn</a>
@@ -32,14 +32,17 @@
               <ul class="dropdown-menu">
                 <li><a href="#level1" , @click="currentLevel = 'ONE' , beginner()">level 1</a></li>
                 <li><a href="#level2" , @click="currentLevel = 'TWO'">level 2</a></li>
-                <li><a href="#level3" , @click="currentLevel = 'THREE'">level 3</a></li>
+                <li><a href="#level3" , @click="currentLevel = 'THREE' , beginner3()">level 3</a></li>
+                <li><a href="#beginnerAssessment" , @click="currentLevel = 'beginnerAssessment' , assessment()">Go To Assessment</a></li>
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">intermediate course<span
                   class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">level 1</a></li>
-                <li><a href="#">level 2</a></li>
+                <li><a href="#inter1" , @click="currentLevel = 'ONEintermidiate' , intermidiate()">level 1</a></li>
+                <li><a href="#inter2" , @click="currentLevel = 'TWOintermidiate' , intermidiateTwo()">level
+                    2</a></li>
+
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">advanced course<span
@@ -67,7 +70,9 @@
           Welcome
         </h2>
         <p>
-          This <strong> Computer literacy app</strong> is designed for the interest of learners(or anyone who might be
+          This <strong>
+            <e-Learn></e-Learn>
+          </strong> is designed for the interest of learners(or anyone who might be
           interested)
           who wants to learn computer literature at the palm of their hands.It is a simple to use app with quite
           friendly user interface.
@@ -157,18 +162,14 @@
           </div>
         </div>
         <div x-show="user.role === 'learner'" class="learner">
-          <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-          <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
-        </div> -->
+
           <div class="funky">
             <h1>Welcome to e-Learn <span x-text="user.first_name"></span></h1>
           </div>
           <div x-show="currentLevel == 'ONE'" class="level1">
             <h2 class="levelsText">Beginner course level 1:<strong>Computer Componets</strong></h2>
             <div x-text="message"></div>
-            <!-- <div class="card" style="width: 78rem; height: 25rem;">
+            <div class="card" style="width: 78rem; height: 25rem;">
               <p>Computer studies has evolved quite immernsely,day by day the technology changes as the universe drifts
                 towards the <strong>4th IR(4th Indusrtial Revolution),</strong>
                 computers has become portable,external devices has become wireless.It is of paramount importance that as
@@ -179,47 +180,36 @@
                 components are for aesthetic purposes of the computer system.
               </p>
               <p>Get to study the components below and take a look on the <strong>images provided.</strong></p>
-            </div> -->
+            </div>
             <br>
             <br>
             <br>
-            <!-- <div> -->
 
             <div
               class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sortOut">
+
               <template x-for="computer in computers">
-                <div class="card d-flex position-relative flex-column">
+                <div class="card d-flex position-relative flex-column sortOut">
                   <div class='imgContainer'>
                     <img x-bind:src="`/Beginners/${computer.img}`" width="150" />
                   </div>
                   <div class="content">
-                    <h2><span x-text="computer.title"></span></h2>
+                    <h3><span x-text="computer.title"></span></h3>
+
                     <p><span x-text="computer.description"></span></p>
                   </div>
+                  <br>
+                  <br>
                 </div>
               </template>
             </div>
           </div>
 
 
-          <!-- <table class="table table-success table-striped">
-                <tr>
-                  <th>IMAGE</th>
-                  <th>Description</th>
-                </tr>
-                <template x-for="computer in computers">
-                  <tr>
-                    <td>
-                      <img x-bind:src="`/Beginners/${computer.img}`" width="150" />
-                    </td>
-                    <td><span x-text="computer.description"></span></td>
-                  </tr>
-                </template>
-              </table> -->
+
           <div class="d-grid gap-5">
             <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
           </div>
-          <!-- </div> -->
 
           <div x-show="currentLevel == 'TWO'" class="level2">
             <div class="">
@@ -263,28 +253,31 @@
               </p>
             </div>
             <br>
-            <div>
-              <table class="table table-success table-striped">
-                <tr>
-                  <th>IMAGE</th>
-                  <th>INSTRUCTIONS ON HOW TO...</th>
-                </tr>
-                <template x-for="computer3 in computers3">
-                  <tr>
-                    <td>
-                      <img x-bind:src="`/Beginners/${computer3.img}`" width="150" />
-                    </td>
-                    <td><span x-text="computer3.description"></span></td>
-                  </tr>
-                </template>
-              </table>
-            </div>
-            <div class="d-grid gap-5">
-              <button class="btn btn-primary" @click="currentLevel = 'beginnerAss'" type="button">Go to
-                Assessment>>></button>
+
+
+            <div
+              class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
+              <template x-for="computer in computers3">
+                <div class="card d-flex position-relative flex-column ">
+                  <div class='imgContainer'>
+                    <img x-bind:src="`/Beginners/${computer3.img}`" width="150" />
+                  </div>
+                  <div class="content sortOut">
+                    <h3><span x-text="computer.title"></span></h3>
+                    <br>
+                    <p><span x-text="computer.description"></span></p>
+                  </div>
+                </div>
+              </template>
             </div>
           </div>
-          <div x-show="currentLevel == 'beginnerAss'" class="beginner">
+
+          <div class="d-grid gap-5">
+            <button class="btn btn-primary" @click="currentLevel = 'beginnerAss'" type="button">Go to
+              Assessment>>></button>
+          </div>
+
+          <div x-show="currentLevel == 'beginnerAss'" id="beginnerAssessment" class="beginnerAssessment">
             <div>
               <h2>Please complete this assessment before requesting for the next course: </h2>
               <button @click="assessment()"> Show quiz</button>
@@ -308,19 +301,92 @@
             </div>
           </div>
 
-          <!-- <div>
-            <button @click="logoutFunc()">logout</button>
-          </div> -->
+          <!-- allow a learner to go through intermediate once they have completed beginner assessment -->
+          <div>
+            <div x-show="currentLevel == 'ONEintermidiate'" class="inter1" id="inter1">
+              <h2 class="levelsText">Intermidiate course level 1:<strong>Computer Terminology</strong></h2>
+              <div x-text="message"></div>
+              <div class="card" style="width: 78rem; height: 25rem;">
+                <p>On this chapter,we will focus on the understanding the computer Terminology
+
+                </p>
+                <p>Get to study below and take a look on the <strong>images provided.</strong></p>
+              </div>
+              <br>
+              <br>
+              <br>
+
+
+              <div
+                class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
+                <template x-for="computer in computersIntermidiate">
+                  <div class="card d-flex position-relative flex-column sortOut">
+                    <div class='imgContainer'>
+                      <img x-bind:src="`/Intermediate/${computer.img}`" width="150" />
+                    </div>
+                    <div class="content">
+                      <h3><span x-text="computer.title"></span></h3>
+
+                      <p><span x-text="computer.description"></span></p>
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+
+
+            <div x-show="currentLevel == 'TWOintermidiate'" class="inter2" id="inter2">
+              <h2 class="levelsText">Intermidiate course level 2:<strong>Computer Terminology</strong></h2>
+              <div x-text="message"></div>
+              <div class="card" style="width: 78rem; height: 25rem;">
+                <p>...Computer Terminology continues
+
+                </p>
+                <p>Get to study below and take a look on the <strong>images provided.</strong></p>
+              </div>
+              <br>
+              <br>
+              <br>
+
+
+              <div
+                class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
+                <template x-for="computer in computersIntermidiate">
+                  <div class="card d-flex position-relative flex-column sortOut">
+                    <div class='imgContainer'>
+                      <img x-bind:src="`/Intermediate/${computer.img}`" width="150" />
+                    </div>
+                    <div class="content">
+                      <h3><span x-text="computer.title"></span></h3>
+
+                      <p><span x-text="computer.description"></span></p>
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+
 
 
         </div>
+
         <div x-show="user.role === 'teacher'" class="teacher">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
           <br>
-          <!-- <h2> Search for the learner:</h2>
-        <input type="search"> -->
+
           <button @click="getLearners(user.school)"> Show my class list</button>
           <div>
             <br>
@@ -340,6 +406,9 @@
             <h4>You are on the Teacher dashboard</h4>
           </div>
 
+          <div>
+            <span x-text="quizzes.question"></span>
+
 
           <!-- <div>
             <button @click="logoutFunc()">logout</button>
@@ -349,14 +418,14 @@
           <div>
             <span x-text="quizzes.question"></span>
 
+
             <template x-for="answer in quizzes.answers">
               <div>
                 <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
                 <span x-text="answer.answer"></span>
               </div>
             </template>
-
-
+            
             <div>
               <span x-text="this.totalScore"></span>
             </div>
@@ -369,6 +438,7 @@
             <br>
             <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
           </div>
+
         </div>
       </div>
       <br>
@@ -396,6 +466,7 @@
 
     <!-- <div class="">
          <div class="footer">
+
       <footer>
         <div class="row">
           <div class="contact">
@@ -407,8 +478,10 @@
           </div>
         </div>
     </footer>
+
   </div>
         <div class="footer">
+
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -422,6 +495,7 @@
           <br>
           Cape Town
       </div>
+
         </div>
       </div> -->
 
@@ -435,7 +509,6 @@
           </div>
         </div> -->
   </div>
-
 
   <script type="module" src="./main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
