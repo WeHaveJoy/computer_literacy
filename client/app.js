@@ -24,6 +24,7 @@ export default function computer_literacy() {
         logIn_message: '',
         message: '',
         error: '',
+        error_message: '',
         extra_mural: '',
 
         aswers: {
@@ -75,7 +76,7 @@ export default function computer_literacy() {
         showLoginForm: false,
         init() {
             // this.classLearner()
-            this.intermidiate()
+
         },
         getAnswer: [],
         correct: [],
@@ -105,7 +106,7 @@ export default function computer_literacy() {
             //this.currentLevel = Levels.One
             setInterval(() => {
                 this.message = ''
-                this.error = ''
+                this.error_message = ''
                 this.logIn_message = ''
             }, 5000);
         },
@@ -178,7 +179,10 @@ export default function computer_literacy() {
                     this.registration = false
                     this.showHome = true;
                     this.logIn_message = "You are logged in"
-                    this.error = "The user doesn't exist"
+                    if (user !== user) {
+                        this.error_message = "The user doesn't exist"
+                    }
+
                     setTimeout(() => {
                         this.token = ''
                     }, 6000);
@@ -201,12 +205,13 @@ export default function computer_literacy() {
         },
 
         beginner() {
+            alert('beginner')
             axios
                 .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {
                     this.computers = results.data.course;
 
-                    // console.log(results.data.course);
+                    console.log(results.data.course);
                     setInterval(() => {}, 4000);
                     return true;
                 }).catch(e => console.log(e))
