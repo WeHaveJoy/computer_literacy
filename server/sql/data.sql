@@ -132,17 +132,18 @@ values
 
 -- #LEVEL3
 insert into
-    courses_beginners(description, img, level)
+    courses_beginners(description, img, title, level)
 values
     (
         'SELECT AND HIGHLIGHT
 Click or tap once, and hold to start your selection. Then, drag your cursor or finger and notice how the characters on your screen are highlighted. Release when you are done selecting your text.',
         'highlighting.png',
+        'Highlighting',
         '3'
     );
 
 insert into
-    courses_beginners(description, img, level)
+    courses_beginners(description, img, title, level)
 values
     (
         'HOW TO CREATE FOLDER
@@ -153,20 +154,22 @@ values
 5.With the New Folder name selected, type a new name.
 6. Press Enter or tap in a blank area.',
         'folder.png',
+        'Folder',
         '3'
     );
 
 insert into
-    courses_beginners(description, img, level)
+    courses_beginners(description, img, title, level)
 values
     (
         'A computer mouse is a handheld hardware input device that controls a cursor in a GUI (graphical user interface) for pointing, moving and selecting text, icons, files, and folders on your computer.',
         'mouse_demo.png',
+        'Mouse Demo',
         '3'
     );
 
 insert into
-    courses_beginners(description, img, level)
+    courses_beginners(description, img, title, level)
 values
     (
         'Put the mouse pointer over the file or folder.
@@ -174,11 +177,13 @@ Press and hold mouse button 1.
 Drag the icon to where you want to drop it.
 Release the mouse button on the path you want to paste the item
 ',
-        'drag&drop.png'
+        'drag&drop.png',
+        'Drag and drop'
+        '3'
     );
 
 insert into
-    courses_beginners(description, img, level)
+    courses_beginners(description, img, title, level)
 values
     (
         '*****How to launch and run various applications
@@ -188,6 +193,7 @@ Double-click a program shortcut icon on the desktop (see the following figure).
 Click an item on the desktop taskbar to display a currently open program. The taskbar should display by default. If it doe not, press the Windows key (on your keyboard) to display it, and then click an icon on the taskbar.
 When the application opens, if it is a game, play it; if it is a spreadsheet, enter numbers into it; if it is your email program, start deleting junk mail .',
         '',
+        'Launching and running various applications',
         '3'
     );
 
@@ -1030,16 +1036,17 @@ where
 
 -- intermidiate level 1
 insert into
-    courses_intermediate(description, img, level)
+    courses_intermediate(description, img, title, level)
 values
     (
         ' www- The World Wide Web, commonly known as the Web, is an information system enabling documents and other web resources to be accessed over the Internet.',
         'www.jpeg',
+        'WWW',
         2
     );
 
 insert into
-    courses_intermediate(description, img, level)
+    courses_intermediate(description, img, title, level)
 values
     (
         'Webpage - A web page is a hypertext document on the World Wide Web. Web pages are delivered by a web server to the user and displayed in a web browser.The name "web page" is a metaphor of paper pages bound together into a book.',
@@ -1048,7 +1055,7 @@ values
     );
 
 insert into
-    courses_intermediate(description, img, level)
+    courses_intermediate(description, img, title, level)
 values
     (
         'Home page - A home page is the main web page of a website. The term may also refer to the start page shown in a web browser when the application first opens.',
@@ -1057,7 +1064,7 @@ values
     );
 
 insert into
-    courses_intermediate(description, img, level)
+    courses_intermediate(description, img, title, level)
 values
     (
         ' url - refers to the address of a web page.',
@@ -1066,7 +1073,7 @@ values
     );
 
 insert into
-    courses_intermediate(description, img, level)
+    courses_intermediate(description, img, title, level)
 values
     (
         ' bookmark - a bookmark is a saved link to a Web page that has been added to a list of saved links. When you are looking at a particular Web site or home page and want to be able to quickly get back to it later, you can create a bookmark for it.',

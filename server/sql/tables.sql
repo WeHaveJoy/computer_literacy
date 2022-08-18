@@ -24,6 +24,11 @@ create table courses_beginners(
     level int NOT NULL
 );
 
+ALTER TABLE courses_beginners
+ADD title text NOT NULL;
+
+ALTER table courses_beginners ADD column title text not null AFTER img;
+
 create table courses_intermediate(
     id serial not null primary key,
     name text,
