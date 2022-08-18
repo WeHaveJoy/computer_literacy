@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -21,18 +20,17 @@
 <body>
   <div id="app">
     <div class="container" x-data="info">
-
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">e-Learn</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">Home </a></li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Beginner course<span
                   class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#level1" , @click="currentLevel = 'ONE'">level 1</a></li>
+                <li><a href="#level1" , @click="currentLevel = 'ONE' , beginner()">level 1</a></li>
                 <li><a href="#level2" , @click="currentLevel = 'TWO'">level 2</a></li>
                 <li><a href="#level3" , @click="currentLevel = 'THREE'">level 3</a></li>
               </ul>
@@ -42,7 +40,6 @@
               <ul class="dropdown-menu">
                 <li><a href="#">level 1</a></li>
                 <li><a href="#">level 2</a></li>
-
               </ul>
             </li>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">advanced course<span
@@ -50,25 +47,21 @@
               <ul class="dropdown-menu">
                 <li><a href="#">level 1</a></li>
                 <li><a href="#">level 2</a></li>
-
               </ul>
             </li>
-
           </ul>
           <ul class="nav navbar-nav navbar-right">
 
-      
-
-            <li><a href="" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
-              Logout</a></li>
-            <li><a href="#" , @click="showContent() , showHomeFunc()"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
+                Logout</a></li>
+            <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
+                  class="glyphicon glyphicon-user"></span>
                 Login</a></li>
             <li><a href="#" , @click="show=true , showHomeFunc()"><span class="glyphicon glyphicon-log-in"></span>
                 Signup</a></li>
           </ul>
         </div>
       </nav>
-
       <div class="landing" x-show="!showHome">
         <h2>
           Welcome
@@ -86,20 +79,15 @@
           at
           the very end of each course there is an <strong>assessment for the learner</strong>.The assessments are in
           Multiple choice form with mind stretching answers.
-
         </p>
-
       </div>
-
       <div>
         <div x-show="!showHome">
           <div class="" x-show="show">
             <h2>Register here if you already have an account:</h2>
             <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
             <div x-text="logIn_message"></div>
-
             <br>
-
             <div x-text="message"></div>
             <div x-text="error"></div>
             <br>
@@ -107,13 +95,11 @@
             <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
             <br>
             <br>
-
             <label for="">Please enter your last name: </label>
             <input x-model="signUp.last_name" x-bind:disabled="signUp.first_name === ''" type="text" name="lastname"
               class="lastname">
             <br>
             <br>
-
             <label for="">Please enter your username: </label>
             <input x-model="signUp.username" x-bind:disabled="signUp.last_name === ''" type="text" name="register_user"
               class="register">
@@ -124,10 +110,8 @@
               name="register_password" class="register">
             <br>
             <br>
-
             <label style="color:yellow ;">Please select your role: </label>
             <br>
-
             <div class="dropDown">
               <select name="" x-bind:disabled="signUp.password === ''" x-model=" signUp.role" class="role">
                 <option class="role" value="" required>Role</option>
@@ -136,10 +120,8 @@
                 <option class="role" value="teacher">Teacher</option>
               </select>
             </div>
-
             <br>
             <label style="color:yellow ;">Please enter your school: </label>
-
             <div class="dropDown">
               <select name="" x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class="school">
                 <option class="role" value="" required>School</option>
@@ -156,10 +138,8 @@
             <input type="button" x-bind:disabled="signUp.school === ''" @click="regUser(), goToLogin()" name="action"
               value="Register" class="button">
           </div>
-
           <br>
           <br>
-
           <div class="login">
             <div class="" x-show="!showLoginForm">
               <h2>Login here if you already have an account:</h2>
@@ -176,22 +156,19 @@
             </div>
           </div>
         </div>
-
         <div x-show="user.role === 'learner'" class="learner">
           <!-- <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
           <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
           <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
           <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
         </div> -->
-
           <div class="funky">
             <h1>Welcome to computer Literacy <span x-text="user.first_name"></span></h1>
           </div>
-
           <div x-show="currentLevel == 'ONE'" class="level1">
             <h2 class="levelsText">Beginner course level 1:<strong>Computer Componets</strong></h2>
             <div x-text="message"></div>
-            <div class="card" style="width: 78rem; height: 25rem;">
+            <!-- <div class="card" style="width: 78rem; height: 25rem;">
               <p>Computer studies has evolved quite immernsely,day by day the technology changes as the universe drifts
                 towards the <strong>4th IR(4th Indusrtial Revolution),</strong>
                 computers has become portable,external devices has become wireless.It is of paramount importance that as
@@ -202,12 +179,29 @@
                 components are for aesthetic purposes of the computer system.
               </p>
               <p>Get to study the components below and take a look on the <strong>images provided.</strong></p>
+            </div> -->
+            <br>
+            <br>
+            <br>
+            <!-- <div> -->
+
+            <div class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sortOut">
+              <template x-for="computer in computers">
+                <div class="card d-flex position-relative flex-column">
+                  <div class='imgContainer'>
+                    <img x-bind:src="`/Beginners/${computer.img}`" width="150" />
+                  </div>
+                  <div class="content">
+                    <h2><span x-text="computer.title"></span></h2>
+                    <p><span x-text="computer.description"></span></p>
+                  </div>
+                </div>
+              </template>
             </div>
-            <br>
-            <br>
-            <br>
-            <div>
-              <table class="table table-success table-striped">
+          </div>
+
+
+          <!-- <table class="table table-success table-striped">
                 <tr>
                   <th>IMAGE</th>
                   <th>Description</th>
@@ -220,12 +214,11 @@
                     <td><span x-text="computer.description"></span></td>
                   </tr>
                 </template>
-              </table>
-              <div class="d-grid gap-5">
-                <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
-              </div>
-            </div>
+              </table> -->
+          <div class="d-grid gap-5">
+            <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
           </div>
+          <!-- </div> -->
 
           <div x-show="currentLevel == 'TWO'" class="level2">
             <div class="">
@@ -254,7 +247,6 @@
               </div>
             </div>
           </div>
-
           <div x-show="currentLevel == 'THREE'" class="level3">
             <h2 class="levelsText">Beginner course level 3:<strong>How to...</strong></h2>
             <div x-text="message"></div>
@@ -291,17 +283,14 @@
                 Assessment>>></button>
             </div>
           </div>
-
           <div x-show="currentLevel == 'beginnerAss'" class="beginner">
             <div>
               <h2>Please complete this assessment before requesting for the next course: </h2>
               <button @click="assessment()"> Show quiz</button>
               <br>
               <br>
-
               <div>
                 <span x-text="quizzes.question"></span>
-
                 <template x-for="answer in quizzes.answers">
                   <div>
                     <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
@@ -312,26 +301,21 @@
               </div>
             </div>
           </div>
-
           <div>
             <button @click="logoutFunc()">logout</button>
           </div>
-
         </div>
-
         <div x-show="user.role === 'teacher'" class="teacher">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
           <br>
-
           <!-- <h2> Search for the learner:</h2>
         <input type="search"> -->
           <button @click="getLearners(user.school)"> Show my class list</button>
           <div>
             <br>
             <br>
-
             <template x-for="learn in schoolLearners">
               <div>
                 <ul>
@@ -343,91 +327,20 @@
                 </ul>
               </div>
             </template>
-
             <h4>You are on the Teacher dashboard</h4>
           </div>
-
           <div>
             <button @click="logoutFunc()">logout</button>
           </div>
-
-
-            <div>
-              <span x-text="quizzes.question"></span>
-
-              <template x-for="answer in quizzes.answers">
-                <div>
-                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
-                  <span x-text="answer.answer"></span>
-                </div>
-              </template>
-
-              <template >
-                <div>
-                  <span x-text="this.totalScore.toFixed(2)"></span>
-                </div>
-
-                <div>
-                  <span x-text="this.learnerScore.toFixed(2)"></span>
-                </div>
-              </template>
-                <br>
-                <br>
-                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
-            </div>
-          </div>
         </div>
-        <br>
-        <br>
-          
-
-          <div>
-          <button @click="logoutFunc()">logout</button>
-        </div>
-
-      </div>
-
-        </div>
-
-
         <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
           <br>
-
-        <!-- <h2> Search for the learner:</h2>
-        <input type="search"> -->
-        <button @click="getLearners(user.school)"> Show my school list</button>
-        <div>
-          <br>
-          <br>
-          <template x-for="learn in schoolLearners">
-            <div>
-              <ul>
-                <li>
-                  <span x-text="learn.first_name"></span>
-                  <span x-text="learn.last_name"></span>
-                  <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
-                </li>
-              </ul>
-            </div>
-          </template>
-
-          <h4>You are on the Teacher dashboard</h4>
         </div>
-
-        <div>
-          <button @click="logoutFunc()">logout</button>
-        </div>
-
-
-        </div>
-
         <!-- <div class=""> -->
-
         <!-- <div class="footer">
-
       <footer>
         <div class="row">
           <div class="contact">
@@ -436,15 +349,11 @@
              <br>
             <strong>twitter /fb /insta </strong>
              @computer_literacy
-
           </div>
         </div>
-
     </footer>
   </div> -->
-
         <!-- <div class="footer">
-
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -457,39 +366,25 @@
           CodeX
           <br>
           Cape Town
-
-
       </div>
-
       <div class="">
-
-
         <div x-show="user.role === 'parent'" class="parent">
-
-
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
-
           <br>
           <div>
             <h4>You are on the parent screen</h4>
           </div>
-
         </div>
-
-
       </div>
-
       </div> -->
         <!-- </div> -->
-
-
         <!-- </div> -->
       </div>
     </div>
   </div>
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="./main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

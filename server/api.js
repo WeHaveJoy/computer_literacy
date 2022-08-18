@@ -161,7 +161,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=1`, [level]);
+            const display_course = await db.manyOrNone(`SELECT description, img, title FROM courses_beginners where level=1`, [level]);
 
             res.status(200).json({
 
@@ -290,7 +290,7 @@ module.exports = (app, db) => {
                 learners: learners
             });
         } catch (error) {
-            console.log(error.message);
+            console.log(error + "api error");
             res.status(500).json({
                 error: error.message
             })
@@ -303,11 +303,12 @@ module.exports = (app, db) => {
         try {
 
             const { role, answer_id, learner_id } = req.body;
-            console.log(req.body);
+
 
             await db.none(`insert into user_answers (answer_id, learner_id) values ($1, $2)`, [answer_id, learner_id]);
 
             res.status(200).json({
+                // answer: answer,
                 message: "Answer selected",
             });
 
