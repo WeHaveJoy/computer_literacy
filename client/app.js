@@ -143,7 +143,7 @@ export default function computer_literacy() {
         showContent() {
             this.show = false
             this.showLoginForm = true
-            // alert(this.show)
+           
         },
         showNav() {
             this.showLand = !this.showLand

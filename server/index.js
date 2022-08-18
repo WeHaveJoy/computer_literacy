@@ -46,7 +46,9 @@ const config = {
     connectionString:
 
 
-        process.env.DATABASE_URL || "postgresql://bonny:pg123@localhost:5432/postgres",
+
+        process.env.DATABASE_URL || "coder:coder123@localhost:5432/postgres",
+
 
 };
 
