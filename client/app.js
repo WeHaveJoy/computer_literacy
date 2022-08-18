@@ -7,7 +7,9 @@ const Levels = {
     One: 'ONE',
     Two: 'TWO',
     Three: 'THREE',
-    beginnerAssessment: 'beginnerAss'
+    OneIntermidiate: 'ONEintermidiate',
+    TwoIntermidiate: 'TWOintermidiate',
+    Assessment: beginnerAssessment
 }
 
 const Assessments = {
@@ -48,7 +50,7 @@ export default function computer_literacy() {
         learnersForClass: '',
 
         currentLevel: '',
-        currentAssement: '',
+        currentAssessment: '',
 
         user: {
             role: ''
@@ -88,7 +90,7 @@ export default function computer_literacy() {
         learnerScore : 0,
 
         init() {
-
+            
             if (localStorage['user'] !== undefined) {
                 this.loggeIn = false
                 this.registration = false
@@ -141,7 +143,7 @@ export default function computer_literacy() {
         showContent() {
             this.show = false
             this.showLoginForm = true
-            // alert(this.show)
+           
         },
         showNav() {
             this.showLand = !this.showLand
@@ -205,7 +207,7 @@ export default function computer_literacy() {
         },
 
         beginner() {
-            alert('beginner')
+            // alert('beginner')
             axios
                 .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {

@@ -8,6 +8,8 @@
   text-align: center;
   color: black;
   margin-top: 60px;
+  /* margin-left: 10em; */
+
 
 }
 
@@ -18,29 +20,42 @@ body {
 
 .container {
 
-  background-color: #416165;
+
+  background-color: #b6c9bb;
   /* background-image: url(/lab.jpeg); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: black;
-  width: 970px;
+  /* width: 970px; */
   margin-top: 65px;
   height: 80vh;
 }
+
 
 .parent {
   background-color: #78b87a;
 }
 
 .learner {
-  background-color: #78b87a;
+  background-color:#ECF39E;
 }
 
 .teacher {
   background-color: #78b87a;
 }
-
+.landing{
+   background-color: #bfedc1;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+.navbar-brand{
+  font-style: oblique;
+  
+}
 
 .footer {
   position: fixed;
@@ -49,8 +64,8 @@ body {
   bottom: 50px;
   width: 970px;
   margin: 0 auto;
-  background-color: rgb(122, 108, 108);
-  color: white;
+  background-color: #aaacb0; 
+  color: rgb(146, 71, 71);
   text-align: center;
 
 }
@@ -78,6 +93,10 @@ body {
   border: solid;
 }
 
+.navBackground{
+  background-color: #31572C;
+}
+
 .button {
   background-color: #78b87a;
   border: none;
@@ -91,7 +110,7 @@ body {
   justify-content: space-inbetween
 }
 
-.learner_dettails{
+.learner_dettails {
   background-color: rgb(0, 238, 255);
   border: none;
   color: black;
@@ -122,36 +141,21 @@ body {
   height: 20em;
 }
 
-.card  {
+.card {
   /* padding-left: 18rem; */
   margin-left: 7rem;
   font-size: medium;
   background-color: whitesmoke;
   justify-content: first baseline;
-  margin:auto
-  }
-
-
-
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif
+  margin: auto
 }
-body
-{
-    min-width: 100vw;
-    min-height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background: #16384c;
-} */
-/* .containerDisplay{
-flex-wrap: wrap;
-flex-flow: column wrap;
 
-} */
+.p{
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+
+
 .containerDisplay .card
 {
  
@@ -165,44 +169,60 @@ flex-flow: column wrap;
 .containerDisplay .card:hover
 {
     height: 450px;
-}
-.containerDisplay .card .imgContainer
-{
-    position: relative;
-    width:250px;
-    height:250px;
-    top:-50px;
-    left:10px;
-    z-index: 1;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-.containerDisplay .card .imgContainer img
-{
-    max-width: 100%;
-    border-radius: 4px;
-}
-.containerDisplay .card .content
-{
-    position: relative;
-    margin-top: -140px;
-    padding: 10px 15px;
-    text-align: center;
-    color:#111;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s ease-in-out;
-}
-.containerDisplay .card:hover .content
-{
-    visibility: visible;
-    opacity: 1;
-    margin-top: -40px;
-    transition-delay: 0.3s;
+
 }
 
-@media (max-width: 330px){
-    .containerDisplay .card .imgContainer{
-        left: -2px;
-    }
+.containerDisplay .card {
+
+  max-width: 300px;
+  height: 215px;
+  margin: 30px 10px;
+  padding: 20px 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+}
+
+.containerDisplay .card:hover {
+  height: 450px;
+}
+
+.containerDisplay .card .imgContainer {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  top: -50px;
+  left: 10px;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.containerDisplay .card .imgContainer img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.containerDisplay .card .content {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease-in-out;
+}
+
+.containerDisplay .card:hover .content {
+ 
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+}
+
+@media (max-width: 330px) {
+  .containerDisplay .card .imgContainer {
+    left: -2px;
+  }
 }
