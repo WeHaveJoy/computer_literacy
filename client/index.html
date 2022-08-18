@@ -52,13 +52,13 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
 
-            <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
-                Logout</a></li>
             <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
-                  class="glyphicon glyphicon-user"></span>
-                Login</a></li>
+             class="glyphicon glyphicon-user"></span> Login</a></li>
+             
             <li><a href="#" , @click="show=true , showHomeFunc()"><span class="glyphicon glyphicon-log-in"></span>
                 Signup</a></li>
+                <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
+                  Logout</a></li>
           </ul>
         </div>
       </nav>
@@ -84,8 +84,8 @@
       <div>
         <div x-show="!showHome">
           <div class="" x-show="show">
-            <h2>Register here if you already have an account:</h2>
-            <p>Already have an account yet? <a href="#" , @click="showContent()">Login</a> <br> </p>
+            <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong>
+            <!-- <p>Already have an account? <a href="#" , @click="showContent()">Login</a> <br> </p> -->
             <div x-text="logIn_message"></div>
             <br>
             <div x-text="message"></div>
@@ -110,7 +110,7 @@
               name="register_password" class="register">
             <br>
             <br>
-            <label style="color:yellow ;">Please select your role: </label>
+            <label>Please select your role: </label>
             <br>
             <div class="dropDown">
               <select name="" x-bind:disabled="signUp.password === ''" x-model=" signUp.role" class="role">
@@ -121,7 +121,7 @@
               </select>
             </div>
             <br>
-            <label style="color:yellow ;">Please enter your school: </label>
+            <label>Please enter your school: </label>
             <div class="dropDown">
               <select name="" x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class="school">
                 <option class="role" value="" required>School</option>
@@ -163,7 +163,7 @@
           <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i></a>
         </div> -->
           <div class="funky">
-            <h1>Welcome to computer Literacy <span x-text="user.first_name"></span></h1>
+            <h1>Welcome to e-Learn <span x-text="user.first_name"></span></h1>
           </div>
           <div x-show="currentLevel == 'ONE'" class="level1">
             <h2 class="levelsText">Beginner course level 1:<strong>Computer Componets</strong></h2>
@@ -185,7 +185,8 @@
             <br>
             <!-- <div> -->
 
-            <div class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sortOut">
+            <div
+              class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sortOut">
               <template x-for="computer in computers">
                 <div class="card d-flex position-relative flex-column">
                   <div class='imgContainer'>
@@ -335,6 +336,7 @@
                 </ul>
               </div>
             </template>
+
             <h4>You are on the Teacher dashboard</h4>
           </div>
 
@@ -344,62 +346,56 @@
           </div> -->
 
 
+          <div>
+            <span x-text="quizzes.question"></span>
+
+            <template x-for="answer in quizzes.answers">
+              <div>
+                <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
+                <span x-text="answer.answer"></span>
+              </div>
+            </template>
+
+
             <div>
-              <span x-text="quizzes.question"></span>
-
-              <template x-for="answer in quizzes.answers">
-                <div>
-                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
-                  <span x-text="answer.answer"></span>
-                </div>
-              </template>
-
-              <!-- <template > -->
-                <div>
-                  <span x-text="this.totalScore"></span>
-                </div>
-
-                <div>
-                  <span x-text="this.learnerScore"></span>
-                </div>
-              <!-- </template> -->
-                <br>
-                <br>
-                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+              <span x-text="this.totalScore"></span>
             </div>
+
+            <div>
+              <span x-text="this.learnerScore"></span>
+            </div>
+
+            <br>
+            <br>
+            <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
           </div>
         </div>
-        <br>
-        <br>
+      </div>
+      <br>
+      <br>
 
-          <!-- <div>
+      <!-- <div>
           <button @click="logoutFunc()">logout</button>
         </div> -->
 
       <!-- </div> -->
 
-       
-
-
-
-        <div x-show="user.role === 'parent'" class="parent">
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-          <br>
+      <div x-show="user.role === 'parent'" class="parent">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
         </div>
+        <br>
 
+      </div>
 
-        <!-- <div>
+      <!-- <div>
           <button @click="logoutFunc()">logout</button>
         </div> -->
+    </div>
 
 
-        </div>
-
-
-        <!-- <div class=""> -->
-        <!-- <div class="footer">
+    <!-- <div class="">
+         <div class="footer">
       <footer>
         <div class="row">
           <div class="contact">
@@ -411,8 +407,8 @@
           </div>
         </div>
     </footer>
-  </div> -->
-        <!-- <div class="footer">
+  </div>
+        <div class="footer">
         <div class="contact">
           <strong>Contact us at:</strong>
             (021)-541-1000
@@ -426,8 +422,10 @@
           <br>
           Cape Town
       </div>
-      <div class="">
-        <div x-show="user.role === 'parent'" class="parent">
+        </div>
+      </div> -->
+
+    <!-- <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
@@ -435,18 +433,10 @@
           <div>
             <h4>You are on the parent screen</h4>
           </div>
-        </div>
-      </div>
-      </div> -->
-        <!-- </div> -->
-
-
-
-        <!-- </div>
-      </div> -->
-
-    </div>
+        </div> -->
   </div>
+
+
   <script type="module" src="./main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -49,15 +49,6 @@ module.exports = (app, db) => {
 
             const assessments = await db.manyOrNone(`select * from assessment where course_id = $1;`, [course.id])
 
-
-            //      const questions = assessments.map(async (assessment) => {
-
-            //         const { assessment_id } = req.body;
-
-            //         const getQuestionsByAssessmentId = await db.manyOrNone(`select * from questions where assessment_id = $1`, [assessment_id])
-
-            //         const assessmentQuestions = await getQuestionsByAssessmentId(assessment.id)
-
             return {
                 ...course,
                 assessments
@@ -90,7 +81,7 @@ module.exports = (app, db) => {
             );
 
             if (findUser != null) {
-                // errorMsg = `Invalid login details`
+                
 
                 throw Error(`User already exists!`);
             } else {
@@ -128,7 +119,7 @@ module.exports = (app, db) => {
             console.log(findUser + "this is a logged user")
             if (!findUser) {
                 // message = 'User not found'
-                throw Error(`The user does not exists`);
+                throw Error(`The user does not exist`);
 
 
             }

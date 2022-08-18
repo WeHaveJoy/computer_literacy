@@ -8,6 +8,7 @@
   text-align: center;
   color: black;
   margin-top: 60px;
+  /* margin-left: 10em; */
 
 }
 
@@ -18,16 +19,17 @@ body {
 
 .container {
 
-  background-color: #416165;
+  background-color: #b6c9bb;
   /* background-image: url(/lab.jpeg); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: black;
-  width: 970px;
+  /* width: 970px; */
   margin-top: 65px;
   height: 80vh;
 }
+
 
 .parent {
   background-color: #78b87a;
@@ -40,7 +42,18 @@ body {
 .teacher {
   background-color: #78b87a;
 }
-
+.landing{
+   background-color: #bfedc1;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+.navbar-brand{
+  font-style: oblique;
+  
+}
 
 .footer {
   position: fixed;
@@ -49,8 +62,8 @@ body {
   bottom: 50px;
   width: 970px;
   margin: 0 auto;
-  background-color: rgb(122, 108, 108);
-  color: white;
+  background-color: #aaacb0; 
+  color: rgb(146, 71, 71);
   text-align: center;
 
 }
@@ -131,27 +144,10 @@ body {
   margin:auto
   }
 
-
-
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif
+.p{
+  font-family: "Lucida Console", "Courier New", monospace;
 }
-body
-{
-    min-width: 100vw;
-    min-height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background: #16384c;
-} */
-/* .containerDisplay{
-flex-wrap: wrap;
-flex-flow: column wrap;
 
-} */
 .containerDisplay .card
 {
  
