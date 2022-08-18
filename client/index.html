@@ -297,13 +297,21 @@
                     <span x-text="answer.answer"></span>
                   </div>
                 </template>
-                <button @click="caltulateScore()">Complete Assessment</button>
+
+                <div x-data="{ this.totalScore: '' }">
+                  <p x-text="this.totalScore"></p>
+                </div>
+
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
-          <div>
+
+          <!-- <div>
             <button @click="logoutFunc()">logout</button>
-          </div>
+          </div> -->
+
+
         </div>
         <div x-show="user.role === 'teacher'" class="teacher">
           <div>
@@ -329,16 +337,67 @@
             </template>
             <h4>You are on the Teacher dashboard</h4>
           </div>
-          <div>
+
+
+          <!-- <div>
             <button @click="logoutFunc()">logout</button>
+          </div> -->
+
+
+            <div>
+              <span x-text="quizzes.question"></span>
+
+              <template x-for="answer in quizzes.answers">
+                <div>
+                  <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
+                  <span x-text="answer.answer"></span>
+                </div>
+              </template>
+
+              <!-- <template > -->
+                <div>
+                  <span x-text="this.totalScore"></span>
+                </div>
+
+                <div>
+                  <span x-text="this.learnerScore"></span>
+                </div>
+              <!-- </template> -->
+                <br>
+                <br>
+                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+            </div>
           </div>
         </div>
+        <br>
+        <br>
+
+          <!-- <div>
+          <button @click="logoutFunc()">logout</button>
+        </div> -->
+
+      <!-- </div> -->
+
+       
+
+
+
         <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
           <br>
         </div>
+
+
+        <!-- <div>
+          <button @click="logoutFunc()">logout</button>
+        </div> -->
+
+
+        </div>
+
+
         <!-- <div class=""> -->
         <!-- <div class="footer">
       <footer>
@@ -380,8 +439,12 @@
       </div>
       </div> -->
         <!-- </div> -->
-        <!-- </div> -->
-      </div>
+
+
+
+        <!-- </div>
+      </div> -->
+
     </div>
   </div>
   <script type="module" src="./main.js"></script>

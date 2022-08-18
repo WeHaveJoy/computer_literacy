@@ -94,6 +94,8 @@ export default function computer_literacy() {
                 this.registration = false
                 this.showHome = true;
                 this.user = JSON.parse(localStorage.getItem('user'))
+                // this.scoresByCorrect = JSON.parse(localStorage.getItem('scoresByCorrect'))
+                // this.scoresById = JSON.parse(localStorage.getItem('scoresById'))
             } else {
 
                 this.loggeIn = true
@@ -214,6 +216,7 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         },
+
         intermidiate() {
             axios
                 .get(`${remote_url}/api/intermidiate_level1`)
@@ -316,36 +319,47 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-
         caltulateScore(quesion_id) {
-
 
             axios
                 .post(`${remote_url}/api/countScore/${quesion_id}`)
                 .then(results => {
+                    var {
+                        scoresById,
+                        scoresByCorrect
+                    } = results.data;
+
+                    if (!scoresById) {
+                        return false
+                    }
+
+                    localStorage.setItem('scoresByCorrect', JSON.stringify(scoresByCorrect));
+                    this.scoresById = JSON.stringify(scoresById)
+                    localStorage.setItem('scoresById', this.scoresById);
+                    this.scoresByCorrect = scoresByCorrect
 
                     this.theeScore = results.data.scoresById.count;
                     this.theScore = results.data.scoresByCorrect.count;
                     console.log(this.theeScore);
                     console.log(this.theScore);
                   
-                    this.learnerScore = 'You got: ' + Number(this.theScore) / Number(this.theeScore) * 100 + '%';
+                    this.learnerScore =  Number(this.theScore) / Number(this.theeScore) * 100;
                     console.log(this.learnerScore);
 
-                    if (this.theScore >= 10.5) {
-                        this.totalScore = 'Here is your  score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you passed';
+                    if (this.learnerScore >= 50) {
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and you passed';
                         console.log(this.totalScore);
 
-                        return this.totalScore.toFixed(2);
+                        return this.totalScore;
                     }
-                    else if (this.theScore < 10.5) {
-                        this.totalScore = 'Here is your score' + ' ' + (15 / 100) * 75 + '%' + ' ' + 'and you failed';
+                    else if (this.learnerScore < 50) {
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and you failed';
                         console.log(this.totalScore);
                         return this.totalScore;
                     }
 
                     console.log(this.totalScore);
-                    return this.learnerScore.toFixed(2);
+                    return this.learnerScore;
 
                 })
 
