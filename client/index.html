@@ -192,14 +192,14 @@
             <br>
 
             <div
-              class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sortOut">
+              class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
 
               <template x-for="computer in computers">
                 <div class="card d-flex position-relative flex-column sortOut">
                   <div class='imgContainer'>
                     <img x-bind:src="`/Beginners/${computer.img}`" width="150" />
                   </div>
-                  <div class="content">
+                  <div class="content sortOut">
                     <h3><span x-text="computer.title"></span></h3>
 
                     <p><span x-text="computer.description"></span></p>
@@ -278,7 +278,7 @@
             <div
               class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
               <template x-for="computer in computers3">
-                <div class="card d-flex position-relative flex-column ">
+                <div class="card d-flex position-relative flex-column  ">
                   <div class='imgContainer'>
                     <img x-bind:src="`/Beginners/${computer3.img}`" width="150" />
                   </div>
@@ -311,8 +311,10 @@
                     <span x-text="answer.answer"></span>
                   </div>
                 </template>
+                <br>
+                <br>
 
-                <div x-model="totalScore">
+                <div class="score" x-model="totalScore">
                   <span x-text="totalScore"></span>
                 </div>
                 <br>
@@ -322,7 +324,6 @@
               </div>
             </div>
           </div>
-
 
           <!-- allow a learner to go through intermediate once they have completed beginner assessment -->
           <div>
@@ -338,7 +339,6 @@
               <br>
               <br>
               <br>
-
 
               <div
                 class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
@@ -359,8 +359,6 @@
               </div>
             </div>
 
-
-
             <div x-show="currentLevel == 'TWOintermidiate'" class="inter2" id="inter2">
               <h2 class="levelsText">Intermidiate course level 2:<strong>Computer Terminology</strong></h2>
               <div x-text="message"></div>
@@ -373,7 +371,6 @@
               <br>
               <br>
               <br>
-
 
               <div
                 class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
@@ -415,16 +412,16 @@
                     <span x-text="learn.first_name"></span>
                     <span x-text="learn.last_name"></span>
                     <br>
-                    <div x-model="totalScore">
+                    <!-- <div x-model="totalScore">
                       <span x-text="totalScore"></span>
-                    </div>
+                    </div> -->
                     <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
                   </li>
                 </ul>
               </div>
             </template>
 
-            <h4>You are on the Teacher dashboard</h4>
+            <!-- <h4>You are on the Teacher dashboard</h4> -->
           </div>
 
           <div>
@@ -466,7 +463,6 @@
         </div>
         <br>
         <br>
-
 
         <div x-show="user.role === 'parent'" class="parent">
           <div>

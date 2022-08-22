@@ -70,6 +70,21 @@ body {
 
 }
 
+.score{
+  color: #31572C;
+  font-size: large;
+}
+
+.sortOut{
+  height: 8em;
+}
+
+.sort{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 4em;
+}
+
 .footer div {
   display: inline-block;
   margin: 0 5px;

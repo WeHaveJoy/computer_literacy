@@ -86,11 +86,11 @@ export default function computer_literacy() {
         theeScore: [],
         scoreMessage: '',
 
-        totalScore : 0,
-        learnerScore : 0,
+        totalScore: 0,
+        learnerScore: 0,
 
         init() {
-            
+
             if (localStorage['user'] !== undefined) {
                 this.loggeIn = false
                 this.registration = false
@@ -133,7 +133,7 @@ export default function computer_literacy() {
                 .then(results => {
                     // console.log(results.data);
                     this.message = "User created"
-                    setInterval(() => {}, 6000);
+                    setInterval(() => { }, 6000);
                     return true;
                     this.signUp = ''
                 }).catch(e => console.log('User doesnt exists'))
@@ -143,14 +143,14 @@ export default function computer_literacy() {
         showContent() {
             this.show = false
             this.showLoginForm = true
-           
+
         },
         showNav() {
             this.showLand = !this.showLand
 
         },
         showHomeFunc() {
-           this.showLoginForm = !true
+            this.showLoginForm = !true
             this.showHome = !this.showHome
 
         },
@@ -214,7 +214,7 @@ export default function computer_literacy() {
                     this.computers = results.data.course;
 
                     console.log(results.data.course);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -245,7 +245,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.computers3 = results.data.course3;
                     // console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -265,7 +265,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.quizzes = results.data.questions;
                     console.log(this.quizzes);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
             // }
@@ -280,7 +280,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.schoolLearners = results.data.learners;
                     console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -306,7 +306,7 @@ export default function computer_literacy() {
                 .then(results => {
                     this.getAnswer = results.data.theAnswers;
                     console.log(results.data);
-                    setInterval(() => {}, 4000);
+                    setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
         },
@@ -344,7 +344,7 @@ export default function computer_literacy() {
                     this.theScore = results.data.scoresByCorrect.count;
                     console.log(this.theeScore);
                     console.log(this.theScore);
-                  
+
                     this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
                     console.log(this.learnerScore);
 
@@ -355,7 +355,7 @@ export default function computer_literacy() {
                         return this.totalScore;
                     }
                     else if (this.learnerScore < 50) {
-                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and please try again';
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and please try again';
                         console.log(this.totalScore);
                         return this.totalScore;
                     }
@@ -375,15 +375,25 @@ export default function computer_literacy() {
             this.user.role = false
         },
 
-        learnerDetails (){
+        // learnerDetails() {
 
-            axios
-            .post(`${remote_url}/api/countScore/${quesion_id}`)
-            .then(results => {
-                this.theeScore = results.data.scoresById.count;
-                this.theScore = results.data.scoresByCorrect.count;
-            })
-        }
+        //     axios
+        //         .post(`${remote_url}/api/countScore/${quesion_id}`)
+        //         .then(results => {
+        //             this.theeScore = results.data.scoresById.count;
+        //             this.theScore = results.data.scoresByCorrect.count;
+
+        //             this.learnerScore = Number(thi.theeScore) / Number(this.theScore) * 100;
+        //             console.log(this.learnerScore);
+
+        //             if (this.learnerScore >= 50) {
+        //                 this.totalScore = 'You got: ' + this.learnerScore + ' and congratulations you passed!';
+        //             }
+        //             else if (thia.learnerScore < 50) {
+        //                 this.totalScore = 'Tou got: ' + this.learnerScore + ' OPPS! please try again';
+        //             }
+        //         })
+        // }
 
     }
 
