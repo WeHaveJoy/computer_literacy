@@ -284,6 +284,8 @@ values
         'High Definition Media Interface -HDMI Cable',
         '1'
     );
+
+    
 -- #LEVEL2
 -- assessment
 insert into
