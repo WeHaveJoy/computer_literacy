@@ -56,7 +56,7 @@
               </ul>
             </li>
           </ul>
-          <!-- <div class="landing"> -->
+        
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
@@ -67,7 +67,7 @@
             <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
                 Logout</a></li>
           </ul>
-          <!-- </div> -->
+        
         </div>
       </nav>
       <div class="landing" x-show="!showHome">
@@ -94,7 +94,7 @@
         <div x-show="showHome">
           <div class="" x-show="show">
             <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong>
-            <!-- <p>Already have an account? <a href="#" , @click="showContent()">Login</a> <br> </p> -->
+            
             <div x-text="logIn_message"></div>
             <br>
             <div x-text="message"></div>
@@ -140,23 +140,27 @@
           <br>
           
         </div>
+
         <div class="login">
           <div class="" x-show="showLoginForm">
             <h3 class="text-center text-info">Login</h3>
-            <!-- <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p> -->
+           
             <div x-text="logIn_message"></div>
             <div x-text="error_message"></div>
             <br>
             <label>Please enter your username: </label>
+            <br>
             <input x-model="signIn.username" type="text" name="login_user" class="login">
             <br>
             <br>
             <label>Please enter your password: </label>
+            <br>
             <input x-model="signIn.password" type="password" name="login_password" class="login">
+            <br>
             <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
 
           </div>
-          <!-- </div> -->
+         
         </div>
 
 
