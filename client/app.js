@@ -9,7 +9,9 @@ const Levels = {
     Three: 'THREE',
     OneIntermidiate: 'ONEintermidiate',
     TwoIntermidiate: 'TWOintermidiate',
-    Assessment: beginnerAssessment
+    Assessment: beginnerAssessment,
+    oneAdvanced:'ONEadvanced',
+    threeAdvanced:'THREEadvanced'
 }
 
 const Assessments = {
@@ -64,7 +66,7 @@ export default function computer_literacy() {
             username: '',
             password: '',
         },
-
+        advancedData: [],
         computersIntermidiate: [],
         showLand: false,
         classLearners: [],
@@ -246,9 +248,36 @@ export default function computer_literacy() {
                     this.computers3 = results.data.course3;
                     // console.log(results.data);
                     setInterval(() => { }, 4000);
+
                     return true;
                 }).catch(e => console.log(e))
         },
+
+        advancedLevelOne() {
+            axios
+                .get(`${remote_url}/api/advanced_level1`)
+                .then(results => {
+                    this.advancedData = results.data.advancedOne;
+                   
+                    setInterval(() => { }, 4000);
+
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+
+        advancedLevelThree() {
+            axios
+                .get(`${remote_url}/api/advanced_level3`)
+                .then(results => {
+                    this.advancedData = results.data.advancedThree;
+                    setInterval(() => { }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+
+
 
         assessment() {
             const self = this;
@@ -345,7 +374,9 @@ export default function computer_literacy() {
                     console.log(this.theeScore);
                     console.log(this.theScore);
 
+
                     this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
+
                     console.log(this.learnerScore);
 
                     if (this.learnerScore >= 50) {
@@ -355,7 +386,9 @@ export default function computer_literacy() {
                         return this.totalScore;
                     }
                     else if (this.learnerScore < 50) {
+
                         this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and please try again';
+
                         console.log(this.totalScore);
                         return this.totalScore;
                     }
