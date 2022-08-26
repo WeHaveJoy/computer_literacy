@@ -8,8 +8,8 @@
   text-align: center;
   color: black;
   margin-top: 60px;
-  margin-left: 10em;
-  /* width: 970px; */
+  /* margin-left: 10em; */
+
 
 }
 .welcomePage{
@@ -29,17 +29,19 @@ body {
   padding: 2em;
 }
 .container {
-  /* width: 970px; */
-  /* background-color: red; */
+
+
+  background-color: #b6c9bb;
   /* background-image: url(/lab.jpeg); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: black;
- 
+  /* width: 970px; */
   margin-top: 65px;
   height: 80vh;
 }
+
 
 .parent {
   background-color: #78b87a;
@@ -52,7 +54,18 @@ body {
 .teacher {
   background-color: #DAD7CD;
 }
-
+.landing{
+   background-color: #bfedc1;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+.navbar-brand{
+  font-style: oblique;
+  
+}
 
 .footer {
   position: fixed;
@@ -61,10 +74,25 @@ body {
   bottom: 50px;
   width: 970px;
   margin: 0 auto;
-  background-color: rgb(122, 108, 108);
-  color: white;
+  background-color: #aaacb0; 
+  color: rgb(146, 71, 71);
   text-align: center;
 
+}
+
+.score{
+  color: #31572C;
+  font-size: large;
+}
+
+.sortOut{
+  height: 8em;
+}
+
+.sort{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 4em;
 }
 
 .footer div {
@@ -147,30 +175,26 @@ body {
   margin: auto
 }
 
-
-
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif
+.p{
+  font-family: "Lucida Console", "Courier New", monospace;
 }
-body
+
+
+
+.containerDisplay .card
 {
-    min-width: 100vw;
-    min-height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background: #16384c;
-} */
-.sortOut{
-  height: 8em;
+ 
+    max-width: 300px;
+    height: 215px;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: 0.3s ease-in-out;
 }
+.containerDisplay .card:hover
+{
+    height: 450px;
 
-.sort {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 4em;
 }
 
 .containerDisplay .card {
