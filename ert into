@@ -1,0 +1,88 @@
+ id |                        answer                         | correct | question_id 
+----+-------------------------------------------------------+---------+-------------
+  1 | A. Input device                                       | t       |            
+  2 | B. Output device                                      | f       |            
+  3 | C. Processing device                                  | f       |            
+  4 | D. All of the above                                   | f       |            
+  5 | A. Control Processing Unit                            | f       |            
+  6 | B. Central Programming Unit                           | f       |            
+  7 | C. Central Processing Unit                            | t       |            
+  8 | D. Control Programming Unit                           | f       |            
+  9 | A. Both                                               | t       |            
+ 10 | B. Number                                             | f       |            
+ 11 | C. Alphabets                                          | f       |            
+ 12 | A. RAM                                                | f       |            
+ 13 | B. ROM                                                | f       |            
+ 14 | C. MICR                                               | f       |            
+ 15 | D. Both (RAM & ROM)                                   | t       |            
+ 16 | A. CPU                                                | f       |            
+ 17 | B. Registry                                           | f       |            
+ 18 | C. RAM                                                | t       |            
+ 19 | D. Power supply                                       | f       |            
+ 20 | A. UPS                                                | f       |            
+ 21 | B. CPU                                                | t       |            
+ 22 | C. KEYBOARD                                           | f       |            
+ 23 | D. PRINTER                                            | f       |            
+ 24 | A. True                                               | f       |            
+ 25 | B. False                                              | t       |            
+ 26 | A. Left click                                         | f       |            
+ 27 | B. Right click                                        | t       |            
+ 28 | C. Double click                                       | f       |            
+ 29 | D. None of these                                      | f       |            
+ 30 | A. Left click                                         | f       |            
+ 31 | B. Right click                                        | f       |            
+ 32 | C. Double click                                       | f       |            
+ 33 | D. Drag and drop action                               | t       |            
+ 34 | A. Parts of the computer that can’t be seen           | f       |            
+ 35 | B. Parts of the computer that can be seen             | t       |            
+ 36 | C. None of these                                      | f       |            
+ 37 | A. Inside the computer case                           | t       |            
+ 38 | B. Inside the RAM                                     | f       |            
+ 39 | C. Inside the CPU                                     | f       |            
+ 40 | D. Inside the computer fan                            | f       |            
+ 41 | A. Smart phone                                        | f       |            
+ 42 | B. Radio                                              | f       |            
+ 43 | C. Video projectors                                   | t       |            
+ 44 | D. Cameras                                            | f       |            
+ 45 | A. False                                              | f       |            
+ 46 | B. True                                               | t       |            
+ 47 | A. Disconnect the AC power cable                      | t       |            
+ 48 | B. Disconnect all external cables and power cords     | f       |            
+ 49 | C. Use a surge protector                              | f       |            
+ 50 | D. Turn off the AC power                              | f       |            
+ 51 | A. Remove the slot cover from the back                | f       |            
+ 52 | B. Keep the computer cover closed                     | t       |            
+ 53 | C. Remove the CPU fan                                 | f       |            
+ 54 | D. All of the above                                   | f       |            
+ 55 | A.Single-click                                        | t       |            
+ 56 | B.Double click                                        | f       |            
+ 57 | C.Right-click                                         | f       |            
+ 58 | D.Scroll                                              | f       |            
+ 59 | A.Internet                                            | t       |            
+ 60 | B.Network                                             | f       |            
+ 61 | C.LAN                                                 | f       |            
+ 62 | D.Arpanet                                             | f       |            
+ 63 | A.True                                                | t       |            
+ 64 | B.False                                               | f       |            
+ 65 | A.A program that can display a web pages              | f       |            
+ 66 | B.A program used to view html documents               | f       |            
+ 67 | C.It enables user to access the resources of internet | f       |            
+ 68 | D.All of the mentioned.                               | t       |            
+ 69 | A.To add anchors in web page                          | f       |            
+ 70 | B.To mark the ending of a paragraph of document       | f       |            
+ 71 | C.To quickly jump to specific location in document    | t       |            
+ 72 | D.To add hyperlinks in webpage.                       | f       |            
+ 73 | A.Programs                                            | f       |            
+ 74 | B.Folders                                             | f       |            
+ 75 | B.Files                                               | f       |            
+ 76 | C.All of the above                                    | t       |            
+ 77 | A.New file                                            | f       |            
+ 78 | B.Folder                                              | t       |            
+ 79 | C.Recycle bin                                         | f       |            
+ 80 | D.None of the above answers                           | f       |            
+ 81 | A.Control panel                                       | f       |            
+ 82 | B.Recycle bin                                         | t       |            
+ 83 | C.C drive                                             | f       |            
+ 84 | D.None of the above                                   | f       |            
+(84 rows)
+

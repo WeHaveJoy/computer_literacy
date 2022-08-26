@@ -6,8 +6,8 @@ module.exports = (app, db) => {
     const verifyToken = (req, res, next) => {
         const bearerHeader = req.headers['authorization']
         const token = bearerHeader && bearerHeader.split(' ')[1]
-        console.log(token + "76767676");
-        console.log(bearerHeader + "000000000");
+        // console.log(token + "76767676");
+        // console.log(bearerHeader + "000000000");
 
         if (token == null) return res.sendStatus(401)
         jwt.verify(token, `${process.env.ACCESS_TOKEN_SECRET}`, (err, user) => {
@@ -99,7 +99,7 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             res.status(500).json({
                 error: error.message,
 
@@ -116,7 +116,7 @@ module.exports = (app, db) => {
                 `SELECT * FROM users WHERE username = $1`,
                 [username]
             );
-            console.log(findUser + "this is a logged user")
+            // console.log(findUser + "this is a logged user")
             if (!findUser) {
                 // message = 'User not found'
                 throw Error(`The user does not exist`);
@@ -160,7 +160,7 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             res.status(500).json({
                 error: error.message,
             });
@@ -176,7 +176,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const display_course = await db.manyOrNone(`SELECT description, img FROM courses_beginners where level=3`, [level]);
+            const display_course = await db.manyOrNone(`SELECT description, img, title FROM courses_beginners where level=3`, [level]);
 
             res.status(200).json({
                 course3: display_course
@@ -198,7 +198,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const interOne = await db.manyOrNone(`SELECT description, img FROM courses_intermediate where level=1`, [level]);
+            const interOne = await db.manyOrNone(`SELECT description, img, title FROM courses_intermediate where level=1`, [level]);
 
             res.status(200).json({
                 interOne: interOne
@@ -220,7 +220,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const interTwo = await db.manyOrNone(`SELECT description, img FROM courses_intermediate where level=2`, [level]);
+            const interTwo = await db.manyOrNone(`SELECT description, img ,title FROM courses_intermediate where level=2`, [level]);
 
             res.status(200).json({
                 interTwo: interTwo
@@ -228,7 +228,7 @@ module.exports = (app, db) => {
             })
 
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             res.status(500).json({
 
                 error: error.message
@@ -237,6 +237,59 @@ module.exports = (app, db) => {
         }
 
     })
+
+
+    app.get("/api/advanced_level1", async (req, res) => {
+
+
+        try {
+            const { level } = req.res;
+
+            const advancedOne = await db.manyOrNone(`SELECT description, img ,title FROM courses_advanced where level=1`, [level]);
+
+            res.status(200).json({
+                advancedOne: advancedOne
+
+            })
+
+        } catch (error) {
+
+            res.status(500).json({
+
+                error: error.message
+
+            });
+        }
+
+    })
+
+    app.get("/api/advanced_level3", async (req, res) => {
+
+
+        try {
+            const { level } = req.res;
+
+            const advancedThree = await db.manyOrNone(`SELECT description , title FROM courses_advanced where level=3`, [level]);
+
+            res.status(200).json({
+                advancedThree: advancedThree
+
+            })
+
+        } catch (error) {
+
+            res.status(500).json({
+
+                error: error.message
+
+            });
+        }
+
+    })
+
+
+
+
 
     app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
@@ -259,7 +312,7 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             res.status(500).json({
 
                 error: error.message
@@ -346,7 +399,7 @@ module.exports = (app, db) => {
             })
         }
     })
-    
+
     // app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
     // })
