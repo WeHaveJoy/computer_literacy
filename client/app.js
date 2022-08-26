@@ -78,10 +78,8 @@ export default function computer_literacy() {
         all: '',
         schoolLearners: [],
         showLoginForm: false,
-        init() {
-            // this.classLearner()
 
-        },
+
         getAnswer: [],
         correct: [],
         theScore: [],
@@ -133,7 +131,6 @@ export default function computer_literacy() {
             axios
                 .post(`${remote_url}/api/signUp`, this.signUp)
                 .then(results => {
-                    // console.log(results.data);
                     this.message = "User created"
                     setInterval(() => { }, 6000);
                     return true;
@@ -143,16 +140,22 @@ export default function computer_literacy() {
         },
 
         showContent() {
+            this.showLoginForm = !this.showLoginForm
             this.show = false
+
             this.showLoginForm = true
 
+
         },
+
         showNav() {
             this.showLand = !this.showLand
 
         },
         showHomeFunc() {
-            this.showLoginForm = !true
+
+            // this.showLoginForm = true
+
             this.showHome = !this.showHome
 
         },
@@ -209,7 +212,7 @@ export default function computer_literacy() {
         },
 
         beginner() {
-            // alert('beginner')
+
             axios
                 .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {
@@ -375,7 +378,9 @@ export default function computer_literacy() {
                     console.log(this.theScore);
 
 
+
                     this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
+
 
                     console.log(this.learnerScore);
 
@@ -384,6 +389,7 @@ export default function computer_literacy() {
                         console.log(this.totalScore);
 
                         return this.totalScore;
+
                     }
                     else if (this.learnerScore < 50) {
 
