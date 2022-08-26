@@ -74,18 +74,16 @@ export default function computer_literacy() {
         all: '',
         schoolLearners: [],
         showLoginForm: false,
-        init() {
-            // this.classLearner()
 
-        },
+
         getAnswer: [],
         correct: [],
         theScore: [],
         theeScore: [],
         scoreMessage: '',
 
-        totalScore : 0,
-        learnerScore : 0,
+        totalScore: 0,
+        learnerScore: 0,
 
         init() {
 
@@ -129,7 +127,6 @@ export default function computer_literacy() {
             axios
                 .post(`${remote_url}/api/signUp`, this.signUp)
                 .then(results => {
-                    // console.log(results.data);
                     this.message = "User created"
                     setInterval(() => {}, 6000);
                     return true;
@@ -139,16 +136,16 @@ export default function computer_literacy() {
         },
 
         showContent() {
+            this.showLoginForm = !this.showLoginForm
             this.show = false
-            this.showLoginForm = true
-           
         },
+
         showNav() {
             this.showLand = !this.showLand
 
         },
         showHomeFunc() {
-           this.showLoginForm = !true
+            // this.showLoginForm = true
             this.showHome = !this.showHome
 
         },
@@ -205,7 +202,7 @@ export default function computer_literacy() {
         },
 
         beginner() {
-            // alert('beginner')
+
             axios
                 .get(`${remote_url}/api/beginner_level1`)
                 .then(results => {
@@ -342,8 +339,8 @@ export default function computer_literacy() {
                     this.theScore = results.data.scoresByCorrect.count;
                     console.log(this.theeScore);
                     console.log(this.theScore);
-                  
-                    this.learnerScore =  Number(this.theScore) / Number(this.theeScore) * 100;
+
+                    this.learnerScore = Number(this.theScore) / Number(this.theeScore) * 100;
                     console.log(this.learnerScore);
 
                     if (this.learnerScore >= 50) {
@@ -351,9 +348,8 @@ export default function computer_literacy() {
                         console.log(this.totalScore);
 
                         return this.totalScore;
-                    }
-                    else if (this.learnerScore < 50) {
-                        this.totalScore = 'Your is score' + ' ' + this.learnerScore+ '%' + ' ' + 'and you failed';
+                    } else if (this.learnerScore < 50) {
+                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and you failed';
                         console.log(this.totalScore);
                         return this.totalScore;
                     }
