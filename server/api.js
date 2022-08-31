@@ -434,9 +434,10 @@ module.exports = (app, db) => {
             const learnerScore = (Number(userAssessCount) / 15 * 100).toFixed(2);
             console.log(learnerScore);
 
-            await db.none(`update user_assessment set score = $1 where assessment_id = $2`, [learnerScore, assessment_id]);
+            await db.none(`update user_assessment set score = $1 where assessment_id = $2 `, [learnerScore, assessment_id]);
 
             const theAssessSCore = await db.manyOrNone(`select score from user_assessment where assessment_id = $1;`, [assessment_id]);
+
 
             console.log({ theAssessSCore });
 

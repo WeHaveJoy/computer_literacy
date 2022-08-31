@@ -292,26 +292,28 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        userAssessment() {
+        async userAssessment() {
 
-           return axios
-                .post(`${remote_url}/api/userAssessment/`, {
-                    learner_id: this.user.id,
-                    assessment_id: this.quest_id
-                })
-                .then(results => {
-                    this.assess = results.data.userAssessmentId;
-                    console.log(results.data);
-                    axios
+           try {
+                const results = await axios
+                    .post(`${remote_url}/api/userAssessment/`, {
+                        learner_id: this.user.id,
+                        assessment_id: this.quest_id
+                    })
+                this.assess = results.data.userAssessmentId
+                console.log(results.data)
+                axios
                     .get(`${remote_url}/api/courses_beginner/${this.quest_id}`)
-                    .then(results => {
-                        this.quizzes = results.data.questions;
-                        console.log(this.quizzes);
-                        setInterval(() => { }, 4000);
-                        return true;
+                    .then(results_1 => {
+                        this.quizzes = results_1.data.questions
+                        console.log(this.quizzes)
+                        setInterval(() => { }, 4000)
+                        return true
                     }).catch(e => console.log(e))
-                    return true;
-                }).catch(e => console.log(e))
+                return true
+            } catch (e_1) {
+                return console.log(e_1)
+            }
 
         },
 
@@ -416,6 +418,17 @@ export default function computer_literacy() {
                     this.myScore = results.data.theAssessSCore;
 
                     console.log(results.data.theAssessSCore);
+                    console.log(results.data.theAssessSCore.score);
+
+                    // if (this.myScore.score < 50) {
+                    //      this.totalScore = "You got " + this.myScore.score + "OOPS! Please try again";
+                    //      return this.totalScore;
+                    // }
+                    // else if(this.myScore.score >= 50){
+                    //      this.totalScore = "You got " + this.myScore.score + "CONGRATULATIONS! you passed the beginner course";
+                    //      return this.totalScore;
+                    // }
+
                     setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
