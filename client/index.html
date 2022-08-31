@@ -56,7 +56,7 @@
               </ul>
             </li>
           </ul>
-        
+
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
@@ -67,7 +67,7 @@
             <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
                 Logout</a></li>
           </ul>
-        
+
         </div>
       </nav>
       <div class="landing" x-show="!showHome">
@@ -78,7 +78,8 @@
         <p>
           This <strong> Computer literacy app</strong> is designed for the interest of learners(or anyone who might be
           interested)
-          who wants to learn computer literature at the palm of their hands.It is a simple to use app with quite
+          who wants to learn computer literature at the palm of their hands.
+          It is a simple to use app with quite
           friendly user interface.
         </p>
         <p>
@@ -93,8 +94,8 @@
       <div>
         <div x-show="showHome">
           <div class="" x-show="show">
-            <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong>
-            
+            <!-- <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong> -->
+
             <div x-text="logIn_message"></div>
             <br>
             <div x-text="message"></div>
@@ -130,6 +131,19 @@
               </select>
 
             </div>
+            <label>Please enter your school: </label>
+            <div class=“dropDown”>
+              <select name=“” x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class=“school”>
+                <option class=“role” value=“” required>School</option>
+                <option class=“role” value=“Langa High School”>Langa High School</option>
+                <option class=“role” value=“Isilimela Comprehensive High School”>Isilimela Comprehensive High School
+                </option>
+                <option class=“role” value=“Khulani High School”>Khulani High School</option>
+                <option class=“role” value=“Masiyile High School”>Masiyile High School</option>
+                <option class=“role” value=“Joe Slovo High School”>Joe Slovo High School</option>
+                <option class=“role” value=“Manyano High School”>Manyano High School</option>
+              </select>
+            </div>
             <br>
             <br>
 
@@ -138,13 +152,13 @@
           </div>
           <br>
           <br>
-          
+
         </div>
 
         <div class="login">
           <div class="" x-show="showLoginForm">
             <h3 class="text-center text-info">Login</h3>
-           
+
             <div x-text="logIn_message"></div>
             <div x-text="error_message"></div>
             <br>
@@ -157,10 +171,10 @@
             <br>
             <input x-model="signIn.password" type="password" name="login_password" class="login">
             <br>
-            <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
+            <input type="button" @click="logUser(), beginner(), hideLogin()" name="action" value="login" class="button">
 
           </div>
-         
+
         </div>
 
 
@@ -224,9 +238,9 @@
                 </template>
               </table> -->
 
-          <div class="d-grid gap-5">
+          <!-- <div class="d-grid gap-5">
             <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
-          </div>
+          </div> -->
 
           <div x-show="currentLevel == 'TWO'" class="level2">
             <div class="">
@@ -251,7 +265,7 @@
               </div>
               <div class="d-grid gap-5">
                 <button @click="currentLevel = 'THREE',beginner3(),showContent()" class="btn btn-primary"
-                  type="button">Next Level>>></button>
+                  type="button">Next Level</button>
               </div>
             </div>
           </div>
@@ -291,12 +305,12 @@
 
           <div class="d-grid gap-5">
             <button class="btn btn-primary" @click="currentLevel = 'beginnerAss'" type="button">Go to
-              Assessment>>></button>
+              Assessment</button>
           </div>
 
           <div x-show="currentLevel == 'beginnerAss'" id="beginnerAssessment" class="beginnerAssessment">
             <div>
-              <h2>Please complete this assessment before requesting for the next course: </h2>
+              <h6 style="background-color:DodgerBlue;">NB! The assessment below consists of 15 questions, answer each question as best as you can as you are allowed to select only once </h6>
               <button @click="assessment()"> Show quiz</button>
               <br>
               <br>
@@ -456,7 +470,7 @@
 
                       <h3><span x-text="computer.title"></span></h3>
                       <p><span x-text="computer.description"></span></p>
-                      
+
                     </div>
                     <br>
                     <br>
@@ -495,7 +509,7 @@
                     <!-- <div x-model="totalScore">
                       <span x-text="totalScore"></span>
                     </div> -->
-                    <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View details</button>
+                    <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View progress</button>
                   </li>
                 </ul>
               </div>

@@ -163,6 +163,9 @@ export default function computer_literacy() {
         showForm() {
             this.show = !true
         },
+        hideLogin(){
+            this.showLoginForm = false
+        },
 
         logUser() {
             axios
