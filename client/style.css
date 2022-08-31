@@ -12,12 +12,22 @@
 
 
 }
+.welcomePage{
+  font-size: large;
+  margin: 2em;
+}
+.redText{
+  color: red;
+}
 
 body {
   margin: 0;
   padding: 0;
 }
-
+.landing{
+  background-color: #A3B18A;
+  padding: 2em;
+}
 .container {
 
 
@@ -38,11 +48,11 @@ body {
 }
 
 .learner {
-  background-color:#ECF39E;
+  background-color:#A3B18A;
 }
 
 .teacher {
-  background-color: #78b87a;
+  background-color: #DAD7CD;
 }
 .landing{
    background-color: #bfedc1;
@@ -91,7 +101,7 @@ body {
   justify-content: space-inbetween;
   padding-left: 25em;
   padding-right: 25em;
-  margin: 1em
+  margin: 1em;
 }
 
 .form-control {
@@ -105,7 +115,9 @@ body {
 .loginForm {
   border-radius: 10px;
   padding: 10px;
-  border: solid;
+  /* border: solid; */
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
 }
 
 .navBackground{
@@ -186,6 +198,14 @@ body {
     height: 450px;
 
 }
+input[type=text], input[type=password] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
 .containerDisplay .card {
 
@@ -198,7 +218,7 @@ body {
 }
 
 .containerDisplay .card:hover {
-  height: 450px;
+  height: 45em;
 }
 
 .containerDisplay .card .imgContainer {

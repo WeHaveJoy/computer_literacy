@@ -24,6 +24,7 @@
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">e-Learn</a>
+
           </div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home </a></li>
@@ -37,7 +38,7 @@
                     Assessment</a></li>
               </ul>
             </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">intermediate course<span
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Intermediate course<span
                   class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#inter1" , @click="currentLevel = 'ONEintermidiate' , intermidiate()">level 1</a></li>
@@ -46,14 +47,16 @@
 
               </ul>
             </li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">advanced course<span
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Advanced course<span
                   class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">level 1</a></li>
-                <li><a href="#">level 2</a></li>
+                <li><a href="#advanced1" , @click="currentLevel ='ONEadvanced' , advancedLevelOne()">level 1</a></li>
+                <li><a href="#advanced3" , @click="currentLevel ='THREEadvanced' , advancedLevelThree()">level 3</a>
+                </li>
               </ul>
             </li>
           </ul>
+        
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#" , @click="showContent() , showHomeFunc(), beginner()"><span
@@ -64,16 +67,16 @@
             <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
                 Logout</a></li>
           </ul>
+        
         </div>
       </nav>
       <div class="landing" x-show="!showHome">
+
         <h2>
           Welcome
         </h2>
         <p>
-          This <strong>
-            <e-Learn></e-Learn>
-          </strong> is designed for the interest of learners(or anyone who might be
+          This <strong> Computer literacy app</strong> is designed for the interest of learners(or anyone who might be
           interested)
           who wants to learn computer literature at the palm of their hands.It is a simple to use app with quite
           friendly user interface.
@@ -88,16 +91,14 @@
         </p>
       </div>
       <div>
-        <div x-show="!showHome">
+        <div x-show="showHome">
           <div class="" x-show="show">
-            <strong>
-              <h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3>
-            </strong>
-            <!-- <p>Already have an account? <a href="#" , @click="showContent()">Login</a> <br> </p> -->
+            <strong><h3 style="color: rgb(7, 54, 54);">Register here if you do not have an account yet:</h3></strong>
+            
             <div x-text="logIn_message"></div>
             <br>
             <div x-text="message"></div>
-            <div x-text="error"></div>
+            <div x-text="error_message"></div>
             <br>
             <label for="">Please enter your first name: </label>
             <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
@@ -127,43 +128,39 @@
                 <option class="role" value="parent">Parent</option>
                 <option class="role" value="teacher">Teacher</option>
               </select>
+
             </div>
             <br>
-            <label>Please enter your school: </label>
-            <div class="dropDown">
-              <select name="" x-bind:disabled="signUp.role === ''" x-model=" signUp.school" class="school">
-                <option class="role" value="" required>School</option>
-                <option class="role" value="Langa High School">Langa High School</option>
-                <option class="role" value="Isilimela Comprehensive High School">Isilimela Comprehensive High School
-                </option>
-                <option class="role" value="Khulani High School">Khulani High School</option>
-                <option class="role" value="Masiyile High School">Masiyile High School</option>
-                <option class="role" value="Joe Slovo High School">Joe Slovo High School</option>
-                <option class="role" value="Manyano High School">Manyano High School</option>
-              </select>
-            </div>
             <br>
+
             <input type="button" x-bind:disabled="signUp.school === ''" @click="regUser(), goToLogin()" name="action"
               value="Register" class="button">
           </div>
+          <br>
+          <br>
+          
+        </div>
 
-          <br>
-          <br>
-          <div class="login">
-            <div x-show="!showLoginForm">
-              <h2>Login here if you already have an account:</h2>
-              <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p>
-              <div x-text="logIn_message"></div>
-              <br>
-              <label>Please enter your username: </label>
-              <input x-model="signIn.username" type="text" name="login_user" class="login">
-              <br>
-              <br>
-              <label>Please enter your password: </label>
-              <input x-model="signIn.password" type="password" name="login_password" class="login">
-              <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
-            </div>
+        <div class="login">
+          <div class="" x-show="showLoginForm">
+            <h3 class="text-center text-info">Login</h3>
+           
+            <div x-text="logIn_message"></div>
+            <div x-text="error_message"></div>
+            <br>
+            <label>Please enter your username: </label>
+            <br>
+            <input x-model="signIn.username" type="text" name="login_user" class="login">
+            <br>
+            <br>
+            <label>Please enter your password: </label>
+            <br>
+            <input x-model="signIn.password" type="password" name="login_password" class="login">
+            <br>
+            <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
+
           </div>
+         
         </div>
 
 
@@ -386,6 +383,89 @@
             </div>
 
           </div>
+
+
+
+
+          <!-- advanced course -->
+          <div>
+            <div x-show="currentLevel == 'ONEadvanced'" class="advanced1" id="advanced1">
+              <h2 class="levelsText">Advanced course level 1:<strong>Microsoft Family</strong></h2>
+              <div x-text="message"></div>
+              <div class="card" style="width: 78rem; height: 25rem;">
+                <p>On this chapter,we will focus on the understanding the Microsoft Office Family.
+
+                </p>
+                <p>Get to study below and take a look on the <strong>images provided.</strong></p>
+              </div>
+              <br>
+              <br>
+              <br>
+
+
+              <div
+                class="containerDisplay d-flex align-items-center justify-content-center position-relative flex-wrap sort">
+                <template x-for="computer in advancedData">
+                  <div class="card d-flex position-relative flex-column sortOut">
+                    <div class='imgContainer'>
+                      <img x-bind:src="`/advanced/${computer.img}`" width="150" />
+                    </div>
+                    <div class="content">
+                      <h3><span x-text="computer.title"></span></h3>
+
+                      <p><span x-text="computer.description"></span></p>
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+
+
+            <div>
+              <!-- advanced level 2 here -->
+            </div>
+
+            <div x-show="currentLevel == 'THREEadvanced'" class="advanced3" id="advanced3">
+              <h2 class="levelsText">Advanced course level 1:<strong>Microsoft Family</strong></h2>
+              <div x-text="message"></div>
+              <div class="card" style="width: 78rem; height: 25rem;">
+                <p>On this chapter,we will focus on the understanding the CV,email,formal and informal letter
+
+                </p>
+                <p>Get to study below </p>
+              </div>
+              <br>
+              <br>
+              <br>
+
+
+              <div class="cont sort">
+                <template x-for="computer in advancedData">
+                  <div class="sortOut">
+
+                    <div class="">
+
+                      <h3><span x-text="computer.title"></span></h3>
+                      <p><span x-text="computer.description"></span></p>
+                      
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+
 
         </div>
 

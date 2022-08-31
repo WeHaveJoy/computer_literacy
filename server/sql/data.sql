@@ -1234,6 +1234,120 @@ values
         'Minimize,Maximize and close a window'
     );
 
+
+
+    -- start of advanced level1
+
+insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'The purpose of the MS Word is to allow the users to type and save documents.Microsoft word is used to save documents. The documents can be copied to flash drive.',
+        'word.jpeg',
+        1,
+        'Microsoft Word'
+    );
+
+    insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'Microsoft Excel enables users to format, organize and calculate data in a spreadsheet.',
+        'excel.jpeg',
+        1,
+        'Microsoft Excel'
+    );
+
+
+       insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'Microsoft PowerPoint is a powerful slide show presentation program.',
+        'powerpoint.jpeg',
+        1,
+        'Microsoft Powerpoint'
+    );
+
+     insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'In simple terms, Microsoft Access is a popular information management tool, which helps you store all kinds of information for reporting, analysis, and reference. With Microsoft Access, you can manage data more efficiently and analyze large amounts of information.',
+        'access.jpeg',
+        1,
+        'Microsoft Access'
+    );
+
+     insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'Outlook allows you to send and receive email messages, manage your calendar, store names and numbers of your contacts, and track your tasks.',
+        'outlook.jpg.jpeg',
+        1,
+        'Microsoft Outlook'
+    );
+
+
+-- advanced level 3
+
+     insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'A CV is a short document that gives you a chance to show a prospective employer the best of what you`ve got. It sells your skills, experience, and shows them you`re the right person for the job. Making a good impression is important in today`s competitive job market.',
+        ' https://app.resumecoach.com/editor/resume/4076b082-60b9-45f2-b4fb-f9b22911d47b/preview',
+        3,
+        'What is a CV and why is it important?'
+    );
+
+
+         insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'A cover letter is a one-page message sent with an application that provides information about the position you`re applying for, your qualifications in relation to the position and why you`re interested in working for the company. A well-written cover letter can help you stand out from the rest of the competition.',
+        '',
+        3,
+        ' What is a cover letter and how does it help you?'
+    );
+
+           insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'A formal letter is a letter, written in formal language, in the stipulated format, for official purpose.
+',
+        '',
+        3,
+        'What is a formal letter?'
+    );
+
+           insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'A letter written in an friendly manner, to someone you are familiar with, is called informal letter.You can use Microsoft word to write an informal letter',
+        '',
+        3,
+        'What is an informal letter?'
+    );
+
+             insert into
+    courses_advanced(description, img, level, title)
+values
+    (
+        'Email is one of the most common forms of communication with your potential clients. A professional email address creates a sense of trust, especially if it is from a credible website. This will boost your company`s potential to attract new customers.',
+        '',
+        3,
+        'What is an email address and why is it important?'
+    );
+
+
+
+
+
 -- assessment beginner course
 insert into
     assessment(description)

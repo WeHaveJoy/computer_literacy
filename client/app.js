@@ -9,7 +9,9 @@ const Levels = {
     Three: 'THREE',
     OneIntermidiate: 'ONEintermidiate',
     TwoIntermidiate: 'TWOintermidiate',
-    Assessment: beginnerAssessment
+    Assessment: beginnerAssessment,
+    oneAdvanced:'ONEadvanced',
+    threeAdvanced:'THREEadvanced'
 }
 
 const Assessments = {
@@ -65,7 +67,7 @@ export default function computer_literacy() {
             username: '',
             password: '',
         },
-
+        advancedData: [],
         computersIntermidiate: [],
         showLand: false,
         classLearners: [],
@@ -77,10 +79,9 @@ export default function computer_literacy() {
         all: '',
         schoolLearners: [],
         showLoginForm: false,
-        init() {
 
 
-        },
+
         getAnswer: [],
         correct: [],
         theScore: [],
@@ -136,7 +137,6 @@ export default function computer_literacy() {
             axios
                 .post(`${remote_url}/api/signUp`, this.signUp)
                 .then(results => {
-                    // console.log(results.data);
                     this.message = "User created"
                     setInterval(() => { }, 6000);
                     return true;
@@ -146,8 +146,11 @@ export default function computer_literacy() {
         },
 
         showContent() {
+            this.showLoginForm = !this.showLoginForm
             this.show = false
+
             this.showLoginForm = true
+
 
         },
 
@@ -157,7 +160,9 @@ export default function computer_literacy() {
         },
 
         showHomeFunc() {
-            this.showLoginForm = !true
+
+            // this.showLoginForm = true
+
             this.showHome = !this.showHome
 
         },
@@ -254,9 +259,36 @@ export default function computer_literacy() {
                     this.computers3 = results.data.course3;
 
                     setInterval(() => { }, 4000);
+
                     return true;
                 }).catch(e => console.log(e))
         },
+
+        advancedLevelOne() {
+            axios
+                .get(`${remote_url}/api/advanced_level1`)
+                .then(results => {
+                    this.advancedData = results.data.advancedOne;
+                   
+                    setInterval(() => { }, 4000);
+
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+
+        advancedLevelThree() {
+            axios
+                .get(`${remote_url}/api/advanced_level3`)
+                .then(results => {
+                    this.advancedData = results.data.advancedThree;
+                    setInterval(() => { }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+
+
 
         assessment() {
             const self = this;
@@ -342,6 +374,7 @@ export default function computer_literacy() {
 
         calculateScore(quesion_id) {
 
+
             axios
                 .post(`${remote_url}/api/countScore/${quesion_id}`)
                 .then(results => {
@@ -349,6 +382,7 @@ export default function computer_literacy() {
                         scoresById,
                         scoresByCorrect
                     } = results.data;
+
 
                     if (!scoresById) {
                         return false
