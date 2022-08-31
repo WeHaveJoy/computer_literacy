@@ -58,7 +58,8 @@ export default function computer_literacy() {
             role: ''
         },
 
-        quest_id: '',
+        quest_id: 1,
+        assessment_id: Number(''),
         hideContent: false,
         show: false,
         showHome: true,
@@ -80,11 +81,16 @@ export default function computer_literacy() {
         showLoginForm: false,
 
 
+
         getAnswer: [],
         correct: [],
         theScore: [],
         theeScore: [],
+        myScore: [],
         scoreMessage: '',
+
+        assess: [],
+        userAssess: [],
 
         totalScore: 0,
         learnerScore: 0,
@@ -96,8 +102,7 @@ export default function computer_literacy() {
                 this.registration = false
                 this.showHome = true;
                 this.user = JSON.parse(localStorage.getItem('user'))
-                // this.scoresByCorrect = JSON.parse(localStorage.getItem('scoresByCorrect'))
-                // this.scoresById = JSON.parse(localStorage.getItem('scoresById'))
+
             } else {
 
                 this.loggeIn = true
@@ -105,7 +110,7 @@ export default function computer_literacy() {
                 this.showHome = false;
             }
 
-            //this.currentLevel = Levels.One
+
             setInterval(() => {
                 this.message = ''
                 this.error_message = ''
@@ -152,6 +157,7 @@ export default function computer_literacy() {
             this.showLand = !this.showLand
 
         },
+
         showHomeFunc() {
 
             // this.showLoginForm = true
@@ -234,6 +240,7 @@ export default function computer_literacy() {
                     return true;
                 }).catch(e => console.log(e))
         },
+
         intermidiateTwo() {
             axios
                 .get(`${remote_url}/api/intermidiate_level2`)
@@ -249,7 +256,7 @@ export default function computer_literacy() {
                 .get(`${remote_url}/api/beginner_level3`)
                 .then(results => {
                     this.computers3 = results.data.course3;
-                    // console.log(results.data);
+
                     setInterval(() => { }, 4000);
 
                     return true;
@@ -317,15 +324,24 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        addAnswers(answer_id) {
+        userAssessment() {
 
-            axios
-                .post(`${remote_url}/api/addUserAnswers/`, {
+           return axios
+                .post(`${remote_url}/api/userAssessment/`, {
                     learner_id: this.user.id,
-                    answer_id
+                    assessment_id: this.quest_id
                 })
                 .then(results => {
-                    this.message = 'Answer selected';
+                    this.assess = results.data.userAssessmentId;
+                    console.log(results.data);
+                    axios
+                    .get(`${remote_url}/api/courses_beginner/${this.quest_id}`)
+                    .then(results => {
+                        this.quizzes = results.data.questions;
+                        console.log(this.quizzes);
+                        setInterval(() => { }, 4000);
+                        return true;
+                    }).catch(e => console.log(e))
                     return true;
                 }).catch(e => console.log(e))
 
@@ -353,57 +369,93 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
-        caltulateScore(quesion_id) {
+        // caltulateScore(quesion_id) {
+
+        //     axios
+        //         .post(`${remote_url}/api/countScore/${quesion_id}`)
+        //         .then(results => {
+        //             var {
+        //                 scoresById,
+        //                 scoresByCorrect
+        //             } = results.data;
+
+        //             if (!scoresById) {
+        //                 return false
+        //             }
+
+        //             localStorage.setItem('scoresByCorrect', JSON.stringify(scoresByCorrect));
+        //             this.scoresById = JSON.stringify(scoresById)
+        //             localStorage.setItem('scoresById', this.scoresById);
+        //             this.scoresByCorrect = scoresByCorrect
+
+        //             console.log(scoresByCorrect);
+        //             //    this.correctAnswers= localStorage.getItem(scoresByCorrect)
+        //             //    console.log(this.correctAnswers);
+
+
+        //             this.theeScore = results.data.scoresById.count;
+        //             this.theScore = results.data.scoresByCorrect.count;
+        //             console.log(this.theeScore);
+        //             console.log(this.theScore);
+
+
+        //             this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
+        //             console.log(this.learnerScore);
+
+
+        //             if (this.learnerScore >= 50) {
+        //                 this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and you passed';
+        //                 console.log(this.totalScore);
+
+        //                 return this.totalScore;
+        //             }
+        //             else if (this.learnerScore < 50) {
+        //                 this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and please try again';
+        //                 console.log(this.totalScore);
+        //                 return this.totalScore;
+        //             }
+
+ 
+
+        //             console.log(this.totalScore);
+        //             return this.learnerScore;
+
+        //         })
+
+        // },
+
+        addAnswers(answer_id) {
+
+            console.log(this.quest_id, "00000")
+            axios
+                .post(`${remote_url}/api/addUserAnswers/`, {
+                    answer_id,
+                    user_assessment_id: this.assess
+                })
+                .then(results => {
+                    this.message = 'Answer selected';
+                    setInterval(() => { }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
+        },
+
+        calculateScore() {
 
             axios
-                .post(`${remote_url}/api/countScore/${quesion_id}`)
-                .then(results => {
-                    var {
-                        scoresById,
-                        scoresByCorrect
-                    } = results.data;
-
-                    if (!scoresById) {
-                        return false
-                    }
-
-                    localStorage.setItem('scoresByCorrect', JSON.stringify(scoresByCorrect));
-                    this.scoresById = JSON.stringify(scoresById)
-                    localStorage.setItem('scoresById', this.scoresById);
-                    this.scoresByCorrect = scoresByCorrect
-
-                    this.theeScore = results.data.scoresById.count;
-                    this.theScore = results.data.scoresByCorrect.count;
-                    console.log(this.theeScore);
-                    console.log(this.theScore);
-
-
-
-                    this.learnerScore = (Number(this.theScore) / Number(this.theeScore) * 100).toFixed(2);
-
-
-                    console.log(this.learnerScore);
-
-                    if (this.learnerScore >= 50) {
-                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and you passed';
-                        console.log(this.totalScore);
-
-                        return this.totalScore;
-
-                    }
-                    else if (this.learnerScore < 50) {
-
-                        this.totalScore = 'Your is score' + ' ' + this.learnerScore + '%' + ' ' + 'and please try again';
-
-                        console.log(this.totalScore);
-                        return this.totalScore;
-                    }
-
-                    console.log(this.totalScore);
-                    return this.learnerScore;
-
+                .post(`${remote_url}/api/scoreCount`,{
+                    assessment_id: this.quest_id,
+                    learner_id: this.user.id,
+                    question_id: this.quest_id
                 })
+                .then(results => {
+                    this.theeScore = results.data.questCounter;
+                    this.theScore = results.data.userAssessCount;
+                    this.myScore = results.data.theAssessSCore;
 
+                    console.log(results.data.theAssessSCore);
+                    setInterval(() => { }, 4000);
+                    return true;
+                }).catch(e => console.log(e))
         },
 
         logoutFunc() {
@@ -413,26 +465,6 @@ export default function computer_literacy() {
             this.showHome = false;
             this.user.role = false
         },
-
-        // learnerDetails() {
-
-        //     axios
-        //         .post(`${remote_url}/api/countScore/${quesion_id}`)
-        //         .then(results => {
-        //             this.theeScore = results.data.scoresById.count;
-        //             this.theScore = results.data.scoresByCorrect.count;
-
-        //             this.learnerScore = Number(thi.theeScore) / Number(this.theScore) * 100;
-        //             console.log(this.learnerScore);
-
-        //             if (this.learnerScore >= 50) {
-        //                 this.totalScore = 'You got: ' + this.learnerScore + ' and congratulations you passed!';
-        //             }
-        //             else if (thia.learnerScore < 50) {
-        //                 this.totalScore = 'Tou got: ' + this.learnerScore + ' OPPS! please try again';
-        //             }
-        //         })
-        // }
 
     }
 

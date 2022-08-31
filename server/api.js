@@ -17,13 +17,6 @@ module.exports = (app, db) => {
         })
     }
 
-    app.get('/api/test', function (req, res) {
-        res.json({
-            name: 'joe'
-        });
-    });
-
-    // addAnswersToQuestion(questionId, answerId) 
 
     const getQuestionsById = async (id) => {
 
@@ -60,28 +53,23 @@ module.exports = (app, db) => {
         res.send({
             courses,
 
-            // questions
         })
 
 
     })
 
-    app.get("/test", async (req, res) =>
-        res.json(await db.manyOrNone("select * from users"))
-    );
-
     app.post("/api/signUp", async (req, res) => {
         const { first_name, last_name, username, password, role, school } = req.body;
         let errorMsg = ""
         try {
-            // console.log(req.body);
+
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username= $1`,
                 [username]
             );
 
             if (findUser != null) {
-                
+
 
                 throw Error(`User already exists!`);
             } else {
@@ -110,15 +98,16 @@ module.exports = (app, db) => {
     app.post("/api/logIn", async (req, res) => {
         try {
             const { username, password } = req.body;
-            // console.log('logIn .....', req.body);
 
             const findUser = await db.oneOrNone(
                 `SELECT * FROM users WHERE username = $1`,
                 [username]
             );
+
             // console.log(findUser + "this is a logged user")
+
             if (!findUser) {
-                // message = 'User not found'
+
                 throw Error(`The user does not exist`);
 
 
@@ -144,10 +133,6 @@ module.exports = (app, db) => {
     });
 
     app.get("/api/beginner_level1", async (req, res) => {
-
-        // app.get("/test1", async (req, res) =>
-        //     res.json(await db.manyOrNone("SELECT * FROM courses_beginners"))
-        // );
 
         try {
             const { level } = req.res;
@@ -184,7 +169,6 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
             res.status(500).json({
                 error: error.message,
             });
@@ -206,7 +190,6 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
             res.status(500).json({
                 error: error.message,
             });
@@ -228,6 +211,7 @@ module.exports = (app, db) => {
             })
 
         } catch (error) {
+
             // console.log(error.message);
             res.status(500).json({
 
@@ -278,6 +262,7 @@ module.exports = (app, db) => {
 
         } catch (error) {
 
+
             res.status(500).json({
 
                 error: error.message
@@ -298,7 +283,6 @@ module.exports = (app, db) => {
 
             const dbQuestions = await getQuestionsById(question_id)
             const answers = await getQuestionAnswersById(question_id);
-            // console.log(question_id);
             const questions = {
                 ...dbQuestions,
                 answers
@@ -312,7 +296,9 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
+
             // console.log(error.message);
+
             res.status(500).json({
 
                 error: error.message
@@ -334,7 +320,6 @@ module.exports = (app, db) => {
                 learners: learners
             });
         } catch (error) {
-            console.log(error + "api error");
             res.status(500).json({
                 error: error.message
             })
@@ -346,23 +331,20 @@ module.exports = (app, db) => {
 
         try {
 
-            const { role, answer_id, learner_id } = req.body;
-
-
-            await db.none(`insert into user_answers (answer_id, learner_id) values ($1, $2)`, [answer_id, learner_id]);
+            const { answer_id, user_assessment_id } = req.body;
+            console.log({ answer_id, user_assessment_id });
+            await db.none(`insert into user_answers (answer_id, user_assessment_id) values ($1, $2)`, [answer_id, user_assessment_id]);
 
             res.status(200).json({
-                // answer: answer,
                 message: "Answer selected",
             });
 
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
             res.status(500).json({
                 error: error.message
             })
         }
-
     })
 
     app.post("/api/comment", async (req, res) => {
@@ -371,7 +353,6 @@ module.exports = (app, db) => {
         try {
 
             const comments = await db.none(`insert into feedback(comment) values ($1) where username = $2`, [comment, username]);
-            console.log(comments)
             res.status(200).json({
                 comments: comments
             });
@@ -388,7 +369,6 @@ module.exports = (app, db) => {
         try {
 
             const comments = await db.none(`select * from feedback where username = $1`);
-            console.log(comments)
             res.status(200).json({
                 comments: comments
             });
@@ -400,9 +380,11 @@ module.exports = (app, db) => {
         }
     })
 
+
     // app.get("/api/courses_beginner/:question_id", async (req, res) => {
 
     // })
+
 
     app.get("/api/getAnswers/", async (req, res) => {
 
@@ -416,7 +398,6 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
             res.status(500).json({
                 error: error.message
             })
@@ -424,9 +405,6 @@ module.exports = (app, db) => {
     })
 
     app.get("/api/getCorrectAnswers", async (req, res) => {
-
-
-        // app.get("/api/getLearners", async (req, res) => {
 
         const results = await db.manyOrNone(`select * from school`);
 
@@ -439,7 +417,6 @@ module.exports = (app, db) => {
 
                 try {
 
-
                     const getCorrectA = await db.manyOrNone(`select * from user_answers join answers on user_answers.answer_id = answers.id where correct= 'true';`);
 
                     res.status(200).json({
@@ -448,7 +425,6 @@ module.exports = (app, db) => {
                     });
 
                 } catch (error) {
-                    console.log(error.message);
                     res.status(500).json({
                         error: error.message
                     })
@@ -466,8 +442,9 @@ module.exports = (app, db) => {
 
             const scoresById = await db.oneOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1;`, [question_id]);
 
+            const scoresByCorrect = await db.oneOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1 and correct = 'true';`, [question_id]);
 
-            const scoresByCorrect = await db.oneOrNone(`select count(correct) from user_answers join answers on user_answers.answer_id = answers.id where question_id = $1 and  correct = 'true';`, [question_id]);
+
 
             res.status(200).json({
                 scoresById: scoresById,
@@ -476,12 +453,72 @@ module.exports = (app, db) => {
             });
 
         } catch (error) {
-            console.log(error.message);
             res.status(500).json({
                 error: error.message
             })
         }
 
+    })
+
+    app.post("/api/userAssessment/", async (req, res) => {
+
+        try {
+            const { assessment_id, learner_id } = req.body;
+            // console.log(assessment_id);
+
+            const userAssess = await db.one(`insert into user_assessment (assessment_id, learner_id) values ($1, $2) returning id`, [assessment_id, learner_id]);
+
+            res.status(200).json({
+                userAssessmentId: userAssess.id
+            })
+        } catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    })
+
+    // app.get("/api/sendScoreToTeacher")
+
+    app.post("/api/scoreCount", async (req, res) => {
+
+        try {
+
+            const { learner_id, assessment_id, question_id } = req.body;
+
+            const questCounter = await db.oneOrNone(`select count(*) from questions join assessment on questions.assessment_id = assessment.id where assessment_id= $1;`
+            , [assessment_id], r => r.count);
+
+
+            const userAssessCount = await db.oneOrNone(`select count(*) from user_answers 
+             join answers on user_answers.answer_id = answers.id 
+             join user_assessment on user_assessment.id = user_answers.user_assessment_id 
+             where learner_id = $1 and correct= 'true';`, 
+            [learner_id], r => r.count);
+            console.log({ assessment_id, question_id });
+            console.log({ questCounter, userAssessCount });
+
+            const learnerScore = (Number(userAssessCount) / 15 * 100).toFixed(2);
+            console.log(learnerScore);
+
+            await db.none(`update user_assessment set score = $1 where assessment_id = $2`, [learnerScore, assessment_id]);
+
+            const theAssessSCore = await db.manyOrNone(`select score from user_assessment where assessment_id = $1;`, [assessment_id]);
+
+            console.log({ theAssessSCore });
+
+            res.status(200).json({
+                questCounter,
+                userAssessCount,
+                theAssessSCore,
+                message: "Here is your score"
+            });
+
+        } catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
     })
 
 }
