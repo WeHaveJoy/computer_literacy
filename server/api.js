@@ -327,13 +327,35 @@ module.exports = (app, db) => {
 
     })
 
+    app.get("/api/viewLearnerDetails/:id", async (req, res) => {
+
+        try {
+
+            const {id} = req.params;
+            
+            const viewDetails = await db.manyOrNone(`select school from users where id = $1`, [id]);
+
+            console.log(viewDetails);
+            res.status(200).json({
+                viewDetails: viewDetails
+
+            });
+
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    })
+
     app.post("/api/addUserAnswers/", async (req, res) => {
 
         try {
 
-            const { answer_id, user_assessment_id } = req.body;
-            console.log({ answer_id, user_assessment_id });
-            await db.none(`insert into user_answers (answer_id, user_assessment_id) values ($1, $2)`, [answer_id, user_assessment_id]);
+            const { answer_id, learner_id } = req.body;
+            console.log({ answer_id, learner_id });
+            await db.none(`insert into user_answers (answer_id, learner_id) values ($1, $2)`, [answer_id, learner_id]);
 
             res.status(200).json({
                 message: "Answer selected",
@@ -464,7 +486,7 @@ module.exports = (app, db) => {
 
         try {
             const { assessment_id, learner_id } = req.body;
-            // console.log(assessment_id);
+            
 
             const userAssess = await db.one(`insert into user_assessment (assessment_id, learner_id) values ($1, $2) returning id`, [assessment_id, learner_id]);
 
@@ -478,47 +500,48 @@ module.exports = (app, db) => {
         }
     })
 
-    // app.get("/api/sendScoreToTeacher")
+    // app.post("/api/scoreCount", async (req, res) => {
 
-    app.post("/api/scoreCount", async (req, res) => {
+    //     try {
 
-        try {
+    //         const { learner_id, assessment_id, question_id } = req.body;
 
-            const { learner_id, assessment_id, question_id } = req.body;
-
-            const questCounter = await db.oneOrNone(`select count(*) from questions join assessment on questions.assessment_id = assessment.id where assessment_id= $1;`
-            , [assessment_id], r => r.count);
+    //         const questCounter = await db.oneOrNone(`select count(*) from questions join assessment on questions.assessment_id = assessment.id where assessment_id= $1;`
+    //             , [assessment_id], r => r.count);
 
 
-            const userAssessCount = await db.oneOrNone(`select count(*) from user_answers 
-             join answers on user_answers.answer_id = answers.id 
-             join user_assessment on user_assessment.id = user_answers.user_assessment_id 
-             where learner_id = $1 and correct= 'true';`, 
-            [learner_id], r => r.count);
-            console.log({ assessment_id, question_id });
-            console.log({ questCounter, userAssessCount });
+    //         const userAssessCount = await db.oneOrNone(`select count(*) from user_answers 
+    //          join answers on user_answers.answer_id = answers.id 
+    //          join user_assessment on user_assessment.id = user_answers.user_assessment_id 
+    //          where learner_id = $1 and correct= 'true';`,
+    //             [learner_id], r => r.count);
+    //         console.log({ assessment_id, question_id });
+    //         console.log({ questCounter, userAssessCount });
 
-            const learnerScore = (Number(userAssessCount) / 15 * 100).toFixed(2);
-            console.log(learnerScore);
+    //         const learnerScore = (Number(userAssessCount) / 15 * 100).toFixed(2);
+    //         console.log(learnerScore);
 
-            await db.none(`update user_assessment set score = $1 where assessment_id = $2`, [learnerScore, assessment_id]);
+    //         //   const insertScore = await db.none(`insert into user_assessment (score) values ($1)`, [learnerScore]);
+            
+    //            await db.none(`update user_assessment set score = $1 where assessment_id = $2`, [learnerScore, assessment_id]);
 
-            const theAssessSCore = await db.manyOrNone(`select score from user_assessment where assessment_id = $1;`, [assessment_id]);
+    //         const theAssessSCore = await db.manyOrNone(`select score from user_assessment where learner_id = $1`, [learner_id]);
 
-            console.log({ theAssessSCore });
+    //         console.log({ theAssessSCore });
 
-            res.status(200).json({
-                questCounter,
-                userAssessCount,
-                theAssessSCore,
-                message: "Here is your score"
-            });
+    //         res.status(200).json({
+    //             questCounter,
+    //             userAssessCount,
+    //             theAssessSCore,
+    //             message: "Here is your score"
+    //         });
 
-        } catch (error) {
-            res.status(500).json({
-                error: error.message
-            })
-        }
-    })
+    //     } catch (error) {
+    //         res.status(500).json({
+    //             error: error.message
+    //         })
+    //     }
+    // })
+
 
 }

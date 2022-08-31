@@ -281,7 +281,7 @@
           <div x-show="currentLevel == 'beginnerAss'" id="beginnerAssessment" class="beginnerAssessment">
             <div>
               <h2>Please complete this assessment before requesting for the next course: </h2>
-              <button @click="userAssessment()"> Show quiz</button>
+              <button @click="assessment()"> Show quiz</button>
               <br>
               <br>
               <div>
@@ -296,18 +296,22 @@
                 <br>
 
                 <div class="score" >
-                  <template x-for="score in myScore">
+                  <!-- <template x-for="score in myScore">
                     <div>
                       <span x-text="score.score"></span>
                     </div>
                   
-                  </template>
+                  </template> -->
                   
+                  <div x-model="totalScore">
+                    <span x-text="totalScore"></span>
+                  </div>
+
                 </div>
                 <br>
                 <br>
 
-                <button @click="calculateScore()">Complete Assessment</button>
+                <button @click="calculateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
@@ -489,13 +493,18 @@
                     <!-- <div class="score" x-model="totalScore">
                     <span x-text="totalScore"></span> -->
                     <!-- <template x-for=""> -->
-                    <div x-model="this.scoresByCorrect">
-                      <span x-text="this.scoresByCorrect"></span>
-                    </div>
+                      <div class="scores" >
+                        <template x-for="score in learnerScores">
+                          <div>
+                            <span x-text="score.score"></span>
+                          </div>
+                        
+                        </template>
+                      </div>
 
                     <!-- </template> -->
 
-                    <button class="learner_dettails" @click="caltulateScore()">View
+                    <button class="learner_dettails" @click="viewLearners(user.id)">View
                       details</button>
                   </li>
                 </ul>

@@ -84,8 +84,8 @@ create table user_answers(
     id serial not null primary key,
     answer_id int,
     FOREIGN KEY (answer_id) REFERENCES answers(id),
-    user_assessment_id int, 
-    FOREIGN KEY (user_assessment_id) REFERENCES user_assessment(id)
+    learner_id int, 
+    FOREIGN KEY (learner_id) REFERENCES users(id)
     
 );
 
