@@ -278,7 +278,7 @@ module.exports = (app, db) => {
         try {
             const { level } = req.res;
 
-            const advancedThree = await db.manyOrNone(`SELECT description , title FROM courses_advanced where level=3`, [level]);
+            const advancedThree = await db.manyOrNone(`SELECT description , title, importance, key_importance FROM courses_advanced where level=3`, [level]);
 
             res.status(200).json({
                 advancedThree: advancedThree
@@ -374,28 +374,10 @@ module.exports = (app, db) => {
 
     })
 
-    app.post("/api/comment", async (req, res) => {
-        const { comment, username } = req.body
-
-        try {
-
-            const comments = await db.none(`insert into feedback(comment) values ($1) where username = $2`, [comment, username]);
-            console.log(comments)
-            res.status(200).json({
-                comments: comments
-            });
-        } catch (error) {
-
-            res.status(500).json({
-                error: error
-            })
-        }
-    })
 
     app.get('/api/comments/:username', async (req, res) => {
         const { username } = req.params
         try {
-
             const comments = await db.none(`select * from feedback where username = $1`);
             console.log(comments)
             res.status(200).json({

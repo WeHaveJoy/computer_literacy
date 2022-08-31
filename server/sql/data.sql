@@ -263,6 +263,7 @@ values
         'High Definition Media Interface -HDMI Cable',
         '1'
     );
+
 -- #LEVEL2
 -- assessment
 insert into
@@ -1184,6 +1185,7 @@ values
         1,
         'The Recycle Bin'
     );
+
 insert into
     courses_intermediate(description, img, level, title)
 values
@@ -1194,10 +1196,7 @@ values
         'Minimize,Maximize and close a window'
     );
 
-
-
-    -- start of advanced level1
-
+-- start of advanced level1
 insert into
     courses_advanced(description, img, level, title)
 values
@@ -1208,7 +1207,7 @@ values
         'Microsoft Word'
     );
 
-    insert into
+insert into
     courses_advanced(description, img, level, title)
 values
     (
@@ -1218,8 +1217,7 @@ values
         'Microsoft Excel'
     );
 
-
-       insert into
+insert into
     courses_advanced(description, img, level, title)
 values
     (
@@ -1229,7 +1227,7 @@ values
         'Microsoft Powerpoint'
     );
 
-     insert into
+insert into
     courses_advanced(description, img, level, title)
 values
     (
@@ -1239,7 +1237,7 @@ values
         'Microsoft Access'
     );
 
-     insert into
+insert into
     courses_advanced(description, img, level, title)
 values
     (
@@ -1249,64 +1247,157 @@ values
         'Microsoft Outlook'
     );
 
-
 -- advanced level 3
-
-     insert into
-    courses_advanced(description, img, level, title)
+insert into
+    courses_advanced(
+        description,
+        img,
+        level,
+        title,
+        importance,
+        key_importance
+    )
 values
     (
         'A CV is a short document that gives you a chance to show a prospective employer the best of what you`ve got. It sells your skills, experience, and shows them you`re the right person for the job. Making a good impression is important in today`s competitive job market.',
-        ' https://app.resumecoach.com/editor/resume/4076b082-60b9-45f2-b4fb-f9b22911d47b/preview',
+        '',
         3,
-        'What is a CV and why is it important?'
+        'What is a CV and why is it important?',
+        'Key important areas of a CV',
+        '            ▪ Outline your skills and experience -Your CV should clearly show a potential employer your most relevant professional experience, skills and qualifications.
+            ▪ Highlight your value - You should make sure you mention 2-3 concrete things you achieved for your former employer in each role
+    • Catch the employer`s attention - The most important information on your CV should appear towards the top of the page.
+    • Position you as the right person for the job- In order to show the potential employer that you are the right person for the role, it`s a good idea to edit your CV each time you send it
+            ▪ Land you an interview-- A CV is just the first step in the recruitment process—but if it`s not well-written and  professional, you`re unlikely to get any further.'
     );
 
-
-         insert into
-    courses_advanced(description, img, level, title)
+insert into
+    courses_advanced(
+        description,
+        img,
+        level,
+        title,
+        importance,
+        key_importance
+    )
 values
     (
         'A cover letter is a one-page message sent with an application that provides information about the position you`re applying for, your qualifications in relation to the position and why you`re interested in working for the company. A well-written cover letter can help you stand out from the rest of the competition.',
         '',
         3,
-        ' What is a cover letter and how does it help you?'
+        ' What is a cover letter and how does it help you?',
+        'Key importance areas of a cover letter',
+        '1. Address the contact mentioned in the job advert
+
+Take care when addressing your cover letter to ensure it is received by the correct person - ideally the hiring manager
+
+2. Outline your current job situation and why you want to move on - don’t be negative
+
+3.If you are currently employed, explain the reasons for your interest in the new role in the cover letter
+
+4. Show you’ve done your research
+
+Someone who has clearly made an effort to find out more about a company and referenced this in their cover letter will be viewed by the hiring manager as a more committed candidate than one who has not.
+
+5. State why you are interested in working for them as an employer
+
+Use the cover letter to demonstrate how the role will impact your greater career goals.
+
+6. Tell them why they should be interested in you as an employee
+
+Most top candidates will be skilled and hard-working professionals, so it’s important to consider why you would be the perfect candidate and communicate this in your cover letter.
+'
     );
 
-           insert into
-    courses_advanced(description, img, level, title)
+insert into
+    courses_advanced(
+        description,
+        img,
+        level,
+        title,
+        importance,
+        key_importance
+    )
 values
     (
         'A formal letter is a letter, written in formal language, in the stipulated format, for official purpose.
 ',
         '',
         3,
-        'What is a formal letter?'
+        'What is a formal letter?',
+        'It is a type of letter writing that is used for official purposes, including business and professional communication',
+        'Formal letter has             ▪ Addresses & Date -
+       The address of the sender and the address of the recipient.
+                  ▪ Greeting - A formal letter always starts with a salutation.  
+            ▪ Subject -
+      The subject is the letter’s reason. 
+    
+    ▪ Main Body -This captures the essence of the letter and the message that the sender wishes to convey to the receiver.
+    
+ ▪Closing Paragraph -The closing paragraph must present the central idea of the letter, reinforce the aim and promote the actions the recipient expects from the sender.'
     );
 
-           insert into
-    courses_advanced(description, img, level, title)
+insert into
+    courses_advanced(
+        description,
+        img,
+        level,
+        title,
+        importance,
+        key_importance
+    )
 values
     (
         'A letter written in an friendly manner, to someone you are familiar with, is called informal letter.You can use Microsoft word to write an informal letter',
         '',
         3,
-        'What is an informal letter?'
+        'What is an informal letter?',
+        'Informal letters are mainly used for personal communication. So they do not have to follow any specific pattern, format or conventions.',
+        'Informal letter has             ▪ Addresses & Date -
+       The address of the sender.
+              Greeting – Now, since you know the person you are writing to,the greeting can be informal as well.▪Introduction Paragraph
+And now we begin writing the actual letter.  ▪
+Body of the Letter
+The letter overall should maintain a friendly tone.             ▪ Conclusion
+In the conclusive paragraph sum up the reason for writing the letter, i.e. summarize the letter.             ▪ Signature
+There is no one way to sign off informal letters. Since they do not follow a strict format, you may sign off as you please. Some commonly used phrases are
+    • Lots of Love
+    • Best,
+    • Best Wishes,etc.'
     );
 
-             insert into
-    courses_advanced(description, img, level, title)
+insert into
+    courses_advanced(
+        description,
+        img,
+        level,
+        title,
+        importance,
+        key_importance
+    )
 values
     (
         'Email is one of the most common forms of communication with your potential clients. A professional email address creates a sense of trust, especially if it is from a credible website. This will boost your company`s potential to attract new customers.',
         '',
         3,
-        'What is an email address and why is it important?'
+        'What is an email address and why is it important?',
+        'A formal email includes the ff but not limited to',
+        '1.A Concise, Direct Subject Line - This will help recipients determine its importance.
+
+2.A Proper Greeting
+
+3.A greeting can help people easily determine to whom a message is directed, especially as cc`ing and replying to all have become common.
+
+4.Proper Grammar, Correct Spelling
+Lingo and abbreviations that originated in the realm of instant messaging and texting have made their way into email. Even if your coworkers and clients don`t call you out on your use of such shortcuts, avoid using them. An email could get forwarded to another client or a supervisor who may be appalled at your seeming lack of written communication skills.
+
+5.Only Essential Information
+Put vital information as close to the beginning of your email as possible to ensure that your recipient actually reads it
+
+6.A Clear Closing
+End your email so that it`s clear what you`re expecting of the recipient and when.
+'
     );
-
-
-
-
 
 -- assessment beginner course
 insert into

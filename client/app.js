@@ -10,8 +10,8 @@ const Levels = {
     OneIntermidiate: 'ONEintermidiate',
     TwoIntermidiate: 'TWOintermidiate',
     Assessment: beginnerAssessment,
-    oneAdvanced:'ONEadvanced',
-    threeAdvanced:'THREEadvanced'
+    oneAdvanced: 'ONEadvanced',
+    threeAdvanced: 'THREEadvanced'
 }
 
 const Assessments = {
@@ -82,12 +82,13 @@ export default function computer_literacy() {
             // this.classLearner()
 
         },
+        feedback: [],
         getAnswer: [],
         correct: [],
         theScore: [],
         theeScore: [],
         scoreMessage: '',
-
+        progress: 0,
         totalScore: 0,
         learnerScore: 0,
 
@@ -133,11 +134,14 @@ export default function computer_literacy() {
             axios
                 .post(`${remote_url}/api/signUp`, this.signUp)
                 .then(results => {
-                    // console.log(results.data);
-                    this.message = "User created"
+
+                    this.message = "Account successfully created!"
                     setInterval(() => { }, 6000);
-                    return true;
+                    // return true;
                     this.signUp = ''
+                    if (this.signUp = this.signUp) {
+                        this.error = "The Account already exists,please login"
+                    }
                 }).catch(e => console.log('User doesnt exists'))
 
         },
@@ -145,8 +149,8 @@ export default function computer_literacy() {
         showContent() {
             this.show = false
             this.showLoginForm = true
-            // alert(this.show)
         },
+
         showNav() {
             this.showLand = !this.showLand
 
@@ -183,10 +187,10 @@ export default function computer_literacy() {
                     this.registration = false
                     this.showHome = true;
                     this.logIn_message = "You are logged in"
-                    if (user !== user) {
+                    if (user != user) {
                         this.error_message = "The user doesn't exist"
                     }
-
+                    this.beginner()
                     setTimeout(() => {
                         this.token = ''
                     }, 6000);
@@ -257,7 +261,7 @@ export default function computer_literacy() {
                 .get(`${remote_url}/api/advanced_level1`)
                 .then(results => {
                     this.advancedData = results.data.advancedOne;
-                   
+
                     setInterval(() => { }, 4000);
                     return true;
                 }).catch(e => console.log(e))
@@ -348,6 +352,8 @@ export default function computer_literacy() {
                 }).catch(e => console.log(e))
         },
 
+
+
         caltulateScore(quesion_id) {
 
             axios
@@ -401,7 +407,11 @@ export default function computer_literacy() {
             this.showHome = false;
             this.user.role = false
         },
+        getBadge() {
 
+
+            return ""
+        },
         // learnerDetails (){
 
         //     axios

@@ -23,7 +23,7 @@
       <nav class="navbar navbar-inverse navBackground">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">e-Learn</a>
+            <a class="navbar-brand logo" href="#"> <img src="/croped.png" width="100" height="35em" /></a>
 
           </div>
           <ul class="nav navbar-nav">
@@ -51,12 +51,12 @@
                   class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#advanced1" , @click="currentLevel ='ONEadvanced' , advancedLevelOne()">level 1</a></li>
-                <li><a href="#advanced3" , @click="currentLevel ='THREEadvanced' , advancedLevelThree()">level 3</a>
+                <li><a href="#advanced3" , @click="currentLevel ='THREEadvanced' , advancedLevelThree()">level 2</a>
                 </li>
               </ul>
             </li>
           </ul>
-          <!-- <div class="landing"> -->
+
           <ul class="nav navbar-nav navbar-right">
 
             <li><a href="#" , @click="logoutFunc()"><span class="glyphicon glyphicon-user"></span>
@@ -67,7 +67,7 @@
             <li><a href="#" , @click="show=true , showHomeFunc()"><span class="glyphicon glyphicon-log-in"></span>
                 Signup</a></li>
           </ul>
-          <!-- </div> -->
+
         </div>
       </nav>
       <div class="landing" x-show="!showHome">
@@ -97,11 +97,14 @@
             <div class="" x-show="show">
               <h2>Register here if you don't have an account:</h2>
               <p>Already have an account yet? Jump to login </p>
-              <div x-text="logIn_message"></div>
+              <!-- <div x-text="logIn_message"></div> -->
               <br>
-              <div x-text="message redText"></div>
-              <div x-text="error redText"></div>
+
+
+
               <br>
+              <div x-text="error"></div>
+              <div class="success" x-text="message"></div>
               <label for="">Please enter your first name: </label>
               <input x-model="signUp.first_name" type="text" name="firstname" class="firstname">
               <br>
@@ -154,8 +157,9 @@
 
             <div class="" x-show="!showLoginForm">
               <h2>Login here if you already have an account:</h2>
-              <!-- <p>Don't have an account yet? <a href="#" , @click="showContent()">sign Up</a> <br> </p> -->
-              <div x-text="logIn_message"></div>
+
+              <div class="success" x-text="logIn_message"></div>
+
               <br>
               <label>Please enter your username: </label>
               <input x-model="signIn.username" type="text" name="login_user" class="login">
@@ -163,10 +167,11 @@
               <br>
               <label>Please enter your password: </label>
               <input x-model="signIn.password" type="password" name="login_password" class="login">
-              <input type="button" @click="logUser(), beginner()" name="action" value="login" class="button">
+              <input type="button" @click="logUser()" name="action" value="login" class="button">
+
             </div>
           </div>
-          <!-- </div> -->
+
         </div>
         <div x-show="user.role === 'learner'" class="learner">
 
@@ -179,7 +184,8 @@
             <div class="card" style="width: 78rem; height: 25rem;">
               <p>Computer studies has evolved quite immernsely,day by day the technology changes as the universe drifts
                 towards the <strong>4th IR(4th Indusrtial Revolution),</strong>
-                computers has become portable,external devices has become wireless.It is of paramount importance that as
+                computers have become portable,external devices has become wireless.It is of paramount importance that
+                as
                 a
                 begginer,we learn the <strong>basic computer components.</strong>In this level we focus on the most
                 crucial components of a computer system.We say crucial because a computer can not have
@@ -306,6 +312,15 @@
                 <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
+
+            <p>Your progress</p>
+            <div class="progress">
+
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                style="width:0%">
+                0%
+              </div>
+            </div>
           </div>
 
           <!-- allow a learner to go through intermediate once they have completed beginner assessment -->
@@ -421,12 +436,10 @@
 
 
 
-            <div>
-              <!-- advanced level 2 here -->
-            </div>
+
 
             <div x-show="currentLevel == 'THREEadvanced'" class="advanced3" id="advanced3">
-              <h2 class="levelsText">Advanced course level 1:<strong>Microsoft Family</strong></h2>
+              <h2 class="levelsText">Advanced course level 2:<strong>CV,email,letters</strong></h2>
               <div x-text="message"></div>
               <div class="card" style="width: 78rem; height: 25rem;">
                 <p>On this chapter,we will focus on the understanding the CV,email,formal and informal letter
@@ -438,27 +451,44 @@
               <br>
               <br>
 
+              <div class="conta">
+                <div class="row">
+                  <div class="col">
+                    <template x-for="computer in advancedData">
+                      <div class="">
+                        <h3 class="titl"><span x-text="computer.title"></span></h3>
+                        <p class="descriptio"><span x-text="computer.description"></span></p>
+                        <h2 class=""><span x-text="computer.importance"></span></h2>
+                        <p class=""><span x-text="computer.key_importance"></span></p>
+                        <br>
+                        <br>
+                      </div>
+                    </template>
+                  </div>
+                  <div class="col">Column</div>
+                  <div class="w-100"></div>
+                  <div class="col">Column</div>
+                  <div class="col">Column</div>
+                </div>
+              </div>
 
-              <div class="cont sort">
+
+
+
+              <!-- <div class="con">
                 <template x-for="computer in advancedData">
-                  <div class="sortOut">
-
-                    <div class="">
-
-                      <h3><span x-text="computer.title"></span></h3>
-                      <p><span x-text="computer.description"></span></p>
-                      
-                    </div>
+                  <div class="">
+                    <h3 class="titl"><span x-text="computer.title"></span></h3>
+                    <p class="descriptio"><span x-text="computer.description"></span></p>
+                    <h2 class=""><span x-text="computer.importance"></span></h2>
+                    <p class=""><span x-text="computer.key_importance"></span></p>
                     <br>
                     <br>
                   </div>
                 </template>
-              </div>
+
+              </div> -->
             </div>
-
-
-
-
           </div>
 
 

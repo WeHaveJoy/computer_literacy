@@ -9,7 +9,7 @@
   color: black;
   margin-top: 60px;
   margin-left: 10em;
-  /* width: 970px; */
+
 
 }
 .welcomePage{
@@ -29,9 +29,7 @@ body {
   padding: 2em;
 }
 .container {
-  /* width: 970px; */
-  /* background-color: red; */
-  /* background-image: url(/lab.jpeg); */
+
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -139,7 +137,7 @@ body {
 }
 
 .card {
-  /* padding-left: 18rem; */
+
   margin-left: 7rem;
   font-size: medium;
   background-color: whitesmoke;
@@ -149,20 +147,7 @@ body {
 
 
 
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif
-}
-body
-{
-    min-width: 100vw;
-    min-height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    background: #16384c;
-} */
+
 .sortOut{
   height: 8em;
 }
@@ -182,10 +167,31 @@ body
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-in-out;
 }
-
+.logo{
+height: 10px;
+margin-bottom: 2em;
+}
+.success{
+  color: green;
+  font-weight: 100;
+  font-size: large;
+}
 .containerDisplay .card:hover {
   height: 45em;
 }
+ .cont{
+   display : flex;
+   flex-direction: row;
+  
+   justify-content: space-around;
+ 
+   justify-content: spa;
+   align-items: stretch;
+ }
+ .description{
+   font-size: medium;
+   font-weight: 100;
+ }
 
 .containerDisplay .card .imgContainer {
   position: relative;

@@ -17,12 +17,9 @@ API(app, db);
 describe('As part of the computer literacy', () => {
     before(async function () {
         this.timeout(5000);
-        // await db.none(`delete from user_answers`);
-        // await db.none(`delete from answers`);
-        // await db.none(`delete from questions`);
-        // await db.none(`delete from assessment`);
-        // await db.none(`delete from courses_advanced`);
-        // await db.none(`delete from users`);
+        await db.none(`delete from user_answers`);
+       
+        await db.none(`delete from users`);
         // const commandText = fs.readFileSync('./sql/data.sql', 'utf-8');
         //  await db.none(commandText)
     });
@@ -32,54 +29,52 @@ describe('As part of the computer literacy', () => {
             .expect(200);
         assert.deepStrictEqual({ name: 'joe' }, response.body);
     });
-    // it('should be able to signup a new user', async () => {
-    //     const response = await supertest(app)
-    //         .post('/api/signUp')
-    //         .send({
-    //             first_name: 'zizo',
-    //             last_name: 'beda',
-    //             username: 'zizobeda',
-    //             password: 'password',
-    //             role: 'learner',
-    //             school: 'camps bay'
-    //         })
-    //         .expect(200);
-    //     const users = response.body.data;
-    //     const signup = response.body.message;
-    //     assert.deepStrictEqual('User created!', signup);
-    // });
-    // it('should be able to throw an error when the user already exists', async () => {
-    //     const response = await supertest(app)
-    //         .post('/api/signUp')
-    //         .send({
-    //             first_name: 'zinzi',
-    //             last_name: 'mandela',
-    //             username: 'mandela',
-    //             password: 'password',
-    //             role: 'learner',
-    //             school: 'Khulani High School'
-    //         })
-    //         .expect(200);
+    it('should be able to signup a new user', async () => {
+        const response = await supertest(app)
+            .post('/api/signUp')
+            .send({
+                first_name: 'zizo',
+                last_name: 'beda',
+                username: 'zizobeda',
+                password: 'password',
+                role: 'learner',
+                school: 'camps bay'
+            })
+            .expect(200);
+        const users = response.body.data;
+        const signup = response.body.message;
+        assert.deepStrictEqual('User created!', signup);
+    });
+    it('should be able to throw an error when the user already exists', async () => {
+        const response = await supertest(app)
+            .post('/api/signUp')
+            .send({
+                first_name: 'zinzi',
+                last_name: 'mandela',
+                username: 'mandela',
+                password: 'password',
+                role: 'learner',
+                school: 'Khulani High School'
+            })
+            .expect(200);
 
 
-    //         const res = await supertest(app)
-    //         .post('/api/signUp')
-    //         .send({
-    //             first_name: 'zinzi',
-    //             last_name: 'mandela',
-    //             username: 'mandela',
-    //             password: 'password',
-    //             role: 'learner',
-    //             school: 'Khulani High School'
-    //         })
-    //         .expect(500);
+            const res = await supertest(app)
+            .post('/api/signUp')
+            .send({
+                first_name: 'zinzi',
+                last_name: 'mandela',
+                username: 'mandela',
+                password: 'password',
+                role: 'learner',
+                school: 'Khulani High School'
+            })
+            .expect(500);
 
 
-    //     // const users = response.body.data;
-    //     // const signup = response.body.error;
-    //     const sign = response.body.error;
-    //     assert.deepStrictEqual('User already exists!', sign);
-    // });
+        const sign = res.body.error;
+        assert.deepStrictEqual('User already exists!', sign);
+    });
     it('should be able to login an existing user', async () => {
         const response = await supertest(app)
             .post('/api/logIn')
@@ -119,16 +114,25 @@ describe('As part of the computer literacy', () => {
         const courseLength = courses.length
         assert.equal(6, courseLength);
     });
-    // it('should be able to get the user answers', async () => {
-    //     const response = await supertest(app)
 
-    //         .get('/api/addUserAnswers/')
-    //         .expect(200);
-    //     // const answers = response.body.message;
-    //     const userAnswer = response.body.answer
-    //     log(userAnswer + "tttttttttttttttttttt")
-    //     assert.equal('You have selected all the answers', userAnswer);
-    // });
+    it('should be able to get all the advanced courses level 1', async () => {
+        const response = await supertest(app)
+            .get('/api/advanced_level1')
+            .expect(200);
+        const courses = response.body.advancedOne;
+        const courseLength = courses.length
+        assert.equal(5, courseLength);
+    });
+
+    it('should be able to get all the advanced courses level 3', async () => {
+        const response = await supertest(app)
+            .get('/api/advanced_level3')
+            .expect(200);
+        const courses = response.body.advancedThree;
+        const courseLength = courses.length
+        assert.equal(5, courseLength);
+    });
+ 
 
 
     it('should be able to get all the intermidiate courses level 1', async () => {
@@ -141,31 +145,39 @@ describe('As part of the computer literacy', () => {
     });
 
 
-    // it('should be able to get learners for school', async () => {
-    //     const response = await supertest(app)
+    it('should be able to get learners for school', async () => {
+        const response = await supertest(app)
 
-    //         .post('/api/signUp')
-    //         .send({
-    //             first_name: 'zibonele',
-    //             last_name: 'fm',
-    //             username: 'zibo',
-    //             password: 'password',
-    //             role: 'learner',
-    //             school: 'Isilimela Comprehensive High School'
-    //         })
-    //         .expect(200)
+            .post('/api/signUp')
+            .send({
+                first_name: 'zibonele',
+                last_name: 'fm',
+                username: 'zibo',
+                password: 'password',
+                role: 'learner',
+                school: 'Isilimela Comprehensive High School'
+            })
+            .expect(200)
 
-    //     const res = await supertest(app)
-    //         .get('/api/getLearnersBySchoolName/Isilimela Comprehensive High School')
-    //         .expect(200);
+        const res = await supertest(app)
+            .get('/api/getLearnersBySchoolName/Isilimela Comprehensive High School')
+            .expect(200);
 
-    //     const learnerForSchool = res.body.learners;
+        const learnerForSchool = res.body.learners;
         
 
-    //     assert.deepStrictEqual([{"first_name": "zibonele","last_name": "fm"}]
+        assert.deepStrictEqual([{"first_name": "zibonele","last_name": "fm"}]
       
-    //         , learnerForSchool);
-    // });
+            , learnerForSchool);
+    });
+    it('should be able to send feedback', async () => {
+        const response = await supertest(app)
+            .get('/api/intermidiate_level1')
+            .expect(200);
+        const courses = response.body.interOne;
+        const courseLength = courses.length
+        assert.equal(4, courseLength);
+    });
     after(async () => {
         db.$pool.end();
     });

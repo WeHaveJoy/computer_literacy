@@ -188,7 +188,7 @@ where
     AND id < 249;
 
 update
-    answers
+    answersusername
 set
     question_id = 10
 where
