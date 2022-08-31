@@ -44,6 +44,8 @@
                 <li><a href="#inter1" , @click="currentLevel = 'ONEintermidiate' , intermidiate()">level 1</a></li>
                 <li><a href="#inter2" , @click="currentLevel = 'TWOintermidiate' , intermidiateTwo()">level
                     2</a></li>
+                    <li><a href="#beginnerAssessment" , @click="currentLevel = 'beginnerAssessment' , assessment()">Go To
+                      Assessment</a></li>
 
               </ul>
             </li>
@@ -53,6 +55,8 @@
                 <li><a href="#advanced1" , @click="currentLevel ='ONEadvanced' , advancedLevelOne()">level 1</a></li>
                 <li><a href="#advanced3" , @click="currentLevel ='THREEadvanced' , advancedLevelThree()">level 3</a>
                 </li>
+                <li><a href="#beginnerAssessment" , @click="currentLevel = 'beginnerAssessment' , assessment()">Go To
+                  Assessment</a></li>
               </ul>
             </li>
           </ul>
@@ -179,11 +183,13 @@
 
 
         <div x-show="user.role === 'learner'" class="learner">
+          <h1>Welcome to e-Learn <span x-text="user.first_name"></span></h1>
 
-          <div class="funky">
-            <h1>Welcome to e-Learn <span x-text="user.first_name"></span></h1>
-          </div>
+         
           <div x-show="currentLevel == 'ONE'" class="level1">
+            <div class="funky">
+              <h3>You are logged in <span x-text="user.first_name"></span></h3>
+            </div>
             <h2 class="levelsText">Beginner course level 1:<strong>Computer Componets</strong></h2>
             <div x-text="message"></div>
             <div class="card" style="width: 78rem; height: 25rem;">
@@ -246,7 +252,11 @@
 
           <div x-show="currentLevel == 'TWO'" class="level2">
             <div class="">
+              <div class="funky">
+                <h1>You are logged in <span x-text="user.first_name"></span></h1>
+              </div>
               <div class="card" style="width: 78rem; height: 25rem;">
+               
                 <h2 class="levelsText">Beginner course level 2:<strong>Assemblying Computer
                     Hardware(Components)</strong></h2>
                 <p>
@@ -261,8 +271,8 @@
                     expertise needed.</strong>
                   Watch it carefully and if you can,ask your teacher for a <strong>practical computer assembly
                     workshop.</strong>
-                  Its easy,enjoy!.Click on this <a href="https://www.youtube.com/watch?v=RnM3u99xIf4&t=85s"
-                    target="_blank">link</a> (the link will open a new tab)to watch.
+                  Its easy,enjoy!.Click on this <strong><a href="https://www.youtube.com/watch?v=RnM3u99xIf4&t=85s"
+                    target="_blank">link</a></strong> (the link will open a new tab)to watch.
                 </p>
               </div>
               <div class="d-grid gap-5">
@@ -293,7 +303,7 @@
               <template x-for="computer in computers3">
                 <div class="card d-flex position-relative flex-column  ">
                   <div class='imgContainer'>
-                    <img x-bind:src="`/Beginners/${computer3.img}`" width="150" />
+                    <img x-bind:src="`/Beginners/${computers3.img}`" width="150" />
                   </div>
                   <div class="content sortOut">
                     <h3><span x-text="computer.title"></span></h3>
@@ -312,7 +322,7 @@
 
           <div x-show="currentLevel == 'beginnerAss'" id="beginnerAssessment" class="beginnerAssessment">
             <div>
-              <h6 style="background-color:DodgerBlue;">NB! The assessment below consists of 15 questions, answer each question as best as you can as you are allowed to select only once </h6>
+              <h4 style="background-color:rgb(255, 251, 30);">NB! The assessment below consists of 15 questions, answer each question as best as you can as you are allowed to select only once </h4>
               <button @click="assessment()"> Show quiz</button>
               <br>
               <br>
@@ -519,8 +529,10 @@
                     <span x-text="learn.first_name"></span>
                     <span x-text="learn.last_name"></span>
                     <br>
-
-                    
+                  </li>
+                </ul>
+              </div>
+              </template>
       </div>
       <br>
       <br>
@@ -585,9 +597,9 @@
       </div>
       </div> -->
   </div>
-  <!-- </div>-->
+  </div>
 
-  <!-- </div>  -->
+  </div> 
 
   <script type="module" src="./main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
