@@ -223,6 +223,7 @@
           </div>
 
 
+
           <!-- <table class="table table-success table-striped">
                 <tr>
                   <th>IMAGE</th>
@@ -239,6 +240,7 @@
               </table> -->
 
           <!-- <div class="d-grid gap-5">
+
             <button class="btn btn-primary" @click="currentLevel = 'TWO'" type="button">Next Level>>></button>
           </div> -->
 
@@ -318,20 +320,30 @@
                 <span x-text="quizzes.question"></span>
                 <template x-for="answer in quizzes.answers">
                   <div>
-                    <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
+                    <input @click="addAnswers(answer.id), assessment() " type="radio" name="answer">
                     <span x-text="answer.answer"></span>
                   </div>
                 </template>
                 <br>
                 <br>
 
-                <div class="score" x-model="totalScore">
-                  <span x-text="totalScore"></span>
+                <div class="score" >
+                  <!-- <template x-for="score in myScore">
+                    <div>
+                      <span x-text="score.score"></span>
+                    </div>
+                  
+                  </template> -->
+                  
+                  <div x-model="totalScore">
+                    <span x-text="totalScore"></span>
+                  </div>
+
                 </div>
                 <br>
                 <br>
 
-                <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
+                <button @click="calculateScore(quizzes.id)">Complete Assessment</button>
               </div>
             </div>
           </div>
@@ -497,6 +509,7 @@
 
           <button @click="getLearners(user.school)"> Show my class list</button>
           <div>
+
             <br>
             <br>
             <template x-for="learn in schoolLearners">
@@ -506,71 +519,25 @@
                     <span x-text="learn.first_name"></span>
                     <span x-text="learn.last_name"></span>
                     <br>
-                    <!-- <div x-model="totalScore">
-                      <span x-text="totalScore"></span>
-                    </div> -->
-                    <button class="learner_dettails" @click="caltulateScore(quizzes.id)">View progress</button>
-                  </li>
-                </ul>
-              </div>
-            </template>
 
-            <!-- <h4>You are on the Teacher dashboard</h4> -->
-          </div>
+                    
+      </div>
+      <br>
+      <br>
 
-          <div>
-            <span x-text="quizzes.question"></span>
-
-
-            <!-- <div>
-            <button @click="logoutFunc()">logout</button>
-          </div> -->
-
-
-
-            <!-- <div>
-            <span x-text="quizzes.question"></span>
-
-            <template x-for="answer in quizzes.answers">
-              <div>
-                <input @click="addAnswers(answer.id), assessment()" type="radio" name="answer">
-                <span x-text="answer.answer"></span>
-              </div>
-            </template>
-
-          
-            <div>
-              <span x-text="this.totalScore"></span>
-            </div>
-
-            <div>
-              <span x-text="this.learnerScore"></span>
-            </div>
-
-        
-            <br>
-            <br>
-            <button @click="caltulateScore(quizzes.id)">Complete Assessment</button>
-          </div> -->
-
-          </div>
+      <div x-show="user.role === 'parent'" class="parent">
+        <div>
+          <h2>Welcome <span x-text="user.first_name"> </span></h2>
         </div>
         <br>
-        <br>
-
-        <div x-show="user.role === 'parent'" class="parent">
-          <div>
-            <h2>Welcome <span x-text="user.first_name"> </span></h2>
-          </div>
-          <br>
-
-        </div>
 
       </div>
 
+    </div>
 
-      <!-- <div class=""> -->
-      <!-- <div class="footer">
+
+    <!-- <div class=""> -->
+    <!-- <div class="footer">
 
       <footer>
         <div class="row">
@@ -585,7 +552,7 @@
     </footer>
 
   </div> -->
-      <!-- <div class="footer">
+    <!-- <div class="footer">
 
 
         <div class="contact">
@@ -605,7 +572,7 @@
         </div>
       </div> -->
 
-      <!-- <div x-show="user.role === 'parent'" class="parent">
+    <!-- <div x-show="user.role === 'parent'" class="parent">
           <div>
             <h2>Welcome <span x-text="user.first_name"> </span></h2>
           </div>
@@ -617,10 +584,10 @@
         </div>
       </div>
       </div> -->
-    </div>
-
-
   </div>
+  <!-- </div>-->
+
+  <!-- </div>  -->
 
   <script type="module" src="./main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -62,6 +62,15 @@ create table questions(
     FOREIGN KEY (assessment_id) REFERENCES assessment(id)
 );
 
+create table user_assessment(
+    id serial not null primary key,
+    assessment_id int,
+    FOREIGN KEY (assessment_id) REFERENCES assessment(id),
+    learner_id int  ,
+    FOREIGN KEY (learner_id) REFERENCES users(id),
+    score decimal NOT NULL default '0'
+);
+
 create table answers(
     id serial not null primary key,
     answer text NOT NULL,
@@ -70,12 +79,14 @@ create table answers(
     FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
+
 create table user_answers(
     id serial not null primary key,
     answer_id int,
     FOREIGN KEY (answer_id) REFERENCES answers(id),
-    learner_id int,
+    learner_id int, 
     FOREIGN KEY (learner_id) REFERENCES users(id)
+    
 );
 
 --Inner join
